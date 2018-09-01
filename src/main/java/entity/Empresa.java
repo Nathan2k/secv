@@ -15,7 +15,6 @@ public class Empresa {
 	
 	
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -80,3 +79,6 @@ public class Empresa {
 	
 	
 }
+
+
+

@@ -15,8 +15,8 @@ public class UsuarioDAO {
 	
 	public Empresa buscarUsuario(int cnpj) { // perguntar sobre a senha
 		
-		String sql = " SELECT * FROM empresa"; // perguntar se falta alguma coisa
-		
+		String sql = " SELECT * FROM empresa"
+				+ " WHERE CNPJ = ? AND senha = ?"; // perguntar se falta alguma coisa 		
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -35,7 +35,6 @@ public class UsuarioDAO {
 				emp.setSenha(rs.getString("senha"));
 				emp.setNome(rs.getString("nome"));
 				emp.set
-				
 			}
 			
 			
