@@ -9,65 +9,70 @@
 </h:head>
 <h:body>
 
-	<h:form id="formLogin">
 
-		<div align="center">
-			<p:panel value="Login" style="width: 600px">
-				<h:graphicImage library="img" name="logo-senai.png"
-					style="width: 500px" />
+
+
+	<div align="center">
+		<p:panel value="Login" style="width: 600px">
+			<h:graphicImage library="img" name="logo-senai.png"
+				style="width: 500px" />
+			<p />
+
+
+			<p:panel>
+
+
+				<h:form>
+
+					<p:commandLink event="onclick" ajax="true" update="imgb"
+						actionListener="#{usuarioMBean.trocaImagem}">
+						<h:graphicImage style="width: 25%; height: 8%;" id="imgb"
+							library="img" name="#{usuarioMBean.imagem}.jpg" />
+					</p:commandLink>
+				</h:form>
+xasda
+
+				<h:form>
+					<center>
+						<h:panelGrid columns="2">
+
+							<h:outputText id="loginLabel" value="CNPJ/NIF: *" />
+							<h:inputText id="usuario" required="true" style="width:240px"
+								maxlength="14" />
+
+							<h:outputText id="senhaLabel" value="Senha: *" />
+							<h:inputSecret id="senha" required="true"
+								requiredMessage="O campo senha é requerido" style="width:240px" />
+							<br />
+							<h:commandButton value="Entrar"
+								style="height: 30px; font-size: 14px; width:220px" />
+						</h:panelGrid>
+
+
+
+					</center>
+				</h:form>
+
 				<p />
-
-				<p:panel>
-
+				<center>
 					<h:form>
-						<p:commandLink ajax="true" update="img" actionListener="#{usuarioMBean.trocaImagem}">
-							<p:graphicImage id="img" library="img" value="#{usuarioMBean.imagem}.jpg" />
-						</p:commandLink>
+						<h:commandButton value="Novo Usuário"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
-					<h:panelGrid columns="1" columnClasses="label, value">
-
-						<h:outputText id="loginLabel" value="CNPJ/NIF: *" />
-						<h:inputText id="usuario" value="#{UsuarioMBean}" required="true"
-							style="width:240px" maxlength="14" />
-
-						<h:outputText id="senhaLabel" value="Senha: *" />
-						<h:inputSecret id="senha" value="#{usuarioMBean.usuario.senha}"
-							required="true" requiredMessage="O campo senha é requerido"
-							style="width:240px" />
-
-					</h:panelGrid>
-					<p />
-
-					<div align="center">
-
-						<h:commandButton value="Entrar"
-							action="#{usuarioMBean.doEfetuarLogin}"
-							style="height: 30px; font-size: 14px; width:220px" />
-
-					</div>
-					<p />
-					<div align="center">
-
-						<h:commandButton value="Novo Usuário" action="#{a}"
+					<h:form>
+						<h:commandButton value="Recuperar Senha"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-
-					</div>
-					<p />
-					<div align="center">
-
-						<h:commandButton value="Recuperar Senha" action="#{a}"
-							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-
-					</div>
-					<p />
+					</h:form>
+				</center>
 
 
 
 
-				</p:panel>
 			</p:panel>
-		</div>
-	</h:form>
+
+		</p:panel>
+
+	</div>
 </h:body>
 </html>
 

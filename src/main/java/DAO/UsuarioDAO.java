@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entity.UsuarioADM;
@@ -44,6 +45,7 @@ public class UsuarioDAO {
 		return null;
 	}
 	
+	//---------------------------------------------------------------------------------------------
 	
 	public UsuarioADM buscarADM(int nif) {
 		
@@ -54,8 +56,23 @@ public class UsuarioDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			//teste
+			ps.setInt(1, nif);
 			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				UsuarioADM adm = new UsuarioADM();
+				
+				adm.setId(rs.getInt("id"));
+				adm.setNIF(rs.getInt("NIF"));
+				adm.setEmail(rs.getString("email"));
+				adm.setNome(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha"));
+				adm.setTelefone(rs.getInt("telefone"));
+				
+				return adm;
+			}
 			
 			
 		} catch (SQLException e) {
@@ -64,14 +81,19 @@ public class UsuarioDAO {
 		}
 		return null;
 		
+	}
+	
+	
+	//---------------------------------------------------------------------------------------------
+
+	public boolean inserirEmpresa(UsuarioEmpresa emp) {
+		
+		
+		return false;
 		
 		
 		
 	}
-	
-	
-	
-	
 	
 	
 	

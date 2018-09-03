@@ -1,12 +1,16 @@
 package mbean;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import DAO.UsuarioDAO;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
 
+@ManagedBean
+@SessionScoped
 public class UsuarioMBean {
 
 	UsuarioEmpresa uEmpresa;
@@ -20,7 +24,8 @@ public class UsuarioMBean {
 		imagem = "on";
 	}
 	public void trocaImagem() {
-		imagem = imagem.equals("on")?"off":"on";
+		imagem = imagem.equals("on") ? "off" : "on" ;
+		System.out.println("Caiu");
 	}
 	
 	public String loginEmpresa() {
