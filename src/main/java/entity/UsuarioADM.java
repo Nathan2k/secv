@@ -8,7 +8,7 @@ public class UsuarioADM {
 	private String nome;
 	private String senha;
 	private String email;
-	private String telefone;
+	private Integer telefone;
 	private Integer NIF;
 	
 	
@@ -37,10 +37,10 @@ public class UsuarioADM {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTelefone() {
+	public Integer getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(String telefone) {
+	public void setTelefone(Integer telefone) {
 		this.telefone = telefone;
 	}
 	public Integer getNIF() {
