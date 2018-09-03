@@ -109,9 +109,9 @@ public class UsuarioDAO {
 			ps.setString(9, emp.getRepresentante());
 			
 			if(ps.executeUpdate() == 1){
-				System.out.println("Usuário cadastrado ");
+				System.out.println("Usuário empresa cadastrado ");
 			}else{
-				System.out.println("Problemas ao cadastrar usuário ");
+				System.out.println("Problemas ao cadastrar usuário empresa");
 			}
 			return true;
 			
@@ -126,10 +126,41 @@ public class UsuarioDAO {
 		
 	}
 	
+	//falta fazer o inserir adm
 	
 	
-	
-	
+	public boolean inserirADM(UsuarioADM adm) {
+		
+		//PERGUNTAR SE TEM QUE COLOCAR O ID TAMBEM ALI NO INSERT INTO
+		
+		String sql = " INSERT INTO administrador (NIF, email, nome, senha, "
+				   + " telefone)"
+				   + " VALUES (?, ?, ?, ?, ?) ";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, adm.getNIF());
+			ps.setString(2, adm.getEmail());
+			ps.setString(3, adm.getNome());
+			ps.setString(4, adm.getSenha());
+			ps.setInt(5, adm.getTelefone());
+
+			if(ps.executeUpdate() == 1){
+				System.out.println("Usuário adm cadastrado ");
+			}else{
+				System.out.println("Problemas ao cadastrar usuário adm");
+			}
+			return true;
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 	
 	
 	
