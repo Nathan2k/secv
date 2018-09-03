@@ -14,8 +14,6 @@ public class Empresa {
 	String representante;
 	
 	
-	
-	
 	public int getId() {
 		return id;
 	}
