@@ -14,7 +14,7 @@ public class UsuarioMBean {
 	UsuarioDAO uDao;
 	
 	public String loginEmpresa() {
-		if(uDao.buscarUsuario(uEmpresa.getCNPJ())!= null) {
+		if(uDao.buscarEmpresa(uEmpresa.getCNPJ())!= null) {
 			return "temfiltro.xgtml";
 		}
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
