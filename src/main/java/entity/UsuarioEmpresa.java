@@ -6,7 +6,7 @@ public class UsuarioEmpresa {
 	private Integer CNPJ;
 	private String senha;
 	private String representante;
-	private String telefone;
+	private Integer telefone;
 	private String email;
 	private String rua;
 	private String bairro;
@@ -44,10 +44,10 @@ public class UsuarioEmpresa {
 	public void setRepresentante(String representante) {
 		this.representante = representante;
 	}
-	public String getTelefone() {
+	public Integer getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(String telefone) {
+	public void setTelefone(Integer telefone) {
 		this.telefone = telefone;
 	}
 	public String getEmail() {

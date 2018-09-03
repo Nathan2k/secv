@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
@@ -88,8 +89,38 @@ public class UsuarioDAO {
 
 	public boolean inserirEmpresa(UsuarioEmpresa emp) {
 		
+		//PERGUNTAR SE TEM QUE COLOCAR O ID TAMBEM ALI NO INSERT INTO
 		
-		return false;
+		String sql = " INSERT INTO empresa (senha, nome, CNPJ, cidade, "
+				   + " bairro, rua, email, telefone, representante)"
+				   + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, emp.getSenha());
+			ps.setString(2, emp.getNome());
+			ps.setInt(3, emp.getCNPJ());
+			ps.setString(4, emp.getCidade());
+			ps.setString(5, emp.getBairro());
+			ps.setString(6, emp.getRua());
+			ps.setString(7, emp.getEmail());
+			ps.setInt(8, emp.getTelefone());
+			ps.setString(9, emp.getRepresentante());
+			
+			if(ps.executeUpdate() == 1){
+				System.out.println("Usuário cadastrado ");
+			}else{
+				System.out.println("Problemas ao cadastrar usuário ");
+			}
+			return true;
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		
 		
 		
