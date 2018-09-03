@@ -13,6 +13,16 @@ public class UsuarioMBean {
 	UsuarioADM uAdm;
 	UsuarioDAO uDao;
 	
+	String imagem;
+	
+	
+	public UsuarioMBean() {
+		imagem = "on";
+	}
+	public void trocaImagem() {
+		imagem = imagem.equals("on")?"off":"on";
+	}
+	
 	public String loginEmpresa() {
 		if(uDao.buscarEmpresa(uEmpresa.getCNPJ())!= null) {
 			return "temfiltro.xgtml";
@@ -29,6 +39,13 @@ public class UsuarioMBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
 		return null;
 	}
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
 
 	
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"

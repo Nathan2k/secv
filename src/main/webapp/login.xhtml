@@ -11,19 +11,24 @@
 
 	<h:form id="formLogin">
 
-	<div align="center">
+		<div align="center">
 			<p:panel value="Login" style="width: 600px">
 				<h:graphicImage library="img" name="logo-senai.png"
 					style="width: 500px" />
-			<p />
+				<p />
 
 				<p:panel>
 
+					<h:form>
+						<p:commandLink ajax="true" update="img" actionListener="#{usuarioMBean.trocaImagem}">
+							<p:graphicImage id="img" library="img" value="#{usuarioMBean.imagem}.jpg" />
+						</p:commandLink>
+					</h:form>
 					<h:panelGrid columns="1" columnClasses="label, value">
 
 						<h:outputText id="loginLabel" value="CNPJ/NIF: *" />
-						<h:inputText id="usuario" value="#{UsuarioMBean}"
-							required="true" style="width:240px" maxlength="14" />
+						<h:inputText id="usuario" value="#{UsuarioMBean}" required="true"
+							style="width:240px" maxlength="14" />
 
 						<h:outputText id="senhaLabel" value="Senha: *" />
 						<h:inputSecret id="senha" value="#{usuarioMBean.usuario.senha}"
@@ -60,9 +65,9 @@
 
 
 				</p:panel>
-		</p:panel>
-	</div>
-</h:form>
+			</p:panel>
+		</div>
+	</h:form>
 </h:body>
 </html>
 
