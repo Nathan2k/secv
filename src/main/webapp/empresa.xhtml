@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+
+	<h:panelGrid columns="1" cellpadding="2">
+		<p:commandButton value="Clica aqui" type="button"
+			onclick="PF('formem').show();" />
+
+	</h:panelGrid>
+
+	<p:dialog header="Cadastro Empresa" widgetVar="formem" resizable="false"
+		draggable="false">
+
+		<h:panelGrid columns="2" cellpadding="3">
+
+			<p:outputLabel for="cnpj" value="Cnpj:" />
+			<p:inputMask id="cnpj" value="#{a}" mask="99.999.999/9999-99" />
+
+			<h:outputText value="Senha: " />
+			<p:password id="nonFeedback" value="#{a}" required="true" />
+
+			<h:outputText value="Confirmar Senha: " />
+			<p:password id="nonFeedback" value="#{a}" required="true" />
+
+			<h:outputText value="Representante: " />
+			<p:inputText value="#{a}" required="true" />
+
+			<p:outputLabel for="tel" value="Telefone:" />
+			<p:inputMask id="tel" value="#{a}" mask="(999) 99999-9999" />
+
+			<h:outputText value="Email: " />
+			<p:inputText value="#{a}" required="true" />
+
+			<h:outputText value="Endereço: " />
+			<p:inputText value="#{a}" required="true" />
+
+			<h:outputText value="Bairro: " />
+			<p:inputText value="#{a}" required="true" />
+
+			<h:outputText value="Cidade: " />
+			<p:inputText value="#{a}" required="true" />
+
+			
+			<p:commandButton value="Cancelar" type="cancelar" />
+			<p:commandButton value="Cadastrar" type="cadastro" />
+
+		</h:panelGrid>
+
+
+
+	</p:dialog>
+
+</h:body>
+</html>
