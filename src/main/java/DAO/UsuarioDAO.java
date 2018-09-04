@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.com.rafael.senai.dao.ResultSet;
-import br.com.rafael.senai.entities.Acesso;
-import br.com.rafael.senai.entities.Usuario;
 import entity.Empresa;
 
 public class UsuarioDAO {
@@ -34,7 +31,7 @@ public class UsuarioDAO {
 				emp.setRua(rs.getString("rua"));
 				emp.setSenha(rs.getString("senha"));
 				emp.setNome(rs.getString("nome"));
-				emp.set
+				
 			}
 			
 			

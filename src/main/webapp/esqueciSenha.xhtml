@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+
+</h:head>
+<h:body>
+
+	<h:form id="formLogin">
+
+	<div align="center">
+			<p:panel value="Login" style="width: 600px">
+				<h:graphicImage library="img" name="logo-senai.png"
+					style="width: 500px" />
+			<p />
+
+				<p:panel>
+
+					<h:panelGrid columns="1" columnClasses="label, value">
+
+						<h:outputText id="loginLabel" value=" Insira CNPJ/NIF: *" />
+						<h:inputText id="usuario" value="#{UsuarioMBean}"
+							required="true" style="width:240px" maxlength="14" />
+
+						<!--  <h:outputText id="senhaLabel" value="Senha: *" />
+						<h:inputSecret id="senha" value="#{usuarioMBean.usuario.senha}"
+							required="true" requiredMessage="O campo senha é requerido"
+							style="width:240px" />-->
+
+					</h:panelGrid>
+					<p />
+					<div align="center">
+
+						<h:commandButton value="Enviar"
+							action="#{usuarioMBean.doEfetuarLogin}"
+							style="height: 30px; font-size: 14px; width:220px" />
+
+					</div>
+					<p />
+					<div align="center">
+
+						<h:commandButton value="Voltar" action="#{a}"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+
+					</div>
+					<p />
+					<!--  <div align="center">
+
+						<h:commandButton value="Recuperar Senha" action="#{a}"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+
+					</div>
+					<p />
+
+
+                    -->
+
+				</p:panel>
+		</p:panel>
+	</div>
+</h:form>
+</h:body>
+</html>
+
+
