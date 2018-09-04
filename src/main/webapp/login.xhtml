@@ -37,14 +37,14 @@ xasda
 						<h:panelGrid columns="2">
 
 							<h:outputText id="loginLabel" value="CNPJ/NIF: *" />
-							<h:inputText id="usuario" required="true" style="width:240px"
+							<p:inputText id="usuario" value="#{usuarioMBean.empreOUadm}" required="true" style="width:240px"
 								maxlength="14" />
 
 							<h:outputText id="senhaLabel" value="Senha: *" />
-							<h:inputSecret id="senha" required="true"
+							<p:password value="#{usuarioMBean.senha}" id="senha" required="true"
 								requiredMessage="O campo senha é requerido" style="width:240px" />
 							<br />
-							<h:commandButton value="Entrar"
+							<h:commandButton value="Entrar" action="#{usuarioMBean.logar}"
 								style="height: 30px; font-size: 14px; width:220px" />
 						</h:panelGrid>
 

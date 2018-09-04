@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+
+import com.VPS04.JDBC.ConnectionDB;
 
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
@@ -13,17 +14,22 @@ public class UsuarioDAO {
 
 	Connection conn;
 	
-	public UsuarioEmpresa buscarEmpresa(int cnpj) { // perguntar sobre a senha
+	public UsuarioDAO() {
+		conn = ConnectionDB.getConnection();
+	}
+	
+	public UsuarioEmpresa buscarEmpresa(int cnpj, String senha) { // perguntar sobre a senha
 		
-		String sql = " SELECT * FROM empresa"
-				+ " WHERE CNPJ = ? AND senha = ?"; // perguntar se falta alguma coisa 		
+		String sql = "SELECT * FROM empresa "
+				+ "WHERE CNPJ = ? AND senha = ?;"; // perguntar se falta alguma coisa 		
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setInt(1, cnpj);
+			ps.setString(2, senha);
 			
-			java.sql.ResultSet rs = ps.executeQuery(); //perguntar como tirar o java.sql.resultset
+			ResultSet rs = ps.executeQuery(); //perguntar como tirar o java.sql.resultset
 			
 			if(rs.next()) {
 				UsuarioEmpresa emp = new UsuarioEmpresa();
@@ -36,7 +42,6 @@ public class UsuarioDAO {
 				emp.setNome(rs.getString("nome"));
 				
 				return emp;
-				
 			}
 			
 		} catch (SQLException e) {
@@ -48,16 +53,17 @@ public class UsuarioDAO {
 	
 	//---------------------------------------------------------------------------------------------
 	
-	public UsuarioADM buscarADM(int nif) {
+	public UsuarioADM buscarADM(int nif, String senha) {
 		
-		String sql = " SELECT * FROM administrador"
-				+ " WHERE CNPJ = ? AND senha = ?";
+		String sql = "SELECT * FROM administrador "
+				+ "WHERE NIF = ? AND senha = ?;";
 		
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setInt(1, nif);
+			ps.setString(2, senha);
 			
 			ResultSet rs = ps.executeQuery();
 			
@@ -81,7 +87,6 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 		return null;
-		
 	}
 	
 	

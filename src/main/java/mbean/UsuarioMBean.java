@@ -13,47 +13,75 @@ import entity.UsuarioEmpresa;
 @SessionScoped
 public class UsuarioMBean {
 
-	UsuarioEmpresa uEmpresa;
-	UsuarioADM uAdm;
 	UsuarioDAO uDao;
-	
 	String imagem;
-	
-	
+
+	String empreOUadm;
+	String senha;
+
 	public UsuarioMBean() {
 		imagem = "on";
+		uDao = new UsuarioDAO();
 	}
+
 	public void trocaImagem() {
-		imagem = imagem.equals("on") ? "off" : "on" ;
+		imagem = imagem.equals("on") ? "off" : "on";
 		System.out.println("Caiu");
 	}
-	
-	public String loginEmpresa() {
-		if(uDao.buscarEmpresa(uEmpresa.getCNPJ())!= null) {
-			return "temfiltro.xgtml";
+
+	private String loginEmpresa() {
+		UsuarioEmpresa emp = uDao.buscarEmpresa(Integer.valueOf(empreOUadm), senha);
+		if ( emp != null) {
+			return "temfiltro.xhtml";
 		}
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
-		return null;
+		return "login.xhtml";
 	}
-	
-	
-	public String loginADM() {
-		if(uDao.buscarADM(uAdm.getNIF())!= null) {
+
+	private String loginADM() {
+		UsuarioADM adm = uDao.buscarADM(Integer.valueOf(empreOUadm), senha);
+		if (adm != null) {
 			return "homeADM.xhtml";
 		}
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
-		return null;
+		return "login.xhtml";
 	}
+	
+	public String logar() {
+		if(imagem.equals("on")) {
+			return loginADM();
+		}else if(imagem.equals("off")) {
+			return loginEmpresa();
+		}else {
+			return null;
+		}
+	}
+
 	public String getImagem() {
 		return imagem;
 	}
+
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	
 
-	
+	public String getEmpreOUadm() {
+		return empreOUadm;
+	}
+
+	public void setEmpreOUadm(String empreOUadm) {
+		this.empreOUadm = empreOUadm;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
-	
+
 //	action="#{usuarioMBean.doEfetuarLogin}"
 }
