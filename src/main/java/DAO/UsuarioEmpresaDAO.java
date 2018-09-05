@@ -54,11 +54,9 @@ public class UsuarioEmpresaDAO {
 	//---------------------------------------------------------------------------------------------
 	
 	
-	
-	
-	//---------------------------------------------------------------------------------------------
 
 	public boolean inserirEmpresa(UsuarioEmpresa emp) {
+		
 		
 		//PERGUNTAR SE TEM QUE COLOCAR O ID TAMBEM ALI NO INSERT INTO
 		
