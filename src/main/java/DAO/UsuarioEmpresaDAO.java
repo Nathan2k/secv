@@ -10,11 +10,11 @@ import com.VPS04.JDBC.ConnectionDB;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
 
-public class UsuarioDAO {
+public class UsuarioEmpresaDAO {
 
 	Connection conn;
 	
-	public UsuarioDAO() {
+	public UsuarioEmpresaDAO() {
 		conn = ConnectionDB.getConnection();
 	}
 	

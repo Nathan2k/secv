@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import DAO.UsuarioDAO;
+import DAO.UsuarioEmpresaDAO;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
 
@@ -13,7 +13,7 @@ import entity.UsuarioEmpresa;
 @SessionScoped
 public class UsuarioMBean {
 
-	UsuarioDAO uDao;
+	UsuarioEmpresaDAO uDao;
 	String imagem;
 
 	String empreOUadm;
@@ -21,7 +21,7 @@ public class UsuarioMBean {
 
 	public UsuarioMBean() {
 		imagem = "on";
-		uDao = new UsuarioDAO();
+		uDao = new UsuarioEmpresaDAO();
 	}
 
 	public void trocaImagem() {
