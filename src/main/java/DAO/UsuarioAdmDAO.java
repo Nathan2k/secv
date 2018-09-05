@@ -55,12 +55,36 @@ public class UsuarioAdmDAO {
 	
 	//---------------------------------------------------------------------------------------------------
 	
-	
-	
-	
-	
-	
-	
+	public boolean inserirADM(UsuarioADM adm) {
+
+		// PERGUNTAR SE TEM QUE COLOCAR O ID TAMBEM ALI NO INSERT INTO
+
+		String sql = " INSERT INTO administrador (NIF, email, nome, senha, " + " telefone)"
+				+ " VALUES (?, ?, ?, ?, ?) ";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, adm.getNIF());
+			ps.setString(2, adm.getEmail());
+			ps.setString(3, adm.getNome());
+			ps.setString(4, adm.getSenha());
+			ps.setInt(5, adm.getTelefone());
+
+			if (ps.executeUpdate() == 1) {
+				System.out.println("Usuário adm cadastrado ");
+			} else {
+				System.out.println("Problemas ao cadastrar usuário adm");
+			}
+			return true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+	}
 	
 	
 	

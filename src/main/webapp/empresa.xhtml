@@ -20,31 +20,32 @@
 		<h:panelGrid columns="2" cellpadding="3">
 
 			<p:outputLabel for="cnpj" value="Cnpj:" />
-			<p:inputMask id="cnpj" value="#{a}" mask="99.999.999/9999-99" />
+			<p:inputMask id="cnpj" value="#{CadastroEmpresaMBean.emp.CNPJ}" mask="99.999.999/9999-99" />
 
 			<h:outputText value="Senha: " />
-			<p:password id="nonFeedback" value="#{a}" required="true" />
+			<p:password id="nonFeedback" value="#{CadastroEmpresaMBean.emp.senha}" required="true" />
 
+			<!-- CONFIRMAR A SENHA TEM Q FAZER COM JQUERY -->
 			<h:outputText value="Confirmar Senha: " />
 			<p:password id="nonFeedback" value="#{a}" required="true" />
 
 			<h:outputText value="Representante: " />
-			<p:inputText value="#{a}" required="true" />
+			<p:inputText value="#{CadastroEmpresaMBean.emp.representante}" required="true" />
 
 			<p:outputLabel for="tel" value="Telefone:" />
-			<p:inputMask id="tel" value="#{a}" mask="(999) 99999-9999" />
+			<p:inputMask id="tel" value="#{CadastroEmpresaMBean.emp.telefone}" mask="(999) 99999-9999" />
 
 			<h:outputText value="Email: " />
-			<p:inputText value="#{a}" required="true" />
+			<p:inputText value="#{CadastroEmpresaMBean.emp.email}" required="true" />
 
-			<h:outputText value="Endereço: " />
-			<p:inputText value="#{a}" required="true" />
+			<h:outputText value="Rua: " />
+			<p:inputText value="#{CadastroEmpresaMBean.emp.rua}" required="true" />
 
 			<h:outputText value="Bairro: " />
-			<p:inputText value="#{a}" required="true" />
+			<p:inputText value="#{CadastroEmpresaMBean.emp.bairro}" required="true" />
 
 			<h:outputText value="Cidade: " />
-			<p:inputText value="#{a}" required="true" />
+			<p:inputText value="#{CadastroEmpresaMBean.emp.cidade}" required="true" />
 
 			
 			<p:commandButton value="Cancelar" type="cancelar" />

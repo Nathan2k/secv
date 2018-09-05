@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import DAO.UsuarioAdmDAO;
 import DAO.UsuarioEmpresaDAO;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
@@ -14,6 +15,7 @@ import entity.UsuarioEmpresa;
 public class UsuarioMBean {
 
 	UsuarioEmpresaDAO uDao;
+	UsuarioAdmDAO admDAO;
 	String imagem;
 
 	String empreOUadm;
@@ -39,7 +41,7 @@ public class UsuarioMBean {
 	}
 
 	private String loginADM() {
-		UsuarioADM adm = uDao.buscarADM(Integer.valueOf(empreOUadm), senha);
+		UsuarioADM adm = admDAO.buscarADM(Integer.valueOf(empreOUadm), senha);
 		if (adm != null) {
 			return "homeADM.xhtml";
 		}
