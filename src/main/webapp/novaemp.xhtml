@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
+</h:head>
+<h:body>
+
+	<div class="center">
+		<p:panel value="Login" style="width: 600px">
+			<h:graphicImage library="img" name="logo-senai.png"
+				style="width: 500px" />
+			<p />
+			<p:panel>
+				<h:form>
+					<center>
+						<h:panelGrid columns="1">
+
+							<p:outputLabel for="cnpj" value="Cnpj:" />
+							<p:inputMask id="cnpj" value="#{cadastroEmpresaMBean.emp.CNPJ}"
+								mask="99.999.999/9999-99" required="true" 
+								style="width: 350px;"/>
+
+							<h:outputText value="Senha: " />
+							<p:password id="newsenha"
+								value="#{cadastroEmpresaMBean.emp.senha}" required="true"
+								style="width: 350px;" />
+
+							<!-- CONFIRMAR A SENHA TEM Q FAZER COM JQUERY -->
+							<h:outputText value="Confirmar Senha: " />
+							<p:password id="confsenha3" value="#{a}" required="true" 
+							style="width: 350px;"/>
+
+							<h:outputText value="Representante: " />
+							<p:inputText value="#{cadastroEmpresaMBean.emp.representante}"
+								required="true" 
+								style="width: 350px;"/>
+
+							<p:outputLabel for="tel" value="Telefone:" />
+							<p:inputMask id="tel"
+								value="#{cadastroEmpresaMBean.emp.telefone}"
+								mask="(999) 99999-9999" required="true" 
+								style="width: 350px;"/>
+
+							<h:outputText value="Email: " />
+							<p:inputText value="#{cadastroEmpresaMBean.emp.email}"
+								required="true" 
+								style="width: 350px;"/>
+
+							<h:outputText value="Rua: " />
+							<p:inputText value="#{cadastroEmpresaMBean.emp.rua}"
+								required="true" 
+								style="width: 350px;"/>
+
+							<h:outputText value="Bairro: " />
+							<p:inputText value="#{cadastroEmpresaMBean.emp.bairro}"
+								required="true" 
+								style="width: 350px;"/>
+
+							<h:outputText value="Cidade: " />
+							<p:inputText value="#{cadastroEmpresaMBean.emp.cidade}"
+								required="true" 
+								style="width: 350px;"/>
+
+
+						</h:panelGrid>
+					
+						<h:commandButton value="Cadastrar"
+						action="#{cadastroEmpresaMBean.salvar}"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+						<h:commandButton value="Voltar" ajax="false" action="login"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+					</center>
+				</h:form>
+	
+				<p />
+				
+
+			</p:panel>
+
+		</p:panel>
+
+	</div>
+
+</h:body>
+</html>

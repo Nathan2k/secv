@@ -11,43 +11,43 @@
 
 	<h:form id="formLogin">
 
-	<div align="center">
+		<div class="center">
 			<p:panel value="Login" style="width: 600px">
 				<h:graphicImage library="img" name="logo-senai.png"
 					style="width: 500px" />
-			<p />
+				<p />
 
 				<p:panel>
 
 					<h:panelGrid columns="1">
 
 						<h:outputText id="loginLabela" value=" Insira Email: *" />
-						<h:inputText id="usuarioa" value="#{a}"
-							required="true" style="width:240px" maxlength="14" />
+						<p:inputText id="usuarioa" value="#{a}" 
+							style="width:240px" maxlength="14" />
 
 					</h:panelGrid>
 					<p />
 					<div align="center">
 
-						<h:commandButton value="Enviar"
-							action="#{a}"
+						<h:commandButton value="Enviar" action="#{a}"
 							style="height: 30px; font-size: 14px; width:220px" />
 
 					</div>
 					<p />
-					<div align="center">
-
-						<h:commandButton value="Voltar" action="#{a}"
+					<center>
+					<h:form>
+						<h:commandButton value="Voltar" ajax="false"
+							action="login"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-
-					</div>
+					</h:form>
+				</center>
 					<p />
-			
+
 
 				</p:panel>
-		</p:panel>
-	</div>
-</h:form>
+			</p:panel>
+		</div>
+	</h:form>
 </h:body>
 </html>
 

@@ -5,34 +5,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
-
+	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
 </h:head>
 <h:body>
 
-
-
-
-	<div align="center">
+	<div class="center">
 		<p:panel value="Login" style="width: 600px">
 			<h:graphicImage library="img" name="logo-senai.png"
 				style="width: 500px" />
 			<p />
 			<p:panel>
-				<h:form>
-					<p:commandLink event="onclick" ajax="true" update="imgb nome"
-						actionListener="#{usuarioMBean.trocaImagem}">
-						<h:graphicImage style="width: 25%; height: 8%;" id="imgb"
-							library="img" name="#{usuarioMBean.imagem}.jpg" />
-					</p:commandLink>
+				<div class="center">
+					<h:form>
+						<p:commandLink event="onclick" ajax="true" update="imgb nome"
+							actionListener="#{usuarioMBean.trocaImagem}">
+							<h:graphicImage style="width: 48%;" id="imgb" library="img"
+								name="#{usuarioMBean.imagem}.jpg" />
+						</p:commandLink>
 
 
-				</h:form>
-				<p:outputLabel id="nome"
-					value="#{usuarioMBean.imagem eq 'off' ? 'Empresa' : 'Administrador'}" />
-				<br /><br/>
+					</h:form>
+					</div>
+					<div class="img">
+					<p:outputLabel id="nome"
+						value="#{usuarioMBean.imagem eq 'off' ? 'Empresa' : 'Administrador'}" />
+					</div>	
+				<p />
 				<h:form>
 					<center>
-						<h:panelGrid columns="2">
+						<h:panelGrid columns="1">
 
 							<h:outputText id="loginLabel" value="CNPJ/NIF: *" />
 							<p:inputText id="usuario" value="#{usuarioMBean.empreOUadm}"
@@ -51,11 +52,13 @@
 				<p />
 				<center>
 					<h:form>
-						<h:commandButton value="Novo Usuário"
+						<h:commandButton value="Novo Usuário" ajax="false"
+							action="novaemp"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 					<h:form>
-						<h:commandButton value="Recuperar Senha"
+						<h:commandButton value="Recuperar Senha" ajax="false"
+							action="esqueciSenha"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 				</center>
