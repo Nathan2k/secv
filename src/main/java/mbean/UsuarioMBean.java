@@ -25,7 +25,7 @@ public class UsuarioMBean {
 //	public String loginAdm() {
 //		if(uDao.buscarUsuario())
 //	}
-	
+	//COMENTARIO
 	
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
 	
