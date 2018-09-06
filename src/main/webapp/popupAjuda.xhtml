@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+
+	<!-- ESSE CODIGO É O BOTAO QUE MOSTRA O POPUP -->
+	
+	<h:panelGrid columns="1" cellpadding="2">
+		<p:commandButton value="Clica aqui" type="button"
+			onclick="PF('formem').show();" />
+	</h:panelGrid>
+	
+		<!-- ESSE CODIGO É O POPUP -->
+	
+	<h:panelGrid>
+		<p:dialog header="Ajuda" widgetVar="formem" resizable="false"
+			draggable="false">
+			<h:panelGrid columns="2" cellpadding="3">
+				Se tiver algum problema entrar em contato 
+				com o seguinte telefone 99999-9999<br /> ou mande um 
+		        email para teste@gmail.com
+			</h:panelGrid>
+		</p:dialog>
+	</h:panelGrid>
+
+
+
+
+</h:body>
+</html>
