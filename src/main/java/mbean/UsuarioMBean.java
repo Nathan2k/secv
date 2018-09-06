@@ -22,10 +22,14 @@ public class UsuarioMBean {
 	}
 	
 	
-//	public String loginAdm() {
-//		if(uDao.buscarUsuario())
-//	}
-	//COMENTARIO
+	public String loginADM() {
+		if(uDao.buscarADM(uAdm.getNIF())!= null) {
+			return "homeADM.xhtml";
+		}
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
+		return null;
+	}
+
 	
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
 	
