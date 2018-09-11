@@ -9,6 +9,7 @@ import DAO.UsuarioAdmDAO;
 import DAO.UsuarioEmpresaDAO;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
+import utils.Replace;
 
 @ManagedBean
 @SessionScoped
@@ -32,6 +33,7 @@ public class UsuarioMBean {
 	}
 
 	private String loginEmpresa() {
+		empreOUadm = Replace.format(empreOUadm);
 		UsuarioEmpresa emp = uDao.buscarEmpresa(empreOUadm, senha);
 		if ( emp != null) {
 			return "temfiltro.xhtml";
