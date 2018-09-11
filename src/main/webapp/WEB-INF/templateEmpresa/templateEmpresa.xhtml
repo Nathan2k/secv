@@ -23,13 +23,29 @@
 		</ui:insert>
 	</div>
 
-	<div class="content">
-		<ui:insert name="content"></ui:insert>
+	<div class="popUp">
+		<ui:insert name="popUp">
+
+			<h:panelGrid>
+				<p:dialog header="Ajuda" widgetVar="formem" resizable="false"
+					draggable="false">
+					<h:panelGrid columns="2" cellpadding="3">
+				Se tiver algum problema entrar em contato 
+				com o seguinte telefone 99999-9999<br /> ou mande um 
+		        email para teste@gmail.com
+			</h:panelGrid>
+				</p:dialog>
+			</h:panelGrid>
+
+		</ui:insert>
 	</div>
 
-	
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<div class="content">
+		<ui:insert name="content">
+
+		</ui:insert>
+	</div>
+
 
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

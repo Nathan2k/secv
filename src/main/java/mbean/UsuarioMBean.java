@@ -32,7 +32,7 @@ public class UsuarioMBean {
 	}
 
 	private String loginEmpresa() {
-		UsuarioEmpresa emp = uDao.buscarEmpresa(Integer.valueOf(empreOUadm), senha);
+		UsuarioEmpresa emp = uDao.buscarEmpresa(empreOUadm, senha);
 		if ( emp != null) {
 			return "temfiltro.xhtml";
 		}

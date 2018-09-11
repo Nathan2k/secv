@@ -3,10 +3,10 @@ package entity;
 public class UsuarioEmpresa {
 
 	private String nome;
-	private Integer CNPJ;
+	private String CNPJ;
 	private String senha;
 	private String representante;
-	private Integer telefone;
+	private String telefone;
 	private String email;
 	private String rua;
 	private String bairro;
@@ -26,10 +26,10 @@ public class UsuarioEmpresa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getCNPJ() {
+	public String getCNPJ() {
 		return CNPJ;
 	}
-	public void setCNPJ(Integer cNPJ) {
+	public void setCNPJ(String cNPJ) {
 		CNPJ = cNPJ;
 	}
 	public String getSenha() {
@@ -44,10 +44,10 @@ public class UsuarioEmpresa {
 	public void setRepresentante(String representante) {
 		this.representante = representante;
 	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getEmail() {

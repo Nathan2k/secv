@@ -11,12 +11,12 @@ CREATE TABLE empresa(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	senha VARCHAR(50),
 	nome VARCHAR(50),
-    CNPJ INTEGER,
+    CNPJ VARCHAR(50),
     cidade VARCHAR(50),
     bairro VARCHAR(50),
     rua VARCHAR(50),
     email VARCHAR(50),
-    telefone INTEGER,
+    telefone VARCHAR(50),
     representante VARCHAR(50)
 
 );
@@ -24,11 +24,11 @@ CREATE TABLE empresa(
 CREATE TABLE administrador(
 	
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	NIF INTEGER,
+	NIF VARCHAR(50),
 	email VARCHAR(50),
 	nome VARCHAR(50),
 	senha VARCHAR(50),
-	telefone INTEGER
+	telefone VARCHAR(50)
     
     
 );
@@ -81,7 +81,6 @@ CREATE TABLE faixaEtaria(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	faixaEI VARCHAR(50),
 	faixaEF VARCHAR(50),
-	idFaixaE VARCHAR(50)
 	
 );
 
@@ -160,11 +159,11 @@ CREATE TABLE curriculo(
 -- INSERT INTO table_name
 -- VALUES (value1, value2, value3, ...);
 
-INSERT INTO empresa VALUES ('123','mahalo',123456,'Jaguariuna','flores','lulu','mahalo@gmail.com',123455432,'Rafael Leme');
+INSERT INTO empresa VALUES ('123','mahalo','123456','Jaguariuna','flores','lulu','mahalo@gmail.com','123455432','Rafael Leme');
 
-INSERT INTO empresa VALUES ('123','senai',654321,'Jaguariuna','flores','lulu','senai@gmail.com',123455432,'Para Guasu');
+INSERT INTO empresa VALUES ('123','senai','654321','Jaguariuna','flores','lulu','senai@gmail.com','123455432','Para Guasu');
 
-INSERT INTO administrador VALUES (123456,'adm@gmail.com','admin','123',123455432);
+INSERT INTO administrador VALUES ('123456','adm@gmail.com','admin','123','123455432');
 
 
 

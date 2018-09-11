@@ -13,12 +13,10 @@ public class CadastroEmpresaMBean {
 
 	UsuarioEmpresaDAO uDao = new UsuarioEmpresaDAO();
 	private UsuarioEmpresa emp;
-	
-	@PostConstruct
-	public void init() {
+
+	public CadastroEmpresaMBean() {
 		emp = new UsuarioEmpresa();
 	}
-	
 
 	public String salvar() {
 		if (uDao.inserirEmpresa(emp)) {
@@ -44,6 +42,4 @@ public class CadastroEmpresaMBean {
 		this.emp = emp;
 	}
 
-	
-	
 }

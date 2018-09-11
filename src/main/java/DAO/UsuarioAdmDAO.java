@@ -37,11 +37,11 @@ public class UsuarioAdmDAO {
 				UsuarioADM adm = new UsuarioADM();
 
 				adm.setId(rs.getInt("id"));
-				adm.setNIF(rs.getInt("NIF"));
+				adm.setNIF(rs.getString("NIF"));
 				adm.setEmail(rs.getString("email"));
 				adm.setNome(rs.getString("nome"));
 				adm.setSenha(rs.getString("senha"));
-				adm.setTelefone(rs.getInt("telefone"));
+				adm.setTelefone(rs.getString("telefone"));
 
 				return adm;
 			}
@@ -65,11 +65,11 @@ public class UsuarioAdmDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, adm.getNIF());
+			ps.setString(1, adm.getNIF());
 			ps.setString(2, adm.getEmail());
 			ps.setString(3, adm.getNome());
 			ps.setString(4, adm.getSenha());
-			ps.setInt(5, adm.getTelefone());
+			ps.setString(5, adm.getTelefone());
 
 			if (ps.executeUpdate() == 1) {
 				System.out.println("Usuário adm cadastrado ");

@@ -9,6 +9,7 @@ import com.VPS04.JDBC.ConnectionDB;
 
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
+import utils.Replace;
 
 public class UsuarioEmpresaDAO {
 
@@ -18,7 +19,7 @@ public class UsuarioEmpresaDAO {
 		conn = ConnectionDB.getConnection();
 	}
 	
-	public UsuarioEmpresa buscarEmpresa(int cnpj, String senha) { // perguntar sobre a senha
+	public UsuarioEmpresa buscarEmpresa(String cnpj, String senha) { // perguntar sobre a senha
 		
 		String sql = "SELECT * FROM empresa "
 				+ "WHERE CNPJ = ? AND senha = ?;"; // perguntar se falta alguma coisa 		
@@ -26,7 +27,7 @@ public class UsuarioEmpresaDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, cnpj);
+			ps.setString(1, cnpj);
 			ps.setString(2, senha);
 			
 			ResultSet rs = ps.executeQuery(); //perguntar como tirar o java.sql.resultset
@@ -69,19 +70,22 @@ public class UsuarioEmpresaDAO {
 			
 			ps.setString(1, emp.getSenha());
 			ps.setString(2, emp.getNome());
-			ps.setInt(3, emp.getCNPJ());
+			ps.setString(3, Replace.format(emp.getCNPJ()));
 			ps.setString(4, emp.getCidade());
 			ps.setString(5, emp.getBairro());
 			ps.setString(6, emp.getRua());
 			ps.setString(7, emp.getEmail());
-			ps.setInt(8, emp.getTelefone());
+			ps.setString(8, emp.getTelefone());
 			ps.setString(9, emp.getRepresentante());
 			
+			System.out.println(ps.toString());
 			if(ps.executeUpdate() == 1){
 				System.out.println("Usuário empresa cadastrado ");
 			}else{
 				System.out.println("Problemas ao cadastrar usuário empresa");
+				return false;
 			}
+			
 			return true;
 			
 			

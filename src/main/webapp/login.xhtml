@@ -6,6 +6,7 @@
 <h:head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
+	
 </h:head>
 <h:body>
 
@@ -17,13 +18,12 @@
 			<p:panel>
 				<div class="center">
 					<h:form>
-						<p:commandLink event="onclick" ajax="true" update="imgb nome"
+						<p:commandLink event="onclick" ajax="true" update="imgb nome :form:loginLabel :form:usuario"
 							actionListener="#{usuarioMBean.trocaImagem}">
 							<h:graphicImage style="width: 48%;" id="imgb" library="img"
 								name="#{usuarioMBean.imagem}.jpg" />
 						</p:commandLink>
-
-
+						
 					</h:form>
 					</div>
 					<div class="img">
@@ -31,12 +31,12 @@
 						value="#{usuarioMBean.imagem eq 'off' ? 'Empresa' : 'Administrador'}" />
 					</div>	
 				<p />
-				<h:form>
+				<h:form id="form">
 					<center>
 						<h:panelGrid columns="1">
 
-							<h:outputText id="loginLabel" value="CNPJ/NIF: *" />
-							<p:inputText id="usuario" value="#{usuarioMBean.empreOUadm}"
+							<h:outputText id="loginLabel" value="#{usuarioMBean.imagem eq 'off' ? 'CNPJ: ' : 'NIF: '}" />
+							<p:inputMask mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}" id="usuario" value="#{usuarioMBean.empreOUadm}"
 								required="true" style="width:240px" maxlength="14" />
 
 							<h:outputText id="senhaLabel" value="Senha: *" />
