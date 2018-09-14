@@ -6,124 +6,89 @@
 <h:head>
 	<meta charset="UTF-8" />
 </h:head>
-<h:body>
+<ui:composition
+	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
+	<ui:define name="title">Home</ui:define>
 
-	<h:panelGrid columns="1" cellpadding="7">
-		<p:commandButton value="Clica aqui" type="button"
-			onclick="PF('formvg').show();" />
+	<ui:define name="content">
+		<div style="width: 500px; margin: auto;">
+			<p:panel value="Login" style="width: 500px">
 
-	</h:panelGrid>
+				<h:form>
+					<center>
+						<h:panelGrid columns="1">
 
-
-	<p:dialog header="Bem Vindo ao Filtro de Vagas" widgetVar="formvg"
-		resizable="false" draggable="false">
-
-
-		<div align="center">
-			<p:panel value="Login" style="width: 650px">
-				<h:graphicImage library="img" name="logo-senai.png"
-					style="width: 550px" />
-				<p />
-
-				<p:tab id="filtro" title="Filtro">
-					<p:panel>
-						<p />
-						<p />
-						<h:panelGrid columns="2" columnClasses="label, value">
-
-							<h:outputLabel for="area" value="Areas:" />
-							<p:selectCheckboxMenu id="area" value="#{a}" label="Areas"
-								multiple="true" panelStyle="width:250px">
-								<f:selectItems value="#{a}" />
-							</p:selectCheckboxMenu>
-
-							<h:outputLabel for="cursos" value="Cursos:" />
-							<p:selectCheckboxMenu id="cursos" value="#{a}" label="Cursos"
-								multiple="true" panelStyle="width:250px">
-								<f:selectItems value="#{a}" />
-							</p:selectCheckboxMenu>
-
-
-							<h:outputLabel for="cidad" value="Cidades:" />
-							<p:selectCheckboxMenu id="cidad" value="#{a}" label="Cidades"
-								multiple="true" panelStyle="width:250px">
-								<f:selectItems value="#{a}" />
-							</p:selectCheckboxMenu>
-
-
-							<h:outputLabel for="area" value="Areas:" />
-							<p:selectCheckboxMenu id="area" value="#{a}" label="Areas"
-								multiple="true" panelStyle="width:250px">
-								<f:selectItems value="#{a}" />
-							</p:selectCheckboxMenu>
-
-							<h3>Range Slider</h3>
-							<h:panelGrid columns="1" style="margin-bottom: 10px">
-								<h:outputText id="displayRange"
-									value="Between #{slider.number8} and #{slider.number9}" />
-								<p:slider for="txt6,txt7" display="displayRange"
-									style="width: 400px" range="true"
-									displayTemplate="Between {min} and {max}" />
-							</h:panelGrid>
-							<h:inputHidden id="txt6" value="#{sliderView.number8}" />
-							<h:inputHidden id="txt7" value="#{sliderView.number9}" />
-
-							<p:outputLabel for="deficiencia" value="Deficiência: *" />
-							<p:selectOneRadio style="margin-left:5px" id="deficiencia"
-								value="#{a}" layout="responsive" columns="3">
+							<h:outputText value="Nome da Vaga: " />
+							<p:inputText value="#{a}" required="true" style="width: 350px;" />
+							<p />
+							<h:outputText value="Experiência: " />
+							<p:selectOneRadio id="experiencia" value="#{a}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Não" itemValue="Nao" />
 							</p:selectOneRadio>
 
-							<p:outputLabel for="linguas" value="Linguas: *" />
-							<p:selectOneRadio style="margin-left:5px" id="linguas"
-								value="#{a}" layout="responsive" columns="3">
-								<f:selectItem itemLabel="Inglês" itemValue="Ingles" />
-								<f:selectItem itemLabel="Russo" itemValue="Russo" />
-								<f:selectItem itemLabel="Espanhol" itemValue="Espanhol" />
-							</p:selectOneRadio>
-
-							<p:outputLabel for="sexo" value="Sexo: *" />
-							<p:selectOneRadio style="margin-left:5px" id="sexo" value="#{a}"
-								layout="responsive" columns="3">
-								<f:selectItem itemLabel="Ambos" itemValue="Ambos" />
+							<p />
+							<h:outputText value="Sexo: " />
+							<p:selectOneRadio id="sexo" value="#{a}">
 								<f:selectItem itemLabel="Homem" itemValue="Homem" />
 								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
+								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
 
-
-							<h:outputLabel for="faixa" value="Faixa etária: *" />
-							<p:selectOneRadio style="margin-left:5px" id="faixa"
-								value="#{faixa.selfaixa}" layout="responsive" columns="3">
-								<f:selectItems value="#{faixa.faixa}" var="f"
-									itemLabel="#{faixaa}" itemValue="#{faixaa}" />
+							<p />
+							<h:outputText value="Deficiência: " />
+							<p:selectOneRadio id="deficiencia" value="#{a}">
+								<f:selectItem itemLabel="Sim" itemValue="Sim" />
+								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
 
+							<p />
+							<h:outputText value="Indiomas: " />
+							<p:selectOneRadio id="Indiomas" value="#{a}">
+								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
+							</p:selectOneRadio>
+							<p />
+
+							<h:panelGrid columns="1" style="margin-bottom: 10px">
+
+								<h:outputText id="displayRange"
+									value="Faixa etária: #{sliderView.number8} a #{sliderView.number9} anos" />
+								<p:slider for="txt6,txt7" display="displayRange"
+									style="width: 350px" range="true"
+									displayTemplate="De {min} a {max}" />
+							</h:panelGrid>
+							<h:inputHidden id="txt6" value="#{sliderView.number8}" />
+							<h:inputHidden id="txt7" value="#{sliderView.number9}" />
+							<p />
+								
+								
+
+							<h:outputLabel for="cidade" value="Cidades:" />
+							<p:selectCheckboxMenu style="width: 150px" id="multiple"
+								value="#{checkboxView.selectedCities2}" multiple="true"
+								filter="true" panelStyle="width:300px">
+								<f:selectItems value="#{checkboxView.cities}" />
+							</p:selectCheckboxMenu>
+							<p />
+							
 
 
 
-						</h:panelGrid>
-						<p />
+							</h:panelGrid>
 
-						<div align="center">
+							<p />
+
+							<h:commandButton value="Cadastrar"
+								action="#{cadastroEmpresaMBean.salvar}"
+								style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+					</center>
+				</h:form>
 
 
-							<p:commandButton value="Filtrar"
-								style="height: 30px; font-size: 14px; width:150px" />
-
-
-						</div>
-					</p:panel>
-				</p:tab>
 			</p:panel>
 		</div>
-
-
-
-
-	</p:dialog>
-
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
 
 
