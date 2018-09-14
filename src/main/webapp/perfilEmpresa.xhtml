@@ -13,27 +13,27 @@
 
 		<h:panelGrid columns="1" columnClasses="label, value">
 
-			<h:outputText id="loginLabel" value=" Insira CNPJ/NIF: *" />
+			<p:outputLabel id="cnpj" value="CNPJ: #{usuarioMBean.emp.CNPJ}"/>
 			
-			<h:outputText id="nomeEmpresa" value=" Nome:  *" />
-
-	        <h:outputText id="CNPJ" value=" CNPJ: *" />
+			<p:outputLabel id="nomeEmpresa" value="Nome: #{usuarioMBean.emp.nome}"/>
 	        
-	        <h:outputText id="Cidade" value=" Cidade: *" />
+			<p:outputLabel id="cidade" value="Cidade: #{usuarioMBean.emp.cidade}"/>
 	        
-	        <h:outputText id="Bairro" value=" Bairro: *" />
+			<p:outputLabel id="bairro" value="Bairro: #{usuarioMBean.emp.bairro}"/>
 	        
-	        <h:outputText id="Rua" value=" Rua: *" />
+			<p:outputLabel id="rua" value="Rua: #{usuarioMBean.emp.CNPJ}"/>
 	        
-	        <h:outputText id="Email" value=" Email: *" />
+			<p:outputLabel id="email" value="Email #{usuarioMBean.emp.email}"/>
 	        
-	        <h:outputText id="Telefone" value=" Telefone: *" />
+			<p:outputLabel id="Telefone" value="Telefone: #{usuarioMBean.emp.telefone}"/>
 	        
-	        <h:outputText id="Representante" value=" Representante: *" />
-	        
-	        
+			<p:outputLabel id="representante" value="Representante: #{usuarioMBean.emp.CNPJ}"/>
 	        
 		</h:panelGrid>
+		
+		<h:commandButton value="Alterar" action="#{a}" style="height: 30px; font-size: 14px; width:220px"/>
+		
+		
 		
 	</p:panel>
 </h:body>
