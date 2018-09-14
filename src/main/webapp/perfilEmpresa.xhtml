@@ -1,17 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta charset="UTF-8" />
+	xmlns:p="http://primefaces.org/ui">
 
-</h:head>
-<h:body>
 
-	<p:panel>
+<ui:composition template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
 
-		<h:panelGrid columns="1" columnClasses="label, value">
+	<ui:define name="content">
+		
+		
+		<p:panel style="margin-top:8%; align:center">
+
+		<h:panelGrid columns="1">
 
 			<p:outputLabel id="cnpj" value="CNPJ: #{usuarioMBean.emp.CNPJ}"/>
 			
@@ -36,7 +37,14 @@
 		
 		
 	</p:panel>
-</h:body>
+		
+		
+		
+	</ui:define>
+
+</ui:composition>
+
+
 </html>
 
 
