@@ -5,25 +5,25 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
-
+	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
 </h:head>
 <h:body>
 
-	<h:form id="formLogin">
+	<div class="center">
 
-		<div class="center">
-			<p:panel value="Login" style="width: 600px">
-				<h:graphicImage library="img" name="logo-senai.png"
-					style="width: 500px" />
-				<p />
 
-				<p:panel>
+		<p:panel value="Login" style="width: 600px">
+			<h:graphicImage library="img" name="logo-senai.png"
+				style="width: 500px" />
+			<p />
 
+			<p:panel>
+				<center>
 					<h:panelGrid columns="1">
 
-						<h:outputText id="loginLabela" value=" Insira Email: *" />
-						<p:inputText id="usuarioa" value="#{a}" 
-							style="width:240px" maxlength="14" />
+						<h:outputText id="recuperaemail" value=" Insira seu E-mail: " />
+						<p:inputText id="usuarioa" value="#{a}" style="width:240px"
+							required="true" maxlength="14" />
 
 					</h:panelGrid>
 					<p />
@@ -34,20 +34,18 @@
 
 					</div>
 					<p />
-					<center>
+
 					<h:form>
-						<h:commandButton value="Voltar" ajax="false"
-							action="login"
+						<h:commandButton value="Voltar" ajax="false" action="login"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 				</center>
-					<p />
+				<p />
 
 
-				</p:panel>
 			</p:panel>
-		</div>
-	</h:form>
+		</p:panel>
+	</div>
 </h:body>
 </html>
 
