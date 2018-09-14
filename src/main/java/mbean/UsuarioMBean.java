@@ -15,12 +15,12 @@ import utils.Replace;
 @SessionScoped
 public class UsuarioMBean {
 
-	UsuarioEmpresaDAO uDao;
-	UsuarioAdmDAO admDAO;
-	String imagem;
-
-	String empreOUadm;
-	String senha;
+	public UsuarioEmpresaDAO uDao;
+	public UsuarioAdmDAO admDAO;
+	public String imagem;
+	private UsuarioEmpresa emp;
+	public String empreOUadm;
+	public String senha;
 
 	public UsuarioMBean() {
 		imagem = "on";
@@ -34,7 +34,7 @@ public class UsuarioMBean {
 
 	private String loginEmpresa() {
 		empreOUadm = Replace.format(empreOUadm);
-		UsuarioEmpresa emp = uDao.buscarEmpresa(empreOUadm, senha);
+		emp = uDao.buscarEmpresa(empreOUadm, senha);
 		if ( emp != null) {
 			return "temfiltro.xhtml";
 		}
@@ -85,6 +85,31 @@ public class UsuarioMBean {
 		this.senha = senha;
 	}
 
+	public UsuarioEmpresaDAO getuDao() {
+		return uDao;
+	}
+
+	public void setuDao(UsuarioEmpresaDAO uDao) {
+		this.uDao = uDao;
+	}
+
+	public UsuarioAdmDAO getAdmDAO() {
+		return admDAO;
+	}
+
+	public void setAdmDAO(UsuarioAdmDAO admDAO) {
+		this.admDAO = admDAO;
+	}
+
+	public UsuarioEmpresa getEmp() {
+		return emp;
+	}
+
+	public void setEmp(UsuarioEmpresa emp) {
+		this.emp = emp;
+	}
+
+	
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
 
 //	action="#{usuarioMBean.doEfetuarLogin}"

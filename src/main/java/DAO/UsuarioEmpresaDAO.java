@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.VPS04.JDBC.ConnectionDB;
 
@@ -99,7 +101,73 @@ public class UsuarioEmpresaDAO {
 		
 	}
 	
-	//falta fazer o inserir adm
+	//---------------------------------------------------------------------------------------------
+	
+	public List<UsuarioEmpresa> listarTodos(String cnpj){
+		
+		List<UsuarioEmpresa> list = new ArrayList<>();
+		
+		String sql = " SELECT * FROM empresa; ";
+				 
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				
+				UsuarioEmpresa ue = new UsuarioEmpresa();
+				
+				ue.setBairro(rs.getString("bairro"));
+				ue.setCidade(rs.getString("cidade"));
+				ue.setRua(rs.getString("rua"));
+				ue.setSenha(rs.getString("senha"));
+				ue.setNome(rs.getString("nome"));
+				ue.setCNPJ(rs.getString("cnpj"));
+				ue.setEmail(rs.getString("email"));
+				ue.setRepresentante(rs.getString("representante"));
+				ue.setTelefone(rs.getString("telefone"));
+				
+				list.add(ue);
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
