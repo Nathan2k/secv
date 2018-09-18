@@ -19,6 +19,11 @@ public class UsuarioMBean {
 	public UsuarioAdmDAO admDAO;
 	public String imagem;
 	private UsuarioEmpresa emp;
+	private UsuarioADM adm;
+	
+	
+	
+
 	public String empreOUadm;
 	public String senha;
 
@@ -35,7 +40,7 @@ public class UsuarioMBean {
 	private String loginEmpresa() {
 		empreOUadm = Replace.format(empreOUadm);
 		emp = uDao.buscarEmpresa(empreOUadm, senha);
-		if ( emp != null) {
+		if (emp != null) {
 			return "temfiltro.xhtml";
 		}
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
@@ -50,13 +55,13 @@ public class UsuarioMBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
 		return "login.xhtml";
 	}
-	
+
 	public String logar() {
-		if(imagem.equals("on")) {
+		if (imagem.equals("on")) {
 			return loginADM();
-		}else if(imagem.equals("off")) {
+		} else if (imagem.equals("off")) {
 			return loginEmpresa();
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -69,6 +74,15 @@ public class UsuarioMBean {
 		this.imagem = imagem;
 	}
 
+	public UsuarioADM getAdm() {
+		return adm;
+	}
+
+	public void setAdm(UsuarioADM adm) {
+		this.adm = adm;
+	}
+	
+	
 	public String getEmpreOUadm() {
 		return empreOUadm;
 	}
@@ -109,7 +123,6 @@ public class UsuarioMBean {
 		this.emp = emp;
 	}
 
-	
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
 
 //	action="#{usuarioMBean.doEfetuarLogin}"

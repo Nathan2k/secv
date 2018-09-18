@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
+
+	<ui:define name="content">
+		
+		
+		<p:panel style="margin-top:8%; align:center">
+
+		<h:panelGrid columns="1">
+
+			<p:outputLabel id="NIF" value="NIF: #{usuarioMBean.adm.NIF}"/>
+			
+			<p:outputLabel id="email" value="Email: #{usuarioMBean.adm.email}"/>
+	        
+			<p:outputLabel id="nome" value="Nome: #{usuarioMBean.adm.nome}"/>
+	        
+			<p:outputLabel id="senha" value="Senha: #{usuarioMBean.adm.senha}"/>
+	        
+			<p:outputLabel id="telefone" value="Telefone: #{usuarioMBean.adm.telefone}"/>
+	        
+			
+		</h:panelGrid>
+		<br/>
+		<h:commandButton value="Alterar" action="#{a}" style="height: 30px; font-size: 14px; width:220px"/>
+		
+		
+		
+	</p:panel>
+		
+		
+		
+	</ui:define>
+
+</ui:composition>
+
+
+</html>
+
+
