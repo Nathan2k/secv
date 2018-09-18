@@ -25,7 +25,7 @@ public class CadastroEmpresaMBean {
 			return null;
 		}
 	}
-
+	
 	public UsuarioEmpresaDAO getuDao() {
 		return uDao;
 	}

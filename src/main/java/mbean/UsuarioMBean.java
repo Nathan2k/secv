@@ -21,9 +21,6 @@ public class UsuarioMBean {
 	private UsuarioEmpresa emp;
 	private UsuarioADM adm;
 	
-	
-	
-
 	public String empreOUadm;
 	public String senha;
 

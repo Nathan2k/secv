@@ -11,21 +11,22 @@
 	<h:graphicImage library="img" name="logo-senai.png" />
 </div>
 <br/>
+<h:form>
 <p:toolbar style="padding: 0px">
 	<f:facet name="left">
-
-		<p:commandButton style="border: 0px;" type="button" value="Filtro"
-			icon="ui-icon-arrowthick-1-s" />
-
-		<p:commandButton style="border: 0px" type="button" value="Perfil"
-			icon="ui-icon-person" />
+	
+		<p:commandButton style="border: 0px;" value="Filtro"
+			icon="ui-icon-arrowthick-1-s" action="temfiltro"/>
+		
+		<p:commandButton style="border: 0px" value="Perfil"
+			icon="ui-icon-person" ajax="false" action="perfilEmpresa"/>
 
 		<p:commandButton style="border: 0px" type="button" value="Ajuda"
 			icon="ui-icon-help" onclick="PF('formem').show();"/>
 
 		<p:commandButton style="border: 0px" type="button" value="Historico"
 			icon="ui-icon-folder-collapsed" />
-
+	
 	</f:facet>
 
 	<f:facet name="right">
@@ -35,4 +36,5 @@
 	</f:facet>
 
 </p:toolbar>
+</h:form>
 </html>

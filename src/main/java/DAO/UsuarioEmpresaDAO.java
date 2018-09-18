@@ -43,6 +43,11 @@ public class UsuarioEmpresaDAO {
 				emp.setRua(rs.getString("rua"));
 				emp.setSenha(rs.getString("senha"));
 				emp.setNome(rs.getString("nome"));
+				emp.setCNPJ(rs.getString("CNPJ"));
+				emp.setEmail(rs.getString("email"));
+				emp.setRepresentante(rs.getString("representante"));
+				emp.setTelefone(rs.getString("telefone"));
+				
 				
 				return emp;
 			}
