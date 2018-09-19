@@ -3,12 +3,13 @@ package mbean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import DAO.UsuarioEmpresaDAO;
 import entity.UsuarioEmpresa;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CadastroEmpresaMBean {
 
 	UsuarioEmpresaDAO uDao = new UsuarioEmpresaDAO();

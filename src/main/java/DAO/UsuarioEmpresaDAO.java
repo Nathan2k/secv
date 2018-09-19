@@ -146,25 +146,47 @@ public class UsuarioEmpresaDAO {
 	}
 	
 	
+	//---------------------------------------------------------------------------------------------
 	
 	
+	public boolean alterar(UsuarioEmpresa emp) {
+		
+
+		String sql = "UPDATE empresa SET nome = ?, senha = ?, representante = ?, telefone = ?, "   // perguntar se tem q passar o CNPJ no update
+					+ "email = ?, rua = ?, bairro = ?, cidade = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, emp.getNome());
+			ps.setString(2, emp.getSenha());
+			ps.setString(3, emp.getRepresentante());
+			ps.setString(4, emp.getTelefone());
+			ps.setString(5, emp.getEmail());
+			ps.setString(6, emp.getRua());
+			ps.setString(7, emp.getBairro());
+			ps.setString(8, emp.getCidade());
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			return ps.execute();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return false;
+	}
 	
 	
 	
