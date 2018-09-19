@@ -12,7 +12,7 @@
 
 	<ui:define name="content">
 		<div style="width: 500px; margin: auto;">
-			<p:panel value="Login" style="width: 500px">
+			<p:panel value="Login" style="width: 500px; margin-top: 8%">
 
 				<h:form>
 					<center>
@@ -22,14 +22,14 @@
 							<p:inputText value="#{a}" required="true" style="width: 350px;" />
 							<p />
 							<h:outputText value="Experiência: " />
-							<p:selectOneRadio id="experiencia" value="#{a}">
+							<p:selectOneRadio required="true" id="experiencia" value="#{a}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Não" itemValue="Nao" />
 							</p:selectOneRadio>
 
 							<p />
 							<h:outputText value="Sexo: " />
-							<p:selectOneRadio id="sexo" value="#{a}">
+							<p:selectOneRadio required="true" id="sexo" value="#{a}">
 								<f:selectItem itemLabel="Homem" itemValue="Homem" />
 								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
@@ -37,50 +37,84 @@
 
 							<p />
 							<h:outputText value="Deficiência: " />
-							<p:selectOneRadio id="deficiencia" value="#{a}">
+							<p:selectOneRadio required="true" id="deficiencia" value="#{a}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
 
 							<p />
-							<h:outputText value="Indiomas: " />
-							<p:selectOneRadio id="Indiomas" value="#{a}">
-								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
-							</p:selectOneRadio>
-							<p />
-
+							
 							<h:panelGrid columns="1" style="margin-bottom: 10px">
 
 								<h:outputText id="displayRange"
 									value="Faixa etária: #{sliderView.number8} a #{sliderView.number9} anos" />
-								<p:slider for="txt6,txt7" display="displayRange"
+								<p:slider required="true" for="txt6,txt7" display="displayRange"
 									style="width: 350px" range="true"
 									displayTemplate="De {min} a {max}" />
 							</h:panelGrid>
 							<h:inputHidden id="txt6" value="#{sliderView.number8}" />
 							<h:inputHidden id="txt7" value="#{sliderView.number9}" />
 							<p />
-								
-			
-
-							<h:outputLabel for="cidade" value="Cidades:" />
-							<p:selectCheckboxMenu style="width: 150px" id="multiple"
+							
+							<h:outputLabel for="idioma" value="Idioma:" />
+							<p:selectCheckboxMenu required="true" style="width: 140px" id="idioma"
 								value="#{checkboxView.selectedCities2}" multiple="true"
-								filter="true" panelStyle="width:300px">
+								filter="true" panelStyle="width:290px">
 								<f:selectItems value="#{checkboxView.cities}" />
 							</p:selectCheckboxMenu>
 							<p />
-							
 
 
-
-							</h:panelGrid>
+							<h:outputLabel for="estado" value="Estado:" />
+							<p:selectOneMenu required="true" style="width: 140px" panelStyle="width:150px"
+								id="estado" value="#{a}">
+								<f:selectItem itemLabel="" itemValue="" />
+								<f:selectItems value="#{checkboxView.cities}" />
+							</p:selectOneMenu>
 
 							<p />
+							<h:outputLabel for="cidade" value="Cidades:" />
+							<p:selectCheckboxMenu required="true" style="width: 140px" id="multiple"
+								value="#{checkboxView.selectedCities2}" multiple="true"
+								filter="true" panelStyle="width:290px">
+								<f:selectItems value="#{checkboxView.cities}" />
+							</p:selectCheckboxMenu>
+							<p />
 
-							<h:commandButton value="Cadastrar"
-								action="#{cadastroEmpresaMBean.salvar}"
-								style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+							<h:outputLabel for="area" value="Área:" />
+							<p:selectOneMenu required="true" style="width: 140px" panelStyle="width:150px"
+								id="area" value="#{a}">
+								<f:selectItem itemLabel="" itemValue="" />
+								<f:selectItems value="#{checkboxView.cities}" />
+							</p:selectOneMenu>
+							<P />
+							<h:outputLabel for="curso" value="Curso:" />
+							<p:selectOneMenu required="true" style="width: 140px" panelStyle="width:150px"
+								id="curso" value="#{a}">
+								<f:selectItem itemLabel="" itemValue="" />
+								<f:selectItems value="#{checkboxView.cities}" />
+							</p:selectOneMenu>
+							<P />
+								
+							<h:outputLabel for="semestre" value="Semestres:" />
+							<p:selectCheckboxMenu required="true" style="width: 140px" id="sem"
+								value="#{checkboxView.selectedCities2}" multiple="true"
+								filter="true" panelStyle="width:290px">
+								<f:selectItems value="#{checkboxView.cities}" />
+							</p:selectCheckboxMenu>
+							<p />
+					
+
+
+
+
+						</h:panelGrid>
+
+						<p />
+
+						<h:commandButton value="Filtrar"
+							action="#{cadastroEmpresaMBean.salvar}"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</center>
 				</h:form>
 
