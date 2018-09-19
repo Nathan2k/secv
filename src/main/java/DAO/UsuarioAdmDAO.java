@@ -20,14 +20,14 @@ public class UsuarioAdmDAO {
 	
 	
 	
-	public UsuarioADM buscarADM(int nif, String senha) {
+	public UsuarioADM buscarADM(String nif, String senha) {
 
 		String sql = "SELECT * FROM administrador " + "WHERE NIF = ? AND senha = ?;";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, nif);
+			ps.setString(1, nif);
 			ps.setString(2, senha);
 
 			ResultSet rs = ps.executeQuery();

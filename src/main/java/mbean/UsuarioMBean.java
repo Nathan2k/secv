@@ -39,13 +39,15 @@ public class UsuarioMBean {
 		emp = uDao.buscarEmpresa(empreOUadm, senha);
 		if (emp != null) {
 			return "temfiltro.xhtml";
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
+			return "login.xhtml";
 		}
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
-		return "login.xhtml";
+
 	}
 
 	private String loginADM() {
-		UsuarioADM adm = admDAO.buscarADM(Integer.valueOf(empreOUadm), senha);
+		UsuarioADM adm = admDAO.buscarADM((empreOUadm), senha);
 		if (adm != null) {
 			return "homeADM.xhtml";
 		}
@@ -61,7 +63,7 @@ public class UsuarioMBean {
 		} else {
 			return null;
 		}
-	}
+	} 
 
 	public String getImagem() {
 		return imagem;
