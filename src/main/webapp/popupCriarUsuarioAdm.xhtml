@@ -19,25 +19,25 @@
 					<h:panelGrid>
 
 						<p:outputLabel for="nif" value="NIF: " />
-						<p:inputMask id="nif" value="#{a}" required="true"
+						<p:inputMask id="nif" value="#{cadastroAdmMBean.adm.NIF}" required="true"
 							style="width: 350px;" />
 
 						<h:outputText value="Email: " />
-						<p:inputText value="#{a}" required="true" style="width: 350px;" />
+						<p:inputText value="#{cadastroAdmMBean.adm.email}" required="true" style="width: 350px;" />
 
 						<h:outputText value="Nome: " />
-						<p:inputText value="#{a}" required="true" style="width: 350px;" />
+						<p:inputText value="#{cadastroAdmMBean.adm.nome}" required="true" style="width: 350px;" />
 
 						<h:outputText value="Senha: " />
-						<p:password id="senha3" value="#{a}" required="true"
+						<p:password id="senha3" value="#{cadastroAdmMBean.adm.senha}" required="true"
 							style="width: 350px;" />
 
 						<h:outputText value="Confirmar Senha: " />
-						<p:password id="confsenha3" value="#{a}" required="true"
+						<p:password id="confsenha3" required="true"
 							style="width: 350px;" />
 
 						<p:outputLabel for="tel" value="Telefone:" />
-						<p:inputMask id="tel" value="#{a}" mask="(999) 99999-9999"
+						<p:inputMask id="tel" value="#{cadastroAdmMBean.adm.telefone}" mask="(999) 99999-9999"
 							required="true" style="width: 350px;" />
 						<br />
 
@@ -50,16 +50,12 @@
 
 			<h:form>
 				<center>
-					<h:commandButton value="Cadastrar" ajax="false" action="login"
+					<h:commandButton value="Cadastrar" ajax="false" action="#{cadastroAdmMBean.salvar}"
 						style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 				</center>
 			</h:form>
 
 			<p />
-
-
-
-
 
 		</p:panel>
 	</p:panel>
