@@ -4,13 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 
 
 <h:head>
 
 	<link rel="stylesheet" type="text/css" href="resources/css/templateADM.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/sideBarADM.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	<title><ui:insert name="title">Este é o template</ui:insert></title>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -24,51 +27,22 @@
 <h:body>
 
 	<div class="header">
-		<ui:insert name="header">
-			<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<ui:insert name="context">
-						<h:graphicImage  id="imgb" library="img" name="SENAaI.jpg" />
-					</ui:insert>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
 
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-								Sign Up</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-								Login</a></li>
-					</ul>
-				</div>
-			</div>
-			</nav>
-		</ui:insert>
 	</div>
-
-
-
-
-
-
-
-
 	<div class="content" />
 
 
-	<div class="sidenav">
-		<p>Menu</p>
-		<a class="glyphicon glyphicon-user" style="top:70px" href="#">
-		Estatística</a> 
-		<a class="glyphicon glyphicon-user" style="top:120px" href="#">
-		Gerenciar Empresas</a> 
-		<a class="glyphicon glyphicon-user" style="top:170px" href="#">
-		Criar ADM</a>
-	</div>
+<div class="sidebar">
+	<ui:insert name="context">
+	<h:graphicImage  id="imgb" library="img" name="SENAaI.jpg" />
+	</ui:insert>
+  <a href="#home"><i class="fa fa-fw fa-bar-chart"></i> Estatistica</a>
+  <a href="#services"><i class="fa fa-fw fa-wrench"></i> Empresas</a>
+  <a href="#clients"><i class="fa fa-fw fa-user-plus"></i> Criar ADM</a>
+  <a href="#clients"><i class="fa fa-fw fa-user"></i> Perfil</a>
+  <a href="#clients"><i class="fa fa-fw fa-sign-out"></i> Sair</a>
+
+</div>
 
 
 
@@ -78,18 +52,4 @@
 </h:body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
