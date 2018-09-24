@@ -10,8 +10,8 @@ public class ConnectionDB {
 	private static String user = "root";
 	private static String pass = "";
 	
-	public static Connection getConnection(){
-		if(con == null){
+	public static Connection getConnection() throws SQLException{
+		if(con == null || con.isClosed()){
 			try {
 				DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 				con = DriverManager.getConnection(dns,user,pass);

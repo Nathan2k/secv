@@ -15,7 +15,12 @@ public class UsuarioAdmDAO {
 	Connection conn;
 
 	public UsuarioAdmDAO() {
-		conn = ConnectionDB.getConnection();
+		try {
+			conn = ConnectionDB.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

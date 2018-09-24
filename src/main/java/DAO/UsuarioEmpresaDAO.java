@@ -18,7 +18,12 @@ public class UsuarioEmpresaDAO {
 	Connection conn;
 	
 	public UsuarioEmpresaDAO() {
-		conn = ConnectionDB.getConnection();
+		try {
+			conn = ConnectionDB.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public UsuarioEmpresa buscarEmpresa(String cnpj, String senha) { // perguntar sobre a senha
@@ -153,7 +158,7 @@ public class UsuarioEmpresaDAO {
 		
 
 		String sql = "UPDATE empresa SET nome = ?, senha = ?, representante = ?, telefone = ?, "   // perguntar se tem q passar o CNPJ no update
-					+ "email = ?, rua = ?, bairro = ?, cidade = ?";
+					+ "email = ?, rua = ?, bairro = ?, cidade = ? WHERE id = ?";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
