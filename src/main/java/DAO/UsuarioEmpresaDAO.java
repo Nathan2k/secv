@@ -171,7 +171,10 @@ public class UsuarioEmpresaDAO {
 			ps.setString(6, emp.getRua());
 			ps.setString(7, emp.getBairro());
 			ps.setString(8, emp.getCidade());
-	
+			ps.setInt(9, emp.getId());
+			
+			
+			
 			return ps.execute();
 			
 			

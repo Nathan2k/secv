@@ -10,31 +10,39 @@
 <div align="center">
 	<h:graphicImage library="img" name="logo-senai.png" />
 </div>
-<br/>
-<h:form>
+<br />
 <p:toolbar style="padding: 0px">
+
 	<f:facet name="left">
-	
-		<p:commandButton style="border: 0px;" value="Filtro"
-			icon="ui-icon-arrowthick-1-s" action="temfiltro"/>
-		
-		<p:commandButton style="border: 0px" value="Perfil"
-			icon="ui-icon-person" ajax="false" action="perfilEmpresa"/>
+		<h:form>
 
-		<p:commandButton style="border: 0px" type="button" value="Ajuda"
-			icon="ui-icon-help" onclick="PF('formem').show();"/>
+			<p:commandButton style="border: 0px;" value="Filtro"
+				icon="ui-icon-arrowthick-1-s" action="temfiltro" />
 
-		<p:commandButton style="border: 0px" type="button" value="Historico"
-			icon="ui-icon-folder-collapsed" />
-	
+			<p:commandButton style="border: 0px" value="Perfil"
+				icon="ui-icon-person" ajax="false" action="perfilEmpresa" />
+
+			<p:commandButton style="border: 0px" type="button" value="Ajuda"
+				icon="ui-icon-help" onclick="PF('formem').show();" />
+
+			<p:commandButton style="border: 0px" type="button" value="Historico"
+				icon="ui-icon-folder-collapsed" />
+		</h:form>
+
 	</f:facet>
 
-	<f:facet name="right">
-		<p:commandButton style="border: 0px" type="button" value="Sair" ajax="false"
-			icon="ui-icon-closethick" action="login"/>
 
+	<f:facet name="right">
+
+		<h:form>
+			<p:commandButton style="border: 0px" type="button" value="Sair"
+				ajax="false" icon="ui-icon-closethick"
+				action="#{sairMBean.matarSession}" />
+
+		</h:form>
 	</f:facet>
 
 </p:toolbar>
-</h:form>
+
+
 </html>

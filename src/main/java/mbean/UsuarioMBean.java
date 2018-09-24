@@ -38,12 +38,11 @@ public class UsuarioMBean {
 		empreOUadm = Replace.format(empreOUadm);
 		emp = uDao.buscarEmpresa(empreOUadm, senha);
 		if (emp != null) {
-			return "temfiltro.xhtml";
+			return "temfiltro?faces-redirect=true";
 		}else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
 			return "login.xhtml";
 		}
-
 	}
 
 	private String loginADM() {

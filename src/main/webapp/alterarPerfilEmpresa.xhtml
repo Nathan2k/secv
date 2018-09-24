@@ -10,58 +10,66 @@
 
 	<ui:define name="content">
 
+		<h:form>
+			<p:panel
+				style="margin-top:8%; align:center; margin-left:20%; margin-right:20%; width:45%">
 
-		<p:panel style="margin-top:8%; align:center; margin-left:20%; margin-right:20%; width:45%">
+				<h:panelGrid columns="2" style="width:100%">
 
-			<h:panelGrid columns="2" style="width:100%">
+					<h:panelGrid columns="1" style="width:50%">
 
-				<h:panelGrid columns="1" style="width:50%">
+						<p:outputLabel id="cnpj" value="CNPJ: " />
+						<p:inputText disabled="true" value="#{usuarioMBean.emp.CNPJ}" />
+						<br />
+						<p:outputLabel id="nomeEmpresa" value="Nome: " />
+						<p:inputText value="#{usuarioMBean.emp.nome}" />
+						<br />
+						<p:outputLabel id="cidade"
+							value="Cidade: #{usuarioMBean.emp.cidade}" />
+						<p:inputText value="#{usuarioMBean.emp.cidade}" />
+						<br />
+						<p:outputLabel id="bairro"
+							value="Bairro: #{usuarioMBean.emp.bairro}" />
+						<p:inputText value="#{usuarioMBean.emp.bairro}" />
 
-					<p:outputLabel id="cnpj" value="CNPJ: " />
-					<p:inputText value="#{usuarioMBean.emp.CNPJ}"/>
-					<br />
-					<p:outputLabel id="nomeEmpresa" value="Nome: " />
-					<p:inputText value="#{usuarioMBean.emp.nome}"/>
-					<br />
-					<p:outputLabel id="cidade" value="Cidade: #{usuarioMBean.emp.cidade}" />
-					<p:inputText value="#{usuarioMBean.emp.cidade}"/>
-					<br />
-					<p:outputLabel id="bairro" value="Bairro: #{usuarioMBean.emp.bairro}" />
-					<p:inputText value="#{usuarioMBean.emp.bairro}"/>
-					
+					</h:panelGrid>
+
+
+
+					<h:panelGrid columns="1" style="width:50%">
+
+						<p:outputLabel id="rua" value="Rua: #{usuarioMBean.emp.rua}" />
+						<p:inputText value="#{usuarioMBean.emp.rua}" />
+						<br />
+						<p:outputLabel id="email" value="Email: #{usuarioMBean.emp.email}" />
+						<p:inputText value="#{usuarioMBean.emp.email}" />
+						<br />
+						<p:outputLabel id="Telefone"
+							value="Telefone: #{usuarioMBean.emp.telefone}" />
+						<p:inputText value="#{usuarioMBean.emp.telefone}" />
+						<br />
+						<p:outputLabel id="representante"
+							value="Representante: #{usuarioMBean.emp.representante}" />
+						<p:inputText value="#{usuarioMBean.emp.representante}" />
+
+
+					</h:panelGrid>
 
 				</h:panelGrid>
 
-				<h:panelGrid columns="1" style="width:50%">
 
-					<p:outputLabel id="rua" value="Rua: #{usuarioMBean.emp.rua}" />
-					<p:inputText value="#{usuarioMBean.emp.rua}"/>
-					<br />
-					<p:outputLabel id="email" value="Email: #{usuarioMBean.emp.email}" />
-					<p:inputText value="#{usuarioMBean.emp.email}"/>
-					<br />
-					<p:outputLabel id="Telefone"
-						value="Telefone: #{usuarioMBean.emp.telefone}" />
-					<p:inputText value="#{usuarioMBean.emp.telefone}"/>
-					<br />
-					<p:outputLabel id="representante" value="Representante: #{usuarioMBean.emp.representante}" />
-					<p:inputText value="#{usuarioMBean.emp.representante}"/>
-					
-	
-				</h:panelGrid>
-
-			</h:panelGrid>
+				<br />
 
 
-			<br />
-			<center>
-				<h:commandButton value="Alterar" action="#{a}"
-					style="height: 30px; font-size: 14px; width:220px" />
-			</center>
+				<center>
+					<h:commandButton value="Alterar"
+						action="#{alterarPerfilMBean.alterar}"
+						style="height: 30px; font-size: 14px; width:220px" ajax="false" />
+				</center>
 
 
-		</p:panel>
-
+			</p:panel>
+		</h:form>
 
 
 	</ui:define>
