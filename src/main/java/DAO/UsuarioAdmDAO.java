@@ -27,7 +27,7 @@ public class UsuarioAdmDAO {
 	
 	public UsuarioADM buscarADM(String nif, String senha) {
 
-		String sql = "SELECT * FROM administrador " + "WHERE NIF = ? AND senha = ?;";
+		String sql = "SELECT * FROM administrador " + "WHERE NIF = ? AND senha = ?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

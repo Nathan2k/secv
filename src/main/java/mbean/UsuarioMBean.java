@@ -27,6 +27,7 @@ public class UsuarioMBean {
 	public UsuarioMBean() {
 		imagem = "on";
 		uDao = new UsuarioEmpresaDAO();
+		admDAO = new UsuarioAdmDAO();
 	}
 
 	public void trocaImagem() {
