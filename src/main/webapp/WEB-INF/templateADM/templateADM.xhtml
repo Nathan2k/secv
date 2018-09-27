@@ -12,7 +12,6 @@
 <h:head>
 
 	<link rel="stylesheet" type="text/css" href="resources/css/templateADM.css" />
-	<link rel="stylesheet" type="text/css" href="resources/css/sideBarADM.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	<title><ui:insert name="title">Este é o template</ui:insert></title>
 	<link rel="stylesheet"
@@ -30,13 +29,14 @@
 
 	</div>
 	<div class="content" />
+	<ui:insert name="content"/>
 
 
 <div class="sidebar">
 	<ui:insert name="context">
-	<h:graphicImage  id="imgb" library="img" name="SENAaI.jpg" />
+	<h:graphicImage  id="imgb" library="img" name="SENAaI.jpg" style="margin-bottom: 40px" />
 	</ui:insert>
-  <a href="#home"><i class="fa fa-fw fa-bar-chart"></i> Estatistica</a>
+  <a href="#home"><i class="fa fa-fw fa-bar-chart"></i> Estatisticas</a>
   <a href="#services"><i class="fa fa-fw fa-wrench"></i> Empresas</a>
   <a href="#clients"><i class="fa fa-fw fa-user-plus"></i> Criar ADM</a>
   <a href="#clients"><i class="fa fa-fw fa-user"></i> Perfil</a>

@@ -4,30 +4,33 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+			<link rel="stylesheet" type="text/css" href="resources/css/perfilADM.css" />
+</h:head>
 
-<ui:composition template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
+<ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
 
 	<ui:define name="content">
 		
 		
-		<p:panel style="margin-top:8%; align:center">
+		<p:panel style="margin-left:280px; margin-top:6%; margin-right:65%; align:center">
 
 		<h:panelGrid columns="1">
 
-			<p:outputLabel id="NIF" value="NIF: #{usuarioMBean.adm.NIF}"/>
+			<br/><p:outputLabel id="NIF" value="NIF: #{usuarioMBean.adm.NIF}"/><br/>
 			
-			<p:outputLabel id="email" value="Email: #{usuarioMBean.adm.email}"/>
+			<p:outputLabel id="email" value="Email: #{usuarioMBean.adm.email}"/><br/>
 	        
-			<p:outputLabel id="nome" value="Nome: #{usuarioMBean.adm.nome}"/>
+			<p:outputLabel id="nome" value="Nome: #{usuarioMBean.adm.nome}"/><br/>
 	        
-			<p:outputLabel id="senha" value="Senha: #{usuarioMBean.adm.senha}"/>
+			<p:outputLabel id="senha" value="Senha: #{usuarioMBean.adm.senha}"/><br/>
 	        
-			<p:outputLabel id="telefone" value="Telefone: #{usuarioMBean.adm.telefone}"/>
+			<p:outputLabel id="telefone" value="Telefone: #{usuarioMBean.adm.telefone}"/><br/><br/>
 	        
 			
 		</h:panelGrid>
 		<br/>
-		<h:commandButton value="Editar" action="#{a}" style="height: 30px; font-size: 14px; width:220px"/>
+		<h:commandButton value="Editar" action="#{a}" style="margin-left:50px; height: 30px; font-size: 14px; width:220px"/>
 		
 		
 		
