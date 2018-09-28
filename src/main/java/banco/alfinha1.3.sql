@@ -11,11 +11,11 @@ CREATE TABLE empresa(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	senha VARCHAR(50),
 	nome VARCHAR(50),
-    CNPJ VARCHAR(50),
+    CNPJ VARCHAR(50) UNIQUE,
     cidade VARCHAR(50),
     bairro VARCHAR(50),
     rua VARCHAR(50),
-    email VARCHAR(50),
+    email VARCHAR(50) UNIQUE,
     telefone VARCHAR(50),
     representante VARCHAR(50)
 
@@ -24,8 +24,8 @@ CREATE TABLE empresa(
 CREATE TABLE administrador(
 	
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	NIF VARCHAR(50),
-	email VARCHAR(50),
+	NIF VARCHAR(50) UNIQUE,
+	email VARCHAR(50) UNIQUE,
 	nome VARCHAR(50),
 	senha VARCHAR(50),
 	telefone VARCHAR(50)
@@ -152,6 +152,13 @@ CREATE TABLE curriculo(
     FOREIGN KEY (idSemestre) REFERENCES semestre(id),
     FOREIGN KEY (idAluno) REFERENCES aluno(id)
 
+);
+
+CREATE TABLE recuperarSenha(
+	
+	 id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	 idUsuario INTEGER NOT NULL,
+	 codigo INTEGER NOT NULL
 );
 
 

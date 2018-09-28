@@ -1,60 +1,24 @@
 package entity;
 
-public class UsuarioEmpresa {
+public class UsuarioEmpresa extends Usuario {
 
-	private String nome;
 	private String CNPJ;
-	private String senha;
 	private String representante;
-	private String telefone;
-	private String email;
 	private String rua;
 	private String bairro;
 	private String cidade;
-	private Integer id;
 	
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	public String getCNPJ() {
 		return CNPJ;
 	}
 	public void setCNPJ(String cNPJ) {
 		CNPJ = cNPJ;
 	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	public String getRepresentante() {
 		return representante;
 	}
 	public void setRepresentante(String representante) {
 		this.representante = representante;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getRua() {
 		return rua;
@@ -74,6 +38,6 @@ public class UsuarioEmpresa {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-
+	
 	
 }

@@ -1,5 +1,7 @@
 package mbean;
 
+import java.sql.SQLException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,10 +19,12 @@ public class UsuarioMBean {
 
 	public UsuarioEmpresaDAO uDao;
 	public UsuarioAdmDAO admDAO;
+
 	public String imagem;
+
 	private UsuarioEmpresa emp;
 	private UsuarioADM adm;
-	
+
 	public String empreOUadm;
 	public String senha;
 
@@ -28,6 +32,7 @@ public class UsuarioMBean {
 		imagem = "on";
 		uDao = new UsuarioEmpresaDAO();
 		admDAO = new UsuarioAdmDAO();
+
 	}
 
 	public void trocaImagem() {
@@ -37,10 +42,16 @@ public class UsuarioMBean {
 
 	private String loginEmpresa() {
 		empreOUadm = Replace.format(empreOUadm);
-		emp = uDao.buscarEmpresa(empreOUadm, senha);
+		try {
+			emp = uDao.buscarEmpresa(empreOUadm, senha);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			mensagem(e.toString());
+		}
 		if (emp != null) {
 			return "temfiltro?faces-redirect=true";
-		}else {
+		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
 			return "login.xhtml";
 		}
@@ -63,7 +74,7 @@ public class UsuarioMBean {
 		} else {
 			return null;
 		}
-	} 
+	}
 
 	public String getImagem() {
 		return imagem;
@@ -80,8 +91,7 @@ public class UsuarioMBean {
 	public void setAdm(UsuarioADM adm) {
 		this.adm = adm;
 	}
-	
-	
+
 	public String getEmpreOUadm() {
 		return empreOUadm;
 	}
@@ -120,6 +130,11 @@ public class UsuarioMBean {
 
 	public void setEmp(UsuarioEmpresa emp) {
 		this.emp = emp;
+	}
+
+	public void mensagem(String s) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(s));
+
 	}
 
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
