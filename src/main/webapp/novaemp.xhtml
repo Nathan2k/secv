@@ -8,6 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
 </h:head>
 <h:body>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
 
 	<div class="center">
 		<p:panel value="Login" style="width: 600px">
@@ -16,9 +19,10 @@
 			<p />
 			<p:panel>
 				<h:form>
+
 					<center>
 						<h:panelGrid columns="1">
-						
+
 							<h:outputText value="Nome da Empresa: " />
 							<p:inputText value="#{cadastroEmpresaMBean.emp.nome}"
 								required="true" style="width: 350px;" />
@@ -28,14 +32,14 @@
 								mask="99.999.999/9999-99" required="true" style="width: 350px;" />
 
 							<h:outputText value="Senha: " />
-							<p:password id="newsenha"
+							<p:password id="senha1" match="senha2"
 								value="#{cadastroEmpresaMBean.emp.senha}" required="true"
 								style="width: 350px;" />
 
 							<!-- CONFIRMAR A SENHA TEM Q FAZER COM JQUERY -->
 							<h:outputText value="Confirmar Senha: " />
-							<p:password id="confsenha3" value="#{a}" required="true"
-								style="width: 350px;" />
+							<p:password id="senha2" value="#{cadastroEmpresaMBean.emp.senha}"
+								required="true" style="width: 350px;" />
 
 							<h:outputText value="Representante: " />
 							<p:inputText value="#{cadastroEmpresaMBean.emp.representante}"
@@ -64,9 +68,9 @@
 
 
 						</h:panelGrid>
-		
-							<p/>
-			
+
+						<p />
+
 						<h:commandButton value="Cadastrar"
 							action="#{cadastroEmpresaMBean.salvar}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
