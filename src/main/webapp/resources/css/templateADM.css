@@ -3,9 +3,13 @@ body {font-family: "Lato", sans-serif;}
 .header nav{
 	border-radius: 0px;
 }
-
-
-
+.content {
+	margin-left: 190px;
+	margin-top: 6%;
+	width:90%;
+	margin-right: 5%;
+	align: center;
+}
 
 
 .sidebar {

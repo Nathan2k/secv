@@ -13,9 +13,9 @@
 
 	<link rel="stylesheet" type="text/css" href="resources/css/templateADM.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-	<title><ui:insert name="title">Este é o template</ui:insert></title>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<ui:insert name="css"></ui:insert>
+	<title><ui:insert name="title">Template ADM</ui:insert></title>
 
 </h:head>
 
@@ -25,12 +25,9 @@
 
 <h:body>
 
-	<div class="header">
-
+	<div class="content" >
+		<ui:insert name="content"/>
 	</div>
-	<div class="content" />
-	<ui:insert name="content"/>
-
 
 <div class="sidebar">
 	<ui:insert name="context">
