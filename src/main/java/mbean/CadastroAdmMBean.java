@@ -20,7 +20,7 @@ public class CadastroAdmMBean {
 
 	public String salvar() {
 		if (uDao.inserirADM(adm)) {
-			return ""; // VER ISSO AQUI DEPOIS, PQ É UM POPUP
+			return "criarUsuarioAdm?faces-redirect=true"; // VER ISSO AQUI DEPOIS, PQ É UM POPUP
 		} else {
 			return null;
 		}
