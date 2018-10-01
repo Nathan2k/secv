@@ -39,11 +39,11 @@
 						<h:panelGrid columns="1">
 
 							<h:outputText id="loginLabel" value="#{usuarioMBean.imagem eq 'off' ? 'CNPJ: ' : 'NIF: '}" />
-							<p:inputMask mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}" id="usuario" value="#{usuarioMBean.empreOUadm}"
+							<p:inputMask label="Usuário" mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}" id="usuario" value="#{usuarioMBean.empreOUadm}"
 								required="true" style="width:240px" maxlength="14" />
 
 							<h:outputText id="senhaLabel" value="Senha: *" />
-							<p:password value="#{usuarioMBean.senha}" id="senha"
+							<p:password label="Senha" value="#{usuarioMBean.senha}" id="senha"
 								required="true" style="width:240px" />
 							<br />
 							

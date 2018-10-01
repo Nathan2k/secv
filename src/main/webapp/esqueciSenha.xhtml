@@ -19,10 +19,12 @@
 
 			<p:panel>
 				<center>
+				<h:form>
+				 <p:messages id="msgs" />
 					<h:panelGrid columns="1">
-
+						
 						<h:outputText id="recuperaemail" value=" Insira seu E-mail: " />
-						<p:inputText id="usuarioa" value="#{a}" style="width:240px"
+						<p:inputText label="Email"  id="usuarioa" value="#{a}" style="width:240px"
 							required="true" maxlength="14" />
 
 					</h:panelGrid>
@@ -35,10 +37,11 @@
 					</div>
 					<p />
 
-					<h:form>
+					</h:form>
+						<h:form>
 						<h:commandButton value="Voltar" ajax="false" action="login"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-					</h:form>
+							</h:form>
 				</center>
 				<p />
 
