@@ -166,11 +166,11 @@ CREATE TABLE recuperarSenha(
 -- INSERT INTO table_name
 -- VALUES (value1, value2, value3, ...);
 
-INSERT INTO empresa VALUES ('123','mahalo','123456','Jaguariuna','flores','lulu','mahalo@gmail.com','123455432','Rafael Leme');
+INSERT INTO empresa VALUES (0,'123','mahalo','123456','Jaguariuna','flores','lulu','mahalo@gmail.com','123455432','Rafael Leme');
 
-INSERT INTO empresa VALUES ('123','senai','654321','Jaguariuna','flores','lulu','senai@gmail.com','123455432','Para Guasu');
+INSERT INTO empresa VALUES (0,'123','senai','654321','Jaguariuna','flores','lulu','senai@gmail.com','123455432','Para Guasu');
 
-INSERT INTO administrador VALUES ('123456','adm@gmail.com','admin','123','123455432');
+INSERT INTO administrador VALUES (0,'123456','adm@gmail.com','admin','123','123455432');
 
 
 
