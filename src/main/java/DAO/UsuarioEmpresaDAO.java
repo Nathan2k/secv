@@ -98,7 +98,7 @@ public class UsuarioEmpresaDAO {
 
 	// ---------------------------------------------------------------------------------------------
 
-	public List<UsuarioEmpresa> listarTodos(String cnpj) {
+	public List<UsuarioEmpresa> listarTodos() {
 
 		List<UsuarioEmpresa> list = new ArrayList<>();
 

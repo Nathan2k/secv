@@ -3,20 +3,75 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 <ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
 
-<ui:define name="css"><link rel="stylesheet" type="text/css" href="resources/css/homeADM.css" /></ui:define>
+	<ui:define name="css">
+		<link rel="stylesheet" type="text/css"
+			href="resources/css/homeADM.css" />
+	</ui:define>
 
-<ui:define name="title">Home ADM</ui:define>
+	<ui:define name="title">Home ADM</ui:define>
 
 
 	<ui:define name="content">
-	
-	
-	Graficos de estatistica aqui!
-	
-	
+
+		<h:form id="form">
+			<p:dataTable id="table" var="ues" value="#{tabelaMBean.ues}"
+				paginator="true" rows="10"
+				selectionMode="single"
+				rowKey="#{ues.nome}"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15" lazy="true">
+
+				<p:ajax event="rowSelect" update=":form:empDetail"
+					oncomplete="PF('empDialog').show()" />
+
+				<p:column>
+					<f:facet name="header">Nome da Empresa</f:facet>
+        	#{ues.nome}
+        </p:column>
+				<p:column>
+					<f:facet name="header">CNPJ</f:facet>
+        	#{ues.CNPJ}
+        </p:column>
+				<p:column>
+					<f:facet name="header">Representante (a)</f:facet>
+        	#{ues.representante}
+        </p:column>
+				<p:column>
+					<f:facet name="header">Email</f:facet>
+        	#{ues.email}
+        </p:column>
+				<p:column>
+					<f:facet name="header">Telefone</f:facet>
+        	#{ues.telefone}
+        </p:column>
+			</p:dataTable>
+
+			<p:dialog header="Empresa" widgetVar="empDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="empDetail" style="text-align:center;">
+					<p:panelGrid columns="2" rendered="#{not empty tabelaMBean.ues}"
+						columnClasses="label,value">
+
+						<h:outputText value="Id:" />
+						<h:outputText value="#{ues.nome}" />
+
+						<h:outputText value="Year" />
+						<h:outputText value="#{ues.nome}" />
+
+						<h:outputText value="Brand" />
+						<h:outputText value="#{ues.nome}" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+
+
+		</h:form>
+
+
+
 	</ui:define>
 
 </ui:composition>
