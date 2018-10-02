@@ -18,8 +18,7 @@
 
 		<h:form id="form">
 			<p:dataTable id="table" var="ues" value="#{tabelaMBean.ues}"
-				paginator="true" rows="10"
-				selectionMode="single"
+				paginator="true" rows="10" selectionMode="single"
 				rowKey="#{ues.nome}"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15" lazy="true">
@@ -52,18 +51,26 @@
 			<p:dialog header="Empresa" widgetVar="empDialog" modal="true"
 				showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="empDetail" style="text-align:center;">
-					<p:panelGrid columns="2" rendered="#{not empty tabelaMBean.ues}"
+					<p:panelGrid columns="2" var="ues" rendered="#{not empty tableMBean.ues}"
 						columnClasses="label,value">
 
-						<h:outputText value="Id:" />
+						<h:outputText value="Nome:" />
 						<h:outputText value="#{ues.nome}" />
 
-						<h:outputText value="Year" />
-						<h:outputText value="#{ues.nome}" />
+						<h:outputText value="CNPJ:" />
+						<h:outputText value="#{a}" />
 
-						<h:outputText value="Brand" />
-						<h:outputText value="#{ues.nome}" />
-					</p:panelGrid>
+						<h:outputText value="Representante (a)" />
+						<h:outputText value="#{a}" />
+
+						<h:outputText value="Email:" />
+						<h:outputText value="#{a}" />
+
+						<h:outputText value="Telefone:" />
+						<h:outputText value="#{a}" />
+
+
+					</p:panelGrid>>
 				</p:outputPanel>
 			</p:dialog>
 

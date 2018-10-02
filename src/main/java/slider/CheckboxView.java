@@ -18,6 +18,8 @@ public class CheckboxView {
 		public void init() {
         cities = new ArrayList<String>();
         cities.add("Indiferente");
+        cities.add("Acre");
+        cities.add("Dubai");
 	}
 
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 
 import DAO.UsuarioAdmDAO;
 import DAO.UsuarioEmpresaDAO;
@@ -11,6 +12,7 @@ import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
 
 @ManagedBean
+@ViewScoped
 public class tabelaMBean {
 	
 	public UsuarioEmpresaDAO uDao;
