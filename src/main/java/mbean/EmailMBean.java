@@ -6,8 +6,6 @@ import entity.Mensagem;
 import utils.EnviaUtil;
 
 public class EmailMBean {
-
-	
 	
 private Mensagem msgClass;
 	

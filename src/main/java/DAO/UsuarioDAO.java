@@ -70,28 +70,6 @@ public class UsuarioDAO {
 		return false;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public Usuario buscarUsuarioPorEmail(String email) {
 
@@ -149,5 +127,80 @@ public class UsuarioDAO {
 		}
 		return null;
 	}
+	
+	
 
+	public Integer inserirCodigo(int codigo) {
+		
+		String sql = " INSERT INTO recuperarSenha (idUsuario, codigo)" 
+		+ " VALUES (?, ?) ";
+		
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			
+			ps.setString(1, .getNIF());
+			ps.setString(2, adm.getEmail());
+			
+			
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
