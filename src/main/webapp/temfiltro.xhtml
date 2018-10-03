@@ -60,12 +60,19 @@
 							</p:selectOneMenu>
 
 							<p />
-							<h:outputLabel for="cidade" value="Cidades:" />
-							<p:selectCheckboxMenu required="true" style="width: 160px"
-								id="multiple" value="#{checkboxView.selectedCities2}"
-								multiple="true" filter="true" panelStyle="width:290px">
+
+							<h:outputLabel for="cidades" value="Cidades:" />
+							<p:selectCheckboxMenu id="cidades"
+								value="#{checkboxView.selectedCities2}" label="Cidades"
+								style="width: 160px"
+								filter="true" filterMatchMode="startsWith"
+								panelStyle="width:290px">
 								<f:selectItems value="#{checkboxView.cities}" />
 							</p:selectCheckboxMenu>
+
+						
+
+
 							<p />
 
 							<h:outputLabel for="area" value="Área:" />
