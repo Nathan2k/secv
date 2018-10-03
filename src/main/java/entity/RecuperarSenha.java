@@ -4,7 +4,8 @@ public class RecuperarSenha {
 	
 	private Integer idUsuario; 
 	private Integer codigo;
-	
+	private Integer id;
+
 	
 	
 	
@@ -20,5 +21,13 @@ public class RecuperarSenha {
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 	
 }

@@ -7,6 +7,7 @@ import DAO.UsuarioAdmDAO;
 import DAO.UsuarioDAO;
 import DAO.UsuarioEmpresaDAO;
 import entity.Mensagem;
+import entity.RecuperarSenha;
 import entity.Usuario;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
@@ -34,8 +35,18 @@ public class RecuperarSenhaMBean {
 		user = uDao.busca(email);
 
 		if (user != null) {
-
 			Integer aleatorio = (int) (Math.random() * 9999);
+			RecuperarSenha rSenha = new RecuperarSenha();
+			rSenha.setIdUsuario(user.getId());
+			rSenha.setCodigo(aleatorio);
+			
+			if()) {
+				
+				
+				
+				
+			}
+			
 
 		} else {
 
