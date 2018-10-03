@@ -4,10 +4,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
+	
 <ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
-
 <ui:define name="css"><link rel="stylesheet" type="text/css" href="resources/css/homeADM.css" /></ui:define>
-
 <ui:define name="title">Criar ADM</ui:define>
 
 
@@ -27,21 +26,21 @@
 				<center>
 					<h:panelGrid>
 
-						<h:outputText value="NIF: " style="font-weight:bold;" />
+						<h:outputText value="NIF: " style="margin:5px;font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.NIF}"  required="true" style="width: 350px;" />
-
-						<h:outputText value="Email: " style="font-weight:bold;" />
+						
+						<h:outputText value="Email: " style="margin:5px;font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.email}" required="true" style="width: 350px;" />
-
-						<h:outputText value="Nome: " style="font-weight:bold;" />
+						
+						<h:outputText value="Nome: " style="margin:5px;font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.nome}" required="true" style="width: 350px;" />
-
-						<h:outputText value="Senha: " style="font-weight:bold;" />
+						
+						<h:outputText value="Senha: " style=" margin:5px; font-weight:bold;" />
 						<p:password id="senha3" value="#{cadastroAdmMBean.adm.senha}" required="true" style="width: 350px;" />
-
-						<h:outputText value="Confirmar Senha: " style="font-weight:bold;" />
+						
+						<h:outputText value="Confirmar Senha: " style="margin-top:50px;font-weight:bold;" />
 						<p:password id="confsenha3" required="true" style="width: 350px;" />
-
+						
 						<h:outputLabel for="tel" value="Telefone:" />
 						<p:inputMask id="tel" value="#{cadastroAdmMBean.adm.telefone}" mask="(99) 99999-9999" required="true" style="width: 350px;" />
 						<br />

@@ -6,12 +6,12 @@
 <h:head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
-	
+
 </h:head>
 <h:body>
-		<p:growl>
-			<p:autoUpdate/>
-		</p:growl>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
 	<div class="center">
 		<p:panel value="Login" style="width: 600px">
 			<h:graphicImage library="img" name="logo-senai.png"
@@ -20,37 +20,45 @@
 			<p:panel>
 				<div class="center">
 					<h:form>
-						<p:commandLink event="onclick" ajax="true" update="imgb nome :form:loginLabel :form:usuario"
+						<p:commandLink event="onclick" ajax="true"
+							update="imgb nome :form:loginLabel :form:usuario"
 							actionListener="#{usuarioMBean.trocaImagem}">
 							<h:graphicImage style="width: 48%;" id="imgb" library="img"
 								name="#{usuarioMBean.imagem}.jpg" />
 						</p:commandLink>
-						
+
 					</h:form>
-					</div>
-					<div align="center">
-				
+				</div>
+				<div align="center">
+
 					<p:outputLabel id="nome"
 						value="#{usuarioMBean.imagem eq 'off' ? 'Empresa' : 'Administrador'}" />
-					</div>	
+				</div>
 				<p />
 				<h:form id="form">
 					<center>
 						<h:panelGrid columns="1">
 
-							<h:outputText id="loginLabel" value="#{usuarioMBean.imagem eq 'off' ? 'CNPJ: ' : 'NIF: '}" />
-							<p:inputMask label="Usuário" mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}" id="usuario" value="#{usuarioMBean.empreOUadm}"
-								required="true" style="width:240px" maxlength="14" />
+							<h:outputText id="loginLabel"
+								value="#{usuarioMBean.imagem eq 'off' ? 'CNPJ: *' : 'NIF: *'}" />
+							<p:inputMask label="Usuário"
+								mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}"
+								id="usuario" value="#{usuarioMBean.empreOUadm}" required="true"
+								style="width:240px" maxlength="14"
+								requiredMessage="Campo Usuário invalido" />
 
 							<h:outputText id="senhaLabel" value="Senha: *" />
-							<p:password label="Senha" value="#{usuarioMBean.senha}" id="senha"
+							<p:password label="Senha" value="#{usuarioMBean.senha}"
+								id="senha" requiredMessage="Campo Senha invalido"
 								required="true" style="width:240px" />
 							<br />
-							
+
 							<h:commandButton value="Entrar" action="#{usuarioMBean.logar}"
 								style="height: 30px; font-size: 14px; width:100%;" />
 						</h:panelGrid>
+			
 					</center>
+
 				</h:form>
 
 				<p />
@@ -66,9 +74,8 @@
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 				</center>
-					
+
 			</p:panel>
-				asadssad
 		</p:panel>
 
 	</div>

@@ -7,7 +7,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-@ViewScoped
 public class SairMBean {
 
 	public void matarSession() {

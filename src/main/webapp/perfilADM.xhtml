@@ -11,49 +11,50 @@
 	<ui:define name="content">
 		
 		
-		<p:panel styleClass="esse">
-		<h:form>
-		<h:panelGrid columns="2" style="width:100%">
-		<h:panelGrid columns="1" style="width:50%">
+<h:body>
 
-			<p:outputLabel id="NIF" value="NIF: #{usuarioMBean.adm.NIF}"/>
-			<br/>
-			<p:outputLabel id="email" value="Email: #{usuarioMBean.adm.email}"/>
-			<br/>
-			<p:outputLabel id="nome" value="Nome: #{usuarioMBean.adm.nome}"/>
-			<br/>
-			<p:outputLabel id="senha" value="Senha: #{usuarioMBean.adm.senha}"/>
-			<br/>
-			<p:outputLabel id="telefone" value="Telefone: #{usuarioMBean.adm.telefone}"/>
-			<br/>
+<center>
+	<p:panel value="Login" style="width: 600px">
+		
+		<h:graphicImage library="img" name="/logo-senai.png" style="width:300px; margin: 7px;"/>
 
-		</h:panelGrid>
+		<p />
+		<p:panel>
+			<h:form>
 
-		<h:panelGrid columns="1" style="width:50%">
+				<center>
+					<h:panelGrid>
 
-			<p:outputLabel id="cidade" value="Cidade: #{usuarioMBean.adm.cidade}"/>
-			<br/>
-			<p:outputLabel id="bairro" value="Bairro: #{usuarioMBean.adm.bairro}"/>
-			<br/>
-			<p:outputLabel id="rua" value="Rua: #{usuarioMBean.adm.rua}"/>
-			<br/>
-			<p:outputLabel id="cargo" value="Cargo: #{usuarioMBean.adm.cargo}"/>
-			<br/>
+						<p:outputLabel id="nif" value="NIF: " />
+						<p:inputText disabled="true" value="#{usuarioMBean.emp.CNPJ}" />
+						<br />
+						<p:outputLabel id="nomeADM" value="Nome: " />
+						<p:inputText disabled="true" value="#{usuarioMBean.emp.nome}" />
+						<br />
+						<p:outputLabel id="email" value="Email: #{usuarioMBean.emp.email}" />
+						<p:inputText disabled="true" value="#{usuarioMBean.emp.email}" />
+						<br />
+						<p:outputLabel id="Telefone" value="Telefone: #{usuarioMBean.emp.telefone}" />
+						<p:inputText disabled="true" value="#{usuarioMBean.emp.telefone}" />
+						<br />
 
-
-		</h:panelGrid>
-		</h:panelGrid>
-
+					</h:panelGrid>
+					<p />
+				</center>
+		
 			<center>
 			<h:commandButton value="Editar" ajax="false" action="alterarPerfilADM?faces-redirect=true" style="height: 30px; font-size: 14px; width:120px; border: 0px; "/>
 			</center>
-		</h:form>
-		
-		
-		
+				
+			</h:form>
+
+			<p />
+
+		</p:panel>
 	</p:panel>
-		
-		
+	</center>
+
+</h:body>
 		
 	</ui:define>
 

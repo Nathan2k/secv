@@ -25,55 +25,65 @@
 
 							<h:outputText value="Nome da Empresa: " />
 							<p:inputText label="Nome da Empresa" value="#{cadastroEmpresaMBean.emp.nome}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;" 
+								requiredMessage="Campo Usuário invalido" />
 
 							<p:outputLabel for="cnpj" value="Cnpj:" />
 							<p:inputMask id="cnpj" value="#{cadastroEmpresaMBean.emp.CNPJ}"
-								mask="99.999.999/9999-99" required="true" style="width: 350px;" />
+								mask="99.999.999/9999-99" required="true" style="width: 350px;"
+								requiredMessage="Campo Cnpj invalido"  />
 
 							<h:outputText value="Senha: " />
 							<p:password label="Senha" id="senha1" match="senha2"
 								value="#{cadastroEmpresaMBean.emp.senha}" required="true"
-								style="width: 350px;" />
+								style="width: 350px;"
+								requiredMessage="Campo Senha invalido"  />
 
 							<!-- CONFIRMAR A SENHA TEM Q FAZER COM JQUERY -->
 							<h:outputText value="Confirmar Senha: " />
 							<p:password label="Confirmar Senha" id="senha2" value="#{cadastroEmpresaMBean.emp.senha}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;"
+								requiredMessage="Confirmar Senha invalido" />
 
-							<h:outputText value="Representante: " />
+							<h:outputText value="Representante(a): " />
 							<p:inputText label="Representante"  value="#{cadastroEmpresaMBean.emp.representante}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;"
+								requiredMessage="Campo Representante(a) invalido"  />
 
 							<p:outputLabel for="tel" value="Telefone:" />
 							<p:inputMask id="tel"
 							label="Telefone"
 								value="#{cadastroEmpresaMBean.emp.telefone}"
-								mask="(999) 99999-9999" required="true" style="width: 350px;" />
+								mask="(999) 99999-9999" required="true" style="width: 350px;"
+								requiredMessage="Campo Telefone invalido"  />
 
 							<h:outputText value="Email: " />
 							<p:inputText 
 							label="Email"
 							value="#{cadastroEmpresaMBean.emp.email}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;"
+								requiredMessage="Campo Email invalido"  />
 
 							<h:outputText value="Rua: " />
 							<p:inputText 
 							label="Rua"
 							value="#{cadastroEmpresaMBean.emp.rua}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;" 
+								requiredMessage="Campo Rua invalido" />
 
 							<h:outputText value="Bairro: " />
 							<p:inputText 
 							label="Bairro"
 							value="#{cadastroEmpresaMBean.emp.bairro}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;" 
+								requiredMessage="Campo Bairro invalido" />
 
 							<h:outputText value="Cidade: " />
 							<p:inputText 
 							label="Cidade"
 							value="#{cadastroEmpresaMBean.emp.cidade}"
-								required="true" style="width: 350px;" />
+								required="true" style="width: 350px;" 
+								requiredMessage="Campo Cidade invalido" />
 
 
 						</h:panelGrid>
