@@ -26,14 +26,15 @@
 
 							<h:outputText
 								value=" Insira o Codigo no EMAIL: " />
-							<p:inputText label="Email" id="codigo" value="#{a}"
+							<p:inputText label="Email" id="codigo" value="#{recuperarSenhaMBean.vCod}"
 								style="width:240px" required="true" maxlength="14" />
 
 						</h:panelGrid>
 						<p />
 						<div align="center">
 
-							<h:commandButton value="Enviar" action="#{a}"
+							<p:commandButton value="Enviar" action="#{recuperarSenhaMBean.verificaCodigo}"
+								update="formSenha"
 								style="height: 30px; font-size: 14px; width:220px" />
 
 						</div>
@@ -42,6 +43,35 @@
 					</h:form>
 					<h:form>
 						<h:commandButton value="Voltar" ajax="false" action="login"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+					</h:form>
+					<h:form id="formSenha" rendered="#{recuperarSenhaMBean.codigoCerto}">
+						<p:messages id="msgs" />
+						<h:panelGrid columns="1">
+
+							<h:outputText
+								value="Nova Senha:" />
+							<p:inputText label="Email" id="novaSenha" value="#{recuperarSenhaMBean.password}"
+								style="width:240px" required="true" maxlength="14" />
+							<br/>
+							<h:outputText
+								value="Confirmar Senha: " />
+							<p:inputText label="Email" value="#{recuperarSenhaMBean.verificaPassword}"
+								style="width:240px" required="true" maxlength="14" />
+							
+
+						</h:panelGrid>
+						<p />
+						<p/>
+						<div align="center">
+							<h:commandButton value="Alterar" action="#{recuperarSenhaMBean.novaSenha}"
+								style="height: 30px; font-size: 14px; width:220px" />
+						</div>
+						<p />
+
+					</h:form>
+					<h:form>
+						<h:commandButton value="Cancelar" ajax="false" action="login"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 				</center>

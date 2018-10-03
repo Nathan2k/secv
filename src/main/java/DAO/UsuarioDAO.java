@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.VPS04.JDBC.ConnectionDB;
 
+import entity.RecuperarSenha;
 import entity.Usuario;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
@@ -41,7 +42,7 @@ public class UsuarioDAO {
 	
 	public boolean alterar(Usuario user) {
 		
-		String sql = "UPDATE ? SET senha = ? "; 
+		String sql = "UPDATE ? SET senha = ? WHERE id = ?"; 
 
 		
 		try {
@@ -49,7 +50,7 @@ public class UsuarioDAO {
 
 			ps.setString(1, tipoUsuario);
 			ps.setString(2, user.getSenha());
-			
+			ps.setInt(3, user.getId());
 
 			return ps.execute();
 
@@ -130,7 +131,7 @@ public class UsuarioDAO {
 	
 	
 
-	public Integer inserirCodigo(int codigo) {
+	public boolean inserirCodigo(RecuperarSenha rec) {
 		
 		String sql = " INSERT INTO recuperarSenha (idUsuario, codigo)" 
 		+ " VALUES (?, ?) ";
@@ -139,13 +140,10 @@ public class UsuarioDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
+			ps.setInt(1, rec.getIdUsuario());
+			ps.setInt(2, rec.getCodigo());
 			
-			ps.setString(1, .getNIF());
-			ps.setString(2, adm.getEmail());
-			
-			
-			
-			
+			return true;
 			
 			
 		} catch (SQLException e) {
@@ -153,19 +151,40 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		return null;
+		return false;
 	}
 	
 	
 	
-	
-	
-	
-	
-	
+	public RecuperarSenha rec(int cod) {
+		
+		String sql = "SELECT * FROM recuperarSenha WHERE codigo = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, cod);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			RecuperarSenha samu = new RecuperarSenha();
+			
+			if(rs.next()) {
+				
+				samu.setCodigo(rs.getInt("codigo"));
+				samu.setId(rs.getInt("id"));
+				samu.setIdUsuario(rs.getInt("idUsuario"));
+				
+			}
+			return samu;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 	
 	

@@ -26,12 +26,12 @@
 
 							<h:outputText
 								value="Nova Senha:" />
-							<p:inputText label="Email" id="novaSenha" value="#{a}"
+							<p:inputText label="Email" id="novaSenha" value="#{recuperarSenhaMBean.password}"
 								style="width:240px" required="true" maxlength="14" />
 							<br/>
 							<h:outputText
 								value="Confirmar Senha: " />
-							<p:inputText label="Email" value="#{a}"
+							<p:inputText label="Email" value="#{recuperarSenhaMBean.verificaPassword}"
 								style="width:240px" required="true" maxlength="14" />
 							
 
@@ -39,7 +39,7 @@
 						<p />
 						<p/>
 						<div align="center">
-							<h:commandButton value="Alterar" action="#{a}"
+							<h:commandButton value="Alterar" action="#{recuperarSenhaMBean.novaSenha}"
 								style="height: 30px; font-size: 14px; width:220px" />
 						</div>
 						<p />

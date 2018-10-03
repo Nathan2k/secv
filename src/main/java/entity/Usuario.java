@@ -8,6 +8,18 @@ public class Usuario {
 	private String email;
 	private String telefone;
 	
+	public Usuario() {
+
+	}
+	
+	public Usuario(Integer id, String nome, String senha, String email, String telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.senha = senha;
+		this.email = email;
+		this.telefone = telefone;
+	}
 	public Integer getId() {
 		return id;
 	}
