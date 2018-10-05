@@ -12,18 +12,18 @@
 	<p:growl>
 		<p:autoUpdate />
 	</p:growl>
-	<div class="center">
+	<div align="center" style="margin-top: 8%">
 		<p:panel value="Login" style="width: 600px">
 			<h:graphicImage library="img" name="logo-senai.png"
 				style="width: 500px" />
 			<p />
 			<p:panel>
-				<div class="center">
+				<div align="center" style="margin-top: 8%">
 					<h:form>
 						<p:commandLink event="onclick" ajax="true"
 							update="imgb nome :form:loginLabel :form:usuario"
 							actionListener="#{usuarioMBean.trocaImagem}">
-							<h:graphicImage style="width: 48%;" id="imgb" library="img"
+							<h:graphicImage style="width: 3%;" id="imgb" library="img"
 								name="#{usuarioMBean.imagem}.jpg" />
 						</p:commandLink>
 
