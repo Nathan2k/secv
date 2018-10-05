@@ -19,7 +19,7 @@
 		<h:form id="form">
 			<p:dataTable id="table" var="ues" value="#{tabelaMBean.ues}"
 				paginator="true" rows="10" selectionMode="single"
-				rowKey="#{ues.nome}"
+				selection="#{tabelaMBean.selectemp}" rowKey="#{ues.nome}"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15" lazy="true">
 
@@ -48,29 +48,55 @@
         </p:column>
 			</p:dataTable>
 
-			<p:dialog header="Empresa" widgetVar="empDialog" modal="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
+			<p:dialog header="Detalhes da Empresa" widgetVar="empDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="empDetail" style="text-align:center;">
-					<p:panelGrid columns="2"  rendered="#{a}"
-						columnClasses="label,value">
+					<p:panelGrid columns="2">
 
 						<h:outputText value="Nome:" />
-						<h:outputText value="#{a}" />
+						<h:outputText value="#{tabelaMBean.selectemp.nome}" />
 
 						<h:outputText value="CNPJ:" />
-						<h:outputText value="#{a}" />
+						<h:outputText value="#{tabelaMBean.selectemp.CNPJ}" />
 
 						<h:outputText value="Representante (a)" />
-						<h:outputText value="#{a}" />
+						<h:outputText value="#{tabelaMBean.selectemp.representante}" />
 
 						<h:outputText value="Email:" />
-						<h:outputText value="#{a}" />
+						<h:outputText value="#{tabelaMBean.selectemp.email}" />
 
 						<h:outputText value="Telefone:" />
-						<h:outputText value="#{a}" />
+						<h:outputText value="#{tabelaMBean.selectemp.telefone}" />
+
+						<h:outputText value="Cidade:" />
+						<h:outputText value="#{tabelaMBean.selectemp.cidade}" />
+
+						<h:outputText value="Rua:" />
+						<h:outputText value="#{tabelaMBean.selectemp.rua}" />
+
+						<h:outputText value="Bairro:" />
+						<h:outputText value="#{tabelaMBean.selectemp.bairro}" />
 
 
-					</p:panelGrid>>
+					</p:panelGrid>
+					<p />
+					<h:form>
+						<p:growl id="message" showDetail="true" />
+						<p:commandButton value="Excluir Empresa" ajax="false"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " >
+							<p:confirm header="Confirmation" message="Deseja excluir a empresa?" icon="ui-icon-alert" update="message"/>
+							</p:commandButton>
+
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						
+							<p:commandButton value="Não" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						
+							<p:commandButton value="Sim" type="button"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								
+						</p:confirmDialog>
+					</h:form>
 				</p:outputPanel>
 			</p:dialog>
 
