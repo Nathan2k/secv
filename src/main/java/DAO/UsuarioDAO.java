@@ -26,31 +26,28 @@ public class UsuarioDAO {
 	public Usuario busca(String email) {
 
 		Usuario u = buscarUsuarioPorEmail(email);
-		
-		if(u != null) {
-			
-			return u;	
+
+		if (u != null) {
+
+			return u;
 		}
-		
+
 		return null;
 	}
-	
-	
-//	" UPDATE ? SET senha = ? "
-//	ps.setString(1, tipoUsuario)
-	
-	
-	public boolean alterar(Usuario user) {
-		
-		String sql = "UPDATE ? SET senha = ? WHERE id = ?"; 
 
-		
+	// " UPDATE ? SET senha = ? "
+	// ps.setString(1, tipoUsuario)
+
+	public boolean alterar(Usuario user) {
+
+		String sql = "UPDATE ? SET senha = ? WHERE email = ?";
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			ps.setString(1, tipoUsuario);
 			ps.setString(2, user.getSenha());
-			ps.setInt(3, user.getId());
+			ps.setString(3, user.getEmail());
 
 			return ps.execute();
 
@@ -70,7 +67,6 @@ public class UsuarioDAO {
 
 		return false;
 	}
-	
 
 	public Usuario buscarUsuarioPorEmail(String email) {
 
@@ -93,11 +89,11 @@ public class UsuarioDAO {
 				adm.setNome(rs.getString("nome"));
 				adm.setSenha(rs.getString("senha"));
 				adm.setTelefone(rs.getString("telefone"));
-				
+
 				tipoUsuario = "administrador";
-				
+
 				return adm;
-			}else {
+			} else {
 				sql = "SELECT * FROM empresa " + " WHERE email = ?;";
 				ps = conn.prepareStatement(sql);
 
@@ -115,7 +111,7 @@ public class UsuarioDAO {
 					emp.setNome(rs.getString("nome"));
 					emp.setSenha(rs.getString("senha"));
 					emp.setTelefone(rs.getString("telefone"));
-					
+
 					tipoUsuario = "empresa";
 
 					return emp;
@@ -128,98 +124,58 @@ public class UsuarioDAO {
 		}
 		return null;
 	}
-	
-	
 
 	public boolean inserirCodigo(RecuperarSenha rec) {
-		
-		String sql = " INSERT INTO recuperarSenha (idUsuario, codigo)" 
-		+ " VALUES (?, ?) ";
-		
-		
+
+		String sql = " INSERT INTO recuperarSenha (idUsuario, codigo)" + " VALUES (?, ?) ";
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1, rec.getIdUsuario());
+
+			ps.setString(1, rec.getEmailUsuario());
 			ps.setInt(2, rec.getCodigo());
-			
+
 			return true;
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
-	
-	
-	
-	public RecuperarSenha rec(int cod) {
-		
-		String sql = "SELECT * FROM recuperarSenha WHERE codigo = ?";
-		
+
+	public RecuperarSenha verificaCodigo(int cod) {
+
+		String sql = " SELECT rs.*, a.id as id_adm, em.id as id_emp FROM recuperarsenha rs "
+				+ " LEFT JOIN administrador a ON (rs.emailUsuario = a.email) "
+				+ " LEFT JOIN empresa em ON (rs.emailUsuario = em.email) "
+				+ " WHERE rs.codigo = ? ";
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, cod);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
+
 			RecuperarSenha samu = new RecuperarSenha();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				
 				samu.setCodigo(rs.getInt("codigo"));
 				samu.setId(rs.getInt("id"));
-				samu.setIdUsuario(rs.getInt("idUsuario"));
-				
+				samu.setEmailUsuario(rs.getString("emailUsuario"));
+
 			}
 			return samu;
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,18 +2,18 @@ package entity;
 
 public class RecuperarSenha {
 	
-	private Integer idUsuario; 
+	private String emailUsuario; 
 	private Integer codigo;
 	private Integer id;
 
 	
 	
 	
-	public Integer getIdUsuario() {
-		return idUsuario;
+	public String getEmailUsuario() {
+		return emailUsuario;
 	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
 	}
 	public Integer getCodigo() {
 		return codigo;

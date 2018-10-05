@@ -59,7 +59,7 @@ public class RecuperarSenhaMBean {
 		if (user != null) {
 			Integer aleatorio = (int) (Math.random() * 9999);
 			RecuperarSenha rSenha = new RecuperarSenha();
-			rSenha.setIdUsuario(user.getId());
+			rSenha.setEmailUsuario(user.getEmail());
 			rSenha.setCodigo(aleatorio);
 
 			if (uDao.inserirCodigo(rSenha)) {
@@ -100,7 +100,7 @@ public class RecuperarSenhaMBean {
 		if (vCod != "") {
 
 			vcod2 = Integer.parseInt(vCod);
-			protocolo = uDao.rec(vcod2);
+			protocolo = uDao.verificaCodigo(vcod2);
 			if (protocolo != null) {
 				codigoCerto = true;
 				return null;
