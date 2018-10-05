@@ -157,8 +157,8 @@ CREATE TABLE curriculo(
 CREATE TABLE recuperarSenha(
 	
 	 id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	 idUsuario INTEGER NOT NULL,
-	 codigo INTEGER NOT NULL
+	 emailUsuario VARCHAR(50),
+	 codigo VARCHAR(4) NOT NULL
 );
 
 

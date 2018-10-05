@@ -19,29 +19,31 @@
 
 			<p:panel>
 				<center>
-				<h:form>
-				 <p:messages id="msgs" />
-					<h:panelGrid columns="1">
-						
-						<h:outputText id="recuperaemail" value=" Insira seu E-mail: " />
-						<p:inputText label="Email"  id="usuarioa" value="#{recuperarSenhaMBean.mens.destinatario}" style="width:240px"
-							required="true" maxlength="14" />
+					<h:form>
+						<p:messages id="msgs" />
+						<h:panelGrid columns="1">
 
-					</h:panelGrid>
-					<p />
-					<div align="center">
+							<h:outputText id="recuperaemail" value=" Insira seu E-mail: " />
+							<p:inputText label="Email" id="usuarioa"
+								value="#{recuperarSenhaMBean.mens.destinatario}"
+								style="width:240px" required="true" />
 
-						<h:commandButton value="Enviar" action="#{a}"
-							style="height: 30px; font-size: 14px; width:220px" />
+						</h:panelGrid>
+						<p />
+						<div align="center">
 
-					</div>
-					<p />
+							<p:commandButton value="Enviar"
+								action="#{recuperarSenhaMBean.verificaEmail}"
+								style="height: 30px; font-size: 14px; width:220px" ajax="false" />
+
+						</div>
+						<p />
 
 					</h:form>
-						<h:form>
+					<h:form>
 						<h:commandButton value="Voltar" ajax="false" action="login"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-							</h:form>
+					</h:form>
 				</center>
 				<p />
 

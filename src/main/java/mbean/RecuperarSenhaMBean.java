@@ -2,6 +2,7 @@ package mbean;
 
 import java.awt.Label;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -52,17 +53,21 @@ public class RecuperarSenhaMBean {
 
 	}
 
-	private String verificaEmail(String email) {
+	public String verificaEmail() {
 
-		user = uDao.busca(email);
+		System.out.println(mens.getDestinatario());
+
+		user = uDao.busca(mens.getDestinatario());
 
 		if (user != null) {
 			Integer aleatorio = (int) (Math.random() * 9999);
 			RecuperarSenha rSenha = new RecuperarSenha();
-			rSenha.setEmailUsuario(user.getEmail());
+			rSenha.setEmailUsuario(user.getEmail()); // FICA ESPERTO COM ESSA LINHA
 			rSenha.setCodigo(aleatorio);
 
 			if (uDao.inserirCodigo(rSenha)) {
+
+				// TODO Auto-generated method stub
 				c.setText("<html>CÓDIGO: <b>" + aleatorio + "</b></html>");
 				mens.setAssunto("Recupera Senha - Sistema SECV");
 				mens.setDestinatario(user.getEmail());
@@ -70,73 +75,50 @@ public class RecuperarSenhaMBean {
 
 				try {
 					EnviaUtil.enviaEmail(mens);
-					System.out.println("Email enviado com sucesso!");
-					return "telacodigo?faces-redirect=true";
 				} catch (EmailException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
+				System.out.println("Email enviado com sucesso!");
+				return "telaCodigo?faces-redirect=true";
+
 			} else {
 
 				System.out.println("Problema ao cadastrar codigo");
 			}
-			
-//			if()) {
-//				
-//				
-//				
-//				
-//			}
-//			
-
 		} else {
 			System.out.println("Problema ao Enviar Email");
 		}
 		return null;
 	}
 
-	public String verificaCodigo() {
+	public void verificaCodigo() {
 
-		if (vCod != "") {
-
-			vcod2 = Integer.parseInt(vCod);
-			protocolo = uDao.verificaCodigo(vcod2);
-			if (protocolo != null) {
-				codigoCerto = true;
-				return null;
-			} else {
-				// CODIGO ERRADO
-				return null;
-			}
-		} else {
-			// COLOQUE UM CODIGO
-			return null;
-		}
+		protocolo = uDao.verificaCodigo(vCod);
+		if (protocolo != null) {
+			codigoCerto = true;
+		} 
 	}
 
-//	public String novaSenha() {
-//
-//		if (Password.equals("") || verificaPassword.equals("")) {
-//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Preencha o campo em branco!"));
-//			return null;
-//			
-//		}else {
-//			if(Password.equals(verificaPassword)) {
-//				if(uDao.alterar(new Usuario(pro, nome, senha, email, telefone))) {
-//					uDao.deletaProtocologo(ID_USUARIO_FINAL);
-//					for(int x = 1; x< 2;x++) {
-//						FacesContext.getCurrentInstance().addMessage(null, 
-//								new FacesMessage("SENHA ALTERADA COM SUCESSO!"));
-//					}
-//					return "index?faces-redirect=true";
-//				}
-//			}else {
-//				FacesContext.getCurrentInstance().addMessage(null, 
-//						new FacesMessage("Senhas diferentes. Veirifique password") );
-//			}
-//			return null;
-//		}
-//	}
+	/*
+	 * public String novaSenha() {
+	 * 
+	 * if (Password.equals(verificaPassword)) {
+	 * 
+	 * if (uDao.alterar(new Usuario(pro, nome, senha, email, telefone))) {
+	 * uDao.deletaProtocologo(//COLOCAR O GETEMAIL);
+	 * 
+	 * for (int x = 1; x < 2; x++) {
+	 * FacesContext.getCurrentInstance().addMessage(null, new
+	 * FacesMessage("SENHA ALTERADA COM SUCESSO!")); }
+	 * 
+	 * return "index?faces-redirect=true"; } } else {
+	 * FacesContext.getCurrentInstance().addMessage(null, new
+	 * FacesMessage("Senhas diferentes. Veirifique password")); } return null;
+	 * 
+	 * }
+	 */
 
 	public String getvCod() {
 		return vCod;
@@ -232,6 +214,14 @@ public class RecuperarSenhaMBean {
 
 	public void setC(Label c) {
 		this.c = c;
+	}
+
+	public RecuperarSenha getProtocolo() {
+		return protocolo;
+	}
+
+	public void setProtocolo(RecuperarSenha protocolo) {
+		this.protocolo = protocolo;
 	}
 
 	public boolean isCodigoCerto() {

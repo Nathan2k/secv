@@ -66,7 +66,7 @@ public class UsuarioDAO {
 		}
 
 		return false;
-	}
+	}	
 
 	public Usuario buscarUsuarioPorEmail(String email) {
 
@@ -145,7 +145,7 @@ public class UsuarioDAO {
 		return false;
 	}
 
-	public RecuperarSenha verificaCodigo(int cod) {
+	public RecuperarSenha verificaCodigo(String cod) {
 
 		String sql = " SELECT rs.*, a.id as id_adm, em.id as id_emp FROM recuperarsenha rs "
 				+ " LEFT JOIN administrador a ON (rs.emailUsuario = a.email) "
@@ -155,7 +155,7 @@ public class UsuarioDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, cod);
+			ps.setString(1, cod);
 
 			ResultSet rs = ps.executeQuery();
 
