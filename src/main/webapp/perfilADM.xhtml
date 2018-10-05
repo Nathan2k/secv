@@ -12,24 +12,42 @@
 		
 		
 		<p:panel styleClass="esse">
+		<h:form>
+		<h:panelGrid columns="2" style="width:100%">
+		<h:panelGrid columns="1" style="width:50%">
 
-		<h:panelGrid columns="1">
-
-			<p:outputLabel id="NIF" value="NIF: #{usuarioMBean.adm.NIF}"/><br/>
-			
-			<p:outputLabel id="email" value="Email: #{usuarioMBean.adm.email}"/><br/>
-	        
-			<p:outputLabel id="nome" value="Nome: #{usuarioMBean.adm.nome}"/><br/>
-	        
-			<p:outputLabel id="senha" value="Senha: #{usuarioMBean.adm.senha}"/><br/>
-	        
-			<p:outputLabel id="telefone" value="Telefone: #{usuarioMBean.adm.telefone}"/><br/>
+			<p:outputLabel id="NIF" value="NIF: #{usuarioMBean.adm.NIF}"/>
+			<br/>
+			<p:outputLabel id="email" value="Email: #{usuarioMBean.adm.email}"/>
+			<br/>
+			<p:outputLabel id="nome" value="Nome: #{usuarioMBean.adm.nome}"/>
+			<br/>
+			<p:outputLabel id="senha" value="Senha: #{usuarioMBean.adm.senha}"/>
+			<br/>
+			<p:outputLabel id="telefone" value="Telefone: #{usuarioMBean.adm.telefone}"/>
+			<br/>
 
 		</h:panelGrid>
-	
 
-			<h:commandButton value="Editar" action="#{a}" style="margin-left: 40%; height: 30px; font-size: 14px; width:150px"/>
+		<h:panelGrid columns="1" style="width:50%">
 
+			<p:outputLabel id="cidade" value="Cidade: #{usuarioMBean.adm.cidade}"/>
+			<br/>
+			<p:outputLabel id="bairro" value="Bairro: #{usuarioMBean.adm.bairro}"/>
+			<br/>
+			<p:outputLabel id="rua" value="Rua: #{usuarioMBean.adm.rua}"/>
+			<br/>
+			<p:outputLabel id="cargo" value="Cargo: #{usuarioMBean.adm.cargo}"/>
+			<br/>
+
+
+		</h:panelGrid>
+		</h:panelGrid>
+
+			<center>
+			<h:commandButton value="Editar" ajax="false" action="alterarPerfilADM?faces-redirect=true" style="height: 30px; font-size: 14px; width:120px; border: 0px; "/>
+			</center>
+		</h:form>
 		
 		
 		
