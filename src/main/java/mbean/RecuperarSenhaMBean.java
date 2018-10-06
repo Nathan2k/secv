@@ -40,13 +40,13 @@ public class RecuperarSenhaMBean {
 			rSenha.setIdUsuario(user.getId());
 			rSenha.setCodigo(aleatorio);
 			
-			if()) {
-				
-				
-				
-				
-			}
-			
+//			if()) {
+//				
+//				
+//				
+//				
+//			}
+//			
 
 		} else {
 
