@@ -40,14 +40,13 @@ public class UsuarioDAO {
 
 	public boolean alterar(Usuario user) {
 
-		String sql = "UPDATE ? SET senha = ? WHERE email = ?";
+		String sql = "UPDATE "+ tipoUsuario +" SET senha = ? WHERE email = ?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setString(1, tipoUsuario);
-			ps.setString(2, user.getSenha());
-			ps.setString(3, user.getEmail());
+			ps.setString(1, user.getSenha());
+			ps.setString(2, user.getEmail());
 
 			return ps.execute();
 
@@ -66,7 +65,7 @@ public class UsuarioDAO {
 		}
 
 		return false;
-	}	
+	}
 
 	public Usuario buscarUsuarioPorEmail(String email) {
 
@@ -127,15 +126,16 @@ public class UsuarioDAO {
 
 	public boolean inserirCodigo(RecuperarSenha rec) {
 
-		String sql = " INSERT INTO recuperarSenha (idUsuario, codigo)" + " VALUES (?, ?) ";
+		String sql = " INSERT INTO recuperarSenha (emailUsuario, codigo)" + " VALUES (?, ?) ";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			ps.setString(1, rec.getEmailUsuario());
-			ps.setInt(2, rec.getCodigo());
+			ps.setString(2, rec.getCodigo());
 
-			return true;
+			
+			return ps.executeUpdate()>0;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -149,8 +149,7 @@ public class UsuarioDAO {
 
 		String sql = " SELECT rs.*, a.id as id_adm, em.id as id_emp FROM recuperarsenha rs "
 				+ " LEFT JOIN administrador a ON (rs.emailUsuario = a.email) "
-				+ " LEFT JOIN empresa em ON (rs.emailUsuario = em.email) "
-				+ " WHERE rs.codigo = ? ";
+				+ " LEFT JOIN empresa em ON (rs.emailUsuario = em.email) " + " WHERE rs.codigo = ? ";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -159,11 +158,19 @@ public class UsuarioDAO {
 
 			ResultSet rs = ps.executeQuery();
 
-			RecuperarSenha samu = new RecuperarSenha();
+			RecuperarSenha samu = null;
 
 			if (rs.next()) {
 				
-				samu.setCodigo(rs.getInt("codigo"));
+				samu = new RecuperarSenha();
+				
+				if(rs.getString("id_adm") != null) {
+					tipoUsuario = "administrador";
+				}else {
+					tipoUsuario = "empresa";
+				}
+				
+				samu.setCodigo(rs.getString("codigo"));
 				samu.setId(rs.getInt("id"));
 				samu.setEmailUsuario(rs.getString("emailUsuario"));
 
@@ -177,5 +184,50 @@ public class UsuarioDAO {
 
 		return null;
 	}
+	
+	
+	
+	
+	public boolean deletaProtocolo(RecuperarSenha proto) {
+		
+		String sql = "DELETE * FROM recuperarSenha " + "WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, proto.getId());
+			
+			return ps.executeUpdate()>0;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
+
+
+
+

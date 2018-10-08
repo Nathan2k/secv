@@ -4,8 +4,10 @@ import java.awt.Label;
 import java.sql.SQLException;
 import java.util.UUID;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.apache.commons.mail.EmailException;
 
@@ -63,7 +65,7 @@ public class RecuperarSenhaMBean {
 			Integer aleatorio = (int) (Math.random() * 9999);
 			RecuperarSenha rSenha = new RecuperarSenha();
 			rSenha.setEmailUsuario(user.getEmail()); // FICA ESPERTO COM ESSA LINHA
-			rSenha.setCodigo(aleatorio);
+			rSenha.setCodigo(aleatorio.toString());
 
 			if (uDao.inserirCodigo(rSenha)) {
 
@@ -98,28 +100,47 @@ public class RecuperarSenhaMBean {
 		protocolo = uDao.verificaCodigo(vCod);
 		if (protocolo != null) {
 			codigoCerto = true;
-		} 
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Codigo esta Incorreto!"));
+			System.out.println("Codigos diferentes!!");
+		}
 	}
 
-	/*
-	 * public String novaSenha() {
-	 * 
-	 * if (Password.equals(verificaPassword)) {
-	 * 
-	 * if (uDao.alterar(new Usuario(pro, nome, senha, email, telefone))) {
-	 * uDao.deletaProtocologo(//COLOCAR O GETEMAIL);
-	 * 
-	 * for (int x = 1; x < 2; x++) {
-	 * FacesContext.getCurrentInstance().addMessage(null, new
-	 * FacesMessage("SENHA ALTERADA COM SUCESSO!")); }
-	 * 
-	 * return "index?faces-redirect=true"; } } else {
-	 * FacesContext.getCurrentInstance().addMessage(null, new
-	 * FacesMessage("Senhas diferentes. Veirifique password")); } return null;
-	 * 
-	 * }
-	 */
+	public String novaSenha() {
+		
+	  if (Password.equals(verificaPassword)) {
+	  
+		  Usuario usuarioP = new Usuario(null, null, Password, protocolo.getEmailUsuario(), null);
+		  
+		  if (uDao.alterar(usuarioP)) {
+		  
+			  uDao.deletaProtocolo(protocolo);
+			  
+				  
+		  for (int x = 1; x < 2; x++) {
+		  FacesContext.getCurrentInstance().addMessage(null, new
+		  FacesMessage("SENHA ALTERADA COM SUCESSO!")); 
+		  }
+		  
+		  return "login?faces-redirect=true"; 
+		  }
+	  }
+	  else {
+		  
+	  FacesContext.getCurrentInstance().addMessage(null, new
+	  FacesMessage("Senhas diferentes. Veirifique password")); 
+	  
+	  } 
+	  
+	  return null;
+	  
+	}
 
+	
+	
+	
+	
+	
 	public String getvCod() {
 		return vCod;
 	}

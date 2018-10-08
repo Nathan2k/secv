@@ -9,6 +9,9 @@
 </h:head>
 
 <h:body>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
 
 	<div class="center">
 
@@ -45,7 +48,7 @@
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 
 					</h:form>
-				
+
 					<h:form id="formSenha"
 						rendered="#{recuperarSenhaMBean.codigoCerto}">
 						<p:messages id="msgs" />

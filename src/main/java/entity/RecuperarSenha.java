@@ -3,7 +3,7 @@ package entity;
 public class RecuperarSenha {
 	
 	private String emailUsuario; 
-	private Integer codigo;
+	private String codigo;
 	private Integer id;
 
 	
@@ -15,18 +15,20 @@ public class RecuperarSenha {
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
 	}
-	public Integer getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
+	
 	
 	
 	
