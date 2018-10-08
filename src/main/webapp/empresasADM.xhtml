@@ -49,6 +49,7 @@
 			</p:dataTable>
 
 			<p:dialog header="Detalhes da Empresa" widgetVar="empDialog"
+			draggable="true"
 				modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="empDetail" style="text-align:center;">
 					<p:panelGrid columns="2">
@@ -83,18 +84,21 @@
 					<h:form>
 						<p:growl id="message" showDetail="true" />
 						<p:commandButton value="Excluir Empresa" ajax="false"
+							actionListener="#{a}" update="message"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " >
-							<p:confirm header="Confirmation" message="Deseja excluir a empresa?" icon="ui-icon-alert" update="message"/>
+							<p:confirm header="Confirmação" message="Deseja excluir a empresa?" icon="ui-icon-alert" update="message"/>
 							</p:commandButton>
 
 						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						
 							<p:commandButton value="Não" type="button"
-								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-						
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" 
+								style="height: 25px; font-size: 14px; width:150px; border: 0px; "/>
+
 							<p:commandButton value="Sim" type="button"
-								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-								
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+								style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
+
 						</p:confirmDialog>
 					</h:form>
 				</p:outputPanel>

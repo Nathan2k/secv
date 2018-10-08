@@ -62,7 +62,7 @@ public class UsuarioMBean {
 		if (adm != null) {
 			return "homeADM.xhtml";
 		}
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou Senha invalido(s)"));
 		return "login.xhtml";
 	}
 

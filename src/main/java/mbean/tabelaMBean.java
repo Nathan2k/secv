@@ -22,11 +22,10 @@ public class tabelaMBean {
 	UsuarioEmpresa ue;	
 	List<UsuarioEmpresa> ues;
 	UsuarioEmpresaDAO ueDAO;
-	
-	
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
 	private UsuarioEmpresa selectemp;
+	
 	
 	
 	public UsuarioEmpresa getSelectemp() {
@@ -37,16 +36,10 @@ public class tabelaMBean {
 		this.selectemp = selectemp;
 	}
 
-	private UsuarioEmpresa emp;
-	private UsuarioADM adm;
-	
-	public void Confirm() {
-        addMessage("System Error", "Tente Novamente.");
-    }
-     
-    public void addMessage(String summary, String detail) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
+
+    
+    public void excluir() {
+    	
     }
 
 	
@@ -56,26 +49,6 @@ public class tabelaMBean {
 		ueDAO = new UsuarioEmpresaDAO();
 		ues = ueDAO.listarTodos();
 		uDao = new UsuarioEmpresaDAO();
-	}
-	
-	public String alterar() {
-		
-		emp = userMb.getEmp();
-		
-		uDao.alterar(emp);
-		
-		return "perfilEmpresa.xhtml";
-		
-	}
-
-	
-	
-	public UsuarioEmpresa getEmp() {
-		return emp;
-	}
-
-	public void setEmp(UsuarioEmpresa emp) {
-		this.emp = emp;
 	}
 
 	public void setUserMb(UsuarioMBean userMb) {
