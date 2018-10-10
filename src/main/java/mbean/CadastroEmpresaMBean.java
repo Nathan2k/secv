@@ -3,9 +3,11 @@ package mbean;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import DAO.UsuarioEmpresaDAO;
 import entity.UsuarioEmpresa;
+import utils.MensFaces;
 
 @ManagedBean
 @ViewScoped
@@ -19,13 +21,32 @@ public class CadastroEmpresaMBean {
 	}
 
 	public String salvar() {
-		if (uDao.inserirEmpresa(emp)) {
-			return "login?faces-redirect=true";
-		} else {
-			return null;
+		try {
+			if (uDao.buscarEmpresa(emp.getEmail()) == null) {
+
+				if (uDao.buscaCnpj(emp.getCNPJ()) == null) {
+
+					if (uDao.inserirEmpresa(emp)) {
+						MensFaces.m("Sucesso ao cadastrar o Usuario!");
+						FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+						return "login?faces-redirect=true";
+					} else {
+						MensFaces.m("Erro TECNICO, contate o Administrador!");
+					}
+				} else {
+
+					MensFaces.m("Este CNPJ ja esta cadastrado!");
+				}
+			} else {
+				MensFaces.m("Este email ja esta cadastrado!");
+			}
+		} catch (Exception e) {
+			MensFaces.m(e.toString());
 		}
+		return null;
+
 	}
-	
+
 	public UsuarioEmpresaDAO getuDao() {
 		return uDao;
 	}
