@@ -174,5 +174,83 @@ public class UsuarioEmpresaDAO {
 
 		return false;
 	}
+	
+	
+	
+	public UsuarioEmpresa buscarEmpresa(String email) throws SQLException { // perguntar sobre a senha
+
+		String sql = "SELECT * FROM empresa " + "WHERE email = ?;"; // perguntar se falta alguma coisa
+
+		PreparedStatement ps = conn.prepareStatement(sql);
+
+		ps.setString(1, email);
+
+		ResultSet rs = ps.executeQuery(); // perguntar como tirar o java.sql.resultset
+		UsuarioEmpresa emp = null;
+		if (rs.next()) {
+			emp = new UsuarioEmpresa();
+
+			emp.setId(rs.getInt("id"));// perguntar se o ID é igual a variavel q esta no banco
+			emp.setBairro(rs.getString("bairro"));
+			emp.setCidade(rs.getString("cidade"));
+			emp.setRua(rs.getString("rua"));
+			emp.setSenha(rs.getString("senha"));
+			emp.setNome(rs.getString("nome"));
+			emp.setCNPJ(rs.getString("CNPJ"));
+			emp.setEmail(rs.getString("email"));
+			emp.setRepresentante(rs.getString("representante"));
+			emp.setTelefone(rs.getString("telefone"));
+
+		}
+		return emp;
+	}
+	
+	public UsuarioEmpresa buscaCnpj(String cnpj) throws SQLException { // perguntar sobre a senha
+
+		String sql = "SELECT * FROM empresa " + "WHERE CNPJ = ?;"; // perguntar se falta alguma coisa
+
+		PreparedStatement ps = conn.prepareStatement(sql);
+
+		ps.setString(1, Replace.format(cnpj));
+
+		ResultSet rs = ps.executeQuery(); // perguntar como tirar o java.sql.resultset
+		UsuarioEmpresa emp = null;
+		if (rs.next()) {
+			emp = new UsuarioEmpresa();
+
+			emp.setId(rs.getInt("id"));// perguntar se o ID é igual a variavel q esta no banco
+			emp.setBairro(rs.getString("bairro"));
+			emp.setCidade(rs.getString("cidade"));
+			emp.setRua(rs.getString("rua"));
+			emp.setSenha(rs.getString("senha"));
+			emp.setNome(rs.getString("nome"));
+			emp.setCNPJ(rs.getString("CNPJ"));
+			emp.setEmail(rs.getString("email"));
+			emp.setRepresentante(rs.getString("representante"));
+			emp.setTelefone(rs.getString("telefone"));
+
+		}
+		return emp;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

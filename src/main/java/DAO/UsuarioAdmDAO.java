@@ -92,7 +92,69 @@ public class UsuarioAdmDAO {
 	}
 	
 	
+	public UsuarioADM buscarADM(String nif) {
+
+		String sql = "SELECT * FROM administrador " + "WHERE NIF = ?;";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, nif);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				UsuarioADM adm = new UsuarioADM();
+
+				adm.setId(rs.getInt("id"));
+				adm.setNIF(rs.getString("NIF"));
+				adm.setEmail(rs.getString("email"));
+				adm.setNome(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha"));
+				adm.setTelefone(rs.getString("telefone"));
+
+				return adm;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
+	public UsuarioADM buscarEmailADM(String email) {
+
+		String sql = "SELECT * FROM administrador " + "WHERE email = ?;";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, email);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				UsuarioADM adm = new UsuarioADM();
+
+				adm.setId(rs.getInt("id"));
+				adm.setNIF(rs.getString("NIF"));
+				adm.setEmail(rs.getString("email"));
+				adm.setNome(rs.getString("nome"));
+				adm.setSenha(rs.getString("senha"));
+				adm.setTelefone(rs.getString("telefone"));
+
+				return adm;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 }
