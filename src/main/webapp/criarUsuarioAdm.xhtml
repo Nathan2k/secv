@@ -26,19 +26,19 @@
 				<center>
 					<h:panelGrid>
 
-						<h:outputText value="NIF: " style="margin:5px;font-weight:bold;" />
+						<h:outputText value="NIF: " style="font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.NIF}"  required="true" style="width: 350px;" />
 						
-						<h:outputText value="Email: " style="margin:5px;font-weight:bold;" />
+						<h:outputText value="Email: " style="font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.email}" required="true" style="width: 350px;" />
 						
-						<h:outputText value="Nome: " style="margin:5px;font-weight:bold;" />
+						<h:outputText value="Nome: " style="font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.nome}" required="true" style="width: 350px;" />
 						
-						<h:outputText value="Senha: " style=" margin:5px; font-weight:bold;" />
+						<h:outputText value="Senha: " style="  font-weight:bold;" />
 						<p:password id="senha3" value="#{cadastroAdmMBean.adm.senha}" required="true" style="width: 350px;" />
 						
-						<h:outputText value="Confirmar Senha: " style="margin-top:50px;font-weight:bold;" />
+						<h:outputText value="Confirmar Senha: " style="font-weight:bold;" />
 						<p:password id="confsenha3" required="true" style="width: 350px;" />
 						
 						<h:outputLabel for="tel" value="Telefone:" />
@@ -50,7 +50,7 @@
 				</center>
 		
 				<center>
-					<h:commandButton value="Cadastrar" ajax="false" action="#{cadastroAdmMBean.salvar}" style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+					<h:commandButton value="Cadastrar" ajax="false" action="#{cadastroAdmMBean.salvar}" style="height: 30px; font-size: 14px; width:120px; border: 0px; " />
 				</center>
 				
 			</h:form>
