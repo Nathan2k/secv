@@ -58,7 +58,7 @@ public class UsuarioMBean {
 	}
 
 	private String loginADM() {
-		UsuarioADM adm = admDAO.buscarADM((empreOUadm), senha);
+		adm = admDAO.buscarADM((empreOUadm), senha);
 		if (adm != null) {
 			return "homeADM.xhtml";
 		}

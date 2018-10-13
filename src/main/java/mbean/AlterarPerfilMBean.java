@@ -10,41 +10,44 @@ import entity.UsuarioEmpresa;
 
 @ManagedBean
 public class AlterarPerfilMBean {
-	
+
 	public UsuarioEmpresaDAO uDao;
 	public UsuarioAdmDAO admDAO;
-	
+
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
-	
-	
-	
+
 	private UsuarioEmpresa emp;
 	private UsuarioADM adm;
 
-	
 	public AlterarPerfilMBean() {
-		
+
 		uDao = new UsuarioEmpresaDAO();
+		admDAO = new UsuarioAdmDAO();
 	}
-	
+
 	public String alterar() {
-		
+
 		emp = userMb.getEmp();
-		
+
 		uDao.alterar(emp);
-		
-		return "perfilEmpresa.xhtml";
-		
+
+		return "perfilEmpresa?faces-redirect=true";
+
 	}
-	
-	
-	
-	
-	
+
+	public String alterarADM() {
+
+		adm = userMb.getAdm();
+
+		admDAO.mudarADM(adm);
+
+		return "perfilADM?faces-redirect=true";
+
+	}
+
 	public void setUserMb(UsuarioMBean userMb) {
 		this.userMb = userMb;
 	}
 
-	
 }

@@ -6,54 +6,58 @@
 
 
 <ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
-<ui:define name="title">AlterarPerfil ADM</ui:define>
+	<ui:define name="title">AlterarPerfil ADM</ui:define>
 
 	<ui:define name="content">
 
-<h:body>
+		<h:body>
 
-<center>
-	<p:panel value="Login" style="width: 600px">
-		
-		<h:graphicImage library="img" name="/logo-senai.png" style="width:300px; margin: 7px;"/>
+			<center>
+				<p:panel value="Login" style="width: 600px">
 
-		<p />
-		<p:panel>
-			<h:form>
+					<h:graphicImage library="img" name="/logo-senai.png"
+						style="width:300px; margin: 7px;" />
 
-				<center>
-					<h:panelGrid>
-
-						<p:outputLabel id="nif" value="NIF: " />
-						<p:inputText disabled="true" value="#{usuarioMBean.emp.CNPJ}" />
-						<br />
-						<p:outputLabel id="nomeADM" value="Nome: " />
-						<p:inputText value="#{usuarioMBean.emp.nome}" />
-						<br />
-						<p:outputLabel id="email" value="Email: #{usuarioMBean.emp.email}" />
-						<p:inputText value="#{usuarioMBean.emp.email}" />
-						<br />
-						<p:outputLabel id="Telefone" value="Telefone: #{usuarioMBean.emp.telefone}" />
-						<p:inputText value="#{usuarioMBean.emp.telefone}" />
-						<br />
-
-					</h:panelGrid>
 					<p />
-				</center>
-		
-				<center>
-					<h:commandButton value="Salvar" action="#{alterarPerfilMBean.alterar}" style="height: 30px; font-size: 14px; width:120px; border: 0px" ajax="false" />
-				</center>
-				
-			</h:form>
+					<p:panel>
+						<h:form>
 
-			<p />
+							<center>
+								<h:panelGrid>
 
-		</p:panel>
-	</p:panel>
-	</center>
+									<p:outputLabel id="nif" value="NIF: " />
+									<p:inputText disabled="true" value="#{usuarioMBean.adm.NIF}" />
+									<br />
+									<p:outputLabel id="nomeADM" value="Nome: " />
+									<p:inputText value="#{usuarioMBean.adm.nome}" />
+									<br />
+									<p:outputLabel id="email" value="Email: " />
+									<p:inputText value="#{usuarioMBean.adm.email}" />
+									<br />
+									<p:outputLabel id="Telefone" value="Telefone: " />
+									<p:inputText value="#{usuarioMBean.adm.telefone}" />
+									<br />
 
-</h:body>
+								</h:panelGrid>
+								<p />
+							</center>
+
+							<center>
+								<h:commandButton value="Salvar"
+									action="#{alterarPerfilMBean.alterarADM}"
+									style="height: 30px; font-size: 14px; width:120px; border: 0px"
+									ajax="false" />
+							</center>
+
+						</h:form>
+
+						<p />
+
+					</p:panel>
+				</p:panel>
+			</center>
+
+		</h:body>
 
 
 	</ui:define>

@@ -91,6 +91,8 @@ public class UsuarioAdmDAO {
 
 	}
 	
+	//---------------------------------------------------------------------------------------------------
+	
 	
 	public UsuarioADM buscarADM(String nif) {
 
@@ -124,6 +126,9 @@ public class UsuarioAdmDAO {
 		return null;
 	}
 	
+	//---------------------------------------------------------------------------------------------------
+	
+	
 	public UsuarioADM buscarEmailADM(String email) {
 
 		String sql = "SELECT * FROM administrador " + "WHERE email = ?;";
@@ -156,5 +161,42 @@ public class UsuarioAdmDAO {
 		return null;
 	}
 	
+	//---------------------------------------------------------------------------------------------------
+	
+	
+	public boolean mudarADM(UsuarioADM uAdm) {
+
+		String sql = "UPDATE administrador SET nome = ?, email = ?, telefone = ?, NIF = ? " // perguntar se tem q
+																							// passar o CNPJ no //
+																							// update
+				+ " WHERE id = ?";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, uAdm.getNome());
+			ps.setString(2, uAdm.getEmail());
+			ps.setString(3, uAdm.getTelefone());
+			ps.setString(4, uAdm.getNIF());
+			ps.setInt(5, uAdm.getId());
+
+			return ps.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return false;
+	}
 	
 }

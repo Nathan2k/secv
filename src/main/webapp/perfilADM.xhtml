@@ -27,18 +27,17 @@
 
 
 						<h:outputText id="nif" value="NIF: " style="font-weight:bold;"/>
-						<p:inputText disabled="true" value="#{usuarioMBean.emp.CNPJ}" />
+						<p:inputText disabled="true" value="#{usuarioMBean.adm.NIF}" style="font-weight: bold;"/>
 						<br />
 						<p:outputLabel id="nomeADM" value="Nome: " />
-						<p:inputText disabled="true" value="#{usuarioMBean.emp.nome}" />
+						<p:inputText disabled="true" value="#{usuarioMBean.adm.nome}" style="font-weight: bold;"/>
 						<br />
-						<p:outputLabel id="email" value="Email: #{usuarioMBean.emp.email}" />
-						<p:inputText disabled="true" value="#{usuarioMBean.emp.email}" />
+						<p:outputLabel id="email" value="Email: " />
+						<p:inputText disabled="true" value="#{usuarioMBean.adm.email}" style="font-weight: bold;"/>
 						<br />
-						<p:outputLabel id="Telefone" value="Telefone: #{usuarioMBean.emp.telefone}" />
-						<p:inputText disabled="true" value="#{usuarioMBean.emp.telefone}" />
+						<p:outputLabel id="Telefone" value="Telefone: " />
+						<p:inputText disabled="true" value="#{usuarioMBean.adm.telefone}" style="font-weight: bold;"/>
 						<br />
-
 					</h:panelGrid>
 					<p />
 				</center>
