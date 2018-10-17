@@ -19,7 +19,6 @@ public class Filtro {
 	
 	
 	
-	
 	public String getDeficiencia() {
 		return deficiencia;
 	}

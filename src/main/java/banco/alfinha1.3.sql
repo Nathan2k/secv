@@ -134,6 +134,7 @@ CREATE TABLE filtro(
 CREATE TABLE curriculo(
 	
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    idade VARCHAR(50),
     idIdioma INTEGER,
 	idFEtaria INTEGER,
     idCidade INTEGER,
