@@ -35,20 +35,20 @@ public class tabelaMBean {
 		this.selectemp = selectemp;
 	}
 
-	public String excluir() {
+	public void excluir() {
 		try {
-				System.out.println("entro no else");
-				if (uDao.deletar(selectemp)) {
-					ues.remove(selectemp.getId());
-					ues = uDao.listarTodos();
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Excluido com sucesso!"));
-					return "perfilADM?faces-redirect=true";
-				}
+			System.out.println("entro no else");
+			if (uDao.deletar(selectemp)) {
+				ues.remove(selectemp);
+				ues = uDao.listarTodos();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Excluido com sucesso!"));
+				//return "perfilADM?faces-redirect=true";
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			return null;
+//		return null;
 	}
 
 	public tabelaMBean() {

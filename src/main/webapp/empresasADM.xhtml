@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
-<p:growl id="message" showDetail="true" />
+
 	<ui:define name="css">
 		<link rel="stylesheet" type="text/css"
 			href="resources/css/homeADM.css" />
@@ -81,23 +81,25 @@
 
 					</p:panelGrid>
 					<p />
-						
-						<p:commandButton value="Excluir Empresa" ajax="false"
-							actionListener="#{a}" update="message"
+					
+					<!-- Ta tudo cagado a parti daqui, tentamos fzer da forma certo que é colocar o excluir() dentro docommandButton -->
+						<p:growl id="message" showDetail="true" />
+						<p:commandButton value="Excluir Empresa" ajax="false" 
+							actionListener="#{tabelaMBean.excluir}" update="message"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " >
-							<p:confirm header="Confirmação" message="Deseja excluir a empresa?" icon="ui-icon-alert" update="message"/>
+							<p:confirm header="Confirmação" message="Deseja excluir a empresa?" icon="ui-icon-alert" />
 							</p:commandButton>
 
 						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						
-							<p:commandButton value="Não" type="button"
+							<p:commandButton value="Não"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close" 
 								style="height: 25px; font-size: 14px; width:150px; border: 0px; "/>
 
-							<p:commandButton value="Sim" 
+							<p:commandButton value="Sim"  type="button"
 								styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
 								style="height: 25px; font-size: 14px; width:150px; border: 0px; " 
-								action="#{tabelaMBean.excluir}"
+								
 								/>
 						</p:confirmDialog>
 				</p:outputPanel>
@@ -105,11 +107,8 @@
 
 
 		</h:form>
-
-
-
 	</ui:define>
-
+	
 </ui:composition>
 
 </html>

@@ -40,14 +40,14 @@
 						<h:panelGrid columns="1">
 
 							<h:outputText id="loginLabel"
-								value="#{usuarioMBean.imagem eq 'off' ? 'CNPJ: *' : 'NIF: *'}" />
+								value="#{usuarioMBean.imagem eq 'off' ? 'CNPJ: ' : 'NIF: '}" />
 							<p:inputMask label="Usuário"
 								mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}"
 								id="usuario" value="#{usuarioMBean.empreOUadm}" required="true"
 								style="width:240px" maxlength="14"
 								requiredMessage="Campo Usuário invalido" />
 
-							<h:outputText id="senhaLabel" value="Senha: *" />
+							<h:outputText id="senhaLabel" value="Senha: " />
 							<p:password label="Senha" value="#{usuarioMBean.senha}"
 								id="senha" requiredMessage="Campo Senha invalido"
 								required="true" style="width:240px" />
