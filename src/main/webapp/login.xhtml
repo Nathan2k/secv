@@ -65,6 +65,7 @@
 				<center>
 					<h:form>
 						<h:commandButton value="Nova Empresa" ajax="false"
+						disabled="#{usuarioMBean.imagem ne 'off'}"
 							action="novaemp"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>

@@ -4,60 +4,84 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-
 <ui:composition
 	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
 
 	<ui:define name="content">
 
+		<h:body>
 
-		<p:panel style="margin-top:8%; align:center; margin-left:20%; margin-right:20%; width:45%">
-
-		
-			<h:panelGrid columns="2" style="width:100%">
-
-				<h:panelGrid columns="1" style="width:50%">
-
-					<p:outputLabel id="cnpj" value="CNPJ: #{usuarioMBean.emp.CNPJ}" />
-					<br />
-					<p:outputLabel id="nomeEmpresa"
-						value="Nome: #{usuarioMBean.emp.nome}" />
-					<br />
-					<p:outputLabel id="cidade"
-						value="Cidade: #{usuarioMBean.emp.cidade}" />
-					<br />
-					<p:outputLabel id="bairro"
-						value="Bairro: #{usuarioMBean.emp.bairro}" />
-
-				</h:panelGrid>
-
-				<h:panelGrid columns="1" style="width:50%">
-
-					<p:outputLabel id="rua" value="Rua: #{usuarioMBean.emp.rua}" />
-					<br />
-					<p:outputLabel id="email" value="Email: #{usuarioMBean.emp.email}" />
-					<br />
-					<p:outputLabel id="Telefone"
-						value="Telefone: #{usuarioMBean.emp.telefone}" />
-					<br />
-					<p:outputLabel id="representante"
-						value="Representante: #{usuarioMBean.emp.representante}" />
-
-				</h:panelGrid>
-
-			</h:panelGrid>
-
-
-			<br />
-			
-			<h:form>
 			<center>
-				<h:commandButton value="Editar" action="alterarPerfilEmpresa?faces-redirect=true"
-					style="height: 30px; font-size: 14px; width:220px" ajax="false" />
-			</center>
-			</h:form>
+				<p:panel value="Login" style="width: 600px">
 
-		</p:panel>
+					<h:graphicImage library="img" name="/logo-senai.png"
+						style="width:300px; margin: 7px;" />
+
+					<p />
+					<p:panel>
+						<h:form>
+
+							<center>
+								<h:panelGrid>
+
+
+									<h:outputText id="cnpj" value="CNPJ: "
+										style="font-weight:bold;" />
+									<p:inputText disabled="true" value="#{usuarioMBean.emp.CNPJ}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="nomeEmp" value="Nome: " />
+									<p:inputText disabled="true" value="#{usuarioMBean.emp.nome}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="representante" value="Representante (a): " />
+									<p:inputText disabled="true"
+										value="#{usuarioMBean.emp.representante}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="cidade" value="Cidade: " />
+									<p:inputText disabled="true" value="#{usuarioMBean.emp.cidade}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="bairro" value="Bairro: " />
+									<p:inputText disabled="true" value="#{usuarioMBean.emp.bairro}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="rua" value="Rua: " />
+									<p:inputText disabled="true" value="#{usuarioMBean.emp.rua}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="email" value="Email: " />
+									<p:inputText disabled="true" value="#{usuarioMBean.emp.email}"
+										style="font-weight: bold;" />
+									<br />
+									<p:outputLabel id="telefone" value="Telefone: " />
+									<p:inputText disabled="true"
+										value="#{usuarioMBean.emp.telefone}"
+										style="font-weight: bold;" />
+									<br />
+
+
+								</h:panelGrid>
+								<p />
+							</center>
+
+							<center>
+								<h:commandButton value="Editar"
+									action="alterarPerfilEmpresa?faces-redirect=true"
+									style="height: 30px; font-size: 14px; width:220px" ajax="false" />
+							</center>
+
+						</h:form>
+
+						<p />
+
+					</p:panel>
+				</p:panel>
+			</center>
+
+		</h:body>
+
 
 
 	</ui:define>
