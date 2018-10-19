@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
-
+<p:growl id="message" showDetail="true" />
 	<ui:define name="css">
 		<link rel="stylesheet" type="text/css"
 			href="resources/css/homeADM.css" />
@@ -16,14 +16,14 @@
 
 	<ui:define name="content">
 
-		<h:form id="form">
+		<h:form id="formADM">
 			<p:dataTable id="table" var="ues" value="#{tabelaMBean.ues}"
 				paginator="true" rows="10" selectionMode="single"
 				selection="#{tabelaMBean.selectemp}" rowKey="#{ues.nome}"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15" lazy="true">
 
-				<p:ajax event="rowSelect" update=":form:empDetail"
+				<p:ajax event="rowSelect" update=":formADM:empDetail"
 					oncomplete="PF('empDialog').show()" />
 
 				<p:column>
@@ -81,8 +81,7 @@
 
 					</p:panelGrid>
 					<p />
-					<h:form>
-						<p:growl id="message" showDetail="true" />
+						
 						<p:commandButton value="Excluir Empresa" ajax="false"
 							actionListener="#{a}" update="message"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " >
@@ -95,12 +94,12 @@
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close" 
 								style="height: 25px; font-size: 14px; width:150px; border: 0px; "/>
 
-							<p:commandButton value="Sim" type="button"
+							<p:commandButton value="Sim" 
 								styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-								style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
-
+								style="height: 25px; font-size: 14px; width:150px; border: 0px; " 
+								action="#{tabelaMBean.excluir}"
+								/>
 						</p:confirmDialog>
-					</h:form>
 				</p:outputPanel>
 			</p:dialog>
 

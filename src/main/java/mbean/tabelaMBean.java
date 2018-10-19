@@ -1,5 +1,6 @@
 package mbean;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -16,18 +17,16 @@ import entity.UsuarioEmpresa;
 @ManagedBean
 @ViewScoped
 public class tabelaMBean {
-	
+
 	public UsuarioEmpresaDAO uDao;
 	public UsuarioAdmDAO admDAO;
-	UsuarioEmpresa ue;	
+	UsuarioEmpresa ue;
 	List<UsuarioEmpresa> ues;
 	UsuarioEmpresaDAO ueDAO;
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
 	private UsuarioEmpresa selectemp;
-	
-	
-	
+
 	public UsuarioEmpresa getSelectemp() {
 		return selectemp;
 	}
@@ -36,13 +35,22 @@ public class tabelaMBean {
 		this.selectemp = selectemp;
 	}
 
+	public String excluir() {
+		try {
+				System.out.println("entro no else");
+				if (uDao.deletar(selectemp)) {
+					ues.remove(selectemp.getId());
+					ues = uDao.listarTodos();
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Excluido com sucesso!"));
+					return "perfilADM?faces-redirect=true";
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return null;
+	}
 
-    
-    public void excluir() {
-    	
-    }
-
-	
 	public tabelaMBean() {
 
 		ue = new UsuarioEmpresa();
@@ -78,8 +86,5 @@ public class tabelaMBean {
 	public void setUeDAO(UsuarioEmpresaDAO ueDAO) {
 		this.ueDAO = ueDAO;
 	}
-	
-	
 
-	
 }

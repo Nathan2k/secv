@@ -111,7 +111,8 @@ public class UsuarioEmpresaDAO {
 			while (rs.next()) {
 
 				UsuarioEmpresa ue = new UsuarioEmpresa();
-
+				
+				ue.setId(rs.getInt("id"));
 				ue.setBairro(rs.getString("bairro"));
 				ue.setCidade(rs.getString("cidade"));
 				ue.setRua(rs.getString("rua"));
@@ -175,7 +176,7 @@ public class UsuarioEmpresaDAO {
 		return false;
 	}
 	
-	
+	// ---------------------------------------------------------------------------------------------
 	
 	public UsuarioEmpresa buscarEmpresa(String email) throws SQLException { // perguntar sobre a senha
 
@@ -205,6 +206,9 @@ public class UsuarioEmpresaDAO {
 		return emp;
 	}
 	
+	// ---------------------------------------------------------------------------------------------
+
+	
 	public UsuarioEmpresa buscaCnpj(String cnpj) throws SQLException { // perguntar sobre a senha
 
 		String sql = "SELECT * FROM empresa " + "WHERE CNPJ = ?;"; // perguntar se falta alguma coisa
@@ -233,9 +237,17 @@ public class UsuarioEmpresaDAO {
 		return emp;
 	}
 	
+	// ---------------------------------------------------------------------------------------------
 	
-	
-	
+	public boolean deletar(UsuarioEmpresa emp) throws SQLException {
+		
+		String sql = "DELETE FROM empresa WHERE id = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, emp.getId());
+		
+		System.out.println(ps.toString());
+		return ps.executeUpdate()>0;
+	}
 	
 	
 	
