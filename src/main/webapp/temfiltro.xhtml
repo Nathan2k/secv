@@ -23,7 +23,7 @@
 							<p />
 
 							<h:outputText value="Sexo: " />
-							<p:selectOneRadio required="true" id="sexo" value="#{a}">
+							<p:selectOneRadio required="true" id="sexo" value="#{filtroService.eFiltro.sexo}">
 								<f:selectItem itemLabel="Homem" itemValue="Homem" />
 								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
@@ -31,7 +31,7 @@
 
 							<p />
 							<h:outputText value="Deficiência: " />
-							<p:selectOneRadio required="true" id="deficiencia" value="#{a}">
+							<p:selectOneRadio required="true" id="deficiencia" value="#{filtroService.eFiltro.deficiencia}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
@@ -54,7 +54,7 @@
 							<h:outputLabel for="estado" value="Estado:" />
 							<p:selectOneMenu required="true" filterMatchMode="startsWith"
 								style="width: 160px" panelStyle="width:150px" id="estado"
-								value="#{a}">
+								value="#{filtroService.eFiltro.estado}">
 								<f:selectItem itemLabel="" itemValue="" />
 								<f:selectItems value="#{checkboxView.cities}" />
 							</p:selectOneMenu>
@@ -63,11 +63,11 @@
 
 							<h:outputLabel for="cidades" value="Cidades:" />
 							<p:selectCheckboxMenu id="cidades"
-								value="#{checkboxView.selectedCities2}" label="Cidades"
+								value="#{filtroService.eFiltro.cidade}" label="Cidades"
 								style="width: 160px"
 								filter="true" filterMatchMode="startsWith"
 								panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{filtroService.eFiltro.cidade}" />
 							</p:selectCheckboxMenu>
 
 						
@@ -77,38 +77,38 @@
 
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu required="true" style="width: 160px"
-								panelStyle="width:150px" id="area" value="#{a}">
+								panelStyle="width:150px" id="area" value="#{filtroService.eFiltro.area}">
 								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{filtroService.eFiltro.area}" />
 							</p:selectOneMenu>
 							<P />
 							<h:outputLabel for="curso" value="Curso:" />
 							<p:selectOneMenu required="true" style="width: 160px"
-								panelStyle="width:150px" id="curso" value="#{a}">
+								panelStyle="width:150px" id="curso" value="#{filtroService.eFiltro.curso}">
 								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{filtroService.eFiltro.curso}" />
 							</p:selectOneMenu>
 							<P />
 
 							<h:outputLabel for="semestre" value="Semestres:" />
 							<p:selectCheckboxMenu style="width: 160px" id="sem"
-								value="#{checkboxView.selectedCities2}" multiple="true"
+								value="#{filtroService.eFiltro.semestre}" multiple="true"
 								filter="true" panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{filtroService.eFiltro.semestre}" />
 							</p:selectCheckboxMenu>
 							<p />
 
 							<h:outputLabel for="idioma" value="Idioma:" />
 							<p:selectCheckboxMenu style="width: 160px" id="idioma"
-								value="#{checkboxView.selectedCities2}" multiple="true"
+								value="#{filtroService.eFiltro.idioma}" multiple="true"
 								filter="true" panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{filtroService.eFiltro.idioma}" />
 							</p:selectCheckboxMenu>
 							<p />
 
 
 							<h:outputText value="Experiência: " />
-							<p:selectOneRadio required="true" id="experiencia" value="#{a}">
+							<p:selectOneRadio required="true" id="experiencia" value="#{filtroService.eFiltro.experiencia}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Não" itemValue="Nao" />
 							</p:selectOneRadio>
@@ -120,7 +120,7 @@
 						<p />
 
 						<h:commandButton value="Filtrar"
-							action="#{cadastroEmpresaMBean.salvar}"
+							action="#{filtroService.enviarFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</center>
 				</h:form>

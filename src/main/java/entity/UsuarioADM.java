@@ -1,7 +1,5 @@
 package entity;
 
-
-
 public class UsuarioADM extends Usuario {
 
 	private String NIF;
