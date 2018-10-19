@@ -1,23 +1,41 @@
 package entity;
 
-public class Curriculo {
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
+import java.util.List;
 
+import service.Experiencia;
+
+public class Curriculo {
+// NAO ESTA PRONTO
 	private Integer id;
-	private String nome;
+	private String nomeDoAluno;
 	private Integer semestre;
 	private String curso;
-	private String turma;
-	private boolean experiencia;
-	private String sexo;
-	private boolean deficiencia;
-	private String idioma;
-	private String idade;
-	private String estado;
-	private String cidade;
+	private List<Experiencia> experiencia; //
+
+	private Integer sexo;
+
+	private Integer deficiencia;
+
+	private Integer nivel_ingles;
+	private Integer nivel_espanhol;
+	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
+	private String estado; // entidade estado
+	private String cidade; // tira
+
+	// lista formaçao e experiencia
 	
 	
-	
-	
+	public void calendario() {
+		
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(idade);
+		
+		LocalDate TESTE =LocalDate.
+		
+	}
 
 	public Integer getId() {
 		return id;

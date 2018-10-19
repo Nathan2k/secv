@@ -41,3 +41,4 @@ public class UsuarioEmpresa extends Usuario {
 	
 	
 }
+

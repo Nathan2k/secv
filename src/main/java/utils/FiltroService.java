@@ -11,13 +11,14 @@ import com.google.gson.reflect.TypeToken;
 
 import entity.Curriculo;
 import entity.Filtro;
+import service.CurriculumVitae;
 
 @ManagedBean
 public class FiltroService {
 
 	private Filtro eFiltro = new Filtro();
 
-	public List<Curriculo> enviarFiltro(Filtro f) throws IOException {
+	public List<CurriculumVitae> enviarFiltro(Filtro f) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 
@@ -30,18 +31,12 @@ public class FiltroService {
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 
-		Type collectionType = new TypeToken<List<Curriculo>>(){}.getType();
-		List<Curriculo> curriculos = gson.fromJson(response, collectionType);
+		Type collectionType = new TypeToken<List<CurriculumVitae>>(){}.getType();
+		List<CurriculumVitae> curriculos = gson.fromJson(response, collectionType);
 		
 		
 		return curriculos;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

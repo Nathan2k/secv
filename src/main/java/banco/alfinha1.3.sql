@@ -30,7 +30,6 @@ CREATE TABLE administrador(
 	senha VARCHAR(50),
 	telefone VARCHAR(50)
     
-    
 );
 
 CREATE TABLE areaa(
