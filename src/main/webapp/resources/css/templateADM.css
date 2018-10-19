@@ -1,61 +1,66 @@
-body {font-family: "Lato", sans-serif;}
+body {
+	font-family: "Lato", sans-serif;
+}
 
-.header nav{
+.header nav {
 	border-radius: 0px;
 }
+
 .content {
 	margin-left: 190px;
-	margin-top: 6%;
-	width:90%;
+	width: 90%;
 	margin-right: 5%;
 	align: center;
 }
 
+.content div {
+	margin-top: 6%;
+}
 
 .sidebar {
-  height: 100%;
-  width: 190px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 16px;
+	height: 100%;
+	width: 190px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 16px;
 }
 
 .sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none !important;
-  font-size: 130%;
-  color: white;
-  display: block;
+	padding: 6px 8px 6px 16px;
+	text-decoration: none !important;
+	font-size: 130%;
+	color: white;
+	display: block;
 }
-#imgb{
-	width:170px; 
-	margin-left: -15px; 
+
+#imgb {
+	width: 170px;
+	margin-left: -15px;
 	margin: 7px;
 }
 
-a:hover{
+a:hover {
 	background-color: #007fff;
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+	color: #f1f1f1;
 }
 
-
-
-
-
-
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
+	margin-left: 160px; /* Same as the width of the sidenav */
+	padding: 0px 10px;
 }
 
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+	.sidebar {
+		padding-top: 15px;
+	}
+	.sidebar a {
+		font-size: 18px;
+	}
 }

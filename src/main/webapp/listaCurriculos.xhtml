@@ -30,20 +30,22 @@
 						<center>
 
 							<h:form id="form">
-								<p:dataTable var="car" value="#{dtBasicView.cars}">
+								<p:dataTable var="car" value="D" >
+								
 									<p:column headerText="Nome">
-										<h:outputText value="#{car.id}" />
+										<h:outputText value="JONAS" />
 									</p:column>
 
-									<p:column headerText="Download">
-										<h:outputText value="#{car.year}" />
+									<p:column id="Download" icon="ui-icon-search"  style="width:60px">
+										<h:outputText /><p:commandButton icon="fa fa-fw fa-download" />
 									</p:column>
 
-									<p:column headerText="Impressão">
-										<h:outputText value="#{car.brand}" />
+									<p:column id="Impressão" style="width:60px">
+										<h:outputText /><p:commandButton icon="fa fa-fw fa-print" />
 									</p:column>
 
 								</p:dataTable>
+								
 							</h:form>
 						</center>
 					</h:form>
