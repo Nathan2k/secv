@@ -64,13 +64,15 @@ public class FiltroService {
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 		
-		String json = gson.toJson(cidade, Filtro.class);
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
+		}.getType();
+		
+		String json = gson.toJson(cidade, collectionType);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 
-		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
-		}.getType();
+		
 		List<ClasseGenerica> area = gson.fromJson(response, collectionType);
 
 		return area;

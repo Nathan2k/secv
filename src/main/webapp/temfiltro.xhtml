@@ -38,6 +38,7 @@
 								filter="true" filterMatchMode="startsWith"
 								panelStyle="width:290px">
 								<f:selectItems value="#{checkboxView.cities}" />
+								<p:ajax event="blur" process="idCidades" listener="" update="area" />
 							</p:selectCheckboxMenu>
 							<p/>
 
@@ -131,14 +132,6 @@
 		</div>
 	</ui:define>
 </ui:composition>
-
-<script type="text/javascript">
-
-
-
-</script>
-
-
 </html>
 
 

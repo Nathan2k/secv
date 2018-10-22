@@ -31,6 +31,11 @@ public class FiltroMBean {
 	
 	
 	FiltroService fs = new FiltroService();
+	
+	
+	
+	
+	
 
 	public FiltroMBean() {
 
