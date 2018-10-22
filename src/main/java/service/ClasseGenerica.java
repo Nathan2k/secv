@@ -8,20 +8,21 @@ public class ClasseGenerica {
 
 	}
 
-	public ClasseGenerica(Integer id, String nome) {
+	public ClasseGenerica(Integer codigo, String nome) {
 		this.nome = nome;
-		this.id = id;
+		this.codigo = codigo;
 	}
 
-	private Integer id;
+	private Integer codigo;
 	private String nome;
-
-	public Integer getId() {
-		return id;
+	
+	
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -32,4 +33,5 @@ public class ClasseGenerica {
 		this.nome = nome;
 	}
 
+	
 }

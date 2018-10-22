@@ -20,6 +20,7 @@ public class FiltroService {
 // MANDO ESSE CARA
 	private Filtro eFiltro = new Filtro();
 
+	// ENVIA O FILTRO PRO DONI
 	public List<CurriculumVitae> enviarFiltro(Filtro f) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
@@ -40,32 +41,86 @@ public class FiltroService {
 		return curriculos;
 	}
 
-	public List<ClasseGenerica> cGenerico() throws IOException {
+	// RECEBE AS CIDADES QUE TEM CURRICULO
+	public List<ClasseGenerica> cCidade() throws IOException {
 
-		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
-
+		String url = "http://10.87.202.146:8080/sccv-api/ws/cidades/disponiveis"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
-
 		Gson gson = new Gson();
-		
-		ClasseGenerica c = new ClasseGenerica();
 
 		String response = http.doGet(url);
 
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
-
 		List<ClasseGenerica> cidades = gson.fromJson(response, collectionType);
-		
-		
-	//	String json = gson.fromJson();
 
-
-		return null;
+		return cidades;
 	}
-	
-	
-	
+
+	// RECEBE AS AREAS QUE TEM CURRICULO
+	public List<ClasseGenerica> cArea(List<ClasseGenerica> cidade) throws IOException {
+
+		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		HttpHelper http = new HttpHelper();
+		Gson gson = new Gson();
+		
+		String json = gson.toJson(cidade, Filtro.class);
+		http.setContentType("application/json");
+
+		String response = http.doPost(url, json.getBytes(), "UTF-8");
+
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
+		}.getType();
+		List<ClasseGenerica> area = gson.fromJson(response, collectionType);
+
+		return area;
+	}
+
+	// RECEBE OS CURSOS QUE TEM CURRICULO
+	public List<ClasseGenerica> cCurso() throws IOException {
+
+		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		HttpHelper http = new HttpHelper();
+		Gson gson = new Gson();
+
+		String response = http.doGet(url);
+
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
+		}.getType();
+		List<ClasseGenerica> curso = gson.fromJson(response, collectionType);
+
+		return curso;
+	}
+
+	// RECEBE OS SEMESTRES QUE TEM CURRICULO
+	public List<ClasseGenerica> cSemestre() throws IOException {
+
+		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		HttpHelper http = new HttpHelper();
+		Gson gson = new Gson();
+		String response = http.doGet(url);
+
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
+		}.getType();
+		List<ClasseGenerica> semestre = gson.fromJson(response, collectionType);
+
+		return semestre;
+	}
+
+	// RECEBE OS IDIOMAS QUE TEM CURRICULO
+	public List<ClasseGenerica> cIdioma() throws IOException {
+
+		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		HttpHelper http = new HttpHelper();
+		Gson gson = new Gson();
+		String response = http.doGet(url);
+
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
+		}.getType();
+		List<ClasseGenerica> idioma = gson.fromJson(response, collectionType);
+
+		return idioma;
+	}
 
 	public Filtro geteFiltro() {
 		return eFiltro;

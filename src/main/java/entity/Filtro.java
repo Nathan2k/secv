@@ -10,7 +10,7 @@ public class Filtro {
 	private List<Integer> idCidade; // vai
 	private Integer experiencia; // 0=indiferente 1=SIM 2= NÃO
 	private Integer sexo; // vai 0=indiferente 1=MACHO 2= MULHER
-	//private boolean idioma;// vai
+	private boolean idioma;// vai
 	private Integer qualIdioma;// vai 0=indiferente 1=INGLES 2= ESPANHOL
 	private Integer deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
 	
@@ -18,6 +18,14 @@ public class Filtro {
 	
 	
 	
+	public boolean isIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(boolean idioma) {
+		this.idioma = idioma;
+	}
+
 	public Integer getId() {
 		return id;
 	}

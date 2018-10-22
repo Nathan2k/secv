@@ -21,20 +21,10 @@ public class Curriculo {
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
 	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
-	private String estado; // entidade estado
-	private String cidade; // tira
-
+	
 	// lista formaçao e experiencia
 
-	public void calendario() {
-
-		//ta errado
-		Calendar c = Calendar.getInstance();
-		c.setTimeInMillis(idade);
-
-		// LocalDate TESTE =LocalDate.
-
-	}
+	
 
 	public Integer getId() {
 		return id;
@@ -58,22 +48,6 @@ public class Curriculo {
 
 	public void setCurso(String curso) {
 		this.curso = curso;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
 	}
 
 }
