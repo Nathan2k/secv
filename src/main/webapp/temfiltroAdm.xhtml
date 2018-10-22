@@ -12,6 +12,7 @@
 
 	<ui:define name="content">
 <center>
+<div class="naosei">
 	<p:panel value="Login" style="margin-top: -3% !important; width: 600px">
 		
 		<h:graphicImage library="img" name="/logo-senai.png" style="width:300px; margin: 7px;"/>
@@ -28,7 +29,7 @@
 							<p />
 
 							<h:outputText value="Sexo: " />
-							<p:selectOneRadio required="true" id="sexo" value="#{a}">
+							<p:selectOneRadio required="true" id="sexo" value="#{filtroService.eFiltro.sexo}">
 								<f:selectItem itemLabel="Homem" itemValue="Homem" />
 								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
@@ -36,7 +37,7 @@
 
 							<p />
 							<h:outputText value="Deficiência: " />
-							<p:selectOneRadio required="true" id="deficiencia" value="#{a}">
+							<p:selectOneRadio required="true" id="deficiencia" value="#{filtroService.eFiltro.deficiencia}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
@@ -68,11 +69,11 @@
 
 							<h:outputLabel for="cidades" value="Cidades:" />
 							<p:selectCheckboxMenu id="cidades"
-								value="#{checkboxView.selectedCities2}" label="Cidades"
+								value="#{a}" label="Cidades"
 								style="width: 160px"
 								filter="true" filterMatchMode="startsWith"
 								panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{a}" />
 							</p:selectCheckboxMenu>
 
 						
@@ -84,30 +85,30 @@
 							<p:selectOneMenu required="true" style="width: 160px"
 								panelStyle="width:150px" id="area" value="#{a}">
 								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
 							<P />
 							<h:outputLabel for="curso" value="Curso:" />
 							<p:selectOneMenu required="true" style="width: 160px"
 								panelStyle="width:150px" id="curso" value="#{a}">
 								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
 							<P />
 
 							<h:outputLabel for="semestre" value="Semestres:" />
 							<p:selectCheckboxMenu style="width: 160px" id="sem"
-								value="#{checkboxView.selectedCities2}" multiple="true"
+								value="#{filtroService.eFiltro.semestre}" multiple="true"
 								filter="true" panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{a}" />
 							</p:selectCheckboxMenu>
 							<p />
 
 							<h:outputLabel for="idioma" value="Idioma:" />
 							<p:selectCheckboxMenu style="width: 160px" id="idioma"
-								value="#{checkboxView.selectedCities2}" multiple="true"
+								value="#{a}" multiple="true"
 								filter="true" panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{a}" />
 							</p:selectCheckboxMenu>
 							<p />
 
@@ -136,6 +137,7 @@
 
 		</p:panel>
 	</p:panel>
+</div>
 
 </center>					
 	</ui:define>
