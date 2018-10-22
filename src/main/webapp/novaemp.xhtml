@@ -39,7 +39,6 @@
 								style="width: 350px;"
 								requiredMessage="Campo Senha invalido"  />
 
-							<!-- CONFIRMAR A SENHA TEM Q FAZER COM JQUERY -->
 							<h:outputText value="Confirmar Senha: " />
 							<p:password label="Confirmar Senha" id="senha2" value="#{cadastroEmpresaMBean.emp.senha}"
 								required="true" style="width: 350px;"
@@ -62,7 +61,9 @@
 							label="Email"
 							value="#{cadastroEmpresaMBean.emp.email}"
 								required="true" style="width: 350px;"
-								requiredMessage="Campo Email invalido"  />
+								requiredMessage="Campo Email invalido" >
+								<f:validator validatorId="custom.emailValidator" />
+								</p:inputText>
 
 							<h:outputText value="Rua: " />
 							<p:inputText 
