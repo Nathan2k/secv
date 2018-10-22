@@ -8,17 +8,16 @@ import java.util.List;
 import service.Experiencia;
 
 public class Curriculo {
+
+// RECEBO ESSE CARA
 // NAO ESTA PRONTO
 	private Integer id;
 	private String nomeDoAluno;
 	private Integer semestre;
 	private String curso;
 	private List<Experiencia> experiencia; //
-
 	private Integer sexo;
-
 	private Integer deficiencia;
-
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
 	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
@@ -26,15 +25,15 @@ public class Curriculo {
 	private String cidade; // tira
 
 	// lista formaçao e experiencia
-	
-	
+
 	public void calendario() {
-		
+
+		//ta errado
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(idade);
-		
-		LocalDate TESTE =LocalDate.
-		
+
+		// LocalDate TESTE =LocalDate.
+
 	}
 
 	public Integer getId() {
@@ -43,14 +42,6 @@ public class Curriculo {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public Integer getSemestre() {
@@ -67,54 +58,6 @@ public class Curriculo {
 
 	public void setCurso(String curso) {
 		this.curso = curso;
-	}
-
-	public String getTurma() {
-		return turma;
-	}
-
-	public void setTurma(String turma) {
-		this.turma = turma;
-	}
-
-	public boolean isExperiencia() {
-		return experiencia;
-	}
-
-	public void setExperiencia(boolean experiencia) {
-		this.experiencia = experiencia;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
-	public boolean isDeficiencia() {
-		return deficiencia;
-	}
-
-	public void setDeficiencia(boolean deficiencia) {
-		this.deficiencia = deficiencia;
-	}
-
-	public String getIdioma() {
-		return idioma;
-	}
-
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
-
-	public String getIdade() {
-		return idade;
-	}
-
-	public void setIdade(String idade) {
-		this.idade = idade;
 	}
 
 	public String getEstado() {
