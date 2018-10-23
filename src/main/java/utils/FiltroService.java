@@ -18,10 +18,9 @@ import service.CurriculumVitae;
 @ManagedBean
 public class FiltroService {
 // MANDO ESSE CARA
-	private Filtro eFiltro = new Filtro();
 
 	// ENVIA O FILTRO PRO DONI
-	public List<CurriculumVitae> enviarFiltro(Filtro f) throws IOException {
+	public List<Curriculo> enviarFiltro(Filtro f) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 
@@ -36,7 +35,7 @@ public class FiltroService {
 
 		Type collectionType = new TypeToken<List<CurriculumVitae>>() {
 		}.getType();
-		List<CurriculumVitae> curriculos = gson.fromJson(response, collectionType);
+		List<Curriculo> curriculos = gson.fromJson(response, collectionType);
 
 		return curriculos;
 	}
@@ -44,7 +43,7 @@ public class FiltroService {
 	// RECEBE AS CIDADES QUE TEM CURRICULO
 	public List<ClasseGenerica> cCidade() throws IOException {
 
-		String url = "http://10.87.202.146:8080/sccv-api/ws/cidades/disponiveis"; // URL FICTICIO!
+		String url = "http://10.87.202.146:8080/sccv-api/ws/cidades/disponiveis"; // URL CERTO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
@@ -63,73 +62,87 @@ public class FiltroService {
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
-		
+
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
-		
+
 		String json = gson.toJson(cidade, collectionType);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 
-		
 		List<ClasseGenerica> area = gson.fromJson(response, collectionType);
 
 		return area;
 	}
 
 	// RECEBE OS CURSOS QUE TEM CURRICULO
-	public List<ClasseGenerica> cCurso() throws IOException {
+	public List<ClasseGenerica> cCurso(List<ClasseGenerica> area) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
-		String response = http.doGet(url);
-
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
+
+		String json = gson.toJson(area, collectionType);
+		http.setContentType("application/json");
+
+		String response = http.doPost(url, json.getBytes(), "UTF-8");
+
 		List<ClasseGenerica> curso = gson.fromJson(response, collectionType);
 
 		return curso;
 	}
 
 	// RECEBE OS SEMESTRES QUE TEM CURRICULO
-	public List<ClasseGenerica> cSemestre() throws IOException {
+	public List<ClasseGenerica> cSemestre(List<ClasseGenerica> curso) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
-		String response = http.doGet(url);
 
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
+
+		String json = gson.toJson(curso, collectionType);
+		http.setContentType("application/json");
+
+		String response = http.doPost(url, json.getBytes(), "UTF-8");
+
 		List<ClasseGenerica> semestre = gson.fromJson(response, collectionType);
 
 		return semestre;
 	}
 
 	// RECEBE OS IDIOMAS QUE TEM CURRICULO
-	public List<ClasseGenerica> cIdioma() throws IOException {
+	public List<ClasseGenerica> cIdioma(List<ClasseGenerica> semestre) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
-		String response = http.doGet(url);
 
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
+
+		String json = gson.toJson(semestre, collectionType);
+		http.setContentType("application/json");
+
+		String response = http.doPost(url, json.getBytes(), "UTF-8");
+
 		List<ClasseGenerica> idioma = gson.fromJson(response, collectionType);
 
 		return idioma;
 	}
 
-	public Filtro geteFiltro() {
-		return eFiltro;
-	}
+	public boolean experiencia() {
 
-	public void seteFiltro(Filtro eFiltro) {
-		this.eFiltro = eFiltro;
+		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		HttpHelper http = new HttpHelper();
+		Gson gson = new Gson();
+
+		return false;
 	}
 
 }

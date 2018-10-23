@@ -27,20 +27,20 @@
 							<p:outputLabel for="estado" value="Estados:" />
 							<p:selectOneMenu id="estado" value="#{a}" style="width:160px">
 								<f:selectItem itemLabel="Estados" itemValue="" />
-								<f:selectItems value="#{checkboxView.cities}" />
+								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
 							<p />
 
 							<h:outputLabel for="cidades" value="Cidades:" />
 							<p:selectCheckboxMenu id="idCidades"
-								value="#{checkboxView.cities}" label="Cidades"
-								style="width:160px"
-								filter="true" filterMatchMode="startsWith"
+								value="#{filtroMBean.selCidade}" label="Cidades"
+								style="width:160px" filter="true" filterMatchMode="startsWith"
 								panelStyle="width:290px">
-								<f:selectItems value="#{checkboxView.cities}" />
-								<p:ajax event="blur" process="idCidades" listener="" update="area" />
+								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
+									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}"/>
+								<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
 							</p:selectCheckboxMenu>
-							<p/>
+							<p />
 
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu required="true" style="width: 160px"
@@ -60,7 +60,7 @@
 
 							<h:outputLabel for="semestre" value="Semestres:" />
 							<p:selectCheckboxMenu style="width: 160px" id="sem"
-								value="#{filtroService.eFiltro.semestre}" multiple="true"
+								value="#{a}" multiple="true"
 								filter="true" panelStyle="width:290px">
 								<f:selectItems value="#{a}" />
 							</p:selectCheckboxMenu>
@@ -86,7 +86,7 @@
 
 							<h:outputText value="Sexo: " />
 							<p:selectOneRadio required="true" id="sexo"
-								value="#{filtroService.eFiltro.sexo}">
+								value="#{a}">
 								<f:selectItem itemLabel="Homem" itemValue="Homem" />
 								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
@@ -95,7 +95,7 @@
 							<p />
 							<h:outputText value="Deficiência: " />
 							<p:selectOneRadio required="true" id="deficiencia"
-								value="#{filtroService.eFiltro.deficiencia}">
+								value="#{a}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
@@ -125,6 +125,46 @@
 							action="#{filtroService.enviarFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</center>
+				</h:form>
+
+				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
+				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
+
+					<center>
+						<p:panel value="Login" style="width: 600px">
+
+							<h:graphicImage library="img" name="/logo-senai.png"
+								style="width:300px; margin: 7px;" />
+
+							<p />
+							<p:panel>
+
+								<center>
+
+									<p:dataTable var="car" value="D">
+
+										<p:column headerText="Nome">
+											<h:outputText value="JONAS" />
+										</p:column>
+
+										<p:column id="Download" icon="ui-icon-search"
+											style="width:60px">
+											<h:outputText />
+											<p:commandButton icon="fa fa-fw fa-download" />
+										</p:column>
+
+										<p:column id="Impressão" style="width:60px">
+											<h:outputText />
+											<p:commandButton icon="fa fa-fw fa-print" />
+										</p:column>
+
+									</p:dataTable>
+
+								</center>
+							</p:panel>
+						</p:panel>
+					</center>
+					
 				</h:form>
 
 

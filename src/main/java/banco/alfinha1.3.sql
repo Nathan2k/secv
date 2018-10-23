@@ -129,6 +129,18 @@ CREATE TABLE filtro(
 
 );
 
+CREATE TABLE formacao(
+
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(300),
+	data_inicio TIMESTAMP,
+	data_fim TIMESTAMP,
+	escola VARCHAR(50),
+	
+	
+
+);
+
 
 CREATE TABLE curriculo(
 	
