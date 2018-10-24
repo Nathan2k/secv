@@ -41,6 +41,20 @@
   
 	<h:form>
 		<p:commandLink action="#{sairMBean.matarSession}"><i class="fa fa-fw fa-sign-out"></i> Sair</p:commandLink>
+		
+		
+		<!-- TENTANDO CONFIRMAR SAIDA DO SISTEMA COM O USUARIO -->
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+
+						<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
+							icon="ui-icon-close"
+							style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
+
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+							style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
+					</p:confirmDialog>
+		
 	</h:form>
 
 </div>
