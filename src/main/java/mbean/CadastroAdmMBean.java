@@ -2,6 +2,7 @@ package mbean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import DAO.UsuarioAdmDAO;
 import DAO.UsuarioEmpresaDAO;
@@ -33,6 +34,7 @@ public class CadastroAdmMBean {
 
 						if (uDao.inserirADM(adm)) {
 							MensFaces.m("Usuario cadastrado com sucesso!");
+							FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 							return "criarUsuarioAdm?faces-redirect=true"; // VER ISSO AQUI DEPOIS, PQ É UM POPUP
 						}else {
 							

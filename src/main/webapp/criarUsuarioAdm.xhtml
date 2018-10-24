@@ -31,13 +31,15 @@
 					<h:panelGrid>
 
 						<h:outputText value="NIF: " style="font-weight:bold;" />
-						<p:inputText value="#{cadastroAdmMBean.adm.NIF}"  required="true"  />
+						<p:inputText value="#{cadastroAdmMBean.adm.NIF}"  required="true" maxlength="12"  />
 						<br />
 						<h:outputText value="Nome: " style="font-weight:bold;" />
 						<p:inputText value="#{cadastroAdmMBean.adm.nome}" required="true"  />
 						<br />
 						<h:outputText value="Email: " style="font-weight:bold;" />
-						<p:inputText value="#{cadastroAdmMBean.adm.email}" required="true"  />
+						<p:inputText value="#{cadastroAdmMBean.adm.email}" required="true" >
+						<f:validator validatorId="custom.emailValidator" />
+						</p:inputText>
 						<br />
 						<h:outputLabel for="tel" value="Telefone:" />
 						<p:inputMask id="tel" value="#{cadastroAdmMBean.adm.telefone}" mask="(99) 99999-9999" required="true"  />
