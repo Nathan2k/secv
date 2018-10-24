@@ -4,28 +4,56 @@ import java.util.List;
 
 import service.ClasseGenerica;
 import service.Experiencia;
+import service.Formacao;
 
 public class Curriculo {
 
 // RECEBO ESSE CARA
-// NAO ESTA PRONTO
 	private Integer id;
 	private String nomeDoAluno;
 	private Integer semestre;
-	private ClasseGenerica curso;
+	private String curso;
+	private String estado;
+	private String cidade;
 	private List<Experiencia> experiencia; //
+	private List<Formacao> formação;
 	private Integer sexo;
 	private Integer deficiencia;
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
 	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
 	
-	// lista formaçao e experiencia
 
 	
 
+	
+	
 	public Integer getId() {
 		return id;
+	}
+
+	public List<Formacao> getFormação() {
+		return formação;
+	}
+
+	public void setFormação(List<Formacao> formação) {
+		this.formação = formação;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	public void setId(Integer id) {
@@ -40,11 +68,11 @@ public class Curriculo {
 		this.semestre = semestre;
 	}
 
-	public ClasseGenerica getCurso() {
+	public String getCurso() {
 		return curso;
 	}
 
-	public void setCurso(ClasseGenerica curso) {
+	public void setCurso(String curso) {
 		this.curso = curso;
 	}
 

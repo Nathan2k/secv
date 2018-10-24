@@ -57,7 +57,7 @@ public class FiltroService {
 	}
 
 	// RECEBE AS AREAS QUE TEM CURRICULO
-	public List<ClasseGenerica> cArea(List<ClasseGenerica> cidade) throws IOException {
+	public List<ClasseGenerica> cArea(List<Filtro> cidade) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
@@ -77,7 +77,7 @@ public class FiltroService {
 	}
 
 	// RECEBE OS CURSOS QUE TEM CURRICULO
-	public List<ClasseGenerica> cCurso(List<ClasseGenerica> area) throws IOException {
+	public List<ClasseGenerica> cCurso(List<Filtro> area) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
@@ -97,7 +97,7 @@ public class FiltroService {
 	}
 
 	// RECEBE OS SEMESTRES QUE TEM CURRICULO
-	public List<ClasseGenerica> cSemestre(List<ClasseGenerica> curso) throws IOException {
+	public List<ClasseGenerica> cSemestre(List<Filtro> curso) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
@@ -117,7 +117,7 @@ public class FiltroService {
 	}
 
 	// RECEBE OS IDIOMAS QUE TEM CURRICULO
-	public List<ClasseGenerica> cIdioma(List<ClasseGenerica> semestre) throws IOException {
+	public List<ClasseGenerica> cIdioma(List<Filtro> semestre) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Filtro {
 
+	private String nomeFiltro;
 	private Integer id;
 	private Integer idCurso; // vai
 	private Integer semestre; // vai
@@ -13,11 +14,12 @@ public class Filtro {
 	private boolean idioma;// vai
 	private Integer qualIdioma;// vai 0=indiferente 1=INGLES 2= ESPANHOL
 	private Integer deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
-	
-	
-	
-	
-	
+	private Integer idade_inicio;
+	private Integer idade_fim;
+	private String area;
+
+	// nome, idade inicoon idade fim area
+
 	public boolean isIdioma() {
 		return idioma;
 	}
@@ -44,6 +46,38 @@ public class Filtro {
 
 	public Integer getSemestre() {
 		return semestre;
+	}
+
+	public String getNomeFiltro() {
+		return nomeFiltro;
+	}
+
+	public void setNomeFiltro(String nomeFiltro) {
+		this.nomeFiltro = nomeFiltro;
+	}
+
+	public Integer getIdade_inicio() {
+		return idade_inicio;
+	}
+
+	public void setIdade_inicio(Integer idade_inicio) {
+		this.idade_inicio = idade_inicio;
+	}
+
+	public Integer getIdade_fim() {
+		return idade_fim;
+	}
+
+	public void setIdade_fim(Integer idade_fim) {
+		this.idade_fim = idade_fim;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
 	}
 
 	public void setSemestre(Integer semestre) {

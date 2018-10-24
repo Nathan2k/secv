@@ -40,7 +40,7 @@ public class UsuarioDAO {
 
 	public boolean alterar(Usuario user) {
 
-		String sql = "UPDATE "+ tipoUsuario +" SET senha = ? WHERE email = ?";
+		String sql = "UPDATE " + tipoUsuario + " SET senha = ? WHERE email = ?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -134,8 +134,7 @@ public class UsuarioDAO {
 			ps.setString(1, rec.getEmailUsuario());
 			ps.setString(2, rec.getCodigo());
 
-			
-			return ps.executeUpdate()>0;
+			return ps.executeUpdate() > 0;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -161,15 +160,15 @@ public class UsuarioDAO {
 			RecuperarSenha samu = null;
 
 			if (rs.next()) {
-				
+
 				samu = new RecuperarSenha();
-				
-				if(rs.getString("id_adm") != null) {
+
+				if (rs.getString("id_adm") != null) {
 					tipoUsuario = "administrador";
-				}else {
+				} else {
 					tipoUsuario = "empresa";
 				}
-				
+
 				samu.setCodigo(rs.getString("codigo"));
 				samu.setId(rs.getInt("id"));
 				samu.setEmailUsuario(rs.getString("emailUsuario"));
@@ -184,50 +183,25 @@ public class UsuarioDAO {
 
 		return null;
 	}
-	
-	
-	
-	
+
 	public boolean deletaProtocolo(RecuperarSenha proto) {
-		
+
 		String sql = "DELETE * FROM recuperarSenha " + "WHERE id = ?";
-		
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, proto.getId());
-			
-			return ps.executeUpdate()>0;
-			
+
+			return ps.executeUpdate() > 0;
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return false;
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
-
-
-
-
