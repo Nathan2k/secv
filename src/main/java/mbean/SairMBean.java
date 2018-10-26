@@ -11,18 +11,15 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class SairMBean {
 
-	public void matarSession() {
+	public String matarSession() {
 
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		System.out.println("testechamu");
 
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		//FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+		return "/login?faces-redirect=true;";
+		
 	};
 
 }
+//return telas-empresa/temfiltro?faces-redirect=true;

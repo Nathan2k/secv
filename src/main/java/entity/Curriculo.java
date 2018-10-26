@@ -22,12 +22,7 @@ public class Curriculo {
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
 	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
-	
 
-	
-
-	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -131,7 +126,5 @@ public class Curriculo {
 	public void setIdade(Long idade) {
 		this.idade = idade;
 	}
-	
-	
 
 }

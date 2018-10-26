@@ -17,7 +17,7 @@ public class Formacao {
 	}
 
 	private Integer id;
-	private String nome;
+	private String nome; //esse é o nome do curso!
 	private Long data_inicio;
 	private Long data_fim;
 	private String escola;

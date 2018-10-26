@@ -12,7 +12,6 @@ public class Experiencia {
 			String funcoes, Integer id_curriculum_vitae) {
 		this.id = id;
 		this.nome = nome;
-
 		this.cargo = cargo;
 		this.empresa = empresa;
 		this.funcoes = funcoes;

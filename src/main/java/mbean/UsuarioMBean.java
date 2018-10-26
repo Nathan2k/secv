@@ -50,7 +50,7 @@ public class UsuarioMBean {
 			mensagem(e.toString());
 		}
 		if (emp != null) {
-			return "temfiltro?faces-redirect=true";
+			return "/telas-empresa/temfiltro?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
 			return "login.xhtml";
@@ -60,7 +60,7 @@ public class UsuarioMBean {
 	private String loginADM() {
 		adm = admDAO.buscarADM((empreOUadm), senha);
 		if (adm != null) {
-			return "homeADM.xhtml";
+			return "/telas-adm/homeADM?faces-redirect=true";
 		}
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou Senha invalido(s)"));
 		return "login.xhtml";

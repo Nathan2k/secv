@@ -33,7 +33,7 @@ public class FiltroService {
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 
-		Type collectionType = new TypeToken<List<CurriculumVitae>>() {
+		Type collectionType = new TypeToken<List<Curriculo>>() {
 		}.getType();
 		List<Curriculo> curriculos = gson.fromJson(response, collectionType);
 
