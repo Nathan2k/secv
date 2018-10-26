@@ -53,24 +53,13 @@ CREATE TABLE filtro(
 	deficiencia BOOLEAN,
 	idEmpresa INTEGER,
 	idADM INTEGER,
-    idIdioma INTEGER,
-	idFEtaria INTEGER,
     idCidade INTEGER,
     idEstado INTEGER NOT NULL,
-    idArea INTEGER NOT NULL,
-    idCurso INTEGER,
-	idSemestre INTEGER,
     
     FOREIGN KEY (idEmpresa) REFERENCES empresa(id),
     FOREIGN KEY (idADM) REFERENCES administrador(id),
-    FOREIGN KEY (idIdioma) REFERENCES idioma(id),
-    FOREIGN KEY (idFEtaria) REFERENCES faixaEtaria(id),
     FOREIGN KEY (idCidade) REFERENCES cidade(id),
-    FOREIGN KEY (idEstado) REFERENCES estado(id),
-    FOREIGN KEY (idArea) REFERENCES areaa(id),
-    FOREIGN KEY (idCurso) REFERENCES curso(id),
-    FOREIGN KEY (idSemestre) REFERENCES semestre(id)
-
+    FOREIGN KEY (idEstado) REFERENCES estado(id)
 );
 
 CREATE TABLE formacao(
@@ -79,9 +68,10 @@ CREATE TABLE formacao(
 	nomeDoCurso VARCHAR(300),
 	data_inicio TIMESTAMP,
 	data_fim TIMESTAMP,
-	escola VARCHAR(50),
+	escola VARCHAR(50)
 	
 );
+
 
 CREATE TABLE experiencia(
 
@@ -89,8 +79,9 @@ CREATE TABLE experiencia(
 	nomeDaEmpresa VARCHAR(300),
 	data_inicio TIMESTAMP,
 	data_fim TIMESTAMP,
-	funçao VARCHAR(300)
-
+	funçao VARCHAR(300),
+	cargo VARCHAR(300)
+	
 );
 
 
@@ -106,8 +97,8 @@ CREATE TABLE curriculo(
     curso VARCHAR(50),
     semestre INTEGER,
 	sexo VARCHAR(50),    
-	deficiencia VARCHAR(50)    
-    idExperiecia INTEGER,
+	deficiencia VARCHAR(50),    
+    idExperiencia INTEGER,
    	idFormaçao INTEGER,
     
 	FOREIGN KEY (idExperiencia) REFERENCES experiencia(id),
