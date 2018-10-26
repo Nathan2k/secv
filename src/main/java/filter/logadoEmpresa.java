@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import entity.UsuarioEmpresa;
+
 public class logadoEmpresa implements Filter {
 
 	@Override
@@ -20,7 +22,17 @@ public class logadoEmpresa implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
+		
+		//tem q fazer a ligação desse emp com oq esta no UsuarioMBean pois o mesmo ja esta preenchido 
+		
+		UsuarioEmpresa emp;
+		
+		if(emp == null) {
+			
+			
+		}
+		
+		
 		
 	}
 
@@ -36,3 +48,25 @@ public class logadoEmpresa implements Filter {
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
