@@ -57,16 +57,18 @@ public class FiltroService {
 	}
 
 	// RECEBE AS AREAS QUE TEM CURRICULO
-	public List<ClasseGenerica> cArea(List<Filtro> cidade) throws IOException {
+	public List<ClasseGenerica> cArea(Filtro cidade) throws IOException {
 
-		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		String url = "http://10.0.2.2:8080/aula_rest/ws/areas/por-cidade"; // URL CERTO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
+		
+		List<Integer> idCid = cidade.getIdCidade();
 
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
 
-		String json = gson.toJson(cidade, collectionType);
+		String json = gson.toJson(idCid, collectionType);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
@@ -77,7 +79,7 @@ public class FiltroService {
 	}
 
 	// RECEBE OS CURSOS QUE TEM CURRICULO
-	public List<ClasseGenerica> cCurso(List<Filtro> area) throws IOException {
+	public List<ClasseGenerica> cCurso(Filtro area) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
@@ -97,7 +99,7 @@ public class FiltroService {
 	}
 
 	// RECEBE OS SEMESTRES QUE TEM CURRICULO
-	public List<ClasseGenerica> cSemestre(List<Filtro> curso) throws IOException {
+	public List<ClasseGenerica> cSemestre(Filtro curso) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
@@ -117,7 +119,7 @@ public class FiltroService {
 	}
 
 	// RECEBE OS IDIOMAS QUE TEM CURRICULO
-	public List<ClasseGenerica> cIdioma(List<Filtro> semestre) throws IOException {
+	public List<ClasseGenerica> cIdioma(Filtro semestre) throws IOException {
 
 		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
 		HttpHelper http = new HttpHelper();
@@ -136,13 +138,16 @@ public class FiltroService {
 		return idioma;
 	}
 
-	public boolean experiencia() {
-
-		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
-		HttpHelper http = new HttpHelper();
-		Gson gson = new Gson();
-
-		return false;
-	}
+//	public boolean experiencia() {
+//
+//		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+//		HttpHelper http = new HttpHelper();
+//		Gson gson = new Gson();
+//
+//		
+//		
+//		
+//		return false;
+//	}
 
 }

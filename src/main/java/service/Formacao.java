@@ -8,12 +8,12 @@ public class Formacao {
 	}
 
 	public Formacao(Integer id, String nome, Calendar data_inicio, Calendar data_fim, String escola,
-			Integer id_curriculum_vitae) {
+			Integer idCurriculo) {
 
 		this.id = id;
 		this.nome = nome;
 		this.escola = escola;
-		this.id_curriculum_vitae = id_curriculum_vitae;
+		this.idCurriculo = idCurriculo;
 	}
 
 	private Integer id;
@@ -21,7 +21,7 @@ public class Formacao {
 	private Long data_inicio;
 	private Long data_fim;
 	private String escola;
-	private Integer id_curriculum_vitae;
+	private Integer idCurriculo;
 
 	public String getEscola() {
 		return escola;
@@ -31,12 +31,14 @@ public class Formacao {
 		this.escola = escola;
 	}
 
-	public Integer getId_curriculum_vitae() {
-		return id_curriculum_vitae;
+	
+
+	public Integer getIdCurriculo() {
+		return idCurriculo;
 	}
 
-	public void setId_curriculum_vitae(Integer id_curriculum_vitae) {
-		this.id_curriculum_vitae = id_curriculum_vitae;
+	public void setIdCurriculo(Integer idCurriculo) {
+		this.idCurriculo = idCurriculo;
 	}
 
 	public Integer getId() {

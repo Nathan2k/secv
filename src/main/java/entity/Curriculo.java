@@ -13,6 +13,7 @@ public class Curriculo {
 	private String nomeDoAluno;
 	private Integer semestre;
 	private String curso;
+	private String email;
 	private String estado;
 	private String cidade;
 	private List<Experiencia> experiencia; //
@@ -21,6 +22,7 @@ public class Curriculo {
 	private Integer deficiencia;
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
+	private String telefone;
 	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
 
 	public Integer getId() {
@@ -38,9 +40,27 @@ public class Curriculo {
 	public String getEstado() {
 		return estado;
 	}
+	
+	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getCidade() {

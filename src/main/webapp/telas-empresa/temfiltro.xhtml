@@ -32,26 +32,27 @@
 							<p />
 
 							<h:outputLabel for="cidades" value="Cidades:" />
+							<p:remoteCommand name="atualiza" update="area"/>
 							<p:selectCheckboxMenu id="idCidades"
 								value="#{filtroMBean.selCidade}" label="Cidades"
 								style="width:160px" filter="true" filterMatchMode="startsWith"
-								panelStyle="width:290px">
+								panelStyle="width:290px" onHide="atualiza()">
 								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
-									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}"/>
+									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
 								<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
 							</p:selectCheckboxMenu>
 							<p />
 
 							<h:outputLabel for="area" value="Área:" />
-							<p:selectOneMenu required="true" style="width: 160px"
-								panelStyle="width:150px" id="area" value="#{a}">
-								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{a}" />
+							<p:selectOneMenu required="false" style="width: 160px"
+								panelStyle="width:150px" id="area" value="#{filtroMBean.selArea}">
+								<f:selectItem itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
+								<f:selectItems value="#{filtroMBean.area}" />
 							</p:selectOneMenu>
 							<P />
 
 							<h:outputLabel for="curso" value="Curso:" />
-							<p:selectOneMenu required="true" style="width: 160px"
+							<p:selectOneMenu required="false" style="width: 160px"
 								panelStyle="width:150px" id="curso" value="#{a}">
 								<f:selectItem itemLabel="" itemValue="" />
 								<f:selectItems value="#{a}" />
@@ -59,9 +60,8 @@
 							<P />
 
 							<h:outputLabel for="semestre" value="Semestres:" />
-							<p:selectCheckboxMenu style="width: 160px" id="sem"
-								value="#{a}" multiple="true"
-								filter="true" panelStyle="width:290px">
+							<p:selectCheckboxMenu style="width: 160px" id="sem" value="#{a}"
+								multiple="true" filter="true" panelStyle="width:290px">
 								<f:selectItems value="#{a}" />
 							</p:selectCheckboxMenu>
 							<p />
@@ -85,8 +85,7 @@
 
 
 							<h:outputText value="Sexo: " />
-							<p:selectOneRadio required="true" id="sexo"
-								value="#{a}">
+							<p:selectOneRadio required="true" id="sexo" value="#{a}">
 								<f:selectItem itemLabel="Homem" itemValue="Homem" />
 								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
@@ -94,8 +93,7 @@
 
 							<p />
 							<h:outputText value="Deficiência: " />
-							<p:selectOneRadio required="true" id="deficiencia"
-								value="#{a}">
+							<p:selectOneRadio required="true" id="deficiencia" value="#{a}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
@@ -164,7 +162,7 @@
 							</p:panel>
 						</p:panel>
 					</center>
-					
+
 				</h:form>
 
 

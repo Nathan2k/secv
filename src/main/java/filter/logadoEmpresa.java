@@ -25,7 +25,7 @@ public class logadoEmpresa implements Filter {
 		
 		//tem q fazer a ligação desse emp com oq esta no UsuarioMBean pois o mesmo ja esta preenchido 
 		
-		UsuarioEmpresa emp;
+		UsuarioEmpresa emp=null;
 		
 		if(emp == null) {
 			

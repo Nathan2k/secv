@@ -9,13 +9,13 @@ public class Experiencia {
 	}
 
 	public Experiencia(Integer id, String nome, Calendar data_inicio, Calendar data_fim, String cargo, String empresa,
-			String funcoes, Integer id_curriculum_vitae) {
+			String funcoes, Integer idCurriculo) {
 		this.id = id;
 		this.nome = nome;
 		this.cargo = cargo;
 		this.empresa = empresa;
 		this.funcoes = funcoes;
-		this.id_curriculum_vitae = id_curriculum_vitae;
+		this.idCurriculo = idCurriculo;
 	}
 
 	private Integer id;
@@ -25,14 +25,14 @@ public class Experiencia {
 	private String cargo;
 	private String empresa;
 	private String funcoes;
-	private Integer id_curriculum_vitae;
+	private Integer idCurriculo;
 
-	public Integer getId_curriculum_vitae() {
-		return id_curriculum_vitae;
+	public Integer getIdCurriculo() {
+		return idCurriculo;
 	}
 
-	public void setId_curriculum_vitae(Integer id_curriculum_vitae) {
-		this.id_curriculum_vitae = id_curriculum_vitae;
+	public void setIdCurriculo(Integer idCurriculo) {
+		this.idCurriculo = idCurriculo;
 	}
 
 	public Integer getId() {

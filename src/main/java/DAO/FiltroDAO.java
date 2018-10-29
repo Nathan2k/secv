@@ -2,7 +2,9 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import com.VPS04.JDBC.ConnectionDB;
@@ -13,11 +15,11 @@ import service.Experiencia;
 import service.Formacao;
 
 public class FiltroDAO {
-	
+
 	Connection conn;
 
 	public FiltroDAO() {
-		
+
 		try {
 			conn = ConnectionDB.getConnection();
 		} catch (SQLException e) {
@@ -26,33 +28,32 @@ public class FiltroDAO {
 		}
 	}
 
-	
-	
-	
 	// ver sobre o curriculoVitae e sobre curriculo OKAYDA
-	
-	//VER ATABELA FORMAÇÃO NO BANCO e perguntar a diferença de nome e formação OKAYDA
-	
-	//falar sobre o ajax nao suportado
-	
-	//fazer DAO de inserir curriculo!
-	
-	//perguntar sobre o banco de dados como q vai fazer o inserir se tem varias tabelas
-	
-	//ver sobre o metodo no mbean que vai passando
-	
-	
+
+	// VER ATABELA FORMAÇÃO NO BANCO e perguntar a diferença de nome e formação
+	// OKAYDA
+
+	// falar sobre o ajax nao suportado tem q ver o ONHIDE
+
+	// fazer DAO de inserir curriculo!OKAYDA
+
+	// perguntar sobre o banco de dados como q vai fazer o inserir se tem varias
+	// tabelas
+
+	// ver sobre o metodo no mbean que vai passando
+
 	public boolean inserirCurriculo(Curriculo c) {
-		
+
 		String sql = "INSERT INTO curriculo (nome_aluno, idade, nivelIngles, nivelEspanhol, estado, cidade, curso, "
-				+ "semestre, sexo, deficiencia) " 
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-		
+				+ "semestre, sexo, deficiencia, email, telefone) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
+			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
 			ps.setString(1, c.getNomeDoAluno());
-			ps.setLong(2, c.getIdade()); // VER SOBRE A PORRA DO LONG VER SE NAO VAI DAR MERDA PQ NO BD ESTA VARCHAR
+			ps.setLong(2, c.getIdade()); // VER SOBRE O LONG VER SE NAO VAI DA erro PQ NO BD ESTA VARCHAR
 			ps.setInt(3, c.getNivel_ingles());
 			ps.setInt(4, c.getNivel_espanhol());
 			ps.setString(5, c.getEstado());
@@ -61,45 +62,57 @@ public class FiltroDAO {
 			ps.setInt(8, c.getSemestre());
 			ps.setInt(9, c.getSexo());
 			ps.setInt(10, c.getDeficiencia());
-			
-			
+			ps.setString(11, c.getEmail());
+			ps.setString(12, c.getTelefone());
+
 			if (ps.executeUpdate() == 1) {
+
+				ResultSet rs = ps.getGeneratedKeys();
+
+				int idCur = rs.getInt(1); // perguntar do id
+
+				for (Experiencia e : c.getExperiencia()) { // perguntar sobre o experiencia e pq eu n entendi
+					inserirExperiencia(e, idCur);
+				}
+				for (Formacao fo : c.getFormação()) { // AQUI ESTAMOS COLOCANDO NA LISTA FORMAÇÃO E EXPERIENCIA AS
+														// FORMAÇÕES E EXPERIENCIAS
+					inserirFormacao(fo, idCur);
+				}
+
 				System.out.println("Curriculo cadastrado ");
 			} else {
 				System.out.println("Problemas ao cadastrar Curriculo");
 				return false;
 			}
 			return true;
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		// FICAR ATENTO AO TIPO DE VARIAVEIS
-		// CONTINUAR A FAZER O INSERIR CURRICULO E SEM SEGUIDA FAZER O DAO INSERIR EXPERIENCIA E O DAO FORMACAO
 		return false;
 	}
-	
-	//---------------------------------------------------------------------------------------------------
 
-	
-	public boolean inserirExperiencia(Experiencia ex) {
-		
-		String sql = "INSERT INTO experiencia(nomeDaEmpresa, data_inicio, data_fim, funçao, cargo) VALUES(?, ?, ?, ?, ?) ";
-		
-		
+	// ---------------------------------------------------------------------------------------------------
+
+	public boolean inserirExperiencia(Experiencia ex, int cod) {
+
+		String sql = "INSERT INTO experiencia(nomeDaEmpresa, data_inicio, data_fim, funçao, cargo, idCurriculo) VALUES(?, ?, ?, ?, ?, ?) ";
+
 		try {
-			
+
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, ex.getEmpresa());
 			ps.setLong(2, ex.getData_inicio());
 			ps.setLong(3, ex.getData_fim());
 			ps.setString(4, ex.getFuncoes());
 			ps.setString(5, ex.getCargo());
-			
+			ps.setInt(6, ex.getIdCurriculo());
+			// colocar o IDCORRUCILO
+
 			if (ps.executeUpdate() == 1) {
 				System.out.println("Experiencia cadastrada ");
 			} else {
@@ -107,30 +120,29 @@ public class FiltroDAO {
 				return false;
 			}
 			return true;
-			
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
+
 		return false;
-		
+
 	}
-	
-	public boolean inserirFormacao(Formacao fo) {
-		
-		String sql = "INSERT INTO formacao(nomeDoCurso, data_inicio, data_fim, escola) VALUES(?, ?, ?, ?)";
-		
+
+	public boolean inserirFormacao(Formacao fo, int cod) {
+
+		String sql = "INSERT INTO formacao(nomeDoCurso, data_inicio, data_fim, escola, idCurriculo) VALUES(?, ?, ?, ?, ?)";
+
 		try {
-			
+
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
+
 			ps.setString(1, fo.getNome());
 			ps.setLong(2, fo.getData_inicio());
 			ps.setLong(3, fo.getData_fim());
 			ps.setString(4, fo.getEscola());
-			
+			ps.setInt(5, fo.getIdCurriculo());
+
 			if (ps.executeUpdate() == 1) {
 				System.out.println("Formação cadastrada ");
 			} else {
@@ -138,25 +150,12 @@ public class FiltroDAO {
 				return false;
 			}
 			return true;
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-		
-		
+
 		return false;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

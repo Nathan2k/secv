@@ -18,8 +18,6 @@ public class Filtro {
 	private Integer idade_fim;
 	private String area;
 
-	// nome, idade inicoon idade fim area
-
 	public boolean isIdioma() {
 		return idioma;
 	}

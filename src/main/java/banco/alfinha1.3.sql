@@ -71,8 +71,7 @@ CREATE TABLE formacao(
 	data_fim TIMESTAMP,
 	escola VARCHAR(50)
 	
-		FOREIGN KEY (idCurriculo) REFERENCES curriculo(id),
-
+	FOREIGN KEY (idCurriculo) REFERENCES curriculo(id)
 );
 
 
@@ -103,7 +102,7 @@ CREATE TABLE curriculo(
     curso VARCHAR(50),
     semestre INTEGER,
 	sexo VARCHAR(50),    
-	deficiencia VARCHAR(50),    
+	deficiencia VARCHAR(50)   
 
 );
 
