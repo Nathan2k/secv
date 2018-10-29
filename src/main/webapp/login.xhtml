@@ -6,7 +6,7 @@
 <h:head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
-	<title>Login</title>
+	<title>Página Inicial </title>
 </h:head>
 <h:body>
 	<p:growl>
@@ -21,7 +21,7 @@
 				<div align="center" style="margin-top: 8%">
 					<h:form>
 						<p:commandLink event="onclick" ajax="true"
-							update="imgb nome :form:loginLabel :form:usuario"
+							update="imgb nome :form:loginLabel :form:usuario :form2:btemp"
 							actionListener="#{usuarioMBean.trocaImagem}">
 							<h:graphicImage style="width: 30%;" id="imgb" library="img"
 								name="#{usuarioMBean.imagem}.jpg" />
@@ -56,17 +56,17 @@
 							<h:commandButton value="Entrar" action="#{usuarioMBean.logar}"
 								style="height: 30px; font-size: 14px; width:100%;" />
 						</h:panelGrid>
-			
+
 					</center>
 
 				</h:form>
 
 				<p />
 				<center>
-					<h:form>
+					<h:form id="form2">
 						<h:commandButton value="Nova Empresa" ajax="false"
-						disabled="#{usuarioMBean.imagem ne 'off'}"
-							action="novaemp"
+						id="btemp"
+							disabled="#{usuarioMBean.imagem ne 'off'}" action="novaemp"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 					<h:form>
@@ -75,7 +75,7 @@
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</h:form>
 				</center>
-
+				CLICA NA IMAGEM PORRA "provisorio"
 			</p:panel>
 		</p:panel>
 

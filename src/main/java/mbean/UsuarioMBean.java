@@ -29,7 +29,7 @@ public class UsuarioMBean {
 	public String senha;
 
 	public UsuarioMBean() {
-		imagem = "on";
+		imagem = "off";
 		uDao = new UsuarioEmpresaDAO();
 		admDAO = new UsuarioAdmDAO();
 
