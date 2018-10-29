@@ -65,29 +65,35 @@ CREATE TABLE filtro(
 CREATE TABLE formacao(
 
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	idCurriculo INTEGER NOT NULL,
 	nomeDoCurso VARCHAR(300),
 	data_inicio TIMESTAMP,
 	data_fim TIMESTAMP,
 	escola VARCHAR(50)
 	
+		FOREIGN KEY (idCurriculo) REFERENCES curriculo(id),
+
 );
 
 
 CREATE TABLE experiencia(
 
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	idCurriculo INTEGER NOT NULL,
 	nomeDaEmpresa VARCHAR(300),
 	data_inicio TIMESTAMP,
 	data_fim TIMESTAMP,
 	funçao VARCHAR(300),
 	cargo VARCHAR(300)
 	
+	FOREIGN KEY (idCurriculo) REFERENCES curriculo(id),
 );
 
 
 CREATE TABLE curriculo(
 	
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(50),
     nome_aluno VARCHAR(100),
     idade VARCHAR(50),
     nivelIngles INTEGER,
@@ -98,11 +104,6 @@ CREATE TABLE curriculo(
     semestre INTEGER,
 	sexo VARCHAR(50),    
 	deficiencia VARCHAR(50),    
-    idExperiencia INTEGER,
-   	idFormaçao INTEGER,
-    
-	FOREIGN KEY (idExperiencia) REFERENCES experiencia(id),
-	FOREIGN KEY (idFormaçao) REFERENCES formacao(id)
 
 );
 
@@ -118,23 +119,34 @@ CREATE TABLE recuperarSenha(
 -- INSERT INTO table_name
 -- VALUES (value1, value2, value3, ...);
 
-INSERT INTO empresa VALUES (0,'123','mahalo','123456','Jaguariuna','flores','lulu','mahalo@gmail.com','123455432','Rafael Leme');
+INSERT INTO empresa VALUES (0,'123','mahalo','12345678910111','Jaguariuna','flores','lulu','mahalo@gmail.com','123455432','Rafael Leme');
 
-INSERT INTO empresa VALUES (0,'123','senai','654321','Jaguariuna','flores','lulu','senai@gmail.com','123455432','Para Guasu');
+INSERT INTO empresa VALUES (0,'123','senai','123456789101112','Jaguariuna','flores','lulu','senai@gmail.com','123455432','Para Guasu');
 
 INSERT INTO administrador VALUES (0,'123456','adm@gmail.com','admin','123','123455432');
 
 
+INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `idCidade`, `idEstado`, `data`) VALUES
+(7, 'eletricista', 1, 'masculino', 0, 1, 1, 7, 1, '2018-10-26 02:00:00'),
+(8, 'arquiteto', 1, 'masculino', 0, 1, 1, 7, 1, '2018-10-25 02:00:00'),
+(9, 'treinador', 1, 'masculino', 0, 1, 1, 7, 1, '2018-11-26 02:00:00'),
+(10, 'piloto', 1, 'masculono', 0, 1, 1, 7, 1, '2018-12-26 02:00:00'),
+(11, 'xelelista', 1, 'masculono', 0, 1, 1, 7, 1, '2018-12-26 02:00:00'),
+(12, 'xeskedele', 1, 'masculono', 0, 1, 1, 7, 1, '2019-01-26 02:00:00'),
+(13, 'xazam', 1, 'masculono', 0, 1, 1, 7, 1, '2018-12-26 02:00:00');
+
+
+
+
+INSERT INTO `cidade` (`id`, `nomeCidade`, `idEstado`) VALUES
+(7, 'cidadde1', 1);
 
 
 
 
 
-
-
-
-
-
+INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
+(1, 'estado');
 
 
 
