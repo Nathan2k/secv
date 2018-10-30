@@ -28,20 +28,10 @@ public class FiltroDAO {
 		}
 	}
 
-	// ver sobre o curriculoVitae e sobre curriculo OKAYDA
-
-	// VER ATABELA FORMAÇÃO NO BANCO e perguntar a diferença de nome e formação
-	// OKAYDA
-
+	
 	// falar sobre o ajax nao suportado tem q ver o ONHIDE
 
-	// fazer DAO de inserir curriculo!OKAYDA
-
-	// perguntar sobre o banco de dados como q vai fazer o inserir se tem varias
-	// tabelas
-
-	// ver sobre o metodo no mbean que vai passando
-
+	
 	public boolean inserirCurriculo(Curriculo c) {
 
 		String sql = "INSERT INTO curriculo (nome_aluno, idade, nivelIngles, nivelEspanhol, estado, cidade, curso, "

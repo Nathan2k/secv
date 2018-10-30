@@ -49,8 +49,7 @@ public class FiltroService {
 
 		String response = http.doGet(url);
 
-		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
-		}.getType();
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {}.getType();
 		List<ClasseGenerica> cidades = gson.fromJson(response, collectionType);
 
 		return cidades;
@@ -59,20 +58,16 @@ public class FiltroService {
 	// RECEBE AS AREAS QUE TEM CURRICULO
 	public List<ClasseGenerica> cArea(Filtro cidade) throws IOException {
 
-		String url = "http://10.0.2.2:8080/aula_rest/ws/areas/por-cidade"; // URL CERTO!
+		String url = "http://10.87.202.146:8080/sccv-api/ws/areas/por-cidades"; // URL CERTO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 		
-		List<Integer> idCid = cidade.getIdCidade();
-
-		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
-		}.getType();
-
-		String json = gson.toJson(idCid, collectionType);
+		String json = gson.toJson(cidade, Filtro.class);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
-
+		
+		Type collectionType = new TypeToken<List<ClasseGenerica>>() {}.getType();
 		List<ClasseGenerica> area = gson.fromJson(response, collectionType);
 
 		return area;

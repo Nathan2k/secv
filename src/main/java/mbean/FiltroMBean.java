@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import entity.Curriculo;
 import entity.Filtro;
@@ -16,7 +17,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.*;
 
 @ManagedBean
-@SessionScoped
 public class FiltroMBean {
 
 	private Filtro eFiltro = new Filtro();
@@ -42,6 +42,7 @@ public class FiltroMBean {
 
 
 	public FiltroMBean() {
+		
 		try {
 			cidades = fs.cCidade();
 		} catch (IOException e) {
@@ -51,8 +52,20 @@ public class FiltroMBean {
 
 	}
 	
+	public void attArea(){
+		try {
+			area = fs.cArea(eFiltro);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	
 	public void enviarFiltro() throws IOException {
+		System.out.println("sim");
 		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro);
 		
 		if(curriculos == null) {
@@ -61,9 +74,6 @@ public class FiltroMBean {
 				//colocar mensagem falando que nenhum curriculo foi encontrado
 			}
 		}else {
-			
-			
-			
 			
 			//chamar o dao para salvar os curriculos
 			//true na variavel de controle renreded
