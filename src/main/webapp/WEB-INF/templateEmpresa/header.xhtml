@@ -1,6 +1,6 @@
 <!DOCTYPE nav PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
@@ -12,26 +12,32 @@
 </div>
 <br />
 <h:form>
-	<p:toolbar style="padding: 0px">
+	<p:toolbar style="padding: 0px;">
 		<f:facet name="left">
 
-			<p:commandButton style="border: 0px;" value="Filtro"
-				icon="ui-icon-arrowthick-1-s" action="temfiltro?faces-redirect=true" />
 
-			<p:commandButton style="border: 0px" value="Perfil"
+
+		</f:facet>
+
+	<f:facet name="right">
+
+			<p:menubar style="border: 0px; padding: 0px">
+				<p:submenu style="border: 0px; padding: 0px" label="#{usuarioMBean.emp.representante}" icon="ui-icon-person ">
+					<p:menuitem value="Filtro"
+				icon="ui-icon-arrowthick-1-s" action="temfiltro?faces-redirect=true" />
+					<p:separator />
+					<p:menuitem value="Perfil"
 				icon="ui-icon-person" ajax="false"
 				action="perfilEmpresa?faces-redirect=true" />
-
-			<p:commandButton style="border: 0px" value="Ajuda"
-				icon="ui-icon-help" onclick="PF('formem').show();" />
-
+					<p:separator />
+					<p:menuitem value="Ajuda"
+				icon="ui-icon-help" onclick="PF('formem').show();"/>
+					<p:separator />
+					<p:menuitem value="Sair" icon="ui-icon-closethick" action="#{sairMBean.matarSession}" />
+				</p:submenu>
+			</p:menubar>
 		</f:facet>
-
-
-		<f:facet name="right">
-			<p:commandButton style="border: 0px" value="Sair"
-				icon="ui-icon-closethick" action="#{sairMBean.matarSession}" />
-		</f:facet>
+		
 
 	</p:toolbar>
 </h:form>
