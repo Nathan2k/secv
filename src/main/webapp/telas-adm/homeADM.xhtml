@@ -16,9 +16,11 @@
 
 
 	<ui:define name="content">
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	
-	Graficos de estatistica aqui!
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+	
+	<p:chart type="line" model="#{chartsMBean.lineModel}" style="height:300px; width:700px; margin:50px"/>
 	
 	
 	</ui:define>
