@@ -33,20 +33,22 @@
 	<h:graphicImage  id="imgb" library="img" name="SENAaI.jpg" style="margin-bottom: 40px" />
 	</ui:insert>
 	
-	<a ><i class="fa fa-fw fa-user"></i>#{usuarioMBean.adm.nomex}</a>
+	<a style="background-color:black;"><i class="fa fa-fw fa-user"></i>#{usuarioMBean.adm.nome}</a>
+	<p/>
 	<p/>
 	<p/>
 	<a href="homeADM.xhtml"><i class="fa fa-fw fa-bar-chart"></i> Estatisticas</a>
-	<a href="empresasADM.xhtml"><i class="fa fa-fw fa-wrench"></i> Empresas</a>
+	<a href="empresasADM.xhtml"><i class="fa fa-fw fa-building-o"></i> Empresas</a>
 	<a href="criarUsuarioAdm.xhtml"><i class="fa fa-fw fa-user-plus"></i> Criar ADM</a>
-	<a href="perfilADM.xhtml"><i class="fa fa-fw fa-user"></i> Perfil</a>
+	<a href="perfilADM.xhtml"><i class="fa fa-fw fa-cog"></i> Perfil</a>
 	<a href="temfiltroAdm.xhtml"><i class="fa fa-fw fa-filter"></i> Filtro</a>
-  
+  	
 	<h:form>
+	<div style="position:fixed; bottom:10px; width:190px">
 		<p:commandLink action="#{sairMBean.matarSession}"><i class="fa fa-fw fa-sign-out"></i> Sair</p:commandLink>
 		
 		
-		<!-- TENTANDO CONFIRMAR SAIDA DO SISTEMA COM O USUARIO -->
+		<!-- TENTANDO CONFIRMAR SAIDA DO SISTEMA COM O USUARIO 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 
 						<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
@@ -56,8 +58,8 @@
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
 							style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
-					</p:confirmDialog>
-		
+					</p:confirmDialog> -->
+		</div>
 	</h:form>
 
 </div>
