@@ -12,8 +12,8 @@
 
 	<ui:define name="content">
 		<p:growl>
-			<p:autoUpdate/>
-		</p:growl>		
+			<p:autoUpdate />
+		</p:growl>
 		<div style="width: 500px; margin: auto;">
 			<p:panel value="Login" style="width: 500px; margin-top: 8%">
 
@@ -33,21 +33,22 @@
 								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
 							<p />
-							
+
 							<h:outputLabel for="cidades" value="Cidades:" />
-							<p:remoteCommand name="atualiza" update="area" actionListener="#{filtroMBean.attArea}" />
-							<p:selectCheckboxMenu id="cidades" 
+							<p:remoteCommand name="atualiza" update="area"
+								actionListener="#{filtroMBean.attArea}" />
+							<p:selectCheckboxMenu id="cidades"
 								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
 								style="width:160px" filter="true" filterMatchMode="startsWith"
-								panelStyle="width:290px" onHide="atualiza()" >
+								panelStyle="width:290px" onHide="atualiza()">
 								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
 									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
 							</p:selectCheckboxMenu>
-							
+
 							<p />
-							
+
 							<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
-							
+
 							<!-- TEM QUE COLOCAR ARRUMAR OS VALUES DE CADA CAMPO AQUI,
 								 TEM QUE CRIAR UM METODO PRA CADA CAMPO AQUI NO MBEAN,
 								 TEM QUE FICAR ESPERTO NO FILTRO SERVICE POIS PODE SER Q TENHA 
@@ -55,37 +56,48 @@
 							 -->
 
 							<h:outputLabel for="area" value="Área:" />
-							<p:selectOneMenu style="width: 160px"
-								panelStyle="width:150px" id="area" value="#{filtroMBean.selArea}">
-								<f:selectItem itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
+								id="area" value="#{filtroMBean.selArea}">
+								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
-									itemLabel="#{area.nome}" itemValue="area.codigo"/>
+									itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
+								<p:ajax event="change" listener="#{filtroMBean.selArea}" update="curso" /> 
 							</p:selectOneMenu>
 							<P />
 
 							<h:outputLabel for="curso" value="Curso:" />
 							<p:selectOneMenu required="false" style="width: 160px"
-								panelStyle="width:150px" id="curso" value="#{a}">
-								<f:selectItem itemLabel="" itemValue="" />
-								<f:selectItems value="#{a}" />
+								panelStyle="width:150px" id="curso"
+								value="#{filtroMBean.selCurso}">
+								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								<f:selectItems value="#{filtroMBean.curso}" var="curso"
+									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
+									<p:ajax event="change" listener="#{filtroMBean.selCurso}" update="semestre" /> 
 							</p:selectOneMenu>
 							<P />
-							
+
 							<h:outputLabel for="semestre" value="Semestres:" />
-							<p:selectCheckboxMenu style="width: 160px" id="semestre" value="#{a}"
-								multiple="true" filter="true" panelStyle="width:290px">
-								<f:selectItems value="#{a}" />
-							</p:selectCheckboxMenu>
+							<p:selectOneMenu required="false" style="width: 160px"
+								panelStyle="width:150px" id="semestre"
+								value="#{filtroMBean.selSemestre}">
+								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
+									itemLabel="#{semestre.nome}" itemValue="#{semestre.codigo}" />
+								<!--  <p:ajax event="change" listener="#{filtroMBean.selSemestre}" update="" /> -->
+							</p:selectOneMenu>
 							<p />
 
-							<h:outputLabel for="idioma" value="Idioma:" />
-							<p:selectCheckboxMenu style="width: 160px" id="idioma"
-								value="#{a}" multiple="true" filter="true"
-								panelStyle="width:290px">
-								<f:selectItems value="#{a}" />
-							</p:selectCheckboxMenu>
-							<p />
 
+							<!-- AQUI ESTA O CAMPO IDIOMA QUE ESTA RENDERED FALSE POIS AINDA NAO SABEMOS SE VAMOS FAZER 
+							<p:selectOneMenu rendered="false" required="false" style="width: 160px"
+								panelStyle="width:150px" id="idioma"
+								value="#{filtroMBean.selIdioma}">
+								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								<f:selectItems value="#{filtroMBean.idioma}" var="idioma"
+									itemLabel="#{idioma.nome}" itemValue="#{idioma.codigo}" />
+							</p:selectOneMenu>
+							<p />
+							-->
 
 							<h:outputText value="Experiência: " />
 							<p:selectOneRadio id="experiencia" value="#{a}">
@@ -105,7 +117,7 @@
 
 							<p />
 							<h:outputText value="Deficiência: " />
-							<p:selectOneRadio  id="deficiencia" value="#{a}">
+							<p:selectOneRadio id="deficiencia" value="#{a}">
 								<f:selectItem itemLabel="Sim" itemValue="Sim" />
 								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 							</p:selectOneRadio>
@@ -116,7 +128,7 @@
 
 								<h:outputText id="displayRange"
 									value="Faixa etária: #{sliderView.number8} a #{sliderView.number9} anos" />
-								<p:slider  for="txt6,txt7" display="displayRange"
+								<p:slider for="txt6,txt7" display="displayRange"
 									style="width: 350px" range="true"
 									displayTemplate="De {min} a {max}" />
 							</h:panelGrid>

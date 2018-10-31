@@ -76,7 +76,7 @@ public class FiltroService {
 	// RECEBE OS CURSOS QUE TEM CURRICULO
 	public List<ClasseGenerica> cCurso(Filtro area) throws IOException {
 
-		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		String url = "http://10.87.202.146:8080/sccv-api/ws/cursos/por-filtro"; // URL CERTO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
