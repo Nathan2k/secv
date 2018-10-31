@@ -61,7 +61,7 @@
 								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
 									itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
-								<p:ajax event="change" listener="#{filtroMBean.selArea}" update="curso" /> 
+								<p:ajax event="change" listener="#{filtroMBean.selArea}" process="area" update="curso" /> 
 							</p:selectOneMenu>
 							<P />
 
@@ -72,7 +72,7 @@
 								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
 									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
-									<p:ajax event="change" listener="#{filtroMBean.selCurso}" update="semestre" /> 
+									<p:ajax event="change" listener="#{filtroMBean.selCurso}"  update="semestre" /> 
 							</p:selectOneMenu>
 							<P />
 
