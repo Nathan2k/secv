@@ -57,15 +57,11 @@ public class UsuarioMBean {
 		}
 	}
 	
-	// VARIAVEL/ENTIDADE ADM
+
 	private String loginADM() {
 		adm = admDAO.buscarADM((empreOUadm), senha);
 		if (adm != null) {
-			//PRIMEIRO NOME
-	//		if (adm.getNome().indexOf(" ") > -1) {
-	//			String primeironome = adm.getNome().substring(0, adm.getNome().indexOf(" "));
-	//			adm.setNome(primeironome);
-	//		}
+
 			return "/telas-adm/homeADM?faces-redirect=true";
 		}
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou Senha invalido(s)"));
@@ -142,6 +138,10 @@ public class UsuarioMBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(s));
 
 	}
+
+
+		
+
 
 //	value="#{UsuarioMBean.uEmpresa.CNPJ}"
 
