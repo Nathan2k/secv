@@ -1,9 +1,6 @@
 package filter;
 
 import java.io.IOException;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import mbean.UsuarioMBean;
 
-@WebFilter("/telas-empresa/*")
-public class logadoEmpresa implements Filter {
+@WebFilter("/telas-adm/*")
+public class logadoAdm implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -32,7 +29,7 @@ public class logadoEmpresa implements Filter {
 		
 		UsuarioMBean umb = (UsuarioMBean) ((HttpServletRequest)request).getSession().getAttribute("usuarioMBean");
 		
-		if (umb.getEmp() == null) {
+		if (umb.getAdm() == null) {
 			((HttpServletResponse) response).sendRedirect("/secv/login.xhtml");
 		}else {
 			chain.doFilter(request, response);
@@ -46,11 +43,6 @@ public class logadoEmpresa implements Filter {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-	
-	// olha a foto q tem no seu celular!
-	
 	
 }
 

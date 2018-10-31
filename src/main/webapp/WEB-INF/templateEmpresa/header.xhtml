@@ -15,19 +15,24 @@
 	<p:toolbar style="padding: 0px;">
 		<f:facet name="left">
 
+			<p:commandButton style="border: 0px;padding: 2px;" value="Filtro"
+				icon="ui-icon-arrowthick-1-s" action="temfiltro?faces-redirect=true" />
 
+			<p:commandButton style="border: 0px;padding: 2px;" value="Perfil"
+				icon="ui-icon-person" ajax="false"
+				action="perfilEmpresa?faces-redirect=true" />
 
 		</f:facet>
 
 	<f:facet name="right">
 
 			<p:menubar style="border: 0px; padding: 0px">
-				<p:submenu style="border: 0px; padding: 0px" label="#{usuarioMBean.emp.representante}" icon="ui-icon-person ">
+				<p:submenu style="border: 0px; padding: 0px" label="#{usuarioMBean.emp.nome}" icon="ui-icon-person ">
 					<p:menuitem value="Filtro"
 				icon="ui-icon-arrowthick-1-s" action="temfiltro?faces-redirect=true" />
 					<p:separator />
 					<p:menuitem value="Perfil"
-				icon="ui-icon-person" ajax="false"
+				icon="ui-icon-person" ajax="false"	
 				action="perfilEmpresa?faces-redirect=true" />
 					<p:separator />
 					<p:menuitem value="Ajuda"
