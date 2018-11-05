@@ -7,16 +7,21 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import entity.Curriculo;
 import entity.Filtro;
 import service.ClasseGenerica;
 import utils.FiltroService;
+import utils.MensFaces;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.*;
 
+import DAO.FiltroDAO;
+
 @ManagedBean
+@ViewScoped
 public class FiltroMBean {
 
 	private Filtro eFiltro = new Filtro();
@@ -29,64 +34,50 @@ public class FiltroMBean {
 	List<ClasseGenerica> idioma = new ArrayList<>();
 
 	List<ClasseGenerica> selCidade = new ArrayList<>();
-	ClasseGenerica selArea = new ClasseGenerica();
-	ClasseGenerica selCurso = new ClasseGenerica();
-	ClasseGenerica selSemestre = new ClasseGenerica();
-	ClasseGenerica selIdioma = new ClasseGenerica();
 
+	FiltroDAO fDao = new FiltroDAO();
+	
 	boolean filtroP = false;
 
 	FiltroService fs = new FiltroService();
 
-	//PEGA AS CIDADES COM CURRICULO CADASTRADO
+	// PEGA AS CIDADES COM CURRICULO CADASTRADO
 	public FiltroMBean() {
 		try {
 			cidades = fs.cCidade();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	//PEGA AS AREAS COM CURRICULO CADASTRADO
+	// PEGA AS AREAS COM CURRICULO CADASTRADO
 	public void attArea() {
+		System.out.println(eFiltro.getArea());
 		try {
 			area = fs.cArea(eFiltro);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	//PEGA OS CURSOS COM CURRICULO CADASTRADO
+	// PEGA OS CURSOS COM CURRICULO CADASTRADO
 	public void attCurso() {
 		try {
 			curso = fs.cCurso(eFiltro);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	//PEGA OS SEMESTRES COM CURRICULO CADASTRADO
+
+	// PEGA OS SEMESTRES COM CURRICULO CADASTRADO
 	public void attSemestre() {
 		try {
 			semestre = fs.cSemestre(eFiltro);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	public void enviarFiltro() throws IOException {
@@ -94,41 +85,26 @@ public class FiltroMBean {
 		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro);
 
 		if (curriculos == null) {
-			// colocar mensagem falando que deu um erro no filtro.
-			if (curriculos.isEmpty()) {
-				// colocar mensagem falando que nenhum curriculo foi encontrado
+
+			MensFaces.m("Ocorreu um erro ao enviar o filtro!");
+			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+			if (curriculos.isEmpty()) { // PERGUNTAR SE TER Q FAZER ESSE IF DO EMPTY FORA DO IF DO NULL 
+
+				MensFaces.m("Nenhum Curriculo foi encontrado!");
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			}
 		} else {
-
-			// chamar o dao para salvar os curriculos
-			// true na variavel de controle renreded
+			
+			for(Curriculo c : curriculos) {
+				
+				fDao.inserirCurriculo(c);  // FICA ANDANDO NA LISTA E INSERE UM POR UM
+			}
+			
 		}
 	}
 
-	public ClasseGenerica getSelCurso() {
-		return selCurso;
-	}
-
-	public void setSelCurso(ClasseGenerica selCurso) {
-		this.selCurso = selCurso;
-	}
-
-	public ClasseGenerica getSelSemestre() {
-		return selSemestre;
-	}
-
-	public void setSelSemestre(ClasseGenerica selSemestre) {
-		this.selSemestre = selSemestre;
-	}
-
-	public ClasseGenerica getSelIdioma() {
-		return selIdioma;
-	}
-
-	public void setSelIdioma(ClasseGenerica selIdioma) {
-		this.selIdioma = selIdioma;
-	}
-
+	
 	public boolean isFiltroP() {
 		return filtroP;
 	}
@@ -199,14 +175,6 @@ public class FiltroMBean {
 
 	public void setSelCidade(List<ClasseGenerica> selCidade) {
 		this.selCidade = selCidade;
-	}
-
-	public ClasseGenerica getSelArea() {
-		return selArea;
-	}
-
-	public void setSelArea(ClasseGenerica selArea) {
-		this.selArea = selArea;
 	}
 
 	public FiltroService getFs() {

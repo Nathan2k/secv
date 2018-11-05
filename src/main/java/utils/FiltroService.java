@@ -83,7 +83,7 @@ public class FiltroService {
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
 
-		String json = gson.toJson(area, collectionType);
+		String json = gson.toJson(area, Filtro.class);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
@@ -103,7 +103,7 @@ public class FiltroService {
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
 
-		String json = gson.toJson(curso, collectionType);
+		String json = gson.toJson(curso, Filtro.class);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
@@ -123,7 +123,7 @@ public class FiltroService {
 		Type collectionType = new TypeToken<List<ClasseGenerica>>() {
 		}.getType();
 
-		String json = gson.toJson(semestre, collectionType);
+		String json = gson.toJson(semestre, Filtro.class);
 		http.setContentType("application/json");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");

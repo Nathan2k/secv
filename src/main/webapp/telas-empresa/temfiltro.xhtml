@@ -38,9 +38,9 @@
 							<p:remoteCommand name="atualiza" update="area"
 								actionListener="#{filtroMBean.attArea}" />
 							<p:selectCheckboxMenu id="cidades"
-								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
+								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades" 
 								style="width:160px" filter="true" filterMatchMode="startsWith"
-								panelStyle="width:290px" onHide="atualiza()">
+								panelStyle="width:290px" onHide="atualiza()">						<!-- VER SE O VALUE AQUI TA CERTO!  -->
 								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
 									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
 							</p:selectCheckboxMenu>
@@ -57,18 +57,18 @@
 
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
-								id="area" value="#{filtroMBean.selArea}">
-								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								id="area" value="#{filtroMBean.eFiltro.area}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
 									itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
-								<p:ajax event="change" listener="#{filtroMBean.selArea}" process="area" update="curso" /> 
+								<p:ajax event="change" listener="#{filtroMBean.attCurso}" process="area" update="curso" /> 
 							</p:selectOneMenu>
 							<P />
 
 							<h:outputLabel for="curso" value="Curso:" />
 							<p:selectOneMenu required="false" style="width: 160px"
 								panelStyle="width:150px" id="curso"
-								value="#{filtroMBean.selCurso}">
+								value="#{filtroMBean.selCurso.codigo}">
 								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
 									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />

@@ -69,7 +69,7 @@ CREATE TABLE formacao(
 	nomeDoCurso VARCHAR(300),
 	data_inicio TIMESTAMP,
 	data_fim TIMESTAMP,
-	escola VARCHAR(50)
+	escola VARCHAR(50),
 	
 	FOREIGN KEY (idCurriculo) REFERENCES curriculo(id)
 );
@@ -83,15 +83,16 @@ CREATE TABLE experiencia(
 	data_inicio TIMESTAMP,
 	data_fim TIMESTAMP,
 	funçao VARCHAR(300),
-	cargo VARCHAR(300)
+	cargo VARCHAR(300),
 	
-	FOREIGN KEY (idCurriculo) REFERENCES curriculo(id),
+	FOREIGN KEY (idCurriculo) REFERENCES curriculo(id)
 );
 
 
 CREATE TABLE curriculo(
 	
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    idFiltro INTEGER NOT NULL,
     email VARCHAR(50),
     nome_aluno VARCHAR(100),
     idade VARCHAR(50),
@@ -102,9 +103,12 @@ CREATE TABLE curriculo(
     curso VARCHAR(50),
     semestre INTEGER,
 	sexo VARCHAR(50),    
-	deficiencia VARCHAR(50)   
+	deficiencia VARCHAR(50),
+	
+	FOREIGN KEY (idFiltro) REFERENCES filtro(id)
 
 );
+-- COLOCA CHAVE ESTRANGEIRA PRA FILTRO
 
 CREATE TABLE recuperarSenha(
 	

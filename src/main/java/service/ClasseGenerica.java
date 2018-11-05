@@ -32,6 +32,11 @@ public class ClasseGenerica {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
 	
 }
+	
+
+	
+
+
