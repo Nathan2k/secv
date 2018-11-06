@@ -47,8 +47,9 @@ public class UsuarioDAO {
 
 			ps.setString(1, user.getSenha());
 			ps.setString(2, user.getEmail());
-
-			return ps.execute();
+			ps.execute();
+			
+			return true;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

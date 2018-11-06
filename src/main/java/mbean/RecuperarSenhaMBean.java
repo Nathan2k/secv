@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -22,7 +23,7 @@ import entity.UsuarioEmpresa;
 import utils.EnviaUtil;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class RecuperarSenhaMBean {
 
 	Mensagem mens = new Mensagem();
@@ -107,40 +108,33 @@ public class RecuperarSenhaMBean {
 	}
 
 	public String novaSenha() {
-		
-	  if (Password.equals(verificaPassword)) {
-	  
-		  Usuario usuarioP = new Usuario(null, null, Password, protocolo.getEmailUsuario(), null);
-		  
-		  if (uDao.alterar(usuarioP)) {
-		  
-			  uDao.deletaProtocolo(protocolo);
-			  
-				  
-		  for (int x = 1; x < 2; x++) {
-		  FacesContext.getCurrentInstance().addMessage(null, new
-		  FacesMessage("SENHA ALTERADA COM SUCESSO!")); 
-		  }
-		  
-		  return "login?faces-redirect=true"; 
-		  }
-	  }
-	  else {
-		  
-	  FacesContext.getCurrentInstance().addMessage(null, new
-	  FacesMessage("Senhas diferentes. Veirifique password")); 
-	  
-	  } 
-	  
-	  return null;
-	  
+
+		if (Password.equals(verificaPassword)) {
+
+			Usuario usuarioP = new Usuario(null, null, Password, protocolo.getEmailUsuario(), null, ID_USUARIO_FINAL);
+
+			if (uDao.alterar(usuarioP)) {
+
+				uDao.deletaProtocolo(protocolo);
+
+				for (int x = 1; x < 2; x++) {
+					FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("SENHA ALTERADA COM SUCESSO!"));
+				}
+
+				return "login?faces-redirect=true";
+			}
+		} else {
+
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Senhas diferentes. Veirifique password"));
+
+		}
+
+		return null;
+
 	}
 
-	
-	
-	
-	
-	
 	public String getvCod() {
 		return vCod;
 	}

@@ -1,5 +1,6 @@
 package mbean;
 
+import java.awt.geom.Area;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
+
+import org.primefaces.behavior.ajax.AjaxBehaviorHandler;
+import org.primefaces.component.selectonemenu.SelectOneMenu;
 
 import entity.Curriculo;
 import entity.Filtro;
@@ -32,7 +38,7 @@ public class FiltroMBean {
 	List<ClasseGenerica> curso = new ArrayList<>();
 	List<ClasseGenerica> semestre = new ArrayList<>();
 	List<ClasseGenerica> idioma = new ArrayList<>();
-
+	
 	List<ClasseGenerica> selCidade = new ArrayList<>();
 
 	FiltroDAO fDao = new FiltroDAO();
@@ -41,6 +47,20 @@ public class FiltroMBean {
 
 	FiltroService fs = new FiltroService();
 
+	public void salvaFiltro() {
+		
+//		if() {
+//			
+//			
+//			
+//			
+//		}
+//		
+//		
+		
+	}
+	
+	
 	// PEGA AS CIDADES COM CURRICULO CADASTRADO
 	public FiltroMBean() {
 		try {
@@ -61,7 +81,9 @@ public class FiltroMBean {
 	}
 
 	// PEGA OS CURSOS COM CURRICULO CADASTRADO
-	public void attCurso() {
+	public void attCurso(AjaxBehaviorEvent event) {
+//		SelectOneMenu a = (SelectOneMenu) event.getSource();
+//		System.out.println(a.geti);
 		try {
 			curso = fs.cCurso(eFiltro);
 		} catch (IOException e) {

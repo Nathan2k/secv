@@ -38,9 +38,10 @@
 							<p:remoteCommand name="atualiza" update="area"
 								actionListener="#{filtroMBean.attArea}" />
 							<p:selectCheckboxMenu id="cidades"
-								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades" 
+								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
 								style="width:160px" filter="true" filterMatchMode="startsWith"
-								panelStyle="width:290px" onHide="atualiza()">						<!-- VER SE O VALUE AQUI TA CERTO!  -->
+								panelStyle="width:290px" onHide="atualiza()">
+								<!-- VER SE O VALUE AQUI TA CERTO!  -->
 								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
 									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
 							</p:selectCheckboxMenu>
@@ -59,9 +60,13 @@
 							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
 								id="area" value="#{filtroMBean.eFiltro.area}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="teste1" itemValue="1" />
+								<f:selectItem itemLabel="teste2" itemValue="2" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
 									itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
-								<p:ajax event="change" listener="#{filtroMBean.attCurso}" process="area" update="curso" /> 
+								<p:ajax event="change" listener="#{filtroMBean.attCurso}"
+									process="area" update="curso" >		
+								</p:ajax>
 							</p:selectOneMenu>
 							<P />
 
@@ -72,7 +77,8 @@
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
 									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
-									<p:ajax event="change" listener="#{filtroMBean.attSemestre}"  update="semestre" /> 
+								<p:ajax event="change" listener="#{filtroMBean.attSemestre}"
+									update="semestre" />
 							</p:selectOneMenu>
 							<P />
 
@@ -101,27 +107,28 @@
 
 							<h:outputText value="Experiência: " />
 							<p:selectOneRadio id="experiencia" value="#{a}">
-								<f:selectItem itemLabel="Sim" itemValue="Sim" />
-								<f:selectItem itemLabel="Não" itemValue="Nao" />
+								<f:selectItem itemLabel="Sim" itemValue="1" />
+								<f:selectItem itemLabel="Não" itemValue="2" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
 							</p:selectOneRadio>
 
 							<p />
 
 
 							<h:outputText value="Sexo: " />
-							<p:selectOneRadio id="sexo" value="#{a}">
-								<f:selectItem itemLabel="Homem" itemValue="Homem" />
-								<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
-								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
+							<p:selectOneRadio id="sexo" value="#{filtroMBean.eFiltro.sexo}">
+								<f:selectItem itemLabel="Homem" itemValue="1" />
+								<f:selectItem itemLabel="Mulher" itemValue="2" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
 							</p:selectOneRadio>
 
 							<p />
 							<h:outputText value="Deficiência: " />
-							<p:selectOneRadio id="deficiencia" value="#{a}">
-								<f:selectItem itemLabel="Sim" itemValue="Sim" />
-								<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
+							<p:selectOneRadio id="deficiencia"
+								value="#{filtroMBean.eFiltro.deficiencia}">
+								<f:selectItem itemLabel="Sim" itemValue="1" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
 							</p:selectOneRadio>
-
 							<p />
 
 							<h:panelGrid columns="1" style="margin-bottom: 10px">
@@ -135,9 +142,6 @@
 							<h:inputHidden id="txt6" value="#{sliderView.number8}" />
 							<h:inputHidden id="txt7" value="#{sliderView.number9}" />
 							<p />
-
-
-
 
 						</h:panelGrid>
 
@@ -188,7 +192,6 @@
 					</center>
 
 				</h:form>
-
 
 			</p:panel>
 		</div>
