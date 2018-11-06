@@ -61,6 +61,18 @@ public List<GraficoFiltro> contarFiltro() {
 	return null;
 }
 
+//public GraficoPizza{
+	
+	
+//}
+
+
+
+
+
+
+
+
 
 
 }

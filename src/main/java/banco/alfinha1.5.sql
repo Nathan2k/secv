@@ -61,6 +61,7 @@ CREATE TABLE filtro(
     idCidade INTEGER,
     idEstado INTEGER NOT NULL,
     data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    area VARCHAR(50),
     
     FOREIGN KEY (idEmpresa) REFERENCES empresa(id),
     FOREIGN KEY (idADM) REFERENCES administrador(id),
@@ -137,6 +138,11 @@ INSERT INTO administrador VALUES (0,'123456','adm@gmail.com','admin','123','1234
 INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
 (1, 'estado');
 
+INSERT INTO `cidade` (`id`, `nomeCidade`, `idEstado`) VALUES
+(7, 'cidadde1', 1);
+
+
+
 INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `idCidade`, `idEstado`, `data`) VALUES
 (7, 'eletricista', 1, 'masculino', 0, 1, 1, 7, 1, '2018-10-26 02:00:00'),
 (8, 'arquiteto', 1, 'masculino', 0, 1, 1, 7, 1, '2018-10-25 02:00:00'),
@@ -145,16 +151,4 @@ INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmp
 (11, 'xelelista', 1, 'masculono', 0, 1, 1, 7, 1, '2018-12-26 02:00:00'),
 (12, 'xeskedele', 1, 'masculono', 0, 1, 1, 7, 1, '2019-01-26 02:00:00'),
 (13, 'xazam', 1, 'masculono', 0, 1, 1, 7, 1, '2018-12-26 02:00:00');
-
-INSERT INTO `cidade` (`id`, `nomeCidade`, `idEstado`) VALUES
-(7, 'cidadde1', 1);
-
-
-INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
-(1, 'estado');
-
-
-
-
-
 
