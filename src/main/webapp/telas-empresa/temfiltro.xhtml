@@ -68,19 +68,19 @@
 							<h:outputLabel for="curso" value="Curso:" />
 							<p:selectOneMenu required="false" style="width: 160px"
 								panelStyle="width:150px" id="curso"
-								value="#{filtroMBean.selCurso.codigo}">
-								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								value="#{filtroMBean.eFiltro.idCurso}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
 									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
-									<p:ajax event="change" listener="#{filtroMBean.selCurso}"  update="semestre" /> 
+									<p:ajax event="change" listener="#{filtroMBean.attSemestre}"  update="semestre" /> 
 							</p:selectOneMenu>
 							<P />
 
 							<h:outputLabel for="semestre" value="Semestres:" />
 							<p:selectOneMenu required="false" style="width: 160px"
 								panelStyle="width:150px" id="semestre"
-								value="#{filtroMBean.selSemestre}">
-								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								value="#{filtroMBean.eFiltro.semestre}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
 									itemLabel="#{semestre.nome}" itemValue="#{semestre.codigo}" />
 								<!--  <p:ajax event="change" listener="#{filtroMBean.selSemestre}" update="" /> -->
@@ -91,7 +91,7 @@
 							<!-- AQUI ESTA O CAMPO IDIOMA QUE ESTA RENDERED FALSE POIS AINDA NAO SABEMOS SE VAMOS FAZER 
 							<p:selectOneMenu rendered="false" required="false" style="width: 160px"
 								panelStyle="width:150px" id="idioma"
-								value="#{filtroMBean.selIdioma}">
+								value="#{a}">
 								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
 								<f:selectItems value="#{filtroMBean.idioma}" var="idioma"
 									itemLabel="#{idioma.nome}" itemValue="#{idioma.codigo}" />

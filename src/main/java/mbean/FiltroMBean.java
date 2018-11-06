@@ -103,8 +103,18 @@ public class FiltroMBean {
 			
 		}
 	}
+	
+	
 
 	
+	public FiltroDAO getfDao() {
+		return fDao;
+	}
+
+	public void setfDao(FiltroDAO fDao) {
+		this.fDao = fDao;
+	}
+
 	public boolean isFiltroP() {
 		return filtroP;
 	}
