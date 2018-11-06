@@ -1,6 +1,9 @@
+
+
 CREATE DATABASE alfa;
 
 USE alfa;
+
 
 CREATE TABLE empresa(
 
@@ -17,17 +20,6 @@ CREATE TABLE empresa(
 
 );
 
-CREATE TABLE administrador(
-	
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	NIF VARCHAR(50) UNIQUE,
-	email VARCHAR(50) UNIQUE,
-	nome VARCHAR(50),
-	senha VARCHAR(50),
-	telefone VARCHAR(50)
-    
-);
-
 CREATE TABLE estado(
 	
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -42,6 +34,19 @@ CREATE TABLE cidade(
     idEstado INTEGER NOT NULL,
     
     FOREIGN KEY (idEstado) REFERENCES estado(id)
+);
+
+
+
+CREATE TABLE administrador(
+	
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	NIF VARCHAR(50) UNIQUE,
+	email VARCHAR(50) UNIQUE,
+	nome VARCHAR(50),
+	senha VARCHAR(50),
+	telefone VARCHAR(50)
+    
 );
 
 CREATE TABLE filtro(
@@ -62,6 +67,30 @@ CREATE TABLE filtro(
     FOREIGN KEY (idCidade) REFERENCES cidade(id),
     FOREIGN KEY (idEstado) REFERENCES estado(id)
 );
+
+CREATE TABLE curriculo(
+	
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    idFiltro INTEGER NOT NULL,
+    email VARCHAR(50),
+    nome_aluno VARCHAR(100),
+    idade VARCHAR(50),
+    nivelIngles INTEGER,
+    nivelEspanhol INTEGER,
+ 	cidade VARCHAR(50),
+ 	estado VARCHAR(50),
+    curso VARCHAR(50),
+    semestre INTEGER,
+	sexo VARCHAR(50),    
+	deficiencia VARCHAR(50),
+	
+	FOREIGN KEY (idFiltro) REFERENCES filtro(id)
+
+);
+-- COLOCA CHAVE ESTRANGEIRA PRA FILTRO
+
+
+
 
 CREATE TABLE formacao(
 
@@ -90,27 +119,6 @@ CREATE TABLE experiencia(
 );
 
 
-CREATE TABLE curriculo(
-	
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idFiltro INTEGER NOT NULL,
-    email VARCHAR(50),
-    nome_aluno VARCHAR(100),
-    idade VARCHAR(50),
-    nivelIngles INTEGER,
-    nivelEspanhol INTEGER,
- 	cidade VARCHAR(50),
- 	estado VARCHAR(50),
-    curso VARCHAR(50),
-    semestre INTEGER,
-	sexo VARCHAR(50),    
-	deficiencia VARCHAR(50),
-	
-	FOREIGN KEY (idFiltro) REFERENCES filtro(id)
-
-);
--- COLOCA CHAVE ESTRANGEIRA PRA FILTRO
-
 CREATE TABLE recuperarSenha(
 	
 	 id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -120,15 +128,14 @@ CREATE TABLE recuperarSenha(
 
 
 
--- INSERT INTO table_name
--- VALUES (value1, value2, value3, ...);
-
 INSERT INTO empresa VALUES (0,'123','mahalo','12345678910111','Jaguariuna','flores','lulu','mahalo@gmail.com','123455432','Rafael Leme');
 
 INSERT INTO empresa VALUES (0,'123','senai','123456789101112','Jaguariuna','flores','lulu','senai@gmail.com','123455432','Para Guasu');
 
 INSERT INTO administrador VALUES (0,'123456','adm@gmail.com','admin','123','123455432');
 
+INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
+(1, 'estado');
 
 INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `idCidade`, `idEstado`, `data`) VALUES
 (7, 'eletricista', 1, 'masculino', 0, 1, 1, 7, 1, '2018-10-26 02:00:00'),
@@ -139,19 +146,12 @@ INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmp
 (12, 'xeskedele', 1, 'masculono', 0, 1, 1, 7, 1, '2019-01-26 02:00:00'),
 (13, 'xazam', 1, 'masculono', 0, 1, 1, 7, 1, '2018-12-26 02:00:00');
 
-
-
-
 INSERT INTO `cidade` (`id`, `nomeCidade`, `idEstado`) VALUES
 (7, 'cidadde1', 1);
 
 
-
-
-
 INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
 (1, 'estado');
-
 
 
 
