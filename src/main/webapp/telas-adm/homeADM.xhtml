@@ -19,10 +19,22 @@
 	
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-	
-	<p:chart type="line" model="#{chartsMBean.lineModel}" style="height:300px; width:700px; margin:60px"/>
+
+<h:panelGrid columns="2"  border="1">
+
+	<p:chart type="line" model="#{chartsMBean.lineModel}" style="height:420px; width:700px; margin:35px"/>
 	        
-	<p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+	<p:chart type="pie" model="#{chartPieMBean.pieModel1}" style="height:400px; width:650px; margin:50px; margin-left:70px" />
+	
+</h:panelGrid>
+<h:panelGrid columns="2" border="1">
+
+	<p:chart type="bar" model="#{chartBarMBean.barModel}" style="height:420px; width:700px; margin:35px"/>
+	
+	<p:chart type="bar" model="#{chartBarMBean.barModel}" style="height:420px; width:700px; margin:35px"/>
+	
+</h:panelGrid>
+	
 	
 	</ui:define>
 
