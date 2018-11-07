@@ -12,6 +12,7 @@
 	<title><ui:insert name="title">Este é o template</ui:insert></title>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/secv/resources/css/cssEmp.css" />
 
 
 </h:head>
@@ -46,10 +47,13 @@
 		</ui:insert>
 	</div>
 	
-	<div class="footer">
-        <ui:include src="/WEB-INF/templateEmpresa/footer.xhtml"></ui:include>
-    </div>
-
+	
+    <div class="footer">
+		<ui:insert name="footer">
+			<ui:include src="/WEB-INF/templateEmpresa/footer.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+    
 
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
