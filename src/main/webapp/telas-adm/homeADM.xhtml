@@ -20,18 +20,34 @@
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
-<h:panelGrid columns="2"  border="1">
+<h:panelGrid columns="2" border="1" style="border-block-end:0px" >
 
-	<p:chart type="line" model="#{chartsMBean.lineModel}" style="height:420px; width:700px; margin:35px"/>
+	<p:chart type="line" model="#{chartsMBean.lineModel}" 
+	style="height:400px; width:680px; 
+	margin-right:97px; margin-left:90px; 
+	margin-top:44px; 
+	margin-bottom:44px"/>
 	        
-	<p:chart type="pie" model="#{chartPieMBean.pieModel1}" style="height:400px; width:650px; margin:50px; margin-left:70px" />
+	<p:chart type="pie" model="#{chartPieMBean.pieModel1}" 
+	style="height:380px; width:630px; 
+	margin-right:90px; margin-left:140px; 
+	margin-top:38px; 
+	margin-bottom:48px" />
 	
 </h:panelGrid>
 <h:panelGrid columns="2" border="1">
 
-	<p:chart type="bar" model="#{chartBarMBean.barModel}" style="height:420px; width:700px; margin:35px"/>
+	<p:chart type="bar" model="#{chartBarMBean.barModel}" 
+	style="height:400px; width:680px; 
+	margin-right:97px; margin-left:90px; 
+	margin-top:43px; 
+	margin-bottom:43px"/>
 	
-	<p:chart type="bar" model="#{chartBarMBean.barModel}" style="height:420px; width:700px; margin:35px"/>
+	<p:chart type="line" model="#{chartLineMBean.areaModel}" 
+	style="height:400px; width:680px; 
+	margin-right:90px; margin-left:90px; 
+	margin-top:43px; 
+	margin-bottom:44px"/>
 	
 </h:panelGrid>
 	

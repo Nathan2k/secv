@@ -1,9 +1,7 @@
 package mbean;
 
 import javax.annotation.PostConstruct;
-import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
- 
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
@@ -11,7 +9,7 @@ import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
  
 @ManagedBean
-public class ChartLineMBean implements Serializable {
+public class ChartLineMBean {
  
     private LineChartModel areaModel;
  
