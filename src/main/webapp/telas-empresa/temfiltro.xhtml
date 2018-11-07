@@ -15,7 +15,7 @@
 			<p:autoUpdate />
 		</p:growl>
 		<div style="width: 500px; margin: auto;">
-			<p:panel value="Login" style="width: 500px; margin-top: 8%">
+			<p:panel value="Login" style="width: 500px; margin-top: 3%">
 
 				<h:form>
 					<center>
@@ -59,13 +59,12 @@
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
 								id="area" value="#{filtroMBean.eFiltro.area}">
-								<f:selectItem itemLabel="Selecione" itemValue="" />
-								<f:selectItem itemLabel="teste1" itemValue="1" />
-								<f:selectItem itemLabel="teste2" itemValue="2" />
+								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
-									itemLabel="#{area.nome}" itemValue="#{area.codigo}" />
+									itemLabel="#{area.nome}" itemValue="#{area.codigo}-#{area.nome}"
+									/>
 								<p:ajax event="change" listener="#{filtroMBean.attCurso}"
-									process="area" update="curso" >		
+									process="area" update="curso" >
 								</p:ajax>
 							</p:selectOneMenu>
 							<P />

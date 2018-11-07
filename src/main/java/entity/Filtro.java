@@ -6,6 +6,8 @@ public class Filtro {
 
 	private String nomeFiltro;
 	private Integer id;
+	private Integer idEmpresa;
+	private Integer idAdm;
 	private Integer idCurso; // vai
 	private Integer semestre; // vai
 	private List<Integer> idCidade; // vai
@@ -17,6 +19,26 @@ public class Filtro {
 	private Integer idade_inicio;
 	private Integer idade_fim;
 	private String area;
+	
+	
+
+	
+	
+	public Integer getIdAdm() {
+		return idAdm;
+	}
+
+	public void setIdAdm(Integer idAdm) {
+		this.idAdm = idAdm;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
+	}
 
 	public boolean isIdioma() {
 		return idioma;

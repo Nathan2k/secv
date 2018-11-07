@@ -9,7 +9,9 @@ import java.util.List;
 
 import com.VPS04.JDBC.ConnectionDB;
 
+import entity.Cidade;
 import entity.Curriculo;
+import entity.Filtro;
 import service.ClasseGenerica;
 import service.Experiencia;
 import service.Formacao;
@@ -28,10 +30,8 @@ public class FiltroDAO {
 		}
 	}
 
-	
 	// falar sobre o ajax nao suportado tem q ver o ONHIDE
 
-	
 	public boolean inserirCurriculo(Curriculo c) {
 
 		String sql = "INSERT INTO curriculo (nome_aluno, idade, nivelIngles, nivelEspanhol, estado, cidade, curso, "
@@ -144,6 +144,69 @@ public class FiltroDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+
+		return false;
+	}
+
+	public boolean inserirFiltro(Filtro f) {
+
+		String sql = "INSERT INTO filtro(nome, experiencia, sexo, deficiencia, idEmpresa, idADM, "
+				+ "area, curso, idade_inicio, idade_fim) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+			ResultSet rs = ps.getGeneratedKeys();
+
+			ps.setString(1, f.getNomeFiltro());
+			ps.setInt(2, f.getExperiencia());
+			ps.setInt(3, f.getSexo());
+			ps.setInt(4, f.getDeficiencia());
+			ps.setInt(5, f.getIdEmpresa());
+			ps.setInt(6, f.getIdAdm());
+			ps.setString(7, f.getArea());
+			ps.setInt(8, f.getIdCurso());
+			ps.setInt(9, f.getIdade_inicio());
+			ps.setInt(10, f.getIdade_fim());
+
+			if (ps.execute()) {
+
+				int idInserido = rs.getInt(1);
+//				for(int i: ) {
+//					
+//				}
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	public boolean inserirCidade() {
+
+		String sql = "INSERT INTO cidadeFiltro(idFiltro, idCidade) VALUES (?, ?)";
+
+		// TEM Q PASSAR O ID DA CIDADE E O ID DO FILTRO, DESCOBBRE COMO FAZ ISSO!
+
+		/**
+		 * 
+		 * 
+		 * 
+		 * ver de salvar o filtro no banco TA FODA PRA CARALHO
+		 * 
+		 * terminar o metodo no mbean q recebe o filtro quando o cara clica filtrar vai
+		 * ter um if q espera a resposta do filtro(==null significa q nao recebeu) e se
+		 * receber ele entra no if e salva no banco! tem q colocar rendered true na
+		 * progress bar aqui tbm
+		 * 
+		 * ver como vc vai mandar a idade
+		 * 
+		 * 
+		 **/
 
 		return false;
 	}

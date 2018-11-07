@@ -27,6 +27,18 @@ CREATE TABLE estado(
 
 );
 
+CREATE TABLE cidadeFiltro(
+	
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	idFiltro INTEGER NOT NULL,
+	idCidade INTEGER NOT NULL,
+	
+	FOREIGN KEY (idFiltro) REFERENCES filtro(id),
+	FOREIGN KEY (idCidade) REFERENCES cidade(id)
+
+);
+
+
 CREATE TABLE cidade(
 	
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -58,16 +70,16 @@ CREATE TABLE filtro(
 	deficiencia BOOLEAN,
 	idEmpresa INTEGER,
 	idADM INTEGER,
-    idCidade INTEGER,
     idEstado INTEGER NOT NULL,
+    idade_inicio INTEGER,
+    idade_fim INTEGER,
     data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     area VARCHAR(50),
     curso VARCHAR(50),
     
     FOREIGN KEY (idEmpresa) REFERENCES empresa(id),
     FOREIGN KEY (idADM) REFERENCES administrador(id),
-    FOREIGN KEY (idCidade) REFERENCES cidade(id),
-    FOREIGN KEY (idEstado) REFERENCES estado(id)
+
 );
 
 CREATE TABLE curriculo(
@@ -90,8 +102,6 @@ CREATE TABLE curriculo(
 
 );
 -- COLOCA CHAVE ESTRANGEIRA PRA FILTRO
-
-
 
 
 CREATE TABLE formacao(

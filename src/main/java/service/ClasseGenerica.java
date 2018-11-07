@@ -1,6 +1,10 @@
 package service;
 
-public class ClasseGenerica {
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+
+public class ClasseGenerica implements Converter {
 
 	// entidade com variaveis genericas para outras entidades
 
@@ -31,6 +35,18 @@ public class ClasseGenerica {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
+		// TODO Auto-generated method stub
+		return this.nome;
 	}
 	
 	

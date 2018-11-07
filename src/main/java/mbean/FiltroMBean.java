@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.model.SelectItem;
 
 import org.primefaces.behavior.ajax.AjaxBehaviorHandler;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
@@ -38,27 +39,56 @@ public class FiltroMBean {
 	List<ClasseGenerica> curso = new ArrayList<>();
 	List<ClasseGenerica> semestre = new ArrayList<>();
 	List<ClasseGenerica> idioma = new ArrayList<>();
-	
 	List<ClasseGenerica> selCidade = new ArrayList<>();
+	String areaSel;
 
 	FiltroDAO fDao = new FiltroDAO();
 	
 	boolean filtroP = false;
 
 	FiltroService fs = new FiltroService();
+	
 
 	public void salvaFiltro() {
 		
-//		if() {
+//		if(fs.enviarFiltro(eFiltro) != null) {
 //			
 //			
 //			
 //			
 //		}
-//		
-//		
 		
 	}
+	
+	
+//	public List<SelectItem> getEmpresas() {  
+//	    List<SelectItem> items = new ArrayList<SelectItem>();  
+//	    for (Empresa e : this.empresas) {  
+//	        // observem que o value do meu SelectItem é a própria entidade  
+//	        items.add(new SelectItem(e, e.getNome()));  
+//	    }  
+//	    return items;  
+//	}  
+	
+	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
+	
+	public List<SelectItem> pegandoArea(){
+		
+		List<SelectItem> pArea = new ArrayList<SelectItem>();
+		
+		for(ClasseGenerica c : this.area) {
+			
+			pArea.add(new SelectItem(c, c.getNome()));
+		}
+		
+		return pArea;
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	// PEGA AS CIDADES COM CURRICULO CADASTRADO
@@ -72,7 +102,6 @@ public class FiltroMBean {
 
 	// PEGA AS AREAS COM CURRICULO CADASTRADO
 	public void attArea() {
-		System.out.println(eFiltro.getArea());
 		try {
 			area = fs.cArea(eFiltro);
 		} catch (IOException e) {
@@ -82,8 +111,10 @@ public class FiltroMBean {
 
 	// PEGA OS CURSOS COM CURRICULO CADASTRADO
 	public void attCurso(AjaxBehaviorEvent event) {
-//		SelectOneMenu a = (SelectOneMenu) event.getSource();
-//		System.out.println(a.geti);
+		areaSel = eFiltro.getArea();
+		String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
+		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
+		eFiltro.setArea(codigo);
 		try {
 			curso = fs.cCurso(eFiltro);
 		} catch (IOException e) {
@@ -217,4 +248,18 @@ public class FiltroMBean {
 		this.fs = fs;
 	}
 
+
+	public String getAreaSel() {
+		return areaSel;
+	}
+
+
+	public void setAreaSel(String areaSel) {
+		this.areaSel = areaSel;
+	}
+	
+	
+
+
+	
 }
