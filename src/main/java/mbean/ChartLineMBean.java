@@ -1,62 +1,102 @@
 package mbean;
 
-import javax.annotation.PostConstruct;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
+
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartModel;
-import org.primefaces.model.chart.LineChartSeries;
+
+import DAO.GraficosDAO;
+import entity.GraficoSexo;
  
 @ManagedBean
 public class ChartLineMBean {
  
     private LineChartModel areaModel;
- 
-    @PostConstruct
-    public void init() {
-        createAreaModel();
+    private GraficosDAO gDao = new GraficosDAO();
+    
+    public ChartLineMBean() {
+    	createLineModels();
     }
- 
-    public LineChartModel getAreaModel() {
-        return areaModel;
-    }
- 
-    private void createAreaModel() {
-        areaModel = new LineChartModel();
- 
-        LineChartSeries boys = new LineChartSeries();
-        boys.setFill(true);
-        boys.setLabel("Boys");
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
- 
-        LineChartSeries girls = new LineChartSeries();
-        girls.setFill(true);
-        girls.setLabel("Girls");
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 90);
-        girls.set("2008", 120);
- 
-        areaModel.addSeries(boys);
-        areaModel.addSeries(girls);
- 
-        areaModel.setTitle("Area Chart");
+ //tem anotações no ChartsMBean sobre essa bosta
+	private void createLineModels() {
+        areaModel = initCategoryModel();
+        areaModel.setTitle("Sexo");
         areaModel.setLegendPosition("ne");
-        areaModel.setStacked(true);
+        //areaModel.setStacked(true);
         areaModel.setShowPointLabels(true);
- 
-        Axis xAxis = new CategoryAxis("Years");
+        Axis xAxis = new CategoryAxis("Mês");
         areaModel.getAxes().put(AxisType.X, xAxis);
         Axis yAxis = areaModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Births");
+        yAxis.setLabel("Quantidade");
         yAxis.setMin(0);
-        yAxis.setMax(300);
+        yAxis.setMax(30);
     }
  
+	private LineChartModel initCategoryModel() {
+		LineChartModel model = new LineChartModel();
+		
+		List<GraficoSexo> lista = gDao.contaSexo();
+		
+		ChartSeries boys = new ChartSeries();
+		ChartSeries girls = new ChartSeries();
+		
+		boys.setLabel("Masculino");
+		girls.setLabel("Feminino");
+		for(GraficoSexo cs : lista) {
+			boys.set(cs.getSexo(), cs.getQtd());
+		}
+		for(GraficoSexo cs : lista) {
+			girls.set(cs.getSexo(), cs.getQtd());
+		}
+		
+		model.addSeries(boys);
+		model.addSeries(girls);
+		
+		return model;
+	}
+	
+	
+	
+	
+
+	public LineChartModel getLineModel() {
+		return areaModel;
+	}
+	
+	
+	
+	
+	
+	public void setLineModel(LineChartModel areaModel) {
+		this.areaModel = areaModel;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,8 +10,14 @@ import java.util.List;
 import com.VPS04.JDBC.ConnectionDB;
 
 import entity.GraficoFiltro;
+import entity.GraficoPizza;
+import entity.GraficoSexo;
 
 public class GraficosDAO{
+	
+	
+	
+	
 	
 	
 	Connection conn;
@@ -27,6 +33,12 @@ public class GraficosDAO{
  }
 	
 	
+ 
+ 
+ 
+ 
+ 
+ 
 	
 public List<GraficoFiltro> contarFiltro() {
 	
@@ -55,17 +67,68 @@ public List<GraficoFiltro> contarFiltro() {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
-	
-	
 	return null;
 }
 
-//public GraficoPizza{
-	
-	
-//}
 
+
+
+
+
+
+
+
+
+public List<GraficoPizza> contarCurso() {
+	
+	String sql = "SELECT COUNT(curso) AS qtd, curso FROM filtro GROUP BY curso;";
+	
+	PreparedStatement ps;
+	try {
+		ps = conn.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<GraficoPizza> lista = new ArrayList<>();
+		while(rs.next()) {
+			GraficoPizza fo = new GraficoPizza();
+			
+			fo.setQtd(rs.getInt("qtd"));
+			fo.setCurso(rs.getString("curso"));
+			
+			lista.add(fo);
+		}
+		return lista;
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+
+public List<GraficoSexo> contaSexo(){
+	String sql = "SELECT COUNT(sexo) AS qtd, sexo FROM filtro GROUP BY sexo;";
+	
+	PreparedStatement ps;
+	try {
+		ps = conn.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<GraficoSexo> lista = new ArrayList<>();
+		while(rs.next()) {
+			GraficoSexo fo = new GraficoSexo();
+			
+			fo.setQtd(rs.getInt("qtd"));
+			fo.setSexo(rs.getString("sexo"));
+			
+			lista.add(fo);
+		}
+		return lista;
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return null;	
+}
 
 
 

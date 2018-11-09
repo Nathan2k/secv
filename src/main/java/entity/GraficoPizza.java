@@ -3,6 +3,7 @@ package entity;
 public class GraficoPizza {
 
 	private Integer id;
+	private Integer qtd;
 	private String curso;
 	
 	
@@ -18,5 +19,11 @@ public class GraficoPizza {
 	}
 	public void setCurso(String curso) {
 		this.curso = curso;
+	}
+	public Integer getQtd() {
+		return qtd;
+	}
+	public void setQtd(Integer qtd) {
+		this.qtd = qtd;
 	}
 }
