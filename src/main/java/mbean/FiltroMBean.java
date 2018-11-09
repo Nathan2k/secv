@@ -43,56 +43,51 @@ public class FiltroMBean {
 	String areaSel;
 
 	FiltroDAO fDao = new FiltroDAO();
-	
-	boolean filtroP = false;
+
+	boolean filtroP = false; // é o rendered da tela depois do filtro
+	boolean filtroF = true; // é o rendered do filtro
 
 	FiltroService fs = new FiltroService();
-	
 
+	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
 	public void salvaFiltro() {
-		
-//		if(fs.enviarFiltro(eFiltro) != null) {
-//			
-//			
-//			
-//			
-//		}
-		
-	}
-	
-	
-//	public List<SelectItem> getEmpresas() {  
-//	    List<SelectItem> items = new ArrayList<SelectItem>();  
-//	    for (Empresa e : this.empresas) {  
-//	        // observem que o value do meu SelectItem é a própria entidade  
-//	        items.add(new SelectItem(e, e.getNome()));  
-//	    }  
-//	    return items;  
-//	}  
-	
-	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
-	
-	public List<SelectItem> pegandoArea(){
-		
-		List<SelectItem> pArea = new ArrayList<SelectItem>();
-		
-		for(ClasseGenerica c : this.area) {
+
+		try {
 			
+			
+			if (fs.enviarFiltro(eFiltro) != null) {
+
+				fDao.inserirFiltro(eFiltro); // FALTA COLOCAR O RENDERED TRUE PRA PROGRESSBAR
+				filtroP = true;
+				filtroF = false;
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
+
+	public List<SelectItem> pegandoArea() {
+
+		List<SelectItem> pArea = new ArrayList<SelectItem>();
+
+		for (ClasseGenerica c : this.area) {
+
 			pArea.add(new SelectItem(c, c.getNome()));
 		}
-		
+
 		return pArea;
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	// PEGA AS CIDADES COM CURRICULO CADASTRADO
 	public FiltroMBean() {
+		eFiltro.setIdade_inicio(18);
+		eFiltro.setIdade_fim(40);
 		try {
 			cidades = fs.cCidade();
 		} catch (IOException e) {
@@ -131,7 +126,6 @@ public class FiltroMBean {
 			e.printStackTrace();
 		}
 	}
-	
 
 	public void enviarFiltro() throws IOException {
 		System.out.println("sim");
@@ -142,24 +136,21 @@ public class FiltroMBean {
 			MensFaces.m("Ocorreu um erro ao enviar o filtro!");
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
-			if (curriculos.isEmpty()) { // PERGUNTAR SE TER Q FAZER ESSE IF DO EMPTY FORA DO IF DO NULL 
+		}
+		if (curriculos.isEmpty()) { // PERGUNTAR SE TER Q FAZER ESSE IF DO EMPTY FORA DO IF DO NULL
 
-				MensFaces.m("Nenhum Curriculo foi encontrado!");
-				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-			}
+			MensFaces.m("Nenhum Curriculo foi encontrado!");
+			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		} else {
-			
-			for(Curriculo c : curriculos) {
-				
-				fDao.inserirCurriculo(c);  // FICA ANDANDO NA LISTA E INSERE UM POR UM
+			for (Curriculo c : curriculos) {
+				fDao.inserirCurriculo(c); // FICA ANDANDO NA LISTA E INSERE UM POR UM
 			}
-			
 		}
 	}
-	
-	
 
-	
+	// PERGUNTAR SE É AQUI Q FAZ O GET DO SEXO
+	// PERGUNTAR COMO CAPTURAR E ENVIAR FAIXA ETARIA
+
 	public FiltroDAO getfDao() {
 		return fDao;
 	}
@@ -248,18 +239,22 @@ public class FiltroMBean {
 		this.fs = fs;
 	}
 
-
 	public String getAreaSel() {
 		return areaSel;
 	}
 
-
 	public void setAreaSel(String areaSel) {
 		this.areaSel = areaSel;
+	}
+
+	public boolean isFiltroF() {
+		return filtroF;
+	}
+
+	public void setFiltroF(boolean filtroF) {
+		this.filtroF = filtroF;
 	}
 	
 	
 
-
-	
 }

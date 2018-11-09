@@ -17,7 +17,8 @@ public class Filtro {
 	private Integer qualIdioma;// vai 0=indiferente 1=INGLES 2= ESPANHOL
 	private Integer deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
 	private Integer idade_inicio;
-	private Integer idade_fim;
+	private Integer idade_fim; // VER SE JA DA PRA SETAR O 18 E 40 AQUI PRA PODER MANDAR ELES DIRETO
+	
 	private String area;
 	
 	

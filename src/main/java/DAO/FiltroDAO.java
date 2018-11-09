@@ -61,11 +61,11 @@ public class FiltroDAO {
 
 				int idCur = rs.getInt(1); // perguntar do id
 
-				for (Experiencia e : c.getExperiencia()) { // perguntar sobre o experiencia e pq eu n entendi
+				for (Experiencia e : c.getExperiencia()) { 
 					inserirExperiencia(e, idCur);
 				}
 				for (Formacao fo : c.getFormação()) { // AQUI ESTAMOS COLOCANDO NA LISTA FORMAÇÃO E EXPERIENCIA AS
-														// FORMAÇÕES E EXPERIENCIAS
+													  // FORMAÇÕES E EXPERIENCIAS
 					inserirFormacao(fo, idCur);
 				}
 
@@ -118,6 +118,8 @@ public class FiltroDAO {
 		return false;
 
 	}
+	
+	// ---------------------------------------------------------------------------------------------------
 
 	public boolean inserirFormacao(Formacao fo, int cod) {
 
@@ -147,6 +149,8 @@ public class FiltroDAO {
 
 		return false;
 	}
+	
+	// ---------------------------------------------------------------------------------------------------
 
 	public boolean inserirFiltro(Filtro f) {
 
@@ -156,7 +160,7 @@ public class FiltroDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-			ResultSet rs = ps.getGeneratedKeys();
+			
 
 			ps.setString(1, f.getNomeFiltro());
 			ps.setInt(2, f.getExperiencia());
@@ -170,11 +174,24 @@ public class FiltroDAO {
 			ps.setInt(10, f.getIdade_fim());
 
 			if (ps.execute()) {
+				
+				ResultSet rs = ps.getGeneratedKeys();
+				
+				if(rs.next()) {
+					
+					int idInserido = rs.getInt(1);
+					
+					for(int i: f.getIdCidade()) {
+						
+					
+						inserirCidade(idInserido, i);
+					
+					}
+					
+				}
 
-				int idInserido = rs.getInt(1);
-//				for(int i: ) {
-//					
-//				}
+				
+				
 
 			}
 
@@ -185,18 +202,37 @@ public class FiltroDAO {
 
 		return false;
 	}
+	
 
-	public boolean inserirCidade() {
+	public boolean inserirCidade(int idFiltro, int idCidade) { // VER SE TA CERTO ISSO
 
 		String sql = "INSERT INTO cidadeFiltro(idFiltro, idCidade) VALUES (?, ?)";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, idFiltro);
+			ps.setInt(2, idCidade);
+
+			if (ps.execute()) {
+				System.out.println("cidadeFiltro id cadastrada ");
+
+			} else {
+				System.out.println("ocorreu um erro cidadeFiltro ao tentar inserir!");
+				return false;
+			}
+			return true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// TEM Q PASSAR O ID DA CIDADE E O ID DO FILTRO, DESCOBBRE COMO FAZ ISSO!
 
 		/**
 		 * 
-		 * 
-		 * 
-		 * ver de salvar o filtro no banco TA FODA PRA CARALHO
+		 * ver de salvar o filtro no banco
 		 * 
 		 * terminar o metodo no mbean q recebe o filtro quando o cara clica filtrar vai
 		 * ter um if q espera a resposta do filtro(==null significa q nao recebeu) e se
@@ -205,10 +241,14 @@ public class FiltroDAO {
 		 * 
 		 * ver como vc vai mandar a idade
 		 * 
-		 * 
 		 **/
 
 		return false;
 	}
+	
+	
+	
+	
+	
 
 }

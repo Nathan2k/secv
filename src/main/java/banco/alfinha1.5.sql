@@ -52,7 +52,7 @@ CREATE TABLE filtro(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     experiencia BOOLEAN,
-    sexo INTEGER,
+    sexo VARCHAR(50),
 	deficiencia BOOLEAN,
 	idEmpresa INTEGER,
 	idADM INTEGER,

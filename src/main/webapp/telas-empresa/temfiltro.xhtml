@@ -17,7 +17,7 @@
 		<div style="width: 500px; margin: auto;">
 			<p:panel value="Login" style="width: 500px; margin-top: 3%">
 
-				<h:form>
+				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
 					<center>
 
 						<h:panelGrid columns="1" style="margin-bottom:15px"
@@ -61,10 +61,10 @@
 								id="area" value="#{filtroMBean.eFiltro.area}">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
-									itemLabel="#{area.nome}" itemValue="#{area.codigo}-#{area.nome}"
-									/>
+									itemLabel="#{area.nome}"
+									itemValue="#{area.codigo}-#{area.nome}" />
 								<p:ajax event="change" listener="#{filtroMBean.attCurso}"
-									process="area" update="curso" >
+									process="area" update="curso">
 								</p:ajax>
 							</p:selectOneMenu>
 							<P />
@@ -105,7 +105,8 @@
 							-->
 
 							<h:outputText value="Experiência: " />
-							<p:selectOneRadio id="experiencia" value="#{a}">
+							<p:selectOneRadio id="experiencia"
+								value="#{filtroMBean.eFiltro.experiencia}">
 								<f:selectItem itemLabel="Sim" itemValue="1" />
 								<f:selectItem itemLabel="Não" itemValue="2" />
 								<f:selectItem itemLabel="Indiferente" itemValue="0" />
@@ -133,13 +134,13 @@
 							<h:panelGrid columns="1" style="margin-bottom: 10px">
 
 								<h:outputText id="displayRange"
-									value="Faixa etária: #{sliderView.number8} a #{sliderView.number9} anos" />
+									value="Faixa etária: #{filtroMBean.eFiltro.idade_inicio} a #{filtroMBean.eFiltro.idade_fim} anos" />
 								<p:slider for="txt6,txt7" display="displayRange"
 									style="width: 350px" range="true"
 									displayTemplate="De {min} a {max}" />
 							</h:panelGrid>
-							<h:inputHidden id="txt6" value="#{sliderView.number8}" />
-							<h:inputHidden id="txt7" value="#{sliderView.number9}" />
+							<h:inputHidden id="txt6" value="#{filtroMBean.eFiltro.idade_inicio}" />
+							<h:inputHidden id="txt7" value="#{filtroMBean.eFiltro.idade_fim}" />
 							<p />
 
 						</h:panelGrid>
@@ -147,7 +148,7 @@
 						<p />
 
 						<h:commandButton value="Filtrar"
-							action="#{filtroService.enviarFiltro}"
+							action="#{filtroMBean.salvaFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</center>
 				</h:form>
