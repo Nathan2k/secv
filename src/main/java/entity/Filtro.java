@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Filtro {
@@ -10,7 +11,7 @@ public class Filtro {
 	private Integer idAdm;
 	private Integer idCurso; // vai
 	private Integer semestre; // vai
-	private List<Integer> idCidade; // vai
+	private List<String> idCidade; // vai
 	private Integer experiencia; // 0=indiferente 1=SIM 2= NÃO
 	private Integer sexo; // vai 0=indiferente 1=MACHO 2= MULHER
 	private boolean idioma;// vai
@@ -18,13 +19,18 @@ public class Filtro {
 	private Integer deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
 	private Integer idade_inicio;
 	private Integer idade_fim; // VER SE JA DA PRA SETAR O 18 E 40 AQUI PRA PODER MANDAR ELES DIRETO
-	
-	private String area;
-	
-	
+	private Integer idEstado;
 
-	
-	
+	private String area;
+
+	public Integer getIdEstado() {
+		return idEstado;
+	}
+
+	public void setIdEstado(Integer idEstado) {
+		this.idEstado = idEstado;
+	}
+
 	public Integer getIdAdm() {
 		return idAdm;
 	}
@@ -105,14 +111,6 @@ public class Filtro {
 		this.semestre = semestre;
 	}
 
-	public List<Integer> getIdCidade() {
-		return idCidade;
-	}
-
-	public void setIdCidade(List<Integer> idCidade) {
-		this.idCidade = idCidade;
-	}
-
 	public Integer getExperiencia() {
 		return experiencia;
 	}
@@ -143,6 +141,14 @@ public class Filtro {
 
 	public void setDeficiencia(Integer deficiencia) {
 		this.deficiencia = deficiencia;
+	}
+
+	public List<String> getIdCidade() {
+		return idCidade;
+	}
+
+	public void setIdCidade(List<String> idCidade) {
+		this.idCidade = idCidade;
 	}
 
 }

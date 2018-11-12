@@ -61,11 +61,11 @@ public class FiltroDAO {
 
 				int idCur = rs.getInt(1); // perguntar do id
 
-				for (Experiencia e : c.getExperiencia()) { 
+				for (Experiencia e : c.getExperiencia()) {
 					inserirExperiencia(e, idCur);
 				}
 				for (Formacao fo : c.getFormação()) { // AQUI ESTAMOS COLOCANDO NA LISTA FORMAÇÃO E EXPERIENCIA AS
-													  // FORMAÇÕES E EXPERIENCIAS
+														// FORMAÇÕES E EXPERIENCIAS
 					inserirFormacao(fo, idCur);
 				}
 
@@ -118,7 +118,7 @@ public class FiltroDAO {
 		return false;
 
 	}
-	
+
 	// ---------------------------------------------------------------------------------------------------
 
 	public boolean inserirFormacao(Formacao fo, int cod) {
@@ -149,52 +149,49 @@ public class FiltroDAO {
 
 		return false;
 	}
-	
+
 	// ---------------------------------------------------------------------------------------------------
 
 	public boolean inserirFiltro(Filtro f) {
 
 		String sql = "INSERT INTO filtro(nome, experiencia, sexo, deficiencia, idEmpresa, idADM, "
-				+ "area, curso, idade_inicio, idade_fim) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				+ "area, curso, idade_inicio, idade_fim, idEstado) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-			
 
 			ps.setString(1, f.getNomeFiltro());
 			ps.setInt(2, f.getExperiencia());
 			ps.setInt(3, f.getSexo());
 			ps.setInt(4, f.getDeficiencia());
-			ps.setInt(5, f.getIdEmpresa());
-			ps.setInt(6, f.getIdAdm());
+			ps.setString(5, f.getIdEmpresa() == 0? null:f.getIdEmpresa().toString());
+			ps.setString(6, f.getIdAdm() == 0? null:f.getIdAdm().toString());
 			ps.setString(7, f.getArea());
 			ps.setInt(8, f.getIdCurso());
 			ps.setInt(9, f.getIdade_inicio());
 			ps.setInt(10, f.getIdade_fim());
+			ps.setInt(11, f.getIdEstado());
+			
 
-			if (ps.execute()) {
-				
+			if (ps.executeUpdate() > 0) {
+
 				ResultSet rs = ps.getGeneratedKeys();
-				
-				if(rs.next()) {
-					
+
+				if (rs.next()) {
+
 					int idInserido = rs.getInt(1);
+
+					List<String> cidades = f.getIdCidade();
 					
-					for(int i: f.getIdCidade()) {
-						
-					
-						inserirCidade(idInserido, i);
-					
+					for (String i : cidades) {
+						inserirCidade(idInserido, Integer.parseInt(i));
 					}
-					
+
 				}
 
-				
-				
-
 			}
-
+			
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -202,6 +199,9 @@ public class FiltroDAO {
 
 		return false;
 	}
+	
+	
+	
 	
 
 	public boolean inserirCidade(int idFiltro, int idCidade) { // VER SE TA CERTO ISSO
@@ -214,7 +214,7 @@ public class FiltroDAO {
 			ps.setInt(1, idFiltro);
 			ps.setInt(2, idCidade);
 
-			if (ps.execute()) {
+			if (ps.executeUpdate() > 0) {
 				System.out.println("cidadeFiltro id cadastrada ");
 
 			} else {
@@ -245,10 +245,5 @@ public class FiltroDAO {
 
 		return false;
 	}
-	
-	
-	
-	
-	
 
 }

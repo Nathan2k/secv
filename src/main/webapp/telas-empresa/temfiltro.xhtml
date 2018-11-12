@@ -24,11 +24,11 @@
 							cellpadding="5">
 
 							<h:outputText value="Nome da Vaga: " />
-							<p:inputText value="#{a}" style="width: 350px;" />
+							<p:inputText value="#{filtroMBean.eFiltro.nomeFiltro}" style="width: 350px;" />
 							<p />
 
 							<p:outputLabel for="estado" value="Estados:" />
-							<p:selectOneMenu id="estado" value="#{a}" style="width:160px">
+							<p:selectOneMenu id="estado" value="#{filtroMBean.eFiltro.idEstado}" style="width:160px">
 								<f:selectItem itemLabel="Estados" itemValue="" />
 								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
@@ -49,12 +49,6 @@
 							<p />
 
 							<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
-
-							<!-- TEM QUE COLOCAR ARRUMAR OS VALUES DE CADA CAMPO AQUI,
-								 TEM QUE CRIAR UM METODO PRA CADA CAMPO AQUI NO MBEAN,
-								 TEM QUE FICAR ESPERTO NO FILTRO SERVICE POIS PODE SER Q TENHA 
-								 Q MUDAR ALGUNS LINKS E ALGUNS TIPOS DE INFORMAÇÕES TIPO INTEGER
-							 -->
 
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"

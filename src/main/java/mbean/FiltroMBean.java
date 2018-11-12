@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -18,6 +19,7 @@ import org.primefaces.component.selectonemenu.SelectOneMenu;
 
 import entity.Curriculo;
 import entity.Filtro;
+import entity.UsuarioEmpresa;
 import service.ClasseGenerica;
 import utils.FiltroService;
 import utils.MensFaces;
@@ -49,23 +51,50 @@ public class FiltroMBean {
 
 	FiltroService fs = new FiltroService();
 
+	@ManagedProperty(value = "#{usuarioMBean}")
+	private UsuarioMBean userMb;
+
+//	public Integer getUserMb() {
+//		
+//		return userMb.getEmp().getId();
+//	}
+
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
 	public void salvaFiltro() {
 
-		try {
-			
-			
-			if (fs.enviarFiltro(eFiltro) != null) {
-
-				fDao.inserirFiltro(eFiltro); // FALTA COLOCAR O RENDERED TRUE PRA PROGRESSBAR
-				filtroP = true;
-				filtroF = false;
-
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		// testas SALVAR FILTRO NO BANCO SEM PEDIR OS CURRICULOS!
+		
+		
+//		try {
+//
+//			if (fs.enviarFiltro(eFiltro) != null) {
+//
+//				if (userMb.getEmp() != null) {
+//
+//					eFiltro.setIdEmpresa(userMb.getEmp().getId());
+//					eFiltro.setIdAdm(0);
+//					fDao.inserirFiltro(eFiltro);
+//					filtroP = true;
+//					filtroF = false;
+//
+//				} else {
+//
+//					eFiltro.setIdAdm(userMb.getAdm().getId());
+//					eFiltro.setIdEmpresa(0);
+//					fDao.inserirFiltro(eFiltro);
+//					filtroP = true;
+//					filtroF = false;
+//
+//				}
+//
+//			}
+//			
+//		} catch (IOException e) {
+//			System.out.println("ELE DEU ERRO NO SERVICE!");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 
@@ -254,7 +283,9 @@ public class FiltroMBean {
 	public void setFiltroF(boolean filtroF) {
 		this.filtroF = filtroF;
 	}
-	
-	
+
+	public void setUserMb(UsuarioMBean userMb) {
+		this.userMb = userMb;
+	}
 
 }
