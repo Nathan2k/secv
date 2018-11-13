@@ -29,22 +29,29 @@ public class ChartBarMBean{
  
 
 		ChartSeries cidades = new ChartSeries();
-		cidades.set("2016", 12);
-		cidades.set("2015", 32);
 		cidades.setLabel("Campinas");
+		cidades.set("2016", 12);
         
 		ChartSeries cidades2 = new ChartSeries();
 		cidades2.setLabel("Jaguariuna");
-		cidades2.set("2015", 32);
 		cidades2.set("2016", 67);
-        
+     
+		ChartSeries cidades3 = new ChartSeries();
+		cidades3.setLabel("Sumaré");
+		cidades3.set("2016", 80);
+		
+		ChartSeries cidades4 = new ChartSeries();
+		cidades4.setLabel("Amparo");
+		cidades4.set("2016", 100);
 
      
  
         model.addSeries(cidades);
         model.addSeries(cidades2);
+        model.addSeries(cidades3);
+        model.addSeries(cidades4);
 
-        model.setSeriesColors("1f1f1f,ff0000");
+        model.setSeriesColors("c2c2f0,ff9999,99ffbb,ffd699");
          
         return model;
     }
@@ -56,7 +63,7 @@ public class ChartBarMBean{
     private void createBarModel() {
         barModel = initBarModel();
          
-        barModel.setTitle("Sexo");
+        barModel.setTitle("Cidades");
         barModel.setLegendPosition("ne");
          
         Axis xAxis = barModel.getAxis(AxisType.X);
@@ -66,6 +73,7 @@ public class ChartBarMBean{
         yAxis.setLabel("Quantidade");
         yAxis.setMin(0);
         yAxis.setMax(200);
+        yAxis.setTickFormat("%d");
     }
      
 

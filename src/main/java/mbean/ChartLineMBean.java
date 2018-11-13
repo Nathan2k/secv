@@ -35,10 +35,6 @@ public class ChartLineMBean {
         girls.set("12", 52);
 
 
-        
-		horizontalBarModel.setTitle("Cidades");
-		horizontalBarModel.setLegendPosition("l");
-
 		horizontalBarModel.addSeries(boys);
 		horizontalBarModel.addSeries(girls);
 
@@ -52,6 +48,7 @@ public class ChartLineMBean {
         xAxis.setLabel("Births");
         xAxis.setMin(0);
         xAxis.setMax(200);
+		xAxis.setTickFormat("%d");
  
         Axis yAxis = horizontalBarModel.getAxis(AxisType.Y);
         yAxis.setLabel("Gender");
