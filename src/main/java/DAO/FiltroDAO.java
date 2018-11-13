@@ -155,7 +155,7 @@ public class FiltroDAO {
 	public boolean inserirFiltro(Filtro f) {
 
 		String sql = "INSERT INTO filtro(nome, experiencia, sexo, deficiencia, idEmpresa, idADM, "
-				+ "area, curso, idade_inicio, idade_fim, idEstado) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				+ "area, curso, idade_inicio, idade_fim) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -170,7 +170,6 @@ public class FiltroDAO {
 			ps.setInt(8, f.getIdCurso());
 			ps.setInt(9, f.getIdade_inicio());
 			ps.setInt(10, f.getIdade_fim());
-			ps.setInt(11, f.getIdEstado());
 			
 
 			if (ps.executeUpdate() > 0) {

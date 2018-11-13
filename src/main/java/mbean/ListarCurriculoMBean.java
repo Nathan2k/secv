@@ -21,11 +21,12 @@ public class ListarCurriculoMBean {
 	//É PRA LISTAR O CURRICULO SE VAI FUNCIONAR EU JA NAO SEI  XD
 	public ListarCurriculoMBean(){
 		
+		System.out.println("criou");
+		
 		cur = new Curriculo();
 		clDAO = new CurriculoDAO();
 		cl = clDAO.listarCurriculo();
 		clDAO = new CurriculoDAO();
-		
 	}
 
 	public List<Curriculo> getCl() {

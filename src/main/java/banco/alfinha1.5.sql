@@ -56,7 +56,6 @@ CREATE TABLE filtro(
 	deficiencia BOOLEAN,
 	idEmpresa INTEGER,
 	idADM INTEGER,
-    idEstado INTEGER NOT NULL,
     idade_inicio INTEGER,
     idade_fim INTEGER,
     data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

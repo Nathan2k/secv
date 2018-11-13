@@ -28,62 +28,69 @@
 									cellpadding="5">
 
 									<h:outputText value="Nome da Vaga: " />
-									<p:inputText value="#{a}" required="true" style="width: 350px;" />
+									<p:inputText value="#{filtroMBean.eFiltro.nomeFiltro}"
+										style="width: 350px;" />
 									<p />
 
 									<p:outputLabel for="estado" value="Estados:" />
-									<p:selectOneMenu id="estado" value="#{a}" style="width:160px">
+									<p:selectOneMenu id="estado"
+										value="#{a}" style="width:160px">
 										<f:selectItem itemLabel="Estados" itemValue="" />
 										<f:selectItems value="#{a}" />
 									</p:selectOneMenu>
 									<p />
 
 									<h:outputLabel for="cidades" value="Cidades:" />
-									<p:selectCheckboxMenu id="idCidades"
-										value="#{filtroMBean.selCidade}" label="Cidades"
+									<p:remoteCommand name="atualiza" update="area"
+										actionListener="#{filtroMBean.attArea}" />
+									<p:selectCheckboxMenu id="cidades"
+										value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
 										style="width:160px" filter="true" filterMatchMode="startsWith"
-										panelStyle="width:290px">
+										panelStyle="width:290px" onHide="atualiza()">
+										<!-- VER SE O VALUE AQUI TA CERTO!  -->
 										<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
 											itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
-										<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
 									</p:selectCheckboxMenu>
-									<p />
 
+									<p />
 									<h:outputLabel for="area" value="Área:" />
-									<p:selectOneMenu required="true" style="width: 160px"
-										panelStyle="width:150px" id="area" value="#{a}">
-										<f:selectItem itemLabel="" itemValue="" />
-										<f:selectItems value="#{a}" />
+									<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
+										id="area" value="#{filtroMBean.eFiltro.area}">
+										<f:selectItem itemLabel="Selecione" />
+										<f:selectItems value="#{filtroMBean.area}" var="area"
+											itemLabel="#{area.nome}"
+											itemValue="#{area.codigo}-#{area.nome}" />
+										<p:ajax event="change" listener="#{filtroMBean.attCurso}"
+											process="area" update="curso">
+										</p:ajax>
 									</p:selectOneMenu>
 									<P />
 
 									<h:outputLabel for="curso" value="Curso:" />
-									<p:selectOneMenu required="true" style="width: 160px"
-										panelStyle="width:150px" id="curso" value="#{a}">
-										<f:selectItem itemLabel="" itemValue="" />
-										<f:selectItems value="#{a}" />
+									<p:selectOneMenu required="false" style="width: 160px"
+										panelStyle="width:150px" id="curso"
+										value="#{filtroMBean.eFiltro.idCurso}">
+										<f:selectItem itemLabel="Selecione" itemValue="" />
+										<f:selectItems value="#{filtroMBean.curso}" var="curso"
+											itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
+										<p:ajax event="change" listener="#{filtroMBean.attSemestre}"
+											update="semestre" />
 									</p:selectOneMenu>
 									<P />
 
 									<h:outputLabel for="semestre" value="Semestres:" />
-									<p:selectCheckboxMenu style="width: 160px" id="sem"
-										value="#{a}" multiple="true" filter="true"
-										panelStyle="width:290px">
-										<f:selectItems value="#{a}" />
-									</p:selectCheckboxMenu>
+									<p:selectOneMenu required="false" style="width: 160px"
+										panelStyle="width:150px" id="semestre"
+										value="#{filtroMBean.eFiltro.semestre}">
+										<f:selectItem itemLabel="Selecione" itemValue="" />
+										<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
+											itemLabel="#{semestre.nome}" itemValue="#{semestre.codigo}" />
+									</p:selectOneMenu>
 									<p />
-
-									<h:outputLabel for="idioma" value="Idioma:" />
-									<p:selectCheckboxMenu style="width: 160px" id="idioma"
-										value="#{a}" multiple="true" filter="true"
-										panelStyle="width:290px">
-										<f:selectItems value="#{a}" />
-									</p:selectCheckboxMenu>
-									<p />
-
 
 									<h:outputText value="Experiência: " />
-									<p:selectOneRadio required="true" id="experiencia" value="#{a}">
+									<p:selectOneRadio required="true" id="experiencia"
+										value="#{filtroMBean.eFiltro.experiencia}">
 										<f:selectItem itemLabel="Sim" itemValue="Sim" />
 										<f:selectItem itemLabel="Não" itemValue="Nao" />
 									</p:selectOneRadio>
@@ -92,7 +99,8 @@
 
 
 									<h:outputText value="Sexo: " />
-									<p:selectOneRadio required="true" id="sexo" value="#{a}">
+									<p:selectOneRadio required="true" id="sexo"
+										value="#{filtroMBean.eFiltro.sexo}">
 										<f:selectItem itemLabel="Homem" itemValue="Homem" />
 										<f:selectItem itemLabel="Mulher" itemValue="Mulher" />
 										<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
@@ -100,7 +108,8 @@
 
 									<p />
 									<h:outputText value="Deficiência: " />
-									<p:selectOneRadio required="true" id="deficiencia" value="#{a}">
+									<p:selectOneRadio required="true" id="deficiencia"
+										value="#{filtroMBean.eFiltro.deficiencia}">
 										<f:selectItem itemLabel="Sim" itemValue="Sim" />
 										<f:selectItem itemLabel="Indiferente" itemValue="Indiferente" />
 									</p:selectOneRadio>
@@ -110,13 +119,15 @@
 									<h:panelGrid columns="1" style="margin-bottom: 10px">
 
 										<h:outputText id="displayRange"
-											value="Faixa etária: #{sliderView.number8} a #{sliderView.number9} anos" />
+											value="Faixa etária: #{filtroMBean.eFiltro.idade_inicio} a #{filtroMBean.eFiltro.idade_fim} anos" />
 										<p:slider required="true" for="txt6,txt7"
 											display="displayRange" style="width: 350px" range="true"
 											displayTemplate="De {min} a {max}" />
 									</h:panelGrid>
-									<h:inputHidden id="txt6" value="#{sliderView.number8}" />
-									<h:inputHidden id="txt7" value="#{sliderView.number9}" />
+									<h:inputHidden id="txt6"
+										value="#{filtroMBean.eFiltro.idade_inicio}" />
+									<h:inputHidden id="txt7"
+										value="#{filtroMBean.eFiltro.idade_fim}" />
 									<p />
 
 

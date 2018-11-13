@@ -62,34 +62,32 @@ public class FiltroMBean {
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
 	public void salvaFiltro() {
 
-		
 		// testas SALVAR FILTRO NO BANCO SEM PEDIR OS CURRICULOS!
-		
-		
+
 //		try {
 //
 //			if (fs.enviarFiltro(eFiltro) != null) {
-//
-//				if (userMb.getEmp() != null) {
-//
-//					eFiltro.setIdEmpresa(userMb.getEmp().getId());
-//					eFiltro.setIdAdm(0);
-//					fDao.inserirFiltro(eFiltro);
-//					filtroP = true;
-//					filtroF = false;
-//
-//				} else {
-//
-//					eFiltro.setIdAdm(userMb.getAdm().getId());
-//					eFiltro.setIdEmpresa(0);
-//					fDao.inserirFiltro(eFiltro);
-//					filtroP = true;
-//					filtroF = false;
-//
-//				}
-//
+
+				if (userMb.getEmp() != null) {
+
+					eFiltro.setIdEmpresa(userMb.getEmp().getId());
+					eFiltro.setIdAdm(0);
+					fDao.inserirFiltro(eFiltro);
+					filtroP = true;
+					filtroF = false;
+
+				} else {
+
+					eFiltro.setIdAdm(userMb.getAdm().getId());
+					eFiltro.setIdEmpresa(0);
+					fDao.inserirFiltro(eFiltro);
+					filtroP = true;
+					filtroF = false;
+
+				}
+
 //			}
-//			
+//
 //		} catch (IOException e) {
 //			System.out.println("ELE DEU ERRO NO SERVICE!");
 //			// TODO Auto-generated catch block
@@ -117,6 +115,7 @@ public class FiltroMBean {
 	public FiltroMBean() {
 		eFiltro.setIdade_inicio(18);
 		eFiltro.setIdade_fim(40);
+		eFiltro.setIdEstado(1);
 		try {
 			cidades = fs.cCidade();
 		} catch (IOException e) {
