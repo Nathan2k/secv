@@ -12,15 +12,19 @@ import entity.Curriculo;
 @ViewScoped
 public class ListarCurriculoMBean {
 	
+	Curriculo cur;
 	List<Curriculo> cl;
 	CurriculoDAO clDAO;
+	private Curriculo selectcl;
 	
 	
 	//É PRA LISTAR O CURRICULO SE VAI FUNCIONAR EU JA NAO SEI  XD
 	public ListarCurriculoMBean(){
 		
+		cur = new Curriculo();
 		clDAO = new CurriculoDAO();
 		cl = clDAO.listarCurriculo();
+		clDAO = new CurriculoDAO();
 		
 	}
 
@@ -38,6 +42,22 @@ public class ListarCurriculoMBean {
 
 	public void setClDAO(CurriculoDAO clDAO) {
 		this.clDAO = clDAO;
+	}
+
+	public Curriculo getCur() {
+		return cur;
+	}
+
+	public void setCur(Curriculo cur) {
+		this.cur = cur;
+	}
+
+	public Curriculo getSelectcl() {
+		return selectcl;
+	}
+
+	public void setSelectcl(Curriculo selectcl) {
+		this.selectcl = selectcl;
 	}
 	
 	

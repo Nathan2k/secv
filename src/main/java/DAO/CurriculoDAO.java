@@ -46,15 +46,17 @@ public class CurriculoDAO {
 				cl.setId(rs.getInt("id"));
 				cl.setEmail(rs.getString("email"));
 				cl.setNomeDoAluno(rs.getString("nome_aluno"));
-				cl.setIdade(rs.getLong("idade"));
-				cl.setNivel_ingles(rs.getInt("nivel_ingles"));
-				cl.setNivel_espanhol(rs.getInt("nivel_espanhol"));
+				cl.setIdade(rs.getString("idade"));
+				cl.setNivel_ingles(rs.getInt("nivelIngles"));
+				cl.setNivel_espanhol(rs.getInt("nivelEspanhol"));
 				cl.setCidade(rs.getString("cidade"));
 				cl.setEstado(rs.getString("estado"));
 				cl.setCurso(rs.getString("curso"));
 				cl.setSemestre(rs.getInt("semestre"));
-				cl.setSexo(rs.getInt("sexo"));
-				cl.setDeficiencia(rs.getInt("deficiencia"));
+				cl.setSexo(rs.getString("sexo"));
+				cl.setDeficiencia(rs.getString("deficiencia"));
+				
+				list.add(cl);
 				
 			}
 			

@@ -18,12 +18,12 @@ public class Curriculo {
 	private String cidade;
 	private List<Experiencia> experiencia; //
 	private List<Formacao> formação;
-	private Integer sexo;
-	private Integer deficiencia;
+	private String sexo;
+	private String deficiencia;
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
 	private String telefone;
-	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
+	private String idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
 
 	public Integer getId() {
 		return id;
@@ -107,21 +107,6 @@ public class Curriculo {
 		this.experiencia = experiencia;
 	}
 
-	public Integer getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(Integer sexo) {
-		this.sexo = sexo;
-	}
-
-	public Integer getDeficiencia() {
-		return deficiencia;
-	}
-
-	public void setDeficiencia(Integer deficiencia) {
-		this.deficiencia = deficiencia;
-	}
 
 	public Integer getNivel_ingles() {
 		return nivel_ingles;
@@ -139,12 +124,30 @@ public class Curriculo {
 		this.nivel_espanhol = nivel_espanhol;
 	}
 
-	public Long getIdade() {
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getDeficiencia() {
+		return deficiencia;
+	}
+
+	public void setDeficiencia(String deficiencia) {
+		this.deficiencia = deficiencia;
+	}
+
+	public String getIdade() {
 		return idade;
 	}
 
-	public void setIdade(Long idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
+
+	
 
 }

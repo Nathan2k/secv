@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
+	<ui:define name="title">Curriculo</ui:define>
+
+
+</h:head>
+<h:head>
+	<title>Impressão PDF</title>
+	<h:outputScript library="script" name="javascript.js" target="form" />
+	<script type="text/javascript">
+		function printpage() {
+			window.print()
+		}
+	</script>
+	<style>
+@media print {
+	input {
+		display: none;
+	}
+	#button {
+		display: none;
+	}
+}
+</style>
+</h:head>
+<h:body>
+<div align="center">
+		<p:button id="button" icon="fa fa-print" value="Imprimir"
+			onclick="printpage()" />
+	</div>
+	
+	<p:growl widgetVar="growlWV">
+		<p:autoUpdate />
+	</p:growl>
+
+	<div align="center">
+		<h:graphicImage style="width: 40%;" library="img"
+			name="logo-senai.png" />
+	</div>
+	<p/>
+	<p:panel>
+		<center>
+			<h3>Informações Pessoais</h3>
+			<h:outputLabel value="Nome: #{listarCurriculoMBean.selectcl.nomeDoAluno}" />
+			<br />
+			<h:outputLabel value="Email: #{a}" />
+			<br />
+			<h:outputLabel
+				value="Telefone: #{a}" />
+			<br />
+			<h:outputLabel
+				value="#{a}" />
+			<br />
+			<h:outputLabel value="Sexo: #{a}" />
+
+			<br />
+		<!-- 	 <h:outputLabel
+				value="#{impressaoPDFMBean.usuario.pessoa_pcd eq '0' ? '' : 'Deficiencia: Sim'}" />  --> 
+			
+		</center>
+	</p:panel>
+	<p:panel>
+		<center>
+			<h3>Linguas Estrangeiras</h3>
+		</center>
+		<h:outputLabel value="Nivel de Inglês:"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{a}"
+			style="margin-letf: -60%;" />
+		<br />
+		<h:outputLabel value="Nivel de Espanhol:"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{a}"
+			style="margin-letf: -60%;" />
+
+	</p:panel>
+	<p:panel>
+		<center>
+			<h3>Formações Acadêmicas</h3>
+		</center>
+		<h:outputLabel value="Curso Atual:"
+			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{a}"
+			style="margin-letf: -60%;" />
+
+		<br />
+		<h:outputLabel value="Semestre:"
+			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel value=" #{a}°"
+			style="margin-letf: -60%;" />
+		<br />
+		<br />
+		<h:outputLabel value="Cursos concluidos"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:dataTable value="#{a}" var="f">
+			<h:column>
+				<h:outputText value="- Nome: #{a} ; "
+					style="margin-letf: -60%;" />
+				<h:outputText value="Escola: #{a} ; "
+					style="margin-letf: -60%;" />
+				<h:outputText
+					value=" Data Inicio: #{a} ;  "
+					style="margin-letf: -60%;" />
+				<h:outputText
+					value=" Data Fim: #{a}."
+					style="margin-letf: -60%;" />
+
+			</h:column>
+		</h:dataTable>
+	</p:panel>
+	<p:panel>
+		<center>
+			<h3>Experiências</h3>
+		</center>
+
+		<h:dataTable value="#{a}" var="e">
+			<h:column>
+				<h:outputText value="- Cargo: #{a} ; "
+					style="margin-letf: -60%;" />
+				<h:outputText value="Empresa: #{a} ; "
+					style="margin-letf: -60%;" />
+				<h:outputText
+					value=" Data Inicio: #{a}"
+					style="margin-letf: -60%;" />
+				<h:outputText
+					value="#{a}."
+					style="margin-letf: -60%;" />
+			</h:column>
+		</h:dataTable>
+	</p:panel>
+
+</h:body>
+</html>
