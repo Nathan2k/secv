@@ -65,15 +65,23 @@
 </div>
 
 
-<p:panelGrid>
-<p:commandButton type="button" icon="ui-icon-info" style="border-radius: 60px; width: 40px; height: 40px; position: fixed; bottom: 20px; right: 20px;">
+	<p:panelGrid>
+		<p:commandButton type="button" icon="ui-icon-info"
+			style="border-radius: 60px; width: 40px; height: 40px; position: fixed; bottom: 20px; right: 20px; "
+			onclick="PF('dlg1').show();" />
+	</p:panelGrid>
 
-</p:commandButton>
-</p:panelGrid>
+	<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+    <h:outputText value="Resistance to PrimeFaces is futile!" />
+</p:dialog>
 
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<script>
+		$(window).resize(function() {
+		    location.reload();
+		});
+	</script>
 </h:body>
 
 </html>

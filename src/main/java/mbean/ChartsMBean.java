@@ -29,10 +29,12 @@ public class ChartsMBean {
 		lineModel.setLegendPosition("e");
 		lineModel.setShowPointLabels(true);
 		lineModel.getAxes().put(AxisType.X, new CategoryAxis("Mês")); // nome linha x
+		
 		Axis yAxis = lineModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Filtros"); // nome linha y
 		yAxis.setMin(0);
 		yAxis.setMax(5);
+		yAxis.setTickFormat("%d");
 	}
 
 	private LineChartModel initCategoryModel() {

@@ -29,11 +29,6 @@ public class ChartPieMBean {
     private void createPieModel1() {
         pieModel1 = initPieChartModel();
          
-        pieModel1.set("Info", 500);
-        pieModel1.set("Meca", 325);
-        pieModel1.set("Admin", 702);
-        pieModel1.set("Engen", 421);
-         
         pieModel1.setTitle("Cursos");
         pieModel1.setLegendPosition("w");
         pieModel1.setShadow(false);
@@ -44,12 +39,9 @@ public class ChartPieMBean {
     	
     	List<GraficoPizza> lista = gDao.contarCurso();
     	
-    	ChartSeries boys = new ChartSeries();
-    	
-    	boys.setLabel("curso");
     	
     	for(GraficoPizza cs : lista) {
-    		boys.set(cs.getCurso(), cs.getQtd());
+    		model.set(cs.getCurso(), cs.getQtd());
     	}
     	//model.addSeries(boys);
     	
