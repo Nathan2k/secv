@@ -51,6 +51,7 @@ public class tabelaMBean {
 //		return null;
 	}
 
+
 	public tabelaMBean() {
 
 		ue = new UsuarioEmpresa();

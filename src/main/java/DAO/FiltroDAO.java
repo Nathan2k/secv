@@ -43,15 +43,15 @@ public class FiltroDAO {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, c.getNomeDoAluno());
-			ps.setLong(2, c.getIdade()); // VER SOBRE O LONG VER SE NAO VAI DA erro PQ NO BD ESTA VARCHAR
+			ps.setString(2, c.getIdade()); // VER SOBRE O LONG VER SE NAO VAI DA erro PQ NO BD ESTA VARCHAR
 			ps.setInt(3, c.getNivel_ingles());
 			ps.setInt(4, c.getNivel_espanhol());
 			ps.setString(5, c.getEstado());
 			ps.setString(6, c.getCidade());
 			ps.setString(7, c.getCurso());
 			ps.setInt(8, c.getSemestre());
-			ps.setInt(9, c.getSexo());
-			ps.setInt(10, c.getDeficiencia());
+			ps.setString(9, c.getSexo());
+			ps.setString(10, c.getDeficiencia());
 			ps.setString(11, c.getEmail());
 			ps.setString(12, c.getTelefone());
 
