@@ -15,6 +15,14 @@
 			<p:autoUpdate />
 		</p:growl>
 
+		<iframe id="my_iframe" style="display: none;"></iframe>
+
+		<script type="text/javascript">
+		function Download(url) {
+		    document.getElementById('my_iframe').src = url;
+		};
+		</script>
+
 		<div style="width: 500px; margin: auto;">
 			<p:panel value="Login" style="width: 500px; margin-top: 3%">
 				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
@@ -39,7 +47,7 @@
 							<h:outputLabel for="cidades" value="Cidades:" />
 							<p:remoteCommand name="atualiza" update="area"
 								actionListener="#{filtroMBean.attArea}" />
-							<p:selectCheckboxMenu id="cidades" required="true"
+							<p:selectCheckboxMenu id="cidades"
 								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
 								style="width:160px" filter="true" filterMatchMode="startsWith"
 								panelStyle="width:290px" onHide="atualiza()">
@@ -54,7 +62,7 @@
 
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
-								id="area" value="#{filtroMBean.eFiltro.area}" required="true">
+								id="area" value="#{filtroMBean.eFiltro.area}" >
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
 									itemLabel="#{area.nome}"
@@ -66,7 +74,7 @@
 							<P />
 
 							<h:outputLabel for="curso" value="Curso:" />
-							<p:selectOneMenu required="false" style="width: 160px"
+							<p:selectOneMenu style="width: 160px"
 								panelStyle="width:150px" id="curso"
 								value="#{filtroMBean.eFiltro.idCurso}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
@@ -78,7 +86,7 @@
 							<P />
 
 							<h:outputLabel for="semestre" value="Semestres:" />
-							<p:selectOneMenu required="false" style="width: 160px"
+							<p:selectOneMenu style="width: 160px"
 								panelStyle="width:150px" id="semestre"
 								value="#{filtroMBean.eFiltro.semestre}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
@@ -99,7 +107,7 @@
 							</p:selectOneMenu>
 							<p />
 							-->
-							
+
 							<h:panelGrid columns="1" style="margin-bottom: 10px">
 
 								<h:outputText id="displayRange"
@@ -112,8 +120,8 @@
 								value="#{filtroMBean.eFiltro.idade_inicio}" />
 							<h:inputHidden id="txt7" value="#{filtroMBean.eFiltro.idade_fim}" />
 							<p />
-							
-							
+
+
 							<h:outputText value="Experiência: " />
 							<p:selectOneRadio id="experiencia"
 								value="#{filtroMBean.eFiltro.experiencia}">
@@ -181,7 +189,7 @@
 
 										<p:column id="Impressão" style="width:60px">
 											<p:commandButton icon="ui-icon-print" ajax="false"
-												action="curriculo?faces-redirect=true"
+												action="#{listarCurriculoMBean.imprimir}"
 												onclick="this.form.target='_blank'">
 
 												<f:setPropertyActionListener value="#{cl}"

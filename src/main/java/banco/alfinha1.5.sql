@@ -95,6 +95,7 @@ CREATE TABLE curriculo(
     semestre INTEGER,
 	sexo VARCHAR(50),    
 	deficiencia VARCHAR(50),
+	telefone VARCHAR(50),
 	
 	FOREIGN KEY (idFiltro) REFERENCES filtro(id)
 

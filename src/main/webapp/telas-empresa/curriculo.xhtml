@@ -26,10 +26,15 @@
 	#button {
 		display: none;
 	}
+	
+@page {
+	size: auto;
+	margin:0mm;
+}
 }
 </style>
 </h:head>
-<h:body>
+<h:body onload="printpage();">
 <div align="center">
 		<p:button id="button" icon="fa fa-print" value="Imprimir"
 			onclick="printpage()" />
@@ -47,7 +52,7 @@
 	<p:panel>
 		<center>
 			<h3>Informações Pessoais</h3>
-			<h:outputLabel value="Nome: #{listarCurriculoMBean.cur.nomeDoAluno}" />
+			<h:outputLabel value="Nome: #{flash.curImp.nomeDoAluno}" />
 			<br />
 			<h:outputLabel value="Email: #{a}" />
 			<br />
