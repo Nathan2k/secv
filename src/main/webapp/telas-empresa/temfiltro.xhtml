@@ -16,78 +16,80 @@
 		</p:growl>
 
 		<div style="width: 500px; margin: auto;">
-	<!--	<p:panel value="Login" style="width: 500px; margin-top: 3%"> -->
-			<h:form id="filtroEmp" rendered="#{filtroMBean.filtroP}">
-				<center>
+			<p:panel value="Login" style="width: 500px; margin-top: 3%">
+				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
+					<center>
 
-					<h:panelGrid columns="1" style="margin-bottom:15px" cellpadding="5">
+						<h:panelGrid columns="1" style="margin-bottom:15px"
+							cellpadding="5">
 
-						<h:outputText value="Nome da Vaga: " />
-						<p:inputText value="#{filtroMBean.eFiltro.nomeFiltro}"
-							style="width: 350px;" />
-						<p />
+							<h:outputText value="Nome da Vaga: " />
+							<p:inputText value="#{filtroMBean.eFiltro.nomeFiltro}"
+								style="width: 350px;" />
+							<p />
 
-						<p:outputLabel for="estado" value="Estados:" />
-						<p:selectOneMenu id="estado"
-							value="#{filtroMBean.eFiltro.idEstado}" style="width:160px">
-							<f:selectItem itemLabel="Estados" itemValue="" />
-							<f:selectItems value="#{a}" />
-						</p:selectOneMenu>
-						<p />
+							<p:outputLabel for="estado" value="Estados:" />
+							<p:selectOneMenu id="estado"
+								value="#{filtroMBean.eFiltro.idEstado}" style="width:160px">
+								<f:selectItem itemLabel="Estados" itemValue="" />
+								<f:selectItems value="#{a}" />
+							</p:selectOneMenu>
+							<p />
 
-						<h:outputLabel for="cidades" value="Cidades:" />
-						<p:remoteCommand name="atualiza" update="area"
-							actionListener="#{filtroMBean.attArea}" />
-						<p:selectCheckboxMenu id="cidades"
-							value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
-							style="width:160px" filter="true" filterMatchMode="startsWith"
-							panelStyle="width:290px" onHide="atualiza()">
-							<!-- VER SE O VALUE AQUI TA CERTO!  -->
-							<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
-								itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
-						</p:selectCheckboxMenu>
+							<h:outputLabel for="cidades" value="Cidades:" />
+							<p:remoteCommand name="atualiza" update="area"
+								actionListener="#{filtroMBean.attArea}" />
+							<p:selectCheckboxMenu id="cidades" required="true"
+								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
+								style="width:160px" filter="true" filterMatchMode="startsWith"
+								panelStyle="width:290px" onHide="atualiza()">
+								<!-- VER SE O VALUE AQUI TA CERTO!  -->
+								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
+									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
+							</p:selectCheckboxMenu>
 
-						<p />
+							<p />
 
-						<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
+							<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
 
-						<h:outputLabel for="area" value="Área:" />
-						<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
-							id="area" value="#{filtroMBean.eFiltro.area}">
-							<f:selectItem itemLabel="Selecione" />
-							<f:selectItems value="#{filtroMBean.area}" var="area"
-								itemLabel="#{area.nome}" itemValue="#{area.codigo}-#{area.nome}" />
-							<p:ajax event="change" listener="#{filtroMBean.attCurso}"
-								process="area" update="curso">
-							</p:ajax>
-						</p:selectOneMenu>
-						<P />
+							<h:outputLabel for="area" value="Área:" />
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
+								id="area" value="#{filtroMBean.eFiltro.area}" required="true">
+								<f:selectItem itemLabel="Selecione" />
+								<f:selectItems value="#{filtroMBean.area}" var="area"
+									itemLabel="#{area.nome}"
+									itemValue="#{area.codigo}-#{area.nome}" />
+								<p:ajax event="change" listener="#{filtroMBean.attCurso}"
+									process="area" update="curso">
+								</p:ajax>
+							</p:selectOneMenu>
+							<P />
 
-						<h:outputLabel for="curso" value="Curso:" />
-						<p:selectOneMenu required="false" style="width: 160px"
-							panelStyle="width:150px" id="curso"
-							value="#{filtroMBean.eFiltro.idCurso}">
-							<f:selectItem itemLabel="Selecione" itemValue="" />
-							<f:selectItems value="#{filtroMBean.curso}" var="curso"
-								itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
-							<p:ajax event="change" listener="#{filtroMBean.attSemestre}"
-								update="semestre" />
-						</p:selectOneMenu>
-						<P />
+							<h:outputLabel for="curso" value="Curso:" />
+							<p:selectOneMenu required="false" style="width: 160px"
+								panelStyle="width:150px" id="curso"
+								value="#{filtroMBean.eFiltro.idCurso}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItems value="#{filtroMBean.curso}" var="curso"
+									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
+								<p:ajax event="change" listener="#{filtroMBean.attSemestre}"
+									update="semestre" />
+							</p:selectOneMenu>
+							<P />
 
-						<h:outputLabel for="semestre" value="Semestres:" />
-						<p:selectOneMenu required="false" style="width: 160px"
-							panelStyle="width:150px" id="semestre"
-							value="#{filtroMBean.eFiltro.semestre}">
-							<f:selectItem itemLabel="Selecione" itemValue="" />
-							<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
-								itemLabel="#{semestre.nome}" itemValue="#{semestre.codigo}" />
-							<!--  <p:ajax event="change" listener="#{filtroMBean.selSemestre}" update="" /> -->
-						</p:selectOneMenu>
-						<p />
+							<h:outputLabel for="semestre" value="Semestres:" />
+							<p:selectOneMenu required="false" style="width: 160px"
+								panelStyle="width:150px" id="semestre"
+								value="#{filtroMBean.eFiltro.semestre}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
+									itemLabel="#{semestre.nome}" itemValue="#{semestre.codigo}" />
+								<!--  <p:ajax event="change" listener="#{filtroMBean.selSemestre}" update="" /> -->
+							</p:selectOneMenu>
+							<p />
 
 
-						<!-- AQUI ESTA O CAMPO IDIOMA QUE ESTA RENDERED FALSE POIS AINDA NAO SABEMOS SE VAMOS FAZER 
+							<!-- AQUI ESTA O CAMPO IDIOMA QUE ESTA RENDERED FALSE POIS AINDA NAO SABEMOS SE VAMOS FAZER 
 							<p:selectOneMenu rendered="false" required="false" style="width: 160px"
 								panelStyle="width:150px" id="idioma"
 								value="#{a}">
@@ -97,103 +99,106 @@
 							</p:selectOneMenu>
 							<p />
 							-->
+							
+							<h:panelGrid columns="1" style="margin-bottom: 10px">
 
-						<h:outputText value="Experiência: " />
-						<p:selectOneRadio id="experiencia"
-							value="#{filtroMBean.eFiltro.experiencia}">
-							<f:selectItem itemLabel="Sim" itemValue="1" />
-							<f:selectItem itemLabel="Não" itemValue="2" />
-							<f:selectItem itemLabel="Indiferente" itemValue="0" />
-						</p:selectOneRadio>
+								<h:outputText id="displayRange"
+									value="Faixa etária: #{filtroMBean.eFiltro.idade_inicio} a #{filtroMBean.eFiltro.idade_fim} anos" />
+								<p:slider for="txt6,txt7" display="displayRange"
+									style="width: 350px" range="true"
+									displayTemplate="De {min} a {max}" />
+							</h:panelGrid>
+							<h:inputHidden id="txt6"
+								value="#{filtroMBean.eFiltro.idade_inicio}" />
+							<h:inputHidden id="txt7" value="#{filtroMBean.eFiltro.idade_fim}" />
+							<p />
+							
+							
+							<h:outputText value="Experiência: " />
+							<p:selectOneRadio id="experiencia"
+								value="#{filtroMBean.eFiltro.experiencia}">
+								<f:selectItem itemLabel="Sim" itemValue="1" />
+								<f:selectItem itemLabel="Não" itemValue="2" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
+							</p:selectOneRadio>
 
-						<p />
+							<p />
 
 
-						<h:outputText value="Sexo: " />
-						<p:selectOneRadio id="sexo" value="#{filtroMBean.eFiltro.sexo}">
-							<f:selectItem itemLabel="Homem" itemValue="1" />
-							<f:selectItem itemLabel="Mulher" itemValue="2" />
-							<f:selectItem itemLabel="Indiferente" itemValue="0" />
-						</p:selectOneRadio>
+							<h:outputText value="Sexo: " />
+							<p:selectOneRadio id="sexo" value="#{filtroMBean.eFiltro.sexo}">
+								<f:selectItem itemLabel="Homem" itemValue="1" />
+								<f:selectItem itemLabel="Mulher" itemValue="2" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
+							</p:selectOneRadio>
 
-						<p />
-						<h:outputText value="Deficiência: " />
-						<p:selectOneRadio id="deficiencia"
-							value="#{filtroMBean.eFiltro.deficiencia}">
-							<f:selectItem itemLabel="Sim" itemValue="1" />
-							<f:selectItem itemLabel="Indiferente" itemValue="0" />
-						</p:selectOneRadio>
-						<p />
+							<p />
+							<h:outputText value="Deficiência: " />
+							<p:selectOneRadio id="deficiencia"
+								value="#{filtroMBean.eFiltro.deficiencia}">
+								<f:selectItem itemLabel="Sim" itemValue="1" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
+							</p:selectOneRadio>
+							<p />
 
-						<h:panelGrid columns="1" style="margin-bottom: 10px">
 
-							<h:outputText id="displayRange"
-								value="Faixa etária: #{filtroMBean.eFiltro.idade_inicio} a #{filtroMBean.eFiltro.idade_fim} anos" />
-							<p:slider for="txt6,txt7" display="displayRange"
-								style="width: 350px" range="true"
-								displayTemplate="De {min} a {max}" />
 						</h:panelGrid>
-						<h:inputHidden id="txt6"
-							value="#{filtroMBean.eFiltro.idade_inicio}" />
-						<h:inputHidden id="txt7" value="#{filtroMBean.eFiltro.idade_fim}" />
-						<p />
-
-					</h:panelGrid>
-
-					<p />
-
-					<h:commandButton value="Filtrar"
-						action="#{filtroMBean.salvaFiltro}"
-						style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-				</center>
-			</h:form>
-
-			<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-			<h:form id="telaCur" rendered="#{filtroMBean.filtroF}">
-
-				<center>
-					<p:panel value="Login" style="width: 600px">
-
-						<h:graphicImage library="img" name="/logo-senai.png"
-							style="width:300px; margin: 7px;" />
 
 						<p />
-						<p:panel>
 
-							<center>
+						<h:commandButton value="Filtrar"
+							action="#{filtroMBean.salvaFiltro}"
+							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+					</center>
+				</h:form>
 
-								<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
+				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
 
-									<p:column headerText="Nome">
-										<f:facet name="header">Nome do Aluno</f:facet>
+					<center>
+						<p:panel value="Login" style="width: 600px">
+
+							<h:graphicImage library="img" name="/logo-senai.png"
+								style="width:300px; margin: 7px;" />
+
+							<p />
+							<p:panel>
+
+								<center>
+
+									<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+
+										<p:column headerText="Nome">
+											<f:facet name="header">Nome do Aluno</f:facet>
        								 	#{cl.nomeDoAluno}
 										</p:column>
 
-									<p:column id="Download" icon="ui-icon-search"
-										style="width:60px">
-										<h:outputText />
-										<p:commandButton icon="ui-icon-arrowthick-1-s" />
-									</p:column>
+										<p:column id="Download" icon="ui-icon-search"
+											style="width:60px">
+											<h:outputText />
+											<p:commandButton icon="ui-icon-arrowthick-1-s" />
+										</p:column>
 
-									<p:column id="Impressão" style="width:60px">
-										<p:commandButton icon="ui-icon-print" ajax="false"
-											action="curriculo?faces-redirect=true"
-											onclick="this.form.target='_blank'" >
-											
-												<f:setPropertyActionListener value="#{cl}" target="#{listarCurriculoMBean.cur}"></f:setPropertyActionListener>
-											
+										<p:column id="Impressão" style="width:60px">
+											<p:commandButton icon="ui-icon-print" ajax="false"
+												action="curriculo?faces-redirect=true"
+												onclick="this.form.target='_blank'">
+
+												<f:setPropertyActionListener value="#{cl}"
+													target="#{listarCurriculoMBean.cur}"></f:setPropertyActionListener>
+
 											</p:commandButton>
-									</p:column>
+										</p:column>
 
-								</p:dataTable>
+									</p:dataTable>
 
-							</center>
+								</center>
+							</p:panel>
 						</p:panel>
-					</p:panel>
-				</center>
+					</center>
 
-			</h:form>
-	<!-- </p:panel> -->
+				</h:form>
+			</p:panel>
 		</div>
 	</ui:define>
 </ui:composition>
