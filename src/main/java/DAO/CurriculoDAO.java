@@ -12,37 +12,33 @@ import com.VPS04.JDBC.ConnectionDB;
 import entity.Curriculo;
 
 public class CurriculoDAO {
-	
+
 	Connection conn;
 
-	
-	public CurriculoDAO(){
+	public CurriculoDAO() {
 		try {
 			conn = ConnectionDB.getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
-	
-	public List<Curriculo>  listarCurriculo(){
-	
-	List<Curriculo> list = new ArrayList<>();
-	
+
+	public List<Curriculo> listarCurriculo() {
+
+		List<Curriculo> list = new ArrayList<>();
+
 		String sql = " SELECT * FROM curriculo; ";
-		
-		
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
-				
+
 				Curriculo cl = new Curriculo();
-				
+
 				cl.setId(rs.getInt("id"));
 				cl.setEmail(rs.getString("email"));
 				cl.setNomeDoAluno(rs.getString("nome_aluno"));
@@ -55,17 +51,17 @@ public class CurriculoDAO {
 				cl.setSemestre(rs.getInt("semestre"));
 				cl.setSexo(rs.getString("sexo"));
 				cl.setDeficiencia(rs.getString("deficiencia"));
-				
+				//cl.setTelefone(rs.getString("telefone"));
+
 				list.add(cl);
-				
+
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
-		
 
-}
 	}
+}

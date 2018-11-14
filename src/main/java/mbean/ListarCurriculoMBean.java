@@ -1,9 +1,11 @@
 package mbean;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import DAO.CurriculoDAO;
 import entity.Curriculo;
@@ -28,6 +30,17 @@ public class ListarCurriculoMBean {
 		cl = clDAO.listarCurriculo();
 		clDAO = new CurriculoDAO();
 	}
+	
+	public String imprimir() {
+		
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
+		
+		return "curriculo?faces-redirect=true";
+	}
+	
+	
 
 	public List<Curriculo> getCl() {
 		return cl;

@@ -40,8 +40,6 @@ public class Curriculo {
 	public String getEstado() {
 		return estado;
 	}
-	
-	
 
 	public String getTelefone() {
 		return telefone;
@@ -53,7 +51,7 @@ public class Curriculo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}	
+	}
 
 	public String getEmail() {
 		return email;
@@ -107,7 +105,6 @@ public class Curriculo {
 		this.experiencia = experiencia;
 	}
 
-
 	public Integer getNivel_ingles() {
 		return nivel_ingles;
 	}
@@ -148,6 +145,21 @@ public class Curriculo {
 		this.idade = idade;
 	}
 
-	
+	public String getSexoNome() {
+		String genero;
+
+		if (this.sexo.equals("0")) {
+			genero = "Indiferente";
+			return genero;
+		}
+		if (this.sexo.equals("1")) {
+			genero = "Homem";
+			return genero;
+		} else if (this.sexo.equals("2")) {
+			genero = "Mulher";
+			return genero;
+		}
+		return null;
+	}
 
 }

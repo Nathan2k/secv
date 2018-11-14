@@ -22,7 +22,7 @@ public class FiltroService {
 	// ENVIA O FILTRO PRO DONI
 	public List<Curriculo> enviarFiltro(Filtro f) throws IOException {
 
-		String url = "http://10.0.2.2:8080/aula_rest/ws/filmes/todos"; // URL FICTICIO!
+		String url = "http://10.87.202.163:8080/aula_rest/ws/curriculos/por-filtro"; // URL FICTICIO!
 
 		HttpHelper http = new HttpHelper();
 

@@ -138,7 +138,8 @@ public class UsuarioMBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(s));
 
 	}
-
+	
+	
 
 		
 
