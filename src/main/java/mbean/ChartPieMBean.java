@@ -3,8 +3,6 @@ package mbean;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-
-import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 import DAO.GraficosDAO;
@@ -51,39 +49,6 @@ public class ChartPieMBean {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

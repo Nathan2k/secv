@@ -9,9 +9,11 @@ import java.util.List;
 
 import com.VPS04.JDBC.ConnectionDB;
 
+import entity.GraficoCidade;
 import entity.GraficoFiltro;
 import entity.GraficoPizza;
 import entity.GraficoSexo;
+
 
 public class GraficosDAO {
 
@@ -27,6 +29,7 @@ public class GraficosDAO {
 		}
 
 	}
+	
 
 	public List<GraficoFiltro> contarFiltro() {
 
@@ -55,6 +58,7 @@ public class GraficosDAO {
 		}
 		return null;
 	}
+	
 
 	public List<GraficoPizza> contarCurso() {
 
@@ -62,21 +66,49 @@ public class GraficosDAO {
 
 		PreparedStatement ps;
 		try {
-			ps = conn.prepareStatement(sql); //conecta no banco
+			ps = conn.prepareStatement(sql); 				//conecta no banco
 
-			ResultSet rs = ps.executeQuery(); //faz o codigo girar no sql("SELECT COUNT...")
+			ResultSet rs = ps.executeQuery(); 				//faz o codigo girar no sql("SELECT COUNT...")
 
-			List<GraficoPizza> lista = new ArrayList<>(); //cria lista no java
-			while (rs.next()) { //next na lista que vem do sql
-				GraficoPizza fo = new GraficoPizza(); //criando linhas(objetos)
+			List<GraficoPizza> lista = new ArrayList<>(); 	//cria lista no java
+			while (rs.next()) { 							//next na lista que vem do sql
+				GraficoPizza fo = new GraficoPizza(); 		//criando linhas(objetos)
 
-				fo.setQtd(rs.getInt("qtd")); //seta o valor do sql na linha
+				fo.setQtd(rs.getInt("qtd")); 				//seta o valor do sql na linha
 				fo.setCurso(rs.getString("curso"));
 
-				lista.add(fo); //add linha na lista
+				lista.add(fo); 								//add linha na lista
 			}
-			return lista; //lista completa
-		} catch (SQLException e) { //da exception caso de algo errado
+			return lista; 									//lista completa
+		} catch (SQLException e) { 							//da exception caso de algo errado
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	public List<GraficoCidade> contaCidade(){
+		
+		String sql = "SELECT COUNT(nomeCidade) AS qtd, nomeCidade FROM cidade GROUP BY nomeCidade;";
+		//o certo seria: SELECT COUNT(idCidade) AS qtd, idCidade FROM filtro GROUP BY idCidade
+		
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			List<GraficoCidade> lista = new ArrayList<>();
+			while (rs.next()) {
+				GraficoCidade fo = new GraficoCidade();
+				
+				fo.setQtd(rs.getInt("qtd"));
+				fo.setCidade(rs.getString("nomeCidade"));
+				
+				lista.add(fo);
+			}
+			return lista;
+		}catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return null;

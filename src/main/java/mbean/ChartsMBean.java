@@ -16,6 +16,7 @@ import org.primefaces.model.chart.ChartSeries;
 
 @ManagedBean
 public class ChartsMBean {
+	
 	private LineChartModel lineModel;
 	private GraficosDAO gDao = new GraficosDAO();
 
@@ -26,9 +27,9 @@ public class ChartsMBean {
 	private void createLineModels() {
 		lineModel = initCategoryModel();
 		lineModel.setTitle("Histórico de Filtros"); // titulo do grafico
-		lineModel.setLegendPosition("e");
+		lineModel.setLegendPosition("ne");
 		lineModel.setShowPointLabels(true);
-		lineModel.getAxes().put(AxisType.X, new CategoryAxis("Mês")); // nome linha x
+		lineModel.getAxes().put(AxisType.X, new CategoryAxis("Mês")); // nome linhaX
 		
 		Axis yAxis = lineModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Filtros"); // nome linha y
@@ -42,15 +43,15 @@ public class ChartsMBean {
 
 		List<GraficoFiltro> lista = gDao.contarFiltro();
 
-		ChartSeries boys = new ChartSeries();
+		ChartSeries filtros = new ChartSeries();
 
-		boys.setLabel("Filtros"); // nome da legenda do grafico
+		filtros.setLabel("Filtros"); // nome da legenda do grafico
 
 		for (GraficoFiltro cs : lista) {
-			boys.set(cs.getMes(), cs.getQtd());
+			filtros.set(cs.getMes(), cs.getQtd());
 		}
 
-		model.addSeries(boys);
+		model.addSeries(filtros);
 
 		return model;
 	}
