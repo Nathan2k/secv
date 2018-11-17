@@ -56,7 +56,7 @@ public class ChartBarMBean{
         	cidades.set("Cidades", cs.getQtd());
         	
         	model.addSeries(cidades);
-        	model.setSeriesColors("800000,cc0000,4d0000,ffd699");
+        	model.setSeriesColors("800000,b30000,4d0000,e60000");
         }         
         return model;
     }

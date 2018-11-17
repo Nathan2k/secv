@@ -42,7 +42,7 @@ public class ChartLineMBean {
 
 		horizontalBarModel.setTitle("Garotos e Garotas");
 		horizontalBarModel.setLegendPosition("ne");
-		horizontalBarModel.setSeriesColors("800000,cc0000,4d0000,ffd699");
+		horizontalBarModel.setSeriesColors("800000,b30000,4d0000,e60000");
 		
 		 
         Axis xAxis = horizontalBarModel.getAxis(AxisType.X);

@@ -40,7 +40,7 @@ public class ChartPieMBean {
     	
     	for(GraficoPizza cs : lista) {
     		model.set(cs.getCurso(), cs.getQtd());
-    		model.setSeriesColors("800000,cc0000,4d0000,ffd699");
+    		model.setSeriesColors("800000,b30000,4d0000,e60000");
     	}
     	//model.addSeries(boys);
     	
