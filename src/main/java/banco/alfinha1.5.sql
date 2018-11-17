@@ -61,6 +61,8 @@ CREATE TABLE filtro(
     data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     area VARCHAR(50),
     curso VARCHAR(50),
+   	cidade VARCHAR(50),
+
     
     FOREIGN KEY (idEmpresa) REFERENCES empresa(id),
     FOREIGN KEY (idADM) REFERENCES administrador(id)
@@ -151,14 +153,14 @@ INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
 
 
 
-INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `data` , `area` , `curso`) VALUES
-(7, 'eletricista', 1, 'masculino', 0, 1, 1, '2018-10-26 02:00:00', 'engenharia', 'eletrica'),
-(8, 'arquiteto', 1, 'masculino', 0, 1, 1, '2018-10-25 02:00:00', 'engenharia', 'eletrica'),
-(9, 'treinador', 1, 'masculino', 0, 1, 1, '2018-11-26 02:00:00', 'engenharia', 'eletrica'),
-(10, 'piloto', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica'),
-(11, 'xelelista', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica'),
-(12, 'xeskedele', 1, 'masculono', 0, 1, 1, '2019-01-26 02:00:00', 'engenharia', 'eletrica'),
-(13, 'xazam', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica');
+INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `data` , `area` , `curso` , `cidade`) VALUES
+(7, 'eletricista', 1, 'masculino', 0, 1, 1, '2018-10-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna'),
+(8, 'arquiteto', 1, 'masculino', 0, 1, 1, '2018-10-25 02:00:00', 'engenharia', 'eletrica' , 'Campinas'),
+(9, 'treinador', 1, 'masculino', 0, 1, 1, '2018-11-26 02:00:00', 'engenharia', 'eletrica' , 'Campinas'),
+(10, 'piloto', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Campinas'),
+(11, 'xelelista', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna'),
+(12, 'xeskedele', 1, 'masculono', 0, 1, 1, '2019-01-26 02:00:00', 'engenharia', 'eletrica' , 'Amparo'),
+(13, 'xazam', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Amparo');
 
 
 

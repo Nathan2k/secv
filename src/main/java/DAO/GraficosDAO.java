@@ -89,7 +89,7 @@ public class GraficosDAO {
 	
 	public List<GraficoCidade> contaCidade(){
 		
-		String sql = "SELECT COUNT(nomeCidade) AS qtd, nomeCidade FROM cidade GROUP BY nomeCidade;";
+		String sql = "SELECT COUNT(cidade) AS qtd, cidade FROM filtro GROUP BY cidade;";
 		//o certo seria: SELECT COUNT(idCidade) AS qtd, idCidade FROM filtro GROUP BY idCidade
 		
 		PreparedStatement ps;
@@ -103,7 +103,7 @@ public class GraficosDAO {
 				GraficoCidade fo = new GraficoCidade();
 				
 				fo.setQtd(rs.getInt("qtd"));
-				fo.setCidade(rs.getString("nomeCidade"));
+				fo.setCidade(rs.getString("cidade"));
 				
 				lista.add(fo);
 			}

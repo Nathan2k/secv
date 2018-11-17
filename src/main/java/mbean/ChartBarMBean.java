@@ -40,7 +40,7 @@ public class ChartBarMBean{
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Quantidade");
         yAxis.setMin(0);
-        yAxis.setMax(100);
+        yAxis.setMax(20);
         yAxis.setTickFormat("%d");
     }
     
@@ -56,117 +56,8 @@ public class ChartBarMBean{
         	cidades.set("Cidades", cs.getQtd());
         	
         	model.addSeries(cidades);
-        }
- 
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-        
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        
-        //ATUALIZA ESSA MERDA PRA PUXAR DO FILTRO, NAO DO BANCO DE CIDADES SEU BABACA!
-
-        
-        
-        
-        //DEPOIS TENTA PUXA O NOME DA POHA DA CIDADE PARA MOSTRAR NO GRAFICO FDP!
-
-        
-        
-        
-        
-        
-
-
-         
+        	model.setSeriesColors("800000,cc0000,4d0000,ffd699");
+        }         
         return model;
     }
     

@@ -28,7 +28,7 @@ public class ChartPieMBean {
         pieModel1 = initPieChartModel();
          
         pieModel1.setTitle("Cursos");
-        pieModel1.setLegendPosition("w");
+        pieModel1.setLegendPosition("ne");
         pieModel1.setShadow(false);
     }
     
@@ -40,6 +40,7 @@ public class ChartPieMBean {
     	
     	for(GraficoPizza cs : lista) {
     		model.set(cs.getCurso(), cs.getQtd());
+    		model.setSeriesColors("800000,cc0000,4d0000,ffd699");
     	}
     	//model.addSeries(boys);
     	

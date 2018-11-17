@@ -52,6 +52,7 @@ public class ChartsMBean {
 		}
 
 		model.addSeries(filtros);
+		model.setSeriesColors("800000");
 
 		return model;
 	}
