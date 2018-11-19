@@ -75,25 +75,27 @@
 								
 							<h:outputLabel for="estado" value="Estado:" />
 							<p:selectOneMenu id="estado"
-								value="#{a}"
+								value="#{cadastroEmpresaMBean.emp.estado}" 
 								filter="true"
 								panelStyle="width:150px" style="width: 315px;"
 								requiredMessage="Campo Estado invalido">
 								<f:selectItem itemLabel="Estado" />
-								<f:selectItems value="#{a}" var="cidade" itemLabel="#{a}" itemValue="#{a}"/>
+								<f:selectItems value="#{cadastroEmpresaMBean.est}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"/>
+								<p:ajax event="change" listener="#{cadastroEmpresaMBean.liberaCidade}"
+									process="estado" update="cidade">
+								</p:ajax>
 							</p:selectOneMenu>
 								
 
 
-
 							<h:outputLabel for="cidade" value="Cidade:" />
-							<p:selectOneMenu id="cidade"
+							<p:selectOneMenu id="cidade" disabled="#{cadastroEmpresaMBean.liberado}"
 								value="#{cadastroEmpresaMBean.emp.cidade}"
 								filter="true"
 								panelStyle="width:150px" style="width: 315px;"
 								requiredMessage="Campo Cidade invalido">
 								<f:selectItem itemLabel="Cidade" />
-								<f:selectItems value="#{cidadeMBean.cd}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"/>
+								<f:selectItems value="#{cadastroEmpresaMBean.cd}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"/>
 							</p:selectOneMenu>
 
 						</h:panelGrid>

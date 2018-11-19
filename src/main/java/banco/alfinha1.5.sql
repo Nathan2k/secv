@@ -30,7 +30,9 @@ CREATE TABLE cidade(
 	
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nomeCidade VARCHAR(50),
-    idEstado INTEGER NOT NULL
+    idEstado INTEGER NOT NULL,
+    
+    FOREIGN KEY (idEstado) REFERENCES estado(id)
    
 );
 
@@ -148,9 +150,33 @@ INSERT INTO empresa VALUES (0,'123','senai','123456789101112','Jaguariuna','flor
 INSERT INTO administrador VALUES (0,'123456','adm@gmail.com','admin','123','123455432');
 
 INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
-(1, 'estado');
-
-
+(1, 'Acre'),
+(2, 'Alagoas'),
+(3, 'Amazonas'),
+(4, 'Amapa'),
+(5, 'Bahia'),
+(6, 'Ceara'),
+(7, 'DF'),
+(8, 'Espirito Santo'),
+(9, 'Goias'),
+(10, 'Maranhao'),
+(11, 'Minas Gerais'),
+(12, 'Mato Grosso do Sul'),
+(13, 'Mato Grosso'),
+(14, 'Pará'),
+(15, 'Paraiba'),
+(16, 'Pernambuco'),
+(17, 'Piaui'),
+(18, 'Parana'),
+(19, 'Rio de Janeiro'),
+(20, 'Rio Grande do Norte'),
+(21, 'Rondonia'),
+(22, 'Roraima'),
+(23, 'Rio Grande do Sul'),
+(24, 'Santa Catarina'),
+(25, 'Sergipe'),
+(26, 'São Paulo'),
+(27, 'Tocantins');
 
 
 INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `data` , `area` , `curso` , `cidade`) VALUES
@@ -161,6 +187,8 @@ INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmp
 (11, 'xelelista', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna'),
 (12, 'xeskedele', 1, 'masculono', 0, 1, 1, '2019-01-26 02:00:00', 'engenharia', 'eletrica' , 'Amparo'),
 (13, 'xazam', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Amparo');
+
+
 
 
 

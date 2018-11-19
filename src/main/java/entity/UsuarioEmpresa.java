@@ -7,7 +7,16 @@ public class UsuarioEmpresa extends Usuario {
 	private String rua;
 	private String bairro;
 	private String cidade;
+	private String estado;
 	
+	
+	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public String getCNPJ() {
 		return CNPJ;
 	}
