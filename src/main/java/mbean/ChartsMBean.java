@@ -34,7 +34,7 @@ public class ChartsMBean {
 		Axis yAxis = lineModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Filtros"); // nome linha y
 		yAxis.setMin(0);
-		yAxis.setMax(5);
+		yAxis.setMax(5); //ARRUMA O MAX!
 		yAxis.setTickFormat("%d");
 	}
 

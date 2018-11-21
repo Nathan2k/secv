@@ -25,13 +25,13 @@ public class ChartLineMBean {
 
 
         ChartSeries boys = new ChartSeries();
-        boys.setLabel("Garotos");
+        boys.setLabel("Masculino");
         boys.set("12", 120);
 
 
 		
         ChartSeries girls = new ChartSeries();
-        girls.setLabel("Garotas");
+        girls.setLabel("Feminino");
         girls.set("12", 52);
 
 
@@ -40,9 +40,9 @@ public class ChartLineMBean {
 
 
 
-		horizontalBarModel.setTitle("Garotos e Garotas");
+		horizontalBarModel.setTitle("Sexo");
 		horizontalBarModel.setLegendPosition("ne");
-		horizontalBarModel.setSeriesColors("800000,b30000,4d0000,e60000");
+		horizontalBarModel.setSeriesColors("800000,e60000,b30000,4d0000,ff1a1a,1a0000");
 		
 		 
         Axis xAxis = horizontalBarModel.getAxis(AxisType.X);

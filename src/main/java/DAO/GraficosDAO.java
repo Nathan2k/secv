@@ -89,9 +89,7 @@ public class GraficosDAO {
 	
 	public List<GraficoCidade> contaCidade(){
 		
-		String sql = "SELECT COUNT(cidade) AS qtd, cidade FROM filtro GROUP BY cidade;";
-		//o certo seria: SELECT COUNT(idCidade) AS qtd, idCidade FROM filtro GROUP BY idCidade
-		
+		String sql = "SELECT c.nomeCidade AS cidade, COUNT(c.nomeCidade) AS qtd FROM cidade c INNER JOIN cidadefiltro cf on c.id = cf.idCidade GROUP BY c.nomeCidade;";
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(sql);

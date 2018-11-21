@@ -33,14 +33,15 @@ public class ChartBarMBean{
         barModel = initBarModel();
         barModel.setTitle("Cidades");
         barModel.setLegendPosition("ne");
-         
+        barModel.setShowPointLabels(true);
+
         Axis xAxis = barModel.getAxis(AxisType.X);
         xAxis.setLabel(".");
          
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Quantidade");
         yAxis.setMin(0);
-        yAxis.setMax(20);
+        yAxis.setMax(10);
         yAxis.setTickFormat("%d");
     }
     
@@ -56,7 +57,7 @@ public class ChartBarMBean{
         	cidades.set("Cidades", cs.getQtd());
         	
         	model.addSeries(cidades);
-        	model.setSeriesColors("800000,b30000,4d0000,e60000");
+        	model.setSeriesColors("800000,e60000,b30000,4d0000,ff1a1a,1a0000");
         }         
         return model;
     }
