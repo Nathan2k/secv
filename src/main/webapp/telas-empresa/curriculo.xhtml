@@ -58,9 +58,8 @@
 			<br />
 			<h:outputLabel value="Telefone: #{flash.curImp.telefone}" />
 			<br />
-		<!-- IDADE	<h:outputLabel
-				value="#{a}" />
-			<br /> -->
+			<h:outputLabel value="Idade: #{flash.curImp.idade}" />
+			<br /> 
 			<h:outputLabel value="Sexo: #{flash.curImp.sexo}" />
 
 			<br />
@@ -93,7 +92,7 @@
 		<h:outputLabel value="Curso Atual:"
 			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
 		<h:outputLabel
-			value=" #{flash.curImp.curso}"
+			value=" #{flash.formei.escola}"
 			style="margin-letf: -60%;" />
 
 		<br />
@@ -110,7 +109,7 @@
 			<!-- LISTAR DADOS DA FORMAÇÃO -->
 				<h:outputText value="- Nome: #{flash.curImp.formação.nome} ; "
 					style="margin-letf: -60%;" />
-				<h:outputText value="Escola: #{a} ; "
+				<h:outputText value="Escola: #{flash.curImp.formação.escola} ; "
 					style="margin-letf: -60%;" />
 				<h:outputText
 					value=" Data Inicio: #{a} ;  "

@@ -10,6 +10,7 @@ import java.util.List;
 import com.VPS04.JDBC.ConnectionDB;
 
 import entity.Curriculo;
+import service.Formacao;
 
 public class CurriculoDAO {
 
@@ -64,4 +65,41 @@ public class CurriculoDAO {
 		return list;
 
 	}
+
+	// -----------------------------------------------------------------------------------------------------------
+
+	public List<Formacao> listarFormacao(Integer idCurriculo) { // VER PQ NAO TA LISTANDO FORMAÇÃO NEM EXPERIENCIA
+
+		List<Formacao> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM formacao WHERE idCurriculo = ?";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			//ps.setInt(1, idCurriculo);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Formacao forma = new Formacao();
+
+				forma.setId(rs.getInt("id"));
+				forma.setIdCurriculo(rs.getInt("idCurriculo"));
+				forma.setData_fim(rs.getLong("data_fim"));
+				forma.setData_inicio(rs.getLong(" data_inicio"));
+				forma.setEscola(rs.getString("escola"));
+				forma.setNome(rs.getString("nomeDoCurso"));
+
+				list.add(forma);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }

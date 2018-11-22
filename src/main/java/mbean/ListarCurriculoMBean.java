@@ -10,30 +10,43 @@ import javax.faces.context.FacesContext;
 import DAO.CurriculoDAO;
 import DAO.FiltroDAO;
 import entity.Curriculo;
+import service.Formacao;
 
 @ManagedBean
 @ViewScoped
 public class ListarCurriculoMBean {
 	
 	Curriculo cur;
+	Formacao ff;
 	List<Curriculo> cl;
+	List<Formacao> forma;
 	CurriculoDAO clDAO;
 	private Curriculo selectcl;
 	FiltroDAO fDAO;
 	
+	// VER SE ISSO TA CERTO, PQ TA ZUADO N SEI PQ NAO TA LISTANDO
+	
 	public ListarCurriculoMBean(){
 		
 		cur = new Curriculo();
+		ff = new Formacao();
 		clDAO = new CurriculoDAO();
 		cl = clDAO.listarCurriculo();
+		forma = clDAO.listarFormacao(cur.getId());
 		clDAO = new CurriculoDAO();
 	}
 	
 	public String imprimir() {
 		
+		forma = clDAO.listarFormacao(cur.getId());
+		
+		System.out.println(forma);
+		
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
+		
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("formei", forma);
 		
 		//VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
 		
@@ -44,6 +57,22 @@ public class ListarCurriculoMBean {
 	
 
 	
+	public Formacao getFf() {
+		return ff;
+	}
+
+	public void setFf(Formacao ff) {
+		this.ff = ff;
+	}
+
+	public List<Formacao> getForma() {
+		return forma;
+	}
+
+	public void setForma(List<Formacao> forma) {
+		this.forma = forma;
+	}
+
 	public FiltroDAO getfDAO() {
 		return fDAO;
 	}

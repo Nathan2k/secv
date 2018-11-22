@@ -25,7 +25,7 @@
 
 		<div style="width: 500px; margin: auto;">
 			
-				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
+				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroP}">
 				<p:panel value="Login" style="width: 500px; margin-top: 3%">
 					<center>
 
@@ -138,7 +138,7 @@
 							<p:selectOneRadio id="sexo" value="#{filtroMBean.eFiltro.sexo}">
 								<f:selectItem itemLabel="Homem" itemValue="1" />
 								<f:selectItem itemLabel="Mulher" itemValue="2" />
-								<f:selectItem itemLabel="Indiferente" itemValue="0" />
+								<f:selectItem itemLabel="Indiferente" itemValue="1=1" />
 							</p:selectOneRadio>
 
 							<p />
@@ -146,7 +146,8 @@
 							<p:selectOneRadio id="deficiencia"
 								value="#{filtroMBean.eFiltro.deficiencia}">
 								<f:selectItem itemLabel="Sim" itemValue="1" />
-								<f:selectItem itemLabel="Indiferente" itemValue="0" />
+								<f:selectItem itemLabel="Não" itemValue="2" />
+								<f:selectItem itemLabel="Indiferente" itemValue="1=1" />
 							</p:selectOneRadio>
 							<p />
 
@@ -163,7 +164,7 @@
 				</h:form>
 				
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
+				<h:form id="telaCur" rendered="#{filtroMBean.filtroF}">
 
 					<center>
 						<p:panel value="Login" style="width: 600px">

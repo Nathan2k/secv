@@ -13,9 +13,9 @@ public class Filtro {
 	private Integer semestre; // vai
 	private List<String> idCidade; // vai
 	private Integer experiencia; // 0=indiferente 1=SIM 2= NÃO
-	private Integer sexo; // vai 0=indiferente 1=MACHO 2= MULHER
+	private String sexo; // vai 0=indiferente 1=MACHO 2= MULHER
 	private Integer qualIdioma;// vai 0=indiferente 1=INGLES 2= ESPANHOL
-	private Integer deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
+	private String deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
 	private Integer idade_inicio;
 	private Integer idade_fim; // VER SE JA DA PRA SETAR O 18 E 40 AQUI PRA PODER MANDAR ELES DIRETO
 	private Integer idEstado;
@@ -109,11 +109,11 @@ public class Filtro {
 		this.experiencia = experiencia;
 	}
 
-	public Integer getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Integer sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -125,11 +125,11 @@ public class Filtro {
 		this.qualIdioma = qualIdioma;
 	}
 
-	public Integer getDeficiencia() {
+	public String getDeficiencia() {
 		return deficiencia;
 	}
 
-	public void setDeficiencia(Integer deficiencia) {
+	public void setDeficiencia(String deficiencia) {
 		this.deficiencia = deficiencia;
 	}
 

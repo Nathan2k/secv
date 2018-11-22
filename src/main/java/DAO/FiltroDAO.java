@@ -162,8 +162,8 @@ public class FiltroDAO {
 
 			ps.setString(1, f.getNomeFiltro());
 			ps.setInt(2, f.getExperiencia());
-			ps.setInt(3, f.getSexo());
-			ps.setInt(4, f.getDeficiencia());
+			ps.setString(3, f.getSexo());
+			ps.setString(4, f.getDeficiencia());
 			ps.setString(5, f.getIdEmpresa() == 0? null:f.getIdEmpresa().toString());
 			ps.setString(6, f.getIdAdm() == 0? null:f.getIdAdm().toString());
 			ps.setString(7, f.getArea());
