@@ -61,7 +61,7 @@ public class FiltroDAO {
 
 				int idCur = rs.getInt(1); // perguntar do id
 
-				for (Experiencia e : c.getExperiencia()) {
+				for (Experiencia e : c.getExperiencia()) { // VER COMO COLOCAR FORMAÇÃO E EXPERIENCIA NO CURRICULO
 					inserirExperiencia(e, idCur);
 				}
 				for (Formacao fo : c.getFormação()) { // AQUI ESTAMOS COLOCANDO NA LISTA FORMAÇÃO E EXPERIENCIA AS
@@ -167,7 +167,7 @@ public class FiltroDAO {
 			ps.setString(5, f.getIdEmpresa() == 0? null:f.getIdEmpresa().toString());
 			ps.setString(6, f.getIdAdm() == 0? null:f.getIdAdm().toString());
 			ps.setString(7, f.getArea());
-			ps.setInt(8, f.getIdCurso());
+			ps.setString(8, f.getIdCurso());
 			ps.setInt(9, f.getIdade_inicio());
 			ps.setInt(10, f.getIdade_fim());
 			
@@ -228,19 +228,6 @@ public class FiltroDAO {
 		}
 
 		// TEM Q PASSAR O ID DA CIDADE E O ID DO FILTRO, DESCOBBRE COMO FAZ ISSO!
-
-		/**
-		 * 
-		 * ver de salvar o filtro no banco
-		 * 
-		 * terminar o metodo no mbean q recebe o filtro quando o cara clica filtrar vai
-		 * ter um if q espera a resposta do filtro(==null significa q nao recebeu) e se
-		 * receber ele entra no if e salva no banco! tem q colocar rendered true na
-		 * progress bar aqui tbm
-		 * 
-		 * ver como vc vai mandar a idade
-		 * 
-		 **/
 
 		return false;
 	}

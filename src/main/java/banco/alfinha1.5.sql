@@ -10,6 +10,7 @@ CREATE TABLE empresa(
 	nome VARCHAR(50),
     CNPJ VARCHAR(50) UNIQUE,
     cidade VARCHAR(50),
+    estado VARCHAR(50),
     bairro VARCHAR(50),
     rua VARCHAR(50),
     email VARCHAR(50) UNIQUE,
@@ -180,13 +181,8 @@ INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
 
 
 INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `data` , `area` , `curso` , `cidade`) VALUES
-(7, 'eletricista', 1, 'masculino', 0, 1, 1, '2018-10-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna'),
-(8, 'arquiteto', 1, 'masculino', 0, 1, 1, '2018-10-25 02:00:00', 'engenharia', 'eletrica' , 'Campinas'),
-(9, 'treinador', 1, 'masculino', 0, 1, 1, '2018-11-26 02:00:00', 'engenharia', 'eletrica' , 'Campinas'),
-(10, 'piloto', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Campinas'),
-(11, 'xelelista', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna'),
-(12, 'xeskedele', 1, 'masculono', 0, 1, 1, '2019-01-26 02:00:00', 'engenharia', 'eletrica' , 'Amparo'),
-(13, 'xazam', 1, 'masculono', 0, 1, 1, '2018-12-26 02:00:00', 'engenharia', 'eletrica' , 'Amparo');
+(7, 'eletricista', 1, 'masculino', 0, 1, 1, '2018-10-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna')
+
 
 
 

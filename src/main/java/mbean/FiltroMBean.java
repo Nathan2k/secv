@@ -3,6 +3,8 @@ package mbean;
 import java.awt.geom.Area;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -13,7 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
-
+import org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation;
 import org.primefaces.behavior.ajax.AjaxBehaviorHandler;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
 
@@ -43,7 +45,10 @@ public class FiltroMBean {
 	List<ClasseGenerica> idioma = new ArrayList<>();
 	List<ClasseGenerica> selCidade = new ArrayList<>();
 	String areaSel;
+	String cursoSel;
 
+	Calendar anoAtual = GregorianCalendar.getInstance();
+	
 	FiltroDAO fDao = new FiltroDAO();
 
 	boolean filtroP = false; // é o rendered da tela depois do filtro
@@ -135,6 +140,10 @@ public class FiltroMBean {
 
 	// PEGA OS SEMESTRES COM CURRICULO CADASTRADO
 	public void attSemestre() {
+		cursoSel = eFiltro.getIdCurso().toString();
+		String codigo = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
+		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
+		eFiltro.setIdCurso(codigo);
 		try {
 			semestre = fs.cSemestre(eFiltro);
 		} catch (IOException e) {
@@ -144,8 +153,18 @@ public class FiltroMBean {
 	}
 
 	public void enviarFiltro() throws IOException {
-		System.out.println("sim");
-		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro);
+		System.out.println("Chamou o EnviarFiltro");
+		System.out.println(anoAtual.get(Calendar.YEAR));
+		
+		eFiltro.setIdade_fim(trocandoAno(eFiltro.getIdade_fim()));   // VER SE TA CERTO!!
+		eFiltro.setIdade_inicio(trocandoAno(eFiltro.getIdade_inicio()));
+		
+		areaSel = eFiltro.getArea();
+		String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
+		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
+		eFiltro.setArea(codigo);
+		
+		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro); // DA ERRO 404 AQUI
 
 		if (curriculos == null) {
 
@@ -153,7 +172,7 @@ public class FiltroMBean {
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
 		}
-		if (curriculos.isEmpty()) { // PERGUNTAR SE TER Q FAZER ESSE IF DO EMPTY FORA DO IF DO NULL
+		if (curriculos.isEmpty()) { 
 
 			MensFaces.m("Nenhum Curriculo foi encontrado!");
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
@@ -165,7 +184,22 @@ public class FiltroMBean {
 		}
 	}
 
-	// PERGUNTAR SE É AQUI Q FAZ O GET DO SEXO
+	
+	public Integer trocandoAno(int anoConvertido) {
+		
+		System.out.println(anoAtual.get(Calendar.YEAR));
+		
+		int anoAt;
+		
+		anoAt = anoAtual.get(Calendar.YEAR);
+		
+		anoConvertido = anoAt - anoConvertido;
+		
+		
+		return anoConvertido;
+	}
+	
+	
 	// PERGUNTAR COMO CAPTURAR E ENVIAR FAIXA ETARIA
 
 	public FiltroDAO getfDao() {
@@ -182,6 +216,26 @@ public class FiltroMBean {
 
 	public void setFiltroP(boolean filtroP) {
 		this.filtroP = filtroP;
+	}
+
+	public String getCursoSel() {
+		return cursoSel;
+	}
+
+	public void setCursoSel(String cursoSel) {
+		this.cursoSel = cursoSel;
+	}
+
+	public Calendar getAnoAtual() {
+		return anoAtual;
+	}
+
+	public void setAnoAtual(Calendar anoAtual) {
+		this.anoAtual = anoAtual;
+	}
+
+	public UsuarioMBean getUserMb() {
+		return userMb;
 	}
 
 	public Filtro geteFiltro() {

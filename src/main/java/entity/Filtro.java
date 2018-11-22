@@ -9,7 +9,7 @@ public class Filtro {
 	private Integer id;
 	private Integer idEmpresa;
 	private Integer idAdm;
-	private Integer idCurso; // vai
+	private String idCurso; // vai
 	private Integer semestre; // vai
 	private List<String> idCidade; // vai
 	private Integer experiencia; // 0=indiferente 1=SIM 2= NÃO
@@ -19,7 +19,6 @@ public class Filtro {
 	private Integer idade_inicio;
 	private Integer idade_fim; // VER SE JA DA PRA SETAR O 18 E 40 AQUI PRA PODER MANDAR ELES DIRETO
 	private Integer idEstado;
-
 	private String area;
 
 	public Integer getIdEstado() {
@@ -54,11 +53,11 @@ public class Filtro {
 		this.id = id;
 	}
 
-	public Integer getIdCurso() {
+	public String getIdCurso() {
 		return idCurso;
 	}
 
-	public void setIdCurso(Integer idCurso) {
+	public void setIdCurso(String idCurso) {
 		this.idCurso = idCurso;
 	}
 
@@ -141,6 +140,8 @@ public class Filtro {
 	public void setIdCidade(List<String> idCidade) {
 		this.idCidade = idCidade;
 	}
+	
+	
 	
 	
 	public String getSexoNome() {
