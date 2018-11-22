@@ -21,6 +21,12 @@ public class Usuario {
 		this.email = email;
 		this.telefone = telefone;
 		this.nomex = nomex;
+		
+		if (nome.indexOf(" ") > -1) {
+			nomex = nome.substring(0, nome.indexOf(" "));
+		}else {
+			nomex = nome;
+		}
 	}
 
 	public Integer getId() {
@@ -37,7 +43,11 @@ public class Usuario {
 	}
 
 	public void setNome(String nome) {
-		nome = nome.trim();
+		if (nome.indexOf(" ") > -1) {
+			nomex = nome.substring(0, nome.indexOf(" "));
+		}else {
+			nomex = nome;
+		}
 		this.nome = nome;
 	}
 
