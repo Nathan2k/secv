@@ -12,12 +12,15 @@ import org.primefaces.model.chart.ChartSeries;
 
 import DAO.GraficosDAO;
 import entity.GraficoCidade;
+import entity.GraficoSexo;
  
 @ManagedBean
 public class ChartBarMBean{
  
     private BarChartModel barModel;
     private GraficosDAO gDao = new GraficosDAO();
+	List<GraficoSexo> lista;
+	Integer max = 0;
  
     @PostConstruct
     public void init() {
@@ -36,12 +39,12 @@ public class ChartBarMBean{
         barModel.setShowPointLabels(true);
 
         Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel(".");
+        xAxis.setLabel("");
          
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Quantidade");
         yAxis.setMin(0);
-        yAxis.setMax(10);
+        yAxis.setMax(max+5);
         yAxis.setTickFormat("%d");
     }
     
@@ -55,6 +58,10 @@ public class ChartBarMBean{
             
             cidades.setLabel(cs.getCidade());
         	cidades.set("Cidades", cs.getQtd());
+        	
+			if (cs.getQtd() > max) {
+				max = cs.getQtd();
+			}
         	
         	model.addSeries(cidades);
         	model.setSeriesColors("800000,e60000,b30000,4d0000,ff1a1a,1a0000");

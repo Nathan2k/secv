@@ -11,6 +11,7 @@ import org.primefaces.model.chart.LineChartModel;
 
 import DAO.GraficosDAO;
 import entity.GraficoFiltro;
+import entity.GraficoSexo;
 
 import org.primefaces.model.chart.ChartSeries;
 
@@ -19,6 +20,8 @@ public class ChartsMBean {
 	
 	private LineChartModel lineModel;
 	private GraficosDAO gDao = new GraficosDAO();
+	List<GraficoSexo> lista;
+	Integer max = 0;
 
 	public ChartsMBean() {
 		createLineModels();
@@ -34,7 +37,7 @@ public class ChartsMBean {
 		Axis yAxis = lineModel.getAxis(AxisType.Y);
 		yAxis.setLabel("Filtros"); // nome linha y
 		yAxis.setMin(0);
-		yAxis.setMax(5); //ARRUMA O MAX!
+		yAxis.setMax(max+5); 
 		yAxis.setTickFormat("%d");
 	}
 
@@ -49,6 +52,9 @@ public class ChartsMBean {
 
 		for (GraficoFiltro cs : lista) {
 			filtros.set(cs.getMes(), cs.getQtd());
+			if (cs.getQtd() > max) {
+				max = cs.getQtd();
+			}
 		}
 
 		model.addSeries(filtros);
