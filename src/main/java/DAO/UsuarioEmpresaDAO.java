@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.VPS04.JDBC.ConnectionDB;
 
+import entity.Cidade;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
 import utils.Replace;
@@ -28,7 +29,9 @@ public class UsuarioEmpresaDAO {
 
 	public UsuarioEmpresa buscarEmpresa(String cnpj, String senha) throws SQLException { // perguntar sobre a senha
 
-		String sql = "SELECT * FROM empresa " + "WHERE CNPJ = ? AND senha = ?;"; // perguntar se falta alguma coisa
+		String sql = "SELECT * FROM empresa e "
+				+ " INNER JOIN cidade c ON e.cidade = c.id" 
+				+ " WHERE CNPJ = ? AND senha = ?;"; // perguntar se falta alguma coisa
 
 		PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -43,6 +46,7 @@ public class UsuarioEmpresaDAO {
 			emp.setId(rs.getInt("id"));// perguntar se o ID é igual a variavel q esta no banco
 			emp.setBairro(rs.getString("bairro"));
 			emp.setCidade(rs.getString("cidade"));
+			emp.setCidadeE(new Cidade(rs.getInt("cidade"), rs.getString("nomeCidade")));
 			emp.setRua(rs.getString("rua"));
 			emp.setSenha(rs.getString("senha"));
 			emp.setNome(rs.getString("nome"));
@@ -102,7 +106,8 @@ public class UsuarioEmpresaDAO {
 
 		List<UsuarioEmpresa> list = new ArrayList<>();
 
-		String sql = " SELECT * FROM empresa; ";
+		String sql = " SELECT * FROM empresa e"
+				+ " INNER JOIN cidade c ON e.cidade = c.id ";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -115,6 +120,7 @@ public class UsuarioEmpresaDAO {
 				ue.setId(rs.getInt("id"));
 				ue.setBairro(rs.getString("bairro"));
 				ue.setCidade(rs.getString("cidade"));
+				ue.setCidadeE(new Cidade(rs.getInt("cidade"), rs.getString("nomeCidade")));
 				ue.setRua(rs.getString("rua"));
 				ue.setSenha(rs.getString("senha"));
 				ue.setNome(rs.getString("nome"));

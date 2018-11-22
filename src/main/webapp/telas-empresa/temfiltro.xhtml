@@ -24,8 +24,9 @@
 		</script>
 
 		<div style="width: 500px; margin: auto;">
-			<p:panel value="Login" style="width: 500px; margin-top: 3%">
+			
 				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
+				<p:panel value="Login" style="width: 500px; margin-top: 3%">
 					<center>
 
 						<h:panelGrid columns="1" style="margin-bottom:15px"
@@ -158,8 +159,9 @@
 							action="#{filtroMBean.enviarFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</center>
+					</p:panel>
 				</h:form>
-
+				
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
 				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
 
@@ -206,7 +208,7 @@
 					</center>
 
 				</h:form>
-			</p:panel>
+			
 		</div>
 	</ui:define>
 </ui:composition>

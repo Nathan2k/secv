@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import DAO.CurriculoDAO;
+import DAO.FiltroDAO;
 import entity.Curriculo;
 
 @ManagedBean
@@ -18,12 +19,9 @@ public class ListarCurriculoMBean {
 	List<Curriculo> cl;
 	CurriculoDAO clDAO;
 	private Curriculo selectcl;
+	FiltroDAO fDAO;
 	
-	
-	//É PRA LISTAR O CURRICULO SE VAI FUNCIONAR EU JA NAO SEI  XD
 	public ListarCurriculoMBean(){
-		
-		System.out.println("criou");
 		
 		cur = new Curriculo();
 		clDAO = new CurriculoDAO();
@@ -37,10 +35,22 @@ public class ListarCurriculoMBean {
 		
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
 		
+		//VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
+		
+
 		return "curriculo?faces-redirect=true";
 	}
 	
 	
+
+	
+	public FiltroDAO getfDAO() {
+		return fDAO;
+	}
+
+	public void setfDAO(FiltroDAO fDAO) {
+		this.fDAO = fDAO;
+	}
 
 	public List<Curriculo> getCl() {
 		return cl;

@@ -7,7 +7,8 @@ public class UsuarioEmpresa extends Usuario {
 	private String rua;
 	private String bairro;
 	private String cidade;
-	private String estado;
+	private Cidade cidadeE;
+	private String estado; 
 	
 	
 	
@@ -46,6 +47,12 @@ public class UsuarioEmpresa extends Usuario {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	public Cidade getCidadeE() {
+		return cidadeE;
+	}
+	public void setCidadeE(Cidade cidadeE) {
+		this.cidadeE = cidadeE;
 	}
 	
 	

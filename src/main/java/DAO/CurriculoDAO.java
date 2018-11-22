@@ -51,7 +51,7 @@ public class CurriculoDAO {
 				cl.setSemestre(rs.getInt("semestre"));
 				cl.setSexo(rs.getString("sexo"));
 				cl.setDeficiencia(rs.getString("deficiencia"));
-				//cl.setTelefone(rs.getString("telefone"));
+				cl.setTelefone(rs.getString("telefone"));
 
 				list.add(cl);
 
