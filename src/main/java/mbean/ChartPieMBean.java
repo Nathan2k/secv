@@ -3,6 +3,8 @@ package mbean;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+
+import org.primefaces.model.chart.LegendPlacement;
 import org.primefaces.model.chart.PieChartModel;
 
 import DAO.GraficosDAO;
@@ -29,6 +31,7 @@ public class ChartPieMBean {
          
         pieModel1.setTitle("Cursos");
         pieModel1.setLegendPosition("ne");
+        pieModel1.setLegendPlacement(LegendPlacement.OUTSIDE);
         pieModel1.setShadow(false);
         pieModel1.setShowDataLabels(true);
     }
@@ -41,7 +44,7 @@ public class ChartPieMBean {
     	
     	for(GraficoPizza cs : lista) {
     		model.set(cs.getCurso(), cs.getQtd());
-    		model.setSeriesColors("800000,e60000,b30000,4d0000,ff1a1a,1a0000");
+    		model.setSeriesColors("990000,ff0000,cc0000,660000,ff3333,330000,ff6666,ff9999,ffcccc");
     	}
     	//model.addSeries(boys);
     	

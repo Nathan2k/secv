@@ -9,6 +9,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LegendPlacement;
 
 import DAO.GraficosDAO;
 import entity.GraficoCidade;
@@ -36,6 +37,7 @@ public class ChartBarMBean{
         barModel = initBarModel();
         barModel.setTitle("Cidades");
         barModel.setLegendPosition("ne");
+        barModel.setLegendPlacement(LegendPlacement.OUTSIDE);
         barModel.setShowPointLabels(true);
 
         Axis xAxis = barModel.getAxis(AxisType.X);
@@ -64,7 +66,7 @@ public class ChartBarMBean{
 			}
         	
         	model.addSeries(cidades);
-        	model.setSeriesColors("800000,e60000,b30000,4d0000,ff1a1a,1a0000");
+        	model.setSeriesColors("990000,ff0000,cc0000,660000,ff3333,330000,ff6666,ff9999,ffcccc");
         }         
         return model;
     }

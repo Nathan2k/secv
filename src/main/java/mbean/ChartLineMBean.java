@@ -8,6 +8,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.HorizontalBarChartModel;
+import org.primefaces.model.chart.LegendPlacement;
 
 import DAO.GraficosDAO;
 import entity.GraficoSexo;
@@ -33,7 +34,8 @@ public class ChartLineMBean {
 		horizontalBarModel.setShowPointLabels(true);
 		horizontalBarModel.setTitle("Sexo por Filtro");
 		horizontalBarModel.setLegendPosition("ne");
-		horizontalBarModel.setSeriesColors("800000,e60000,b30000,4d0000,ff1a1a,1a0000");
+		horizontalBarModel.setLegendPlacement(LegendPlacement.OUTSIDE);
+		horizontalBarModel.setSeriesColors("990000,ff0000,cc0000,660000,ff3333,330000,ff6666,ff9999,ffcccc");
 
 		Axis xAxis = horizontalBarModel.getAxis(AxisType.X);
 		xAxis.setLabel("Quantidade");

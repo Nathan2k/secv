@@ -48,6 +48,7 @@ public class GraficosDAO {
 
 				fo.setQtd(rs.getInt("qtd"));
 				fo.setMes(rs.getString("mes"));
+//				TARCISO FEZ, FUNCIONO. EU COMITEI E CONTINUO FUNCIONANDO... o.0
 //				SimpleDateFormat sdf = new SimpleDateFormat("MM/aaaa");
 //				sdf.format(fo.getMes());
 				lista.add(fo);

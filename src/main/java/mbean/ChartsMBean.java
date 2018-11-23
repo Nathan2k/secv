@@ -14,6 +14,7 @@ import entity.GraficoFiltro;
 import entity.GraficoSexo;
 
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LegendPlacement;
 
 @ManagedBean
 public class ChartsMBean {
@@ -31,6 +32,7 @@ public class ChartsMBean {
 		lineModel = initCategoryModel();
 		lineModel.setTitle("Histórico de Filtros"); // titulo do grafico
 		lineModel.setLegendPosition("ne");
+		lineModel.setLegendPlacement(LegendPlacement.OUTSIDE);
 		lineModel.setShowPointLabels(true);
 		lineModel.getAxes().put(AxisType.X, new CategoryAxis("Mês")); // nome linhaX
 		
@@ -58,7 +60,7 @@ public class ChartsMBean {
 		}
 
 		model.addSeries(filtros);
-		model.setSeriesColors("800000");
+		model.setSeriesColors("330000");
 
 		return model;
 	}
