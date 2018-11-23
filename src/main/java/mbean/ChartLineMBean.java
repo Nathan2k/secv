@@ -35,7 +35,7 @@ public class ChartLineMBean {
 		horizontalBarModel.setTitle("Sexo por Filtro");
 		horizontalBarModel.setLegendPosition("ne");
 		horizontalBarModel.setLegendPlacement(LegendPlacement.OUTSIDE);
-		horizontalBarModel.setSeriesColors("990000,ff0000,cc0000,660000,ff3333,330000,ff6666,ff9999,ffcccc");
+		horizontalBarModel.setSeriesColors("330000,660000,990000,cc0000,ff0000,ff3333,ff6666,ff9999,ffcccc");
 
 		Axis xAxis = horizontalBarModel.getAxis(AxisType.X);
 		xAxis.setLabel("Quantidade");

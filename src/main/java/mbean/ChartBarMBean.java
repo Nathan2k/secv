@@ -66,7 +66,7 @@ public class ChartBarMBean{
 			}
         	
         	model.addSeries(cidades);
-        	model.setSeriesColors("990000,ff0000,cc0000,660000,ff3333,330000,ff6666,ff9999,ffcccc");
+        	model.setSeriesColors("330000,660000,990000,cc0000,ff0000,ff3333,ff6666,ff9999,ffcccc");
         }         
         return model;
     }
