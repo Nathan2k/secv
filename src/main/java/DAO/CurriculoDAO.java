@@ -10,6 +10,7 @@ import java.util.List;
 import com.VPS04.JDBC.ConnectionDB;
 
 import entity.Curriculo;
+import service.Experiencia;
 import service.Formacao;
 
 public class CurriculoDAO {
@@ -76,21 +77,60 @@ public class CurriculoDAO {
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			//ps.setInt(1, idCurriculo);
+			ps.setInt(1, idCurriculo);
 			ResultSet rs = ps.executeQuery();
 
+			// crt
 			while (rs.next()) {
 
 				Formacao forma = new Formacao();
 
 				forma.setId(rs.getInt("id"));
 				forma.setIdCurriculo(rs.getInt("idCurriculo"));
-				forma.setData_fim(rs.getLong("data_fim"));
-				forma.setData_inicio(rs.getLong(" data_inicio"));
+				forma.setData_inicio(rs.getTimestamp("data_inicio").getTime());
+				forma.setData_fim(rs.getTimestamp("data_fim").getTime());
 				forma.setEscola(rs.getString("escola"));
 				forma.setNome(rs.getString("nomeDoCurso"));
 
 				list.add(forma);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Ele nao entrou no While no ListarFormacao!");
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	// -----------------------------------------------------------------------------------------------------------
+
+	public List<Experiencia> listarExperiencia(Integer idCurriculo) {
+
+		List<Experiencia> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM experiencia WHERE idCurriculo = ?";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, idCurriculo);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Experiencia exp = new Experiencia();
+
+				exp.setId(rs.getInt("id"));
+				exp.setIdCurriculo(rs.getInt("idCurriculo"));
+				exp.setData_inicio(rs.getTimestamp("data_inicio").getTime());
+				exp.setData_fim(rs.getTimestamp("data_fim").getTime());
+				exp.setCargo(rs.getString("cargo"));
+				exp.setFuncoes(rs.getString("funçao"));
+				exp.setEmpresa(rs.getString("nomeDaEmpresa"));
+
+				list.add(exp);
 
 			}
 
@@ -101,5 +141,7 @@ public class CurriculoDAO {
 
 		return list;
 	}
+	
+	
 
 }

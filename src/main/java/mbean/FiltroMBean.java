@@ -164,6 +164,13 @@ public class FiltroMBean {
 		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
 		eFiltro.setArea(codigo);
 		
+		cursoSel = eFiltro.getIdCurso().toString();
+		String codigo2 = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
+		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
+		eFiltro.setIdCurso(codigo2);
+		eFiltro.setQualIdioma(1);
+		
+		
 		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro); // DA ERRO 404 AQUI
 
 		if (curriculos == null) {

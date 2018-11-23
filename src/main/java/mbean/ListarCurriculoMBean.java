@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import DAO.CurriculoDAO;
 import DAO.FiltroDAO;
 import entity.Curriculo;
+import service.Experiencia;
 import service.Formacao;
 
 @ManagedBean
@@ -18,8 +19,12 @@ public class ListarCurriculoMBean {
 	
 	Curriculo cur;
 	Formacao ff;
+	Experiencia xp;
+	
 	List<Curriculo> cl;
 	List<Formacao> forma;
+	List<Experiencia> experi;
+	
 	CurriculoDAO clDAO;
 	private Curriculo selectcl;
 	FiltroDAO fDAO;
@@ -30,15 +35,19 @@ public class ListarCurriculoMBean {
 		
 		cur = new Curriculo();
 		ff = new Formacao();
+		xp = new Experiencia();
 		clDAO = new CurriculoDAO();
 		cl = clDAO.listarCurriculo();
-		forma = clDAO.listarFormacao(cur.getId());
 		clDAO = new CurriculoDAO();
 	}
 	
 	public String imprimir() {
 		
 		forma = clDAO.listarFormacao(cur.getId());
+		experi = clDAO.listarExperiencia(cur.getId());
+		
+		cur.setFormação(forma);
+		cur.setExperiencia(experi);
 		
 		System.out.println(forma);
 		
@@ -46,7 +55,6 @@ public class ListarCurriculoMBean {
 		
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
 		
-		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("formei", forma);
 		
 		//VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
 		

@@ -24,8 +24,8 @@
 		</script>
 
 		<div style="width: 500px; margin: auto;">
-			
-				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroP}">
+					
+				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
 				<p:panel value="Login" style="width: 500px; margin-top: 3%">
 					<center>
 
@@ -80,7 +80,8 @@
 								value="#{filtroMBean.eFiltro.idCurso}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
-									itemLabel="#{curso.nome}" itemValue="#{curso.codigo}" />
+									itemLabel="#{curso.nome}" 
+									itemValue="#{curso.codigo}-#{curso.nome}" />
 								<p:ajax event="change" listener="#{filtroMBean.attSemestre}"
 									update="semestre" />
 							</p:selectOneMenu>
@@ -138,7 +139,7 @@
 							<p:selectOneRadio id="sexo" value="#{filtroMBean.eFiltro.sexo}">
 								<f:selectItem itemLabel="Homem" itemValue="1" />
 								<f:selectItem itemLabel="Mulher" itemValue="2" />
-								<f:selectItem itemLabel="Indiferente" itemValue="1=1" />
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
 							</p:selectOneRadio>
 
 							<p />
@@ -146,8 +147,8 @@
 							<p:selectOneRadio id="deficiencia"
 								value="#{filtroMBean.eFiltro.deficiencia}">
 								<f:selectItem itemLabel="Sim" itemValue="1" />
-								<f:selectItem itemLabel="Não" itemValue="2" />
-								<f:selectItem itemLabel="Indiferente" itemValue="1=1" />
+								<f:selectItem itemLabel="Não" itemValue="0" />
+								<f:selectItem itemLabel="Indiferente" itemValue="2" />
 							</p:selectOneRadio>
 							<p />
 
@@ -164,7 +165,7 @@
 				</h:form>
 				
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-				<h:form id="telaCur" rendered="#{filtroMBean.filtroF}">
+				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
 
 					<center>
 						<p:panel value="Login" style="width: 600px">
@@ -196,7 +197,8 @@
 												onclick="this.form.target='_blank'">
 
 												<f:setPropertyActionListener value="#{cl}"
-													target="#{listarCurriculoMBean.cur}"></f:setPropertyActionListener>
+													target="#{listarCurriculoMBean.cur}">
+													</f:setPropertyActionListener>
 
 											</p:commandButton>
 										</p:column>

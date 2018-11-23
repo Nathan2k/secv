@@ -49,7 +49,7 @@ public class FiltroDAO {
 			ps.setString(5, c.getEstado());
 			ps.setString(6, c.getCidade());
 			ps.setString(7, c.getCurso());
-			ps.setInt(8, c.getSemestre());
+			ps.setInt(8, c.getSemestre());			// ARRUMAR AQUI Q TA COM ERRO!
 			ps.setString(9, c.getSexo());
 			ps.setString(10, c.getDeficiencia());
 			ps.setString(11, c.getEmail());

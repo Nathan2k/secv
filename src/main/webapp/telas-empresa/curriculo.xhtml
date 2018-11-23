@@ -91,6 +91,9 @@
 		</center>
 		<h:outputLabel value="Curso Atual:"
 			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<p:dataList value="#{flash.curImp.formação}" var="forma">
+			#{forma.escola}
+		</p:dataList>
 		<h:outputLabel
 			value=" #{flash.formei.escola}"
 			style="margin-letf: -60%;" />
@@ -104,7 +107,7 @@
 		<br />
 		<h:outputLabel value="Cursos concluidos"
 			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
-		<h:dataTable value="#{flash.curImp.formação}">
+		<h:dataTable value="#{a}">
 			<h:column>
 			<!-- LISTAR DADOS DA FORMAÇÃO -->
 				<h:outputText value="- Nome: #{flash.curImp.formação.nome} ; "
