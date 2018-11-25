@@ -15,11 +15,22 @@ public class Filtro {
 	private Integer experiencia; // 0=indiferente 1=SIM 2= NÃO
 	private String sexo; // vai 0=indiferente 1=MACHO 2= MULHER
 	private Integer qualIdioma;// vai 0=indiferente 1=INGLES 2= ESPANHOL
+	private Integer nvIdioma;
 	private String deficiencia;// vai 0=indiferente 1=SIM 2= NÃO
 	private Integer idade_inicio;
 	private Integer idade_fim; // VER SE JA DA PRA SETAR O 18 E 40 AQUI PRA PODER MANDAR ELES DIRETO
 	private Integer idEstado;
 	private String area;
+
+	
+	
+	public Integer getNvIdioma() {
+		return nvIdioma;
+	}
+
+	public void setNvIdioma(Integer nvIdioma) {
+		this.nvIdioma = nvIdioma;
+	}
 
 	public Integer getIdEstado() {
 		return idEstado;

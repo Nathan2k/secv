@@ -47,8 +47,10 @@ public class FiltroMBean {
 	String areaSel;
 	String cursoSel;
 
+	boolean liberado = true; // RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
+
 	Calendar anoAtual = GregorianCalendar.getInstance();
-	
+
 	FiltroDAO fDao = new FiltroDAO();
 
 	boolean filtroP = false; // é o rendered da tela depois do filtro
@@ -59,15 +61,8 @@ public class FiltroMBean {
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
 
-//	public Integer getUserMb() {
-//		
-//		return userMb.getEmp().getId();
-//	}
-
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
 	public void salvaFiltro() {
-
-		// testas SALVAR FILTRO NO BANCO SEM PEDIR OS CURRICULOS!
 
 		if (userMb.getEmp() != null) {
 
@@ -89,8 +84,20 @@ public class FiltroMBean {
 
 	}
 
-	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
+	// RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
+	public void liberaIdioma() {
 
+		if (eFiltro.getQualIdioma() != null) {
+
+			liberado = false;
+
+		} else {
+			liberado = true;
+		}
+
+	}
+
+	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
 	public List<SelectItem> pegandoArea() {
 
 		List<SelectItem> pArea = new ArrayList<SelectItem>();
@@ -155,22 +162,21 @@ public class FiltroMBean {
 	public void enviarFiltro() throws IOException {
 		System.out.println("Chamou o EnviarFiltro");
 		System.out.println(anoAtual.get(Calendar.YEAR));
-		
-		eFiltro.setIdade_fim(trocandoAno(eFiltro.getIdade_fim()));   // VER SE TA CERTO!!
+
+		eFiltro.setIdade_fim(trocandoAno(eFiltro.getIdade_fim())); // VER SE TA CERTO!!
 		eFiltro.setIdade_inicio(trocandoAno(eFiltro.getIdade_inicio()));
-		
+
 		areaSel = eFiltro.getArea();
 		String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
 		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
 		eFiltro.setArea(codigo);
-		
+
 		cursoSel = eFiltro.getIdCurso().toString();
 		String codigo2 = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
 		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
 		eFiltro.setIdCurso(codigo2);
 		eFiltro.setQualIdioma(1);
-		
-		
+
 		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro); // DA ERRO 404 AQUI
 
 		if (curriculos == null) {
@@ -179,9 +185,9 @@ public class FiltroMBean {
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
 		}
-		if (curriculos.isEmpty()) { 
+		if (curriculos.isEmpty()) {
 
-			MensFaces.m("Nenhum Curriculo foi encontrado!");
+			MensFaces.m("Nenhum Curriculo foi encontrado! Tente mudar algum Filtro!");
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		} else {
 			salvaFiltro();
@@ -191,22 +197,19 @@ public class FiltroMBean {
 		}
 	}
 
-	
 	public Integer trocandoAno(int anoConvertido) {
-		
+
 		System.out.println(anoAtual.get(Calendar.YEAR));
-		
+
 		int anoAt;
-		
+
 		anoAt = anoAtual.get(Calendar.YEAR);
-		
+
 		anoConvertido = anoAt - anoConvertido;
-		
-		
+
 		return anoConvertido;
 	}
-	
-	
+
 	// PERGUNTAR COMO CAPTURAR E ENVIAR FAIXA ETARIA
 
 	public FiltroDAO getfDao() {
@@ -337,4 +340,14 @@ public class FiltroMBean {
 		this.userMb = userMb;
 	}
 
+	public boolean isLiberado() {
+		return liberado;
+	}
+
+	public void setLiberado(boolean liberado) {
+		this.liberado = liberado;
+	}
+
+	
+	
 }

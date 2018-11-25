@@ -65,7 +65,8 @@ CREATE TABLE filtro(
     area VARCHAR(50),
     curso VARCHAR(50),
    	cidade VARCHAR(50),
-
+	qualIdioma INTEGER,
+   	nvIdioma INTEGER,
     
     FOREIGN KEY (idEmpresa) REFERENCES empresa(id),
     FOREIGN KEY (idADM) REFERENCES administrador(id)

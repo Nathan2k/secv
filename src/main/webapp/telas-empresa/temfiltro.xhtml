@@ -99,19 +99,35 @@
 							<p />
 
 
-							<!-- AQUI ESTA O CAMPO IDIOMA QUE ESTA RENDERED FALSE POIS AINDA NAO SABEMOS SE VAMOS FAZER 
-							<p:selectOneMenu rendered="false" required="false" style="width: 160px"
+							<!-- AQUI ESTA O CAMPO IDIOMA -->
+							<h:outputLabel for="idioma" value="Idioma:" />
+							<p:selectOneMenu rendered="true" required="false" style="width: 160px"
 								panelStyle="width:150px" id="idioma"
-								value="#{a}">
-								<f:selectItem itemLabel="Selecione" itemValue="#{a}" />
+								value="#{filtroMBean.eFiltro.qualIdioma}">
+								<f:selectItem itemLabel="Indiferente" itemValue="0" />
+								<f:selectItem itemLabel="Ingles" itemValue="1" />
+								<f:selectItem itemLabel="Espanhol" itemValue="2" />
 								<f:selectItems value="#{filtroMBean.idioma}" var="idioma"
-									itemLabel="#{idioma.nome}" itemValue="#{idioma.codigo}" />
+									itemLabel="#{idioma.nome}" itemValue="#{idioma.codigo}" 
+								/>
+								<p:ajax event="change" listener="#{filtroMBean.liberaIdioma}"
+									process="idioma" update="nivel">
+								</p:ajax>
 							</p:selectOneMenu>
+							
+							<h:outputLabel for="nivel" value="Nivel:" />
+							<p:selectOneMenu disabled="#{filtroMBean.liberado}" required="false" style="width: 160px"
+								panelStyle="width:150px" id="nivel"
+								value="#{filtroMBean.eFiltro.nvIdioma}">
+								<f:selectItem itemLabel="Basico" itemValue="0" />
+								<f:selectItem itemLabel="Intermediario" itemValue="1" />
+								<f:selectItem itemLabel="Avançado" itemValue="2" />
+							</p:selectOneMenu>
+							
 							<p />
-							-->
+							
 
 							<h:panelGrid columns="1" style="margin-bottom: 10px">
-
 								<h:outputText id="displayRange"
 									value="Faixa etária: #{filtroMBean.eFiltro.idade_inicio} a #{filtroMBean.eFiltro.idade_fim} anos" />
 								<p:slider for="txt6,txt7" display="displayRange"

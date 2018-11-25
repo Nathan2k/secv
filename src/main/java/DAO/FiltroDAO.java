@@ -152,10 +152,10 @@ public class FiltroDAO {
 
 	// ---------------------------------------------------------------------------------------------------
 
-	public boolean inserirFiltro(Filtro f) {
-
+	public boolean inserirFiltro(Filtro f) { //COLOCAR IDIOMA AQUI
+							
 		String sql = "INSERT INTO filtro(nome, experiencia, sexo, deficiencia, idEmpresa, idADM, "
-				+ "area, curso, idade_inicio, idade_fim) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				+ "area, curso, idade_inicio, idade_fim, qualIdioma, nvIdioma) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -164,12 +164,14 @@ public class FiltroDAO {
 			ps.setInt(2, f.getExperiencia());
 			ps.setString(3, f.getSexo());
 			ps.setString(4, f.getDeficiencia());
-			ps.setString(5, f.getIdEmpresa() == 0? null:f.getIdEmpresa().toString());
+			ps.setString(5, f.getIdEmpresa() == 0? null:f.getIdEmpresa().toString()); // MUITO TOP
 			ps.setString(6, f.getIdAdm() == 0? null:f.getIdAdm().toString());
 			ps.setString(7, f.getArea());
 			ps.setString(8, f.getIdCurso());
 			ps.setInt(9, f.getIdade_inicio());
 			ps.setInt(10, f.getIdade_fim());
+			ps.setInt(11, f.getQualIdioma());
+			ps.setInt(12, f.getNvIdioma());
 			
 
 			if (ps.executeUpdate() > 0) {
@@ -226,8 +228,6 @@ public class FiltroDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		// TEM Q PASSAR O ID DA CIDADE E O ID DO FILTRO, DESCOBBRE COMO FAZ ISSO!
 
 		return false;
 	}
