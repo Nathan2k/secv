@@ -62,32 +62,28 @@ public class FiltroMBean {
 	private UsuarioMBean userMb;
 
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
-	public void salvaFiltro() {
-
+	public Integer salvaFiltro() {
 		if (userMb.getEmp() != null) {
-
 			eFiltro.setIdEmpresa(userMb.getEmp().getId());
 			eFiltro.setIdAdm(0);
-			fDao.inserirFiltro(eFiltro);
 			filtroP = true;
 			filtroF = false;
+			return fDao.inserirFiltro(eFiltro);
 
 		} else {
 
 			eFiltro.setIdAdm(userMb.getAdm().getId());
 			eFiltro.setIdEmpresa(0);
-			fDao.inserirFiltro(eFiltro);
 			filtroP = true;
 			filtroF = false;
-
+			return fDao.inserirFiltro(eFiltro);
 		}
-
 	}
 
 	// RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
 	public void liberaIdioma() {
 
-		if (eFiltro.getQualIdioma() != null) {
+		if (eFiltro.getQualIdioma() != null && eFiltro.getQualIdioma() != 0) {
 
 			liberado = false;
 
@@ -175,7 +171,6 @@ public class FiltroMBean {
 		String codigo2 = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
 		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
 		eFiltro.setIdCurso(codigo2);
-		eFiltro.setQualIdioma(1);
 
 		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro); // DA ERRO 404 AQUI
 
@@ -190,8 +185,9 @@ public class FiltroMBean {
 			MensFaces.m("Nenhum Curriculo foi encontrado! Tente mudar algum Filtro!");
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		} else {
-			salvaFiltro();
+			Integer idFiltro = salvaFiltro();
 			for (Curriculo c : curriculos) {
+				c.setIdFiltro(idFiltro);
 				fDao.inserirCurriculo(c); // FICA ANDANDO NA LISTA E INSERE UM POR UM
 			}
 		}
@@ -348,6 +344,4 @@ public class FiltroMBean {
 		this.liberado = liberado;
 	}
 
-	
-	
 }
