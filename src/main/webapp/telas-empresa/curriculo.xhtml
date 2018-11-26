@@ -49,18 +49,23 @@
 			name="logo-senai.png" />
 	</div>
 	<p/>
-	<p:panel>
+	<p:panel style="border: 0px;">
 		<center>
 			<h3>Informações Pessoais</h3>
-			<h:outputLabel value="Nome: #{flash.curImp.nomeDoAluno}" />
+			<h:outputLabel  value="Nome: " style="font-weight:bold" />
+			<h:outputLabel value="#{flash.curImp.nomeDoAluno}"/>
 			<br />
-			<h:outputLabel value="Email: #{flash.curImp.email}" />
+			<h:outputLabel value="Email: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.email}"/>
 			<br />
-			<h:outputLabel value="Telefone: #{flash.curImp.telefone}" />
+			<h:outputLabel value="Telefone: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.telefone}"/>
 			<br />
-			<h:outputLabel value="Idade: #{flash.curImp.idade}" />
+			<h:outputLabel value="Idade: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.idade}"/>
 			<br /> 
-			<h:outputLabel value="Sexo: #{flash.curImp.sexo}" />
+			<h:outputLabel value="Sexo: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.sexo}"/>
 
 			<br />
 		<!-- 	 <h:outputLabel
@@ -68,7 +73,7 @@
 			
 		</center>
 	</p:panel>
-	<p:panel>
+	<p:panel style="border: 0px;">
 		<center>
 			<h3>Linguas Estrangeiras</h3>
 		</center>
@@ -85,17 +90,14 @@
 			style="margin-letf: -60%;" />
 
 	</p:panel>
-	<p:panel>
+	<p:panel style="border: 0px;">
 		<center>
 			<h3>Formações Acadêmicas</h3>
 		</center>
-		<h:outputLabel value="Curso Atual:"
+		<h:outputLabel value="Curso Atual: "
 			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
-		<p:dataList value="#{flash.curImp.formação}" var="forma">
-			#{forma.escola}
-		</p:dataList>
 		<h:outputLabel
-			value=" #{flash.formei.escola}"
+			value=" #{flash.curImp.curso}"
 			style="margin-letf: -60%;" />
 
 		<br />
@@ -107,24 +109,23 @@
 		<br />
 		<h:outputLabel value="Cursos concluidos"
 			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
-		<h:dataTable value="#{a}">
+		<h:dataTable value="#{flash.curImp.formação}" var="forma">
 			<h:column>
 			<!-- LISTAR DADOS DA FORMAÇÃO -->
-				<h:outputText value="- Nome: #{flash.curImp.formação.nome} ; "
-					style="margin-letf: -60%;" />
-				<h:outputText value="Escola: #{flash.curImp.formação.escola} ; "
-					style="margin-letf: -60%;" />
-				<h:outputText
-					value=" Data Inicio: #{a} ;  "
-					style="margin-letf: -60%;" />
-				<h:outputText
-					value=" Data Fim: #{a}."
-					style="margin-letf: -60%;" />
+			<h:outputLabel  value="Nome: " style="font-weight:bold" />
+			<h:outputLabel value="#{forma.nome}"/>
+			<h:outputLabel  value="; Escola: " style="font-weight:bold" />
+			<h:outputLabel value="#{forma.escola}"/>
+			<h:outputLabel  value="; Data Inicio: " style="font-weight:bold" />
+			<h:outputLabel value="#{forma.data_inicio}"/>
+			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
+			<h:outputLabel value="#{forma.data_fim}"/>
+			
 
 			</h:column>
 		</h:dataTable>
 	</p:panel>
-	<p:panel>
+	<p:panel style="border: 0px;">
 		<center>
 			<h3>Experiências</h3>
 		</center>
@@ -132,19 +133,24 @@
 		<h:dataTable value="#{flash.curImp.experiencia}" var="e">
 			<h:column>
 			<!-- LISTAR DADOS DA EXPERIENCIA -->
-				<h:outputText value="- Cargo: #{flash.curImp.experiencia.nome} ; "
-					style="margin-letf: -60%;" />
-				<h:outputText value="Empresa: #{a} ; "
-					style="margin-letf: -60%;" />
-				<h:outputText
-					value=" Data Inicio: #{a}"
-					style="margin-letf: -60%;" />
-				<h:outputText
-					value="#{a}."
-					style="margin-letf: -60%;" />
+
+			<h:outputLabel  value="Empresa: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.empresa}"/>
+			<h:outputLabel  value="; Data inicio: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.data_inicio}"/>
+			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.data_fim}"/>
+			<h:outputLabel  value="; Cargo: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.cargo}"/>
+			<h:outputLabel  value="; Função: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.funcoes}"/>
+
 			</h:column>
 		</h:dataTable>
 	</p:panel>
+		<!-- 	<p:dataList value="#{flash.curImp.formação}" var="forma">
+			#{forma.escola}
+		</p:dataList> -->
 
 </h:body>
 </html>

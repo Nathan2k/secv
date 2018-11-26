@@ -144,6 +144,24 @@ public class Curriculo {
 	public void setIdade(String idade) {
 		this.idade = idade;
 	}
+	
+	//OLHA ISSO AQUI LESK
+//	public String getNivelingles() {
+//		String nivelin;
+//
+//		if (this.nivel_ingles.equals("0")) {
+//			nivelin = "Basico";
+//			return nivelin;
+//		}
+//		if (this.nivel_ingles.equals("1")) {
+//			nivelin = "intermediario";
+//			return nivelin;
+//		} else if (this.nivel_ingles.equals("2")) {
+//			nivelin = "Avançado";
+//			return nivelin;
+//		}
+//		return null;
+//	}
 
 	public String getSexoNome() {
 		String genero;

@@ -25,7 +25,7 @@
 
 		<div style="width: 500px; margin: auto;">
 					
-				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
+				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroP}">
 				<p:panel value="Login" style="width: 500px; margin-top: 3%">
 					<center>
 
@@ -37,10 +37,10 @@
 								style="width: 350px;" />
 							<p />
 
-							<p:outputLabel for="estado" value="Estados:" />
+							<p:outputLabel for="estado" value="Estado:" />
 							<p:selectOneMenu id="estado"
 								value="#{filtroMBean.eFiltro.idEstado}" style="width:160px">
-								<f:selectItem itemLabel="Estados" itemValue="" />
+								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
 							<p />
@@ -86,8 +86,9 @@
 									update="semestre" />
 							</p:selectOneMenu>
 							<P />
-
-							<h:outputLabel for="semestre" value="Semestres:" />
+								
+							
+							<h:outputLabel for="semestre" value="Semestre:" />
 							<p:selectOneMenu style="width: 160px"
 								panelStyle="width:150px" id="semestre"
 								value="#{filtroMBean.eFiltro.semestre}">
@@ -98,9 +99,13 @@
 							</p:selectOneMenu>
 							<p />
 
-
-							<!-- AQUI ESTA O CAMPO IDIOMA -->
+							
 							<h:outputLabel for="idioma" value="Idioma:" />
+							
+							
+							<!-- AQUI ESTA O CAMPO IDIOMA -->
+							<h:panelGrid columns="6" style="margin-bottom: 10px" >
+							
 							<p:selectOneMenu rendered="true" required="false" style="width: 160px"
 								panelStyle="width:150px" id="idioma"
 								value="#{filtroMBean.eFiltro.qualIdioma}">
@@ -115,15 +120,16 @@
 								</p:ajax>
 							</p:selectOneMenu>
 							
-							<h:outputLabel for="nivel" value="Nivel:" />
-							<p:selectOneMenu disabled="#{filtroMBean.liberado}" required="false" style="width: 160px"
+							
+							<h:outputLabel for="nivel" value="Nivel:" style="margin-left: 50% "  />
+							<p:selectOneMenu disabled="#{filtroMBean.liberado}" required="false" style="width: 160px; margin-left: 20% " 
 								panelStyle="width:150px" id="nivel"
 								value="#{filtroMBean.eFiltro.nvIdioma}">
 								<f:selectItem itemLabel="Basico" itemValue="0" />
 								<f:selectItem itemLabel="Intermediario" itemValue="1" />
 								<f:selectItem itemLabel="Avançado" itemValue="2" />
 							</p:selectOneMenu>
-							
+							</h:panelGrid>
 							<p />
 							
 
@@ -181,7 +187,7 @@
 				</h:form>
 				
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
+				<h:form id="telaCur" rendered="#{filtroMBean.filtroF}">
 
 					<center>
 						<p:panel value="Login" style="width: 600px">
