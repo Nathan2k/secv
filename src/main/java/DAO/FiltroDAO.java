@@ -30,38 +30,39 @@ public class FiltroDAO {
 		}
 	}
 
-	// falar sobre o ajax nao suportado tem q ver o ONHIDE
-
 	public boolean inserirCurriculo(Curriculo c) {
 
 		String sql = "INSERT INTO curriculo (nome_aluno, idade, nivelIngles, nivelEspanhol, estado, cidade, curso, "
-				+ "semestre, sexo, deficiencia, email, telefone) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				+ "semestre, sexo, deficiencia, email, telefone, idFiltro) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 		try {
 
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, c.getNomeDoAluno());
-			ps.setString(2, c.getIdade()); // VER SOBRE O LONG VER SE NAO VAI DA erro PQ NO BD ESTA VARCHAR
+			ps.setString(2, c.getIdade());
 			ps.setInt(3, c.getNivel_ingles());
 			ps.setInt(4, c.getNivel_espanhol());
 			ps.setString(5, c.getEstado());
 			ps.setString(6, c.getCidade());
 			ps.setString(7, c.getCurso());
-			ps.setInt(8, c.getSemestre());			// ARRUMAR AQUI Q TA COM ERRO!
+			ps.setInt(8, c.getSemestre()); // ARRUMAR AQUI Q TA COM ERRO!
 			ps.setString(9, c.getSexo());
 			ps.setString(10, c.getDeficiencia());
 			ps.setString(11, c.getEmail());
 			ps.setString(12, c.getTelefone());
+			ps.setInt(13, c.getIdFiltro());
 
-			if (ps.executeUpdate() == 1) {
+			if (ps.executeUpdate() > 0) {
 
 				ResultSet rs = ps.getGeneratedKeys();
+				Integer idCur = null;
+				if (rs.next()) {
+					idCur = rs.getInt(1); // perguntar do id
+				}
 
-				int idCur = rs.getInt(1); // perguntar do id
-
-				for (Experiencia e : c.getExperiencia()) { // VER COMO COLOCAR FORMAÇÃO E EXPERIENCIA NO CURRICULO
+				for (Experiencia e : c.getExperiencia()) {
 					inserirExperiencia(e, idCur);
 				}
 				for (Formacao fo : c.getFormação()) { // AQUI ESTAMOS COLOCANDO NA LISTA FORMAÇÃO E EXPERIENCIA AS
@@ -91,32 +92,31 @@ public class FiltroDAO {
 
 		String sql = "INSERT INTO experiencia(nomeDaEmpresa, data_inicio, data_fim, funçao, cargo, idCurriculo) VALUES(?, ?, ?, ?, ?, ?) ";
 
+		PreparedStatement ps;
 		try {
-
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 
 			ps.setString(1, ex.getEmpresa());
 			ps.setLong(2, ex.getData_inicio());
 			ps.setLong(3, ex.getData_fim());
 			ps.setString(4, ex.getFuncoes());
 			ps.setString(5, ex.getCargo());
-			ps.setInt(6, ex.getIdCurriculo());
+			ps.setInt(6, cod);
 			// colocar o IDCORRUCILO
 
-			if (ps.executeUpdate() == 1) {
+			if (ps.executeUpdate() > 0) {
 				System.out.println("Experiencia cadastrada ");
+				return true;
 			} else {
 				System.out.println("Problemas ao cadastrar experiencia");
-				return false;
 			}
-			return true;
 
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return false;
-
 	}
 
 	// ---------------------------------------------------------------------------------------------------
@@ -133,30 +133,28 @@ public class FiltroDAO {
 			ps.setLong(2, fo.getData_inicio());
 			ps.setLong(3, fo.getData_fim());
 			ps.setString(4, fo.getEscola());
-			ps.setInt(5, fo.getIdCurriculo());
+			ps.setInt(5, cod);
 
-			if (ps.executeUpdate() == 1) {
+			if (ps.executeUpdate() > 0) {
 				System.out.println("Formação cadastrada ");
+				return true;
 			} else {
 				System.out.println("Problemas ao cadastrar Formação");
-				return false;
 			}
-			return true;
-
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
-
 		return false;
 	}
 
 	// ---------------------------------------------------------------------------------------------------
 
-	public boolean inserirFiltro(Filtro f) { //COLOCAR IDIOMA AQUI
-							
+	public Integer inserirFiltro(Filtro f) { // COLOCAR IDIOMA AQUI
+
 		String sql = "INSERT INTO filtro(nome, experiencia, sexo, deficiencia, idEmpresa, idADM, "
 				+ "area, curso, idade_inicio, idade_fim, qualIdioma, nvIdioma) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-
+		Integer idInserido = null;
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -164,15 +162,14 @@ public class FiltroDAO {
 			ps.setInt(2, f.getExperiencia());
 			ps.setString(3, f.getSexo());
 			ps.setString(4, f.getDeficiencia());
-			ps.setString(5, f.getIdEmpresa() == 0? null:f.getIdEmpresa().toString()); // MUITO TOP
-			ps.setString(6, f.getIdAdm() == 0? null:f.getIdAdm().toString());
+			ps.setString(5, f.getIdEmpresa() == 0 ? null : f.getIdEmpresa().toString()); // MUITO TOP
+			ps.setString(6, f.getIdAdm() == 0 ? null : f.getIdAdm().toString());
 			ps.setString(7, f.getArea());
 			ps.setString(8, f.getIdCurso());
 			ps.setInt(9, f.getIdade_inicio());
 			ps.setInt(10, f.getIdade_fim());
 			ps.setInt(11, f.getQualIdioma());
-			ps.setInt(12, f.getNvIdioma());
-			
+			ps.setInt(12, f.getNvIdioma() == null ? 0 : f.getNvIdioma());
 
 			if (ps.executeUpdate() > 0) {
 
@@ -180,10 +177,10 @@ public class FiltroDAO {
 
 				if (rs.next()) {
 
-					int idInserido = rs.getInt(1);
+					idInserido = rs.getInt(1);
 
 					List<String> cidades = f.getIdCidade();
-					
+
 					for (String i : cidades) {
 						inserirCidade(idInserido, Integer.parseInt(i));
 					}
@@ -191,19 +188,15 @@ public class FiltroDAO {
 				}
 
 			}
-			
-			return true;
+
+			return idInserido;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return false;
+		return null;
 	}
-	
-	
-	
-	
 
 	public boolean inserirCidade(int idFiltro, int idCidade) { // VER SE TA CERTO ISSO
 

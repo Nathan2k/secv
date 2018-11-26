@@ -24,6 +24,17 @@ public class Curriculo {
 	private Integer nivel_espanhol;
 	private String telefone;
 	private String idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
+	private Integer idFiltro;
+	
+	
+
+	public Integer getIdFiltro() {
+		return idFiltro;
+	}
+
+	public void setIdFiltro(Integer idFiltro) {
+		this.idFiltro = idFiltro;
+	}
 
 	public Integer getId() {
 		return id;

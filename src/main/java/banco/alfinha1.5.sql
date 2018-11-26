@@ -114,8 +114,8 @@ CREATE TABLE formacao(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	idCurriculo INTEGER NOT NULL,
 	nomeDoCurso VARCHAR(300),
-	data_inicio TIMESTAMP NOT NULL,
-    data_fim TIMESTAMP NOT NULL,
+	data_inicio LONG NOT NULL,
+    data_fim LONG NOT NULL,
 	escola VARCHAR(50),
 	
 	FOREIGN KEY (idCurriculo) REFERENCES curriculo(id)
