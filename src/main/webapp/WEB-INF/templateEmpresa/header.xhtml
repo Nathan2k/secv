@@ -11,7 +11,7 @@
 
 
 <div align="center">
-	<h:graphicImage library="img" name="logo-senai.png" />
+	<h:graphicImage library="img" name="logo-senai.png" width="40%" />
 </div>
 <br />
 <h:form>
@@ -24,6 +24,9 @@
 			<p:commandButton style="border: 0px;padding: 2px;" value="Perfil"
 				icon="ui-icon-person" ajax="false"
 				action="perfilEmpresa?faces-redirect=true" />
+
+			<p:commandButton style="border: 0px;padding: 2px;" value="Histórico"
+				icon="ui-icon-folder-collapsed" action="historico?faces-redirect=true" />
 
 		</f:facet>
 
@@ -40,6 +43,10 @@
 					<p:separator />
 					<p:menuitem value="Ajuda"
 				icon="ui-icon-help" onclick="PF('formem').show();"/>
+					<p:separator />
+					<p:menuitem value="Histórico"
+				icon="ui-icon-folder-collapsed" ajax="false"	
+				action="historico?faces-redirect=true" />
 					<p:separator />
 					<p:menuitem value="Sair" icon="ui-icon-closethick" action="#{sairMBean.matarSession}" />
 				</p:submenu>
