@@ -26,4 +26,6 @@ public class GraficoFiltro {
 		this.mes = mes;
 	}
 	
+	
 }
+

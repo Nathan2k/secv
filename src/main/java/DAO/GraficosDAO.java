@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class GraficosDAO {
 
 	public List<GraficoFiltro> contarFiltro() {
 
-		String sql = "SELECT COUNT(*) as qtd, DATE_FORMAT(data,'%m/%Y') as mes FROM filtro GROUP BY data;";
+		String sql = "SELECT COUNT(*) as qtd, DATE_FORMAT(data,'%m/%Y') as mes FROM filtro GROUP BY mes;";
 
 		PreparedStatement ps;
 		try {
@@ -48,9 +47,7 @@ public class GraficosDAO {
 
 				fo.setQtd(rs.getInt("qtd"));
 				fo.setMes(rs.getString("mes"));
-//				TARCISO FEZ, FUNCIONO. EU COMITEI E CONTINUO FUNCIONANDO... o.0
-//				SimpleDateFormat sdf = new SimpleDateFormat("MM/aaaa");
-//				sdf.format(fo.getMes());
+
 				lista.add(fo);
 			}
 			return lista;
