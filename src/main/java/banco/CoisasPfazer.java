@@ -23,6 +23,11 @@ public class CoisasPfazer {
 	 * 
 	 * CHECAR SE O BAGULHO DO LONG NO SQL FUNCIONA!
 	 * 
+	 * Fazer com q salve nome junto do id (dos cursos) no BD
+	 * 
+	 * Reload na tela filtro quando desmarcar alguma opção
+	 * 
+	 * 
 	 * 
 	 * **/
 	
