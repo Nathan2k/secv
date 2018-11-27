@@ -117,9 +117,9 @@
 			<h:outputLabel  value="; Escola: " style="font-weight:bold" />
 			<h:outputLabel value="#{forma.escola}"/>
 			<h:outputLabel  value="; Data Inicio: " style="font-weight:bold" />
-			<h:outputLabel value="#{forma.data_inicio}"/>
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(forma.data_inicio)}"/>
 			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
-			<h:outputLabel value="#{forma.data_fim}"/>
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(forma.data_fim)}"/>
 			
 
 			</h:column>
@@ -137,9 +137,9 @@
 			<h:outputLabel  value="Empresa: " style="font-weight:bold" />
 			<h:outputLabel value="#{e.empresa}"/>
 			<h:outputLabel  value="; Data inicio: " style="font-weight:bold" />
-			<h:outputLabel value="#{e.data_inicio}"/>
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(e.data_inicio)}"/>
 			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
-			<h:outputLabel value="#{e.data_fim}"/>
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(e.data_inicio)}"/>
 			<h:outputLabel  value="; Cargo: " style="font-weight:bold" />
 			<h:outputLabel value="#{e.cargo}"/>
 			<h:outputLabel  value="; Função: " style="font-weight:bold" />

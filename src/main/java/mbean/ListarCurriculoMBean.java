@@ -1,9 +1,14 @@
 package mbean;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -22,44 +27,58 @@ public class ListarCurriculoMBean {
 	Experiencia xp;
 	
 	List<Curriculo> cl;
-	List<Formacao> forma;
-	List<Experiencia> experi;
 	
 	CurriculoDAO clDAO;
 	private Curriculo selectcl;
 	FiltroDAO fDAO;
 	
-	// VER SE ISSO TA CERTO, PQ TA ZUADO N SEI PQ NAO TA LISTANDO
+	Integer idFiltro;
 	
-	public ListarCurriculoMBean(){
+	@ManagedProperty("#{filtroMBean}")
+	private FiltroMBean filtroMB;
+	
+	public void setFiltroMB(FiltroMBean filtroMB) {
+		this.filtroMB = filtroMB;
+	}
+	@PostConstruct
+	public void postConstruct() {
+		
+		idFiltro = filtroMB.getIdFiltro();
 		
 		cur = new Curriculo();
 		ff = new Formacao();
 		xp = new Experiencia();
 		clDAO = new CurriculoDAO();
-		cl = clDAO.listarCurriculo();
+		cl = clDAO.listarCurriculo(idFiltro);
 		clDAO = new CurriculoDAO();
+		
+	}
+	
+	// VER SE ISSO TA CERTO, PQ TA ZUADO N SEI PQ NAO TA LISTANDO
+	
+	public ListarCurriculoMBean(){
+		
+		
 	}
 	
 	public String imprimir() {
-		
-		forma = clDAO.listarFormacao(cur.getId());
-		experi = clDAO.listarExperiencia(cur.getId());
-		
-		cur.setFormação(forma);
-		cur.setExperiencia(experi);
-		
-		System.out.println(forma);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
 		
-		
 		//VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
 		
 
 		return "curriculo?faces-redirect=true";
+	}
+	
+	public String convertData(Long data) {
+		Calendar c = Calendar.getInstance();
+		
+		c.setTimeInMillis(data);
+		
+		return new SimpleDateFormat("dd/MM/yyyy").format(c.getTimeInMillis());
 	}
 	
 	
@@ -71,14 +90,6 @@ public class ListarCurriculoMBean {
 
 	public void setFf(Formacao ff) {
 		this.ff = ff;
-	}
-
-	public List<Formacao> getForma() {
-		return forma;
-	}
-
-	public void setForma(List<Formacao> forma) {
-		this.forma = forma;
 	}
 
 	public FiltroDAO getfDAO() {

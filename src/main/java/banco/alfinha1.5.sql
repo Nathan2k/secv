@@ -127,8 +127,8 @@ CREATE TABLE experiencia(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	idCurriculo INTEGER NOT NULL,
 	nomeDaEmpresa VARCHAR(300),
-	data_inicio timestamp NOT NULL,
-    data_fim timestamp NOT NULL,
+	data_inicio LONG NOT NULL,
+    data_fim LONG NOT NULL,
 	funçao VARCHAR(300),
 	cargo VARCHAR(300),
 	

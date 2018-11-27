@@ -27,14 +27,15 @@ public class CurriculoDAO {
 
 	}
 
-	public List<Curriculo> listarCurriculo() {
+	public List<Curriculo> listarCurriculo(Integer idFiltro) {
 
 		List<Curriculo> list = new ArrayList<>();
 
-		String sql = " SELECT * FROM curriculo; ";
+		String sql = " SELECT * FROM curriculo WHERE idFiltro = ?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, idFiltro);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -54,9 +55,12 @@ public class CurriculoDAO {
 				cl.setSexo(rs.getString("sexo"));
 				cl.setDeficiencia(rs.getString("deficiencia"));
 				cl.setTelefone(rs.getString("telefone"));
+				
+				cl.setExperiencia(listarExperiencia(cl.getId()));
+				cl.setFormação(listarFormacao(cl.getId()));
 
 				list.add(cl);
-
+				
 			}
 
 		} catch (SQLException e) {
@@ -87,8 +91,8 @@ public class CurriculoDAO {
 
 				forma.setId(rs.getInt("id"));
 				forma.setIdCurriculo(rs.getInt("idCurriculo"));
-				forma.setData_inicio(rs.getTimestamp("data_inicio").getTime());
-				forma.setData_fim(rs.getTimestamp("data_fim").getTime());
+				forma.setData_inicio(rs.getLong("data_inicio"));
+				forma.setData_fim(rs.getLong("data_fim"));
 				forma.setEscola(rs.getString("escola"));
 				forma.setNome(rs.getString("nomeDoCurso"));
 
@@ -124,8 +128,8 @@ public class CurriculoDAO {
 
 				exp.setId(rs.getInt("id"));
 				exp.setIdCurriculo(rs.getInt("idCurriculo"));
-				exp.setData_inicio(rs.getTimestamp("data_inicio").getTime());
-				exp.setData_fim(rs.getTimestamp("data_fim").getTime());
+				exp.setData_inicio(rs.getLong("data_inicio"));
+				exp.setData_fim(rs.getLong("data_fim"));
 				exp.setCargo(rs.getString("cargo"));
 				exp.setFuncoes(rs.getString("funçao"));
 				exp.setEmpresa(rs.getString("nomeDaEmpresa"));

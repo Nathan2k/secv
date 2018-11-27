@@ -18,14 +18,14 @@
 		<iframe id="my_iframe" style="display: none;"></iframe>
 
 		<script type="text/javascript">
-		function Download(url) {
-		    document.getElementById('my_iframe').src = url;
-		};
+			function Download(url) {
+				document.getElementById('my_iframe').src = url;
+			};
 		</script>
 
 		<div style="width: 500px; margin: auto;">
-					
-				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroP}">
+
+			<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
 				<p:panel value="Login" style="width: 500px; margin-top: 3%">
 					<center>
 
@@ -63,7 +63,7 @@
 
 							<h:outputLabel for="area" value="Área:" />
 							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
-								id="area" value="#{filtroMBean.eFiltro.area}" >
+								id="area" value="#{filtroMBean.eFiltro.area}">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
 									itemLabel="#{area.nome}"
@@ -75,23 +75,21 @@
 							<P />
 
 							<h:outputLabel for="curso" value="Curso:" />
-							<p:selectOneMenu style="width: 160px"
-								panelStyle="width:150px" id="curso"
-								value="#{filtroMBean.eFiltro.idCurso}">
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
+								id="curso" value="#{filtroMBean.eFiltro.idCurso}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
-									itemLabel="#{curso.nome}" 
+									itemLabel="#{curso.nome}"
 									itemValue="#{curso.codigo}-#{curso.nome}" />
 								<p:ajax event="change" listener="#{filtroMBean.attSemestre}"
 									update="semestre" />
 							</p:selectOneMenu>
 							<P />
-								
-							
+
+
 							<h:outputLabel for="semestre" value="Semestre:" />
-							<p:selectOneMenu style="width: 160px"
-								panelStyle="width:150px" id="semestre"
-								value="#{filtroMBean.eFiltro.semestre}">
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
+								id="semestre" value="#{filtroMBean.eFiltro.semestre}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
 									itemLabel="#{semestre.nome}" itemValue="#{semestre.codigo}" />
@@ -99,39 +97,40 @@
 							</p:selectOneMenu>
 							<p />
 
-							
+
 							<h:outputLabel for="idioma" value="Idioma:" />
-							
-							
+
+
 							<!-- AQUI ESTA O CAMPO IDIOMA -->
-							<h:panelGrid columns="6" style="margin-bottom: 10px" >
-							
-							<p:selectOneMenu rendered="true" required="false" style="width: 160px"
-								panelStyle="width:150px" id="idioma"
-								value="#{filtroMBean.eFiltro.qualIdioma}">
-								<f:selectItem itemLabel="Indiferente" itemValue="0" />
-								<f:selectItem itemLabel="Ingles" itemValue="1" />
-								<f:selectItem itemLabel="Espanhol" itemValue="2" />
-								<f:selectItems value="#{filtroMBean.idioma}" var="idioma"
-									itemLabel="#{idioma.nome}" itemValue="#{idioma.codigo}" 
-								/>
-								<p:ajax event="change" listener="#{filtroMBean.liberaIdioma}"
-									process="idioma" update="nivel">
-								</p:ajax>
-							</p:selectOneMenu>
-							
-							
-							<h:outputLabel for="nivel" value="Nivel:" style="margin-left: 50% "  />
-							<p:selectOneMenu disabled="#{filtroMBean.liberado}" required="false" style="width: 160px; margin-left: 20% " 
-								panelStyle="width:150px" id="nivel"
-								value="#{filtroMBean.eFiltro.nvIdioma}">
-								<f:selectItem itemLabel="Basico" itemValue="0" />
-								<f:selectItem itemLabel="Intermediario" itemValue="1" />
-								<f:selectItem itemLabel="Avançado" itemValue="2" />
-							</p:selectOneMenu>
+							<h:panelGrid columns="6" style="margin-bottom: 10px">
+
+								<p:selectOneMenu rendered="true" required="false"
+									style="width: 160px" panelStyle="width:150px" id="idioma"
+									value="#{filtroMBean.eFiltro.qualIdioma}">
+									<f:selectItem itemLabel="Indiferente" itemValue="0" />
+									<f:selectItem itemLabel="Ingles" itemValue="1" />
+									<f:selectItem itemLabel="Espanhol" itemValue="2" />
+									<f:selectItems value="#{filtroMBean.idioma}" var="idioma"
+										itemLabel="#{idioma.nome}" itemValue="#{idioma.codigo}" />
+									<p:ajax event="change" listener="#{filtroMBean.liberaIdioma}"
+										process="idioma" update="nivel">
+									</p:ajax>
+								</p:selectOneMenu>
+
+
+								<h:outputLabel for="nivel" value="Nivel:"
+									style="margin-left: 50% " />
+								<p:selectOneMenu disabled="#{filtroMBean.liberado}"
+									required="false" style="width: 160px; margin-left: 20% "
+									panelStyle="width:150px" id="nivel"
+									value="#{filtroMBean.eFiltro.nvIdioma}">
+									<f:selectItem itemLabel="Basico" itemValue="0" />
+									<f:selectItem itemLabel="Intermediario" itemValue="1" />
+									<f:selectItem itemLabel="Avançado" itemValue="2" />
+								</p:selectOneMenu>
 							</h:panelGrid>
 							<p />
-							
+
 
 							<h:panelGrid columns="1" style="margin-bottom: 10px">
 								<h:outputText id="displayRange"
@@ -183,57 +182,62 @@
 							action="#{filtroMBean.enviarFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 					</center>
-					</p:panel>
-				</h:form>
-				
-				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-				<h:form id="telaCur" rendered="#{filtroMBean.filtroF}">
+				</p:panel>
+			</h:form>
 
-					<center>
-						<p:panel value="Login" style="width: 600px">
+			<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
+			<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
 
-							<h:graphicImage library="img" name="/logo-senai.png"
-								style="width:300px; margin: 7px;" />
+				<center>
+					<p:panel value="Login" style="width: 600px">
 
-							<p />
-							<p:panel>
+						<h:graphicImage library="img" name="/logo-senai.png"
+							style="width:300px; margin: 7px;" />
 
-								<center>
+						<p />
+						<p:panel>
 
-									<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+							<center>
 
-										<p:column headerText="Nome">
-											<f:facet name="header">Nome do Aluno</f:facet>
+								<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+
+									<p:column headerText="Nome">
+										<f:facet name="header">Nome do Aluno</f:facet>
        								 	#{cl.nomeDoAluno}
 										</p:column>
 
-										<p:column id="Download" icon="ui-icon-search"
-											style="width:60px">
-											<h:outputText />
-											<p:commandButton icon="ui-icon-arrowthick-1-s" />
-										</p:column>
+									<p:column id="Download" icon="ui-icon-search"
+										style="width:60px">
+										<h:outputText />
+										<p:commandButton icon="ui-icon-arrowthick-1-s" />
+									</p:column>
 
-										<p:column id="Impressão" style="width:60px">
-											<p:commandButton icon="ui-icon-print" ajax="false"
-												action="#{listarCurriculoMBean.imprimir}"
-												onclick="this.form.target='_blank'">
+									<p:column id="Impressão" style="width:60px">
+										<p:commandButton icon="ui-icon-print" ajax="false"
+											action="#{listarCurriculoMBean.imprimir}"
+											onclick="this.form.target='_blank'">
 
-												<f:setPropertyActionListener value="#{cl}"
-													target="#{listarCurriculoMBean.cur}">
-													</f:setPropertyActionListener>
+											<f:setPropertyActionListener value="#{cl}"
+												target="#{listarCurriculoMBean.cur}">
+											</f:setPropertyActionListener>
 
-											</p:commandButton>
-										</p:column>
+										</p:commandButton>
+									</p:column>
 
-									</p:dataTable>
+								</p:dataTable>
 
-								</center>
-							</p:panel>
+							</center>
+
+							<h:commandButton value="Finalizar"
+								action="#{filtroMBean.finalizaBt}"
+								style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+
 						</p:panel>
-					</center>
+					</p:panel>
+				</center>
 
-				</h:form>
-			
+			</h:form>
+
 		</div>
 	</ui:define>
 </ui:composition>

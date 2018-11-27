@@ -31,8 +31,8 @@ import com.google.gson.annotations.*;
 
 import DAO.FiltroDAO;
 
-@ManagedBean
-@ViewScoped
+@ManagedBean(eager = true)
+@SessionScoped
 public class FiltroMBean {
 
 	private Filtro eFiltro = new Filtro();
@@ -46,6 +46,10 @@ public class FiltroMBean {
 	List<ClasseGenerica> selCidade = new ArrayList<>();
 	String areaSel;
 	String cursoSel;
+	
+	Integer idFiltro;
+
+	
 
 	boolean liberado = true; // RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
 
@@ -79,6 +83,14 @@ public class FiltroMBean {
 			return fDao.inserirFiltro(eFiltro);
 		}
 	}
+	
+	public void finalizaBt() {
+		
+		filtroP = false;
+		filtroF = true;
+
+	}
+	
 
 	// RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
 	public void liberaIdioma() {
@@ -185,7 +197,7 @@ public class FiltroMBean {
 			MensFaces.m("Nenhum Curriculo foi encontrado! Tente mudar algum Filtro!");
 			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		} else {
-			Integer idFiltro = salvaFiltro();
+			idFiltro = salvaFiltro();
 			for (Curriculo c : curriculos) {
 				c.setIdFiltro(idFiltro);
 				fDao.inserirCurriculo(c); // FICA ANDANDO NA LISTA E INSERE UM POR UM
@@ -226,6 +238,14 @@ public class FiltroMBean {
 
 	public String getCursoSel() {
 		return cursoSel;
+	}
+	
+	public Integer getIdFiltro() {
+		return idFiltro;
+	}
+
+	public void setIdFiltro(Integer idFiltro) {
+		this.idFiltro = idFiltro;
 	}
 
 	public void setCursoSel(String cursoSel) {
