@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -29,6 +30,7 @@ import utils.MensFaces;
 import com.google.gson.Gson;
 import com.google.gson.annotations.*;
 
+import DAO.CurriculoDAO;
 import DAO.FiltroDAO;
 
 @ManagedBean(eager = true)
@@ -46,16 +48,15 @@ public class FiltroMBean {
 	List<ClasseGenerica> selCidade = new ArrayList<>();
 	String areaSel;
 	String cursoSel;
-	
-	Integer idFiltro;
 
-	
+	Integer idFiltro;
 
 	boolean liberado = true; // RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
 
 	Calendar anoAtual = GregorianCalendar.getInstance();
 
 	FiltroDAO fDao = new FiltroDAO();
+	CurriculoDAO cDao = new CurriculoDAO();
 
 	boolean filtroP = false; // é o rendered da tela depois do filtro
 	boolean filtroF = true; // é o rendered do filtro
@@ -65,6 +66,15 @@ public class FiltroMBean {
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
 
+	List<Filtro> filtros;
+
+	@PostConstruct
+	public void conts() {
+
+		criarFiltros();
+
+	}
+
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
 	public Integer salvaFiltro() {
 		if (userMb.getEmp() != null) {
@@ -72,6 +82,7 @@ public class FiltroMBean {
 			eFiltro.setIdAdm(0);
 			filtroP = true;
 			filtroF = false;
+			criarFiltros();
 			return fDao.inserirFiltro(eFiltro);
 
 		} else {
@@ -80,17 +91,17 @@ public class FiltroMBean {
 			eFiltro.setIdEmpresa(0);
 			filtroP = true;
 			filtroF = false;
+			criarFiltros();
 			return fDao.inserirFiltro(eFiltro);
 		}
 	}
-	
+
 	public void finalizaBt() {
-		
+
 		filtroP = false;
 		filtroF = true;
 
 	}
-	
 
 	// RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
 	public void liberaIdioma() {
@@ -103,6 +114,17 @@ public class FiltroMBean {
 			liberado = true;
 		}
 
+	}
+
+	public void criarFiltros() {
+		if (userMb.getAdm() == null) {
+
+			filtros = cDao.listarFiltro(userMb.getEmp().getId(), false);
+
+		} else {
+			filtros = cDao.listarFiltro(userMb.getAdm().getId(), true);
+
+		}
 	}
 
 	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
@@ -204,7 +226,8 @@ public class FiltroMBean {
 			}
 		}
 	}
-
+	
+	
 	public Integer trocandoAno(int anoConvertido) {
 
 		System.out.println(anoAtual.get(Calendar.YEAR));
@@ -239,9 +262,17 @@ public class FiltroMBean {
 	public String getCursoSel() {
 		return cursoSel;
 	}
-	
+
 	public Integer getIdFiltro() {
 		return idFiltro;
+	}
+
+	public List<Filtro> getFiltros() {
+		return filtros;
+	}
+
+	public void setFiltros(List<Filtro> filtros) {
+		this.filtros = filtros;
 	}
 
 	public void setIdFiltro(Integer idFiltro) {

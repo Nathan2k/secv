@@ -27,7 +27,7 @@ public class CoisasPfazer {
 	 * 
 	 * Reload na tela filtro quando desmarcar alguma opção
 	 * 
-	 * 
+	 * Listar os filtros na tela historico
 	 * 
 	 * **/
 	

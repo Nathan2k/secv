@@ -10,6 +10,7 @@ import java.util.List;
 import com.VPS04.JDBC.ConnectionDB;
 
 import entity.Curriculo;
+import entity.Filtro;
 import service.Experiencia;
 import service.Formacao;
 
@@ -55,12 +56,12 @@ public class CurriculoDAO {
 				cl.setSexo(rs.getString("sexo"));
 				cl.setDeficiencia(rs.getString("deficiencia"));
 				cl.setTelefone(rs.getString("telefone"));
-				
+
 				cl.setExperiencia(listarExperiencia(cl.getId()));
 				cl.setFormação(listarFormacao(cl.getId()));
 
 				list.add(cl);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -145,7 +146,40 @@ public class CurriculoDAO {
 
 		return list;
 	}
-	
-	
+
+	// -----------------------------------------------------------------------------------------------------------
+
+	public List<Filtro> listarFiltro(Integer idUsuario, boolean teste) {
+
+		List<Filtro> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM filtro WHERE idEmpresa = ?";
+		if(teste) {
+			sql.replace("idEmpresa", "idADM");
+		}
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, idUsuario);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Filtro filt = new Filtro();
+
+				filt.setId(rs.getInt("id"));
+				filt.setNomeFiltro(rs.getString("nome"));
+
+				list.add(filt);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 }
