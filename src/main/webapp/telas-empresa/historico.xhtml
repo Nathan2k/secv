@@ -14,30 +14,41 @@
 
 		<h:body>
 
-			<div align="center">
-				<p:panel style="width: 100%; height:4%" styleClass="panel">
-				Histórico de Filtros
-			</p:panel>
-			</div>
-			<center>
 			
-				<p:panel style="width: 15%; margin-left: 2%; margin-top: 1%;"
-					header="EL FEITAN DE LA QUEBRADA" styleClass="panel2">
-					<h:panelGrid columns="1" />
-					<h:form id="img">
-					<p:commandLink event="onclick" ajax="true">
-					<p:graphicImage name="img/xd.jpg" width="100%" />
-					</p:commandLink>
-					</h:form>
-					<h:form>
-						<p:toolbar style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
-							<f:facet name="right">
-								<p:commandButton style="background:white !important;" type="button" title="Visualizar" icon="ui-icon-script" />
-								<p:commandButton style="background:white !important;" type="button" title="Deletar" icon="ui-icon-trash" />
-							</f:facet>
-						</p:toolbar>
-					</h:form>
-				</p:panel>
+			<center>
+
+				<h:form id="formHist">
+					<p:dataGrid id="dataGrid" value="#{tabelaMBean.ues}" var="vaga" columns="10"
+						layout="grid">
+						
+						<f:facet name="header" id="head">
+							<p:outputLabel value="Filtros Realizados"/>
+						</f:facet>
+						
+						<p:panel header="#{vaga.nome}" styleClass="panel2">
+							<h:panelGrid columns="1" />
+							
+								<p:commandLink event="onclick" ajax="true">
+									<p:graphicImage name="img/xd.jpg" width="100%" />
+								</p:commandLink>
+							
+							<h:form>
+								<p:toolbar
+									style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
+									<f:facet name="right">
+										<p:commandButton style="background:white !important;"
+											type="button" title="Visualizar" icon="ui-icon-script" />
+										<p:commandButton style="background:white !important;"
+											type="button" title="Deletar" icon="ui-icon-trash" />
+									</f:facet>
+								</p:toolbar>
+							</h:form>
+						</p:panel>
+					</p:dataGrid>
+				</h:form>
+
+
+
 			</center>
 
 		</h:body>
