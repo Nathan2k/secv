@@ -10,6 +10,7 @@
 <ui:composition
 	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
 	<ui:define name="title">Histórico</ui:define>
+	<ui:define name="css"><link rel="stylesheet" type="text/css" href="resources/css/hist.css" /></ui:define>
 	<ui:define name="content">
 
 		<h:body>
@@ -18,18 +19,18 @@
 			<center>
 
 				<h:form id="formHist">
-					<p:dataGrid id="dataGrid" value="#{tabelaMBean.ues}" var="vaga" columns="10"
+					<p:dataGrid  id="dataGrid" value="#{filtroMBean.filtros}" var="vaga" columns="10"
 						layout="grid">
 						
-						<f:facet name="header" id="head">
+						<f:facet style="background:white !important;" name="header" id="head" >
 							<p:outputLabel value="Filtros Realizados"/>
 						</f:facet>
-						
-						<p:panel header="#{vaga.nome}" styleClass="panel2">
+						<p/>
+						<p:panel  header="#{vaga.nomeFiltro}" styleClass="panel2">
 							<h:panelGrid columns="1" />
 							
 								<p:commandLink event="onclick" ajax="true">
-									<p:graphicImage name="img/xd.jpg" width="100%" />
+									<p:graphicImage name="img/logo.png" width="100%" />
 								</p:commandLink>
 							
 							<h:form>
