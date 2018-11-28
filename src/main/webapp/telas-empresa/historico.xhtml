@@ -3,36 +3,45 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<meta charset="UTF-8" />
 
-</h:head>
+
+
 <ui:composition
 	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
-	<ui:define name="title">Histórico</ui:define>
+	<ui:define name="css">
+		<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
+	</ui:define>
+	<ui:define name="title">Criar ADM</ui:define>
+
+
 	<ui:define name="content">
+
 
 		<h:body>
 
-			
+
 			<center>
 
+				<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
+					<p:outputLabel value="Filtros Realizados" />
+				</p:panel>
+
 				<h:form id="formHist">
-					<p:dataGrid id="dataGrid" value="#{tabelaMBean.ues}" var="vaga" columns="10"
-						layout="grid">
-						
-						<f:facet name="header" id="head">
-							<p:outputLabel value="Filtros Realizados"/>
-						</f:facet>
-						
-						<p:panel header="#{vaga.nome}" styleClass="panel2">
+					<p:dataGrid id="dataGrid" value="#{filtroMBean.filtros}" var="filtro"
+						columns="10" layout="grid">
+
+
+
+						<p />
+						<p:panel width="20%" header="#{filtro.nomeFiltro}" styleClass="panel2">
 							<h:panelGrid columns="1" />
-							
-								<p:commandLink event="onclick" ajax="true">
-									<p:graphicImage name="img/xd.jpg" width="100%" />
-								</p:commandLink>
-							
+
+							<p:commandLink event="onclick" ajax="true">
+								<p:graphicImage name="img/logo.jpg" width="100%" />
+							</p:commandLink>
+
 							<h:form>
+
 								<p:toolbar
 									style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
 									<f:facet name="right">
@@ -40,8 +49,11 @@
 											type="button" title="Visualizar" icon="ui-icon-script" />
 										<p:commandButton style="background:white !important;"
 											type="button" title="Deletar" icon="ui-icon-trash" />
+	
 									</f:facet>
+									
 								</p:toolbar>
+
 							</h:form>
 						</p:panel>
 					</p:dataGrid>
