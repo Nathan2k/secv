@@ -8,13 +8,13 @@
 
 
 <h:head>
-
+	<link rel="shortcut icon" href="/secv/resources/img/favicon (2).ico"  />
 	<link rel="stylesheet" type="text/css" href="/secv/resources/css/templateADM.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<ui:insert name="css"></ui:insert>
 	<title><ui:insert name="title">Template ADM</ui:insert></title>
-
+	
 </h:head>
 
 
@@ -33,15 +33,15 @@
 	<h:graphicImage  id="imgb" library="img" name="SENAaI.jpg" style="margin-bottom: 40px" />
 	</ui:insert>
 	
-	<a style="background-color:#4E0000;"><i class="fa fa-fw fa-user"></i>#{usuarioMBean.adm.nomex}</a>
+	<a style="background-color:#4E0000;color:white"><i class="fa fa-fw fa-user"></i>#{usuarioMBean.adm.nomex}</a>
 	<p/>
 	<p/>
 	<p/>
-	<a href="homeADM.xhtml"><i class="fa fa-fw fa-bar-chart"></i> Estatisticas</a>
-	<a href="empresasADM.xhtml"><i class="fa fa-fw fa-building-o"></i> Empresas</a>
-	<a href="criarUsuarioAdm.xhtml"><i class="fa fa-fw fa-user-plus"></i> Criar ADM</a>
-	<a href="perfilADM.xhtml"><i class="fa fa-fw fa-cog"></i> Perfil</a>
-	<a href="temfiltroAdm.xhtml"><i class="fa fa-fw fa-filter"></i> Filtro</a>
+	<a class="home" href="homeADM.xhtml"><i class="fa fa-fw fa-bar-chart"></i> Estatisticas</a>
+	<a class="empresas" href="empresasADM.xhtml"><i class="fa fa-fw fa-building-o"></i> Empresas</a>
+	<a class="criar" href="criarUsuarioAdm.xhtml"><i class="fa fa-fw fa-user-plus"></i> Criar ADM</a>
+	<a class="perfil" href="perfilADM.xhtml"><i class="fa fa-fw fa-cog"></i> Perfil</a>
+	<a class="filtro" href="temfiltroAdm.xhtml"><i class="fa fa-fw fa-filter"></i> Filtro</a>
   	
 	<h:form>
 	<div style="position:fixed; bottom:8px; width:190px; color:dimgrey">
