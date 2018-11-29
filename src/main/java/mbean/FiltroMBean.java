@@ -67,6 +67,7 @@ public class FiltroMBean {
 	private UsuarioMBean userMb;
 
 	List<Filtro> filtros;
+	
 
 	@PostConstruct
 	public void conts() {
@@ -117,7 +118,7 @@ public class FiltroMBean {
 
 	}
 
-	// ESSE CARA SERVE PARA LISTAR OS FILTROS NO ADM OU NO USUARIO EMPRESA!
+	// ESSE CARA SERVE PARA LISTAR OS FILTROS NO ADM OU NO USUARIO EMPRESA!(TELA HISTORICO)
 	public void criarFiltros() {
 		if (userMb.getAdm() == null) {
 
@@ -128,6 +129,7 @@ public class FiltroMBean {
 
 		}
 	}
+	
 	
 	
 	
@@ -309,6 +311,17 @@ public class FiltroMBean {
 	public void seteFiltro(Filtro eFiltro) {
 		this.eFiltro = eFiltro;
 	}
+	
+	
+
+	public CurriculoDAO getcDao() {
+		return cDao;
+	}
+
+	public void setcDao(CurriculoDAO cDao) {
+		this.cDao = cDao;
+	}
+
 
 	public List<ClasseGenerica> getEstado() {
 		return estado;

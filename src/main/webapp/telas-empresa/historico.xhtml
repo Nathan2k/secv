@@ -18,47 +18,108 @@
 
 
 		<h:body>
-
-
 			<center>
 
-				<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
-					<p:outputLabel value="Filtros Realizados" />
-				</p:panel>
+				<DIV rendered="#{a}">
+					<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
+						<p:outputLabel value="Filtros Realizados" />
+					</p:panel>
 
-				<h:form id="formHist">
-					<p:dataGrid id="dataGrid" value="#{filtroMBean.filtros}" var="filtro"
-						columns="10" layout="grid">
+					<h:form id="formHist">
+						<p:dataGrid id="dataGrid" value="#{filtroMBean.filtros}"
+							var="filtro" columns="10" layout="grid">
 
 
 
-						<p />
-						<p:panel width="20%" header="#{filtro.nomeFiltro}" styleClass="panel2">
-							<h:panelGrid columns="1" />
+							<p />
+							<p:panel width="20%" header="#{filtro.nomeFiltro}"
+								styleClass="panel2">
+								<h:panelGrid columns="1" />
 
-							<p:commandLink event="onclick" ajax="true">
-								<p:graphicImage name="img/logo.jpg" width="100%" />
-							</p:commandLink>
+								<p:commandLink event="onclick" ajax="true">
+									<p:graphicImage name="img/logo.jpg" width="100%" />
+								</p:commandLink>
 
-							<h:form>
+								<h:form>
 
-								<p:toolbar
-									style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
-									<f:facet name="right">
-										<p:commandButton style="background:white !important;"
-											type="button" title="Visualizar" icon="ui-icon-script" />
-										<p:commandButton style="background:white !important;"
-											type="button" title="Deletar" icon="ui-icon-trash" />
-	
-									</f:facet>
-									
-								</p:toolbar>
+									<p:toolbar
+										style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
+										<f:facet name="right">
+											<p:commandButton style="background:white !important;"
+												type="button" title="Visualizar" icon="ui-icon-script"
+												action="#{a}">
 
-							</h:form>
+												<f:setPropertyActionListener value="#{filtro}"
+													target="#{historicoMBean.filtroSelecionado}">
+												</f:setPropertyActionListener>
+
+											</p:commandButton>
+
+											<p:commandButton style="background:white !important;"
+												type="button" title="Deletar" icon="ui-icon-trash" />
+
+										</f:facet>
+
+									</p:toolbar>
+
+								</h:form>
+							</p:panel>
+						</p:dataGrid>
+					</h:form>
+				</DIV>
+
+				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
+				<h:form id="telaCur" rendered="false">
+
+					<center>
+						<p:panel value="Login" style="width: 600px">
+
+							<h:graphicImage library="img" name="/logo-senai.png"
+								style="width:300px; margin: 7px;" />
+
+							<p />
+							<p:panel>
+
+								<center>
+
+									<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+
+										<p:column headerText="Nome">
+											<f:facet name="header">Nome do Aluno</f:facet>
+       								 	#{cl.nomeDoAluno}
+										</p:column>
+
+										<p:column id="Download" icon="ui-icon-search"
+											style="width:60px">
+											<h:outputText />
+											<p:commandButton icon="ui-icon-arrowthick-1-s" />
+										</p:column>
+
+										<p:column id="Impressão" style="width:60px">
+											<p:commandButton icon="ui-icon-print" ajax="false"
+												action="#{listarCurriculoMBean.imprimir}"
+												onclick="this.form.target='_blank'">
+
+												<f:setPropertyActionListener value="#{cl}"
+													target="#{listarCurriculoMBean.cur}">
+												</f:setPropertyActionListener>
+
+											</p:commandButton>
+										</p:column>
+
+									</p:dataTable>
+
+								</center>
+
+								<h:commandButton value="Finalizar"
+									action="#{filtroMBean.finalizaBt}"
+									style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+
+							</p:panel>
 						</p:panel>
-					</p:dataGrid>
-				</h:form>
+					</center>
 
+				</h:form>
 
 
 			</center>
