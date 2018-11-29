@@ -18,11 +18,11 @@ import service.CurriculumVitae;
 @ManagedBean
 public class FiltroService {
 	// MANDO ESSE CARA
-	String url  = "http://localhost:8080/sccv-api/ws/";
+	//String url  = "http://localhost:8080/sccv-api/ws/";
 	// ENVIA O FILTRO PRO DONI
 	public List<Curriculo> enviarFiltro(Filtro f) throws IOException {
 
-		url += "curriculos/por-filtro"; // URL FICTICIO!
+		String url  = "http://localhost:8080/sccv-api/ws/curriculos/por-filtro"; // URL FICTICIO!
 
 		HttpHelper http = new HttpHelper();
 
@@ -43,7 +43,7 @@ public class FiltroService {
 	// RECEBE AS CIDADES QUE TEM CURRICULO
 	public List<ClasseGenerica> cCidade() throws IOException {
 
-		url += "cidades/disponiveis"; // URL CERTO!
+		String url  = "http://localhost:8080/sccv-api/ws/cidades/disponiveis"; // URL CERTO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
@@ -58,7 +58,8 @@ public class FiltroService {
 	// RECEBE AS AREAS QUE TEM CURRICULO
 	public List<ClasseGenerica> cArea(Filtro cidade) throws IOException {
 
-		url += "areas/por-cidades"; // URL CERTO!
+		String url  = "http://localhost:8080/sccv-api/ws/areas/por-cidades"; // URL CERTO!
+		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 		
@@ -76,7 +77,8 @@ public class FiltroService {
 	// RECEBE OS CURSOS QUE TEM CURRICULO
 	public List<ClasseGenerica> cCurso(Filtro area) throws IOException {
 
-		url += "cursos/por-filtro"; // URL CERTO!
+		String url  = "http://localhost:8080/sccv-api/ws/cursos/por-filtro"; // URL CERTO!
+		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
@@ -96,7 +98,8 @@ public class FiltroService {
 	// RECEBE OS SEMESTRES QUE TEM CURRICULO
 	public List<ClasseGenerica> cSemestre(Filtro curso) throws IOException {
 
-		url += "semestre/por-filtro"; // URL FICTICIO!
+		String url  = "http://localhost:8080/sccv-api/ws/semestre/por-filtro"; // URL FICTICIO!
+		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
