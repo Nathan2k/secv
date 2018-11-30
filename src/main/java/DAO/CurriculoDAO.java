@@ -65,6 +65,7 @@ public class CurriculoDAO {
 			}
 
 		} catch (SQLException e) {
+			System.out.println("deu erro fodido!");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

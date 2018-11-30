@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import DAO.CurriculoDAO;
 import DAO.FiltroDAO;
 import entity.Curriculo;
+import entity.Filtro;
 import service.Experiencia;
 import service.Formacao;
 
@@ -27,6 +28,8 @@ public class ListarCurriculoMBean {
 	Experiencia xp;
 	
 	List<Curriculo> cl;
+	
+	Filtro filtroSelecionado;
 	
 	CurriculoDAO clDAO;
 	private Curriculo selectcl;
@@ -54,12 +57,21 @@ public class ListarCurriculoMBean {
 		
 	}
 	
-	// VER SE ISSO TA CERTO, PQ TA ZUADO N SEI PQ NAO TA LISTANDO
 	
-	public ListarCurriculoMBean(){
+	public void listarCurriculosFiltro() {
 		
+		idFiltro = filtroSelecionado.getId();		
+		
+		cur = new Curriculo();
+		ff = new Formacao();
+		xp = new Experiencia();
+		clDAO = new CurriculoDAO();
+		cl = clDAO.listarCurriculo(idFiltro);
+		clDAO = new CurriculoDAO();
 		
 	}
+	
+	
 	
 	public String imprimir() {
 		
@@ -84,6 +96,27 @@ public class ListarCurriculoMBean {
 	
 
 	
+	public Experiencia getXp() {
+		return xp;
+	}
+	public void setXp(Experiencia xp) {
+		this.xp = xp;
+	}
+	public Filtro getFiltroSelecionado() {
+		return filtroSelecionado;
+	}
+	public void setFiltroSelecionado(Filtro filtroSelecionado) {
+		this.filtroSelecionado = filtroSelecionado;
+	}
+	public Integer getIdFiltro() {
+		return idFiltro;
+	}
+	public void setIdFiltro(Integer idFiltro) {
+		this.idFiltro = idFiltro;
+	}
+	public FiltroMBean getFiltroMB() {
+		return filtroMB;
+	}
 	public Formacao getFf() {
 		return ff;
 	}

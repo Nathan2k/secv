@@ -17,19 +17,17 @@
 	<ui:define name="content">
 
 
-		<h:body>
+		<h:body id="body">
 			<center>
 
-				<DIV rendered="#{historicoMBean.filtroF}">
-					<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
-						<p:outputLabel value="Filtros Realizados" />
-					</p:panel>
 
-					<h:form id="formHist">
+
+					<h:form id="formHist" rendered="#{historicoMBean.filtroF}">
+						<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
+							<p:outputLabel value="Filtros Realizados" />
+						</p:panel>
 						<p:dataGrid id="dataGrid" value="#{filtroMBean.filtros}"
 							var="filtro" columns="10" layout="grid">
-
-
 
 							<p />
 							<p:panel width="20%" header="#{filtro.nomeFiltro}"
@@ -40,36 +38,34 @@
 									<p:graphicImage name="img/logo.jpg" width="100%" />
 								</p:commandLink>
 
-								<h:form>
 
-									<p:toolbar
-										style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
-										<f:facet name="right">
-											<p:commandButton style="background:white !important;"
-												type="button" title="Visualizar" icon="ui-icon-script"
-												action="#{historicoMBean.listarCur}">
+								<p:toolbar
+									style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
+									<f:facet name="right">
+										<p:commandButton style="background:white !important;"
+											title="Visualizar" icon="ui-icon-script"
+											action="#{historicoMBean.listarCur}" update=":telaCur"
+											oncomplete="trocarCur();">
 
-												<f:setPropertyActionListener value="#{filtro}"
-													target="#{historicoMBean.filtroSelecionado}">
-												</f:setPropertyActionListener>
+											<f:setPropertyActionListener value="#{filtro}"
+												target="#{historicoMBean.filtroSelecionado}">
+											</f:setPropertyActionListener>
 
-											</p:commandButton>
+										</p:commandButton>
 
-											<p:commandButton style="background:white !important;"
-												type="button" title="Deletar" icon="ui-icon-trash" />
+										<p:commandButton style="background:white !important;"
+											type="button" title="Deletar" icon="ui-icon-trash" />
 
-										</f:facet>
+									</f:facet>
 
-									</p:toolbar>
+								</p:toolbar>
 
-								</h:form>
 							</p:panel>
 						</p:dataGrid>
 					</h:form>
-				</DIV>
 
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-				<h:form id="telaCur" rendered="#{historicoMBean.filtroP}">
+				<h:form id="telaCur">
 
 					<center>
 						<p:panel value="Login" style="width: 600px">
@@ -82,7 +78,7 @@
 
 								<center>
 
-									<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+									<p:dataTable var="cl" value="#{historicoMBean.cl}">
 
 										<p:column headerText="Nome">
 											<f:facet name="header">Nome do Aluno</f:facet>
@@ -110,9 +106,9 @@
 									</p:dataTable>
 
 								</center>
-
-								<h:commandButton value="Finalizar"
-									action="#{filtroMBean.finalizaBt}"
+								<p/>
+								<p:commandButton value="Finalizar"
+									onclick="trocarHist()"
 									style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 
 							</p:panel>
@@ -125,6 +121,19 @@
 			</center>
 
 		</h:body>
+		<script>
+			$(document).ready(function(){
+				$('#telaCur').hide();
+			});
+			function trocarCur(){
+				$('#formHist').slideUp(500);
+				$('#telaCur').show();
+			}
+			function trocarHist(){
+				$('#telaCur').hide();
+				$('#formHist').slideDown(800);
+			}
+		</script>
 	</ui:define>
 </ui:composition>
 </html>

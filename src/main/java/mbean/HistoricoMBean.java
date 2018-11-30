@@ -3,6 +3,7 @@ package mbean;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import DAO.CurriculoDAO;
@@ -15,17 +16,27 @@ import service.Formacao;
 @ViewScoped
 public class HistoricoMBean {
 
-	Curriculo cur;
-	Formacao ff;
-	Experiencia xp;
+	Curriculo cur = new Curriculo();
+	Formacao ff = new Formacao();
+	Experiencia xp = new Experiencia();
 
 	List<Curriculo> cl;
-	Filtro filtroSelecionado = new Filtro();
+	Filtro filtroSelecionado;
 
-	CurriculoDAO clDAO;
+	CurriculoDAO clDAO = new CurriculoDAO();
 
 	boolean filtroP = false; // é o rendered da tela depois de clicar pra vizualizar um filtro
 	boolean filtroF = true;
+	
+	Integer idFiltro;
+	
+	@ManagedProperty("#{filtroMBean}")
+	private FiltroMBean filtroMB;
+	
+	public void setFiltroMB(FiltroMBean filtroMB) {
+		this.filtroMB = filtroMB;
+	}
+	
 
 	// VER SE ISSO TA CERTO
 	// A DIFERENÇA DE UM PRA OUTROÉ Q ESSE SE ENCONTRA EM OUTRA TELA E O XHTML JA
@@ -33,15 +44,12 @@ public class HistoricoMBean {
 	// LISTAR
 	// ISSO PELO SETPROPERTYACTIONLISTENER
 	public void listarCur() {
-
-		cur = new Curriculo();
-		ff = new Formacao();
-		xp = new Experiencia();
-		clDAO = new CurriculoDAO();
+		
+		System.out.println(filtroMB.idFiltro);
+		
 		cl = clDAO.listarCurriculo(filtroSelecionado.getId());
 		filtroP = true;
 		filtroF = false;
-		clDAO = new CurriculoDAO();
 
 	}
 	
