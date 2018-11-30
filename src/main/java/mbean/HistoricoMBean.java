@@ -23,10 +23,15 @@ public class HistoricoMBean {
 	Filtro filtroSelecionado = new Filtro();
 
 	CurriculoDAO clDAO;
-	
+
 	boolean filtroP = false; // é o rendered da tela depois de clicar pra vizualizar um filtro
 	boolean filtroF = true;
 
+	// VER SE ISSO TA CERTO
+	// A DIFERENÇA DE UM PRA OUTROÉ Q ESSE SE ENCONTRA EM OUTRA TELA E O XHTML JA
+	// ESTA ME TRAZENDO O NOME E O ID DO FILTRO ENTÃO É SO EU PEGAR O ID DO FILTRO E
+	// LISTAR
+	// ISSO PELO SETPROPERTYACTIONLISTENER
 	public void listarCur() {
 
 		cur = new Curriculo();
@@ -37,7 +42,7 @@ public class HistoricoMBean {
 		filtroP = true;
 		filtroF = false;
 		clDAO = new CurriculoDAO();
-		
+
 	}
 	
 	
@@ -45,13 +50,22 @@ public class HistoricoMBean {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
+	public boolean isFiltroP() {
+		return filtroP;
+	}
+
+	public void setFiltroP(boolean filtroP) {
+		this.filtroP = filtroP;
+	}
+
+	public boolean isFiltroF() {
+		return filtroF;
+	}
+
+	public void setFiltroF(boolean filtroF) {
+		this.filtroF = filtroF;
+	}
 
 	public List<Curriculo> getCl() {
 		return cl;

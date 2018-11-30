@@ -20,7 +20,7 @@
 		<h:body>
 			<center>
 
-				<DIV rendered="#{a}">
+				<DIV rendered="#{historicoMBean.filtroF}">
 					<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
 						<p:outputLabel value="Filtros Realizados" />
 					</p:panel>
@@ -47,7 +47,7 @@
 										<f:facet name="right">
 											<p:commandButton style="background:white !important;"
 												type="button" title="Visualizar" icon="ui-icon-script"
-												action="#{a}">
+												action="#{historicoMBean.listarCur}">
 
 												<f:setPropertyActionListener value="#{filtro}"
 													target="#{historicoMBean.filtroSelecionado}">
@@ -69,7 +69,7 @@
 				</DIV>
 
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-				<h:form id="telaCur" rendered="false">
+				<h:form id="telaCur" rendered="#{historicoMBean.filtroP}">
 
 					<center>
 						<p:panel value="Login" style="width: 600px">
