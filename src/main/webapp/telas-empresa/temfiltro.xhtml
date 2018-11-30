@@ -8,6 +8,7 @@
 </h:head>
 <ui:composition
 	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
+<!-- <h:panelGroup rendered="#{usuarioMBean.logado}">  -->
 	<ui:define name="title">Filtro</ui:define>
 
 	<ui:define name="content">
@@ -22,11 +23,12 @@
 				document.getElementById('my_iframe').src = url;
 			};
 		</script>
-
-		<div style="width: 500px; margin: auto;">
+	<center>
+	
+		<div style="width: 100%; margin: auto;">
 			<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
-				<p:panel value="Login" style="width: 500px; margin-top: 3%">
-					<center>
+				<p:panel value="Login" style="width: 30%; margin-top: 1%">
+					
 
 						<h:panelGrid columns="1" style="margin-bottom:15px"
 							cellpadding="5">
@@ -40,7 +42,7 @@
 							<p:outputLabel for="estado" value="Estado:" />
 							<p:selectOneMenu id="estado"
 								value="#{filtroMBean.eFiltro.idEstado}" style="width:75%">
-								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="São Paulo" itemValue="" />
 								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
 							<p />
@@ -51,7 +53,7 @@
 							<p:selectCheckboxMenu id="cidades"
 								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
 								style="width:75%" filter="true" filterMatchMode="startsWith"
-								panelStyle="width:75%" onHide="atualiza()">
+								panelStyle="width:16%" onHide="atualiza()">
 								<!-- VER SE O VALUE AQUI TA CERTO!  -->
 								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
 									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
@@ -181,7 +183,7 @@
 						<h:commandButton value="Filtrar"
 							action="#{filtroMBean.enviarFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-					</center>
+				
 				</p:panel>
 			</h:form>
 
@@ -239,7 +241,13 @@
 			</h:form>
 
 		</div>
+			</center>
 	</ui:define>
+<!-- 	</h:panelGroup>
+	<h:panelGroup rendered="!#{usuarioMBean.logado}">
+	TESTE VRAU
+	<meta http-equiv="refresh" content="3; url=login.xhtml"/>
+	</h:panelGroup>  -->
 </ui:composition>
 </html>
 

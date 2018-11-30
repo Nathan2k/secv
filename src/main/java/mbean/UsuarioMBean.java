@@ -27,6 +27,8 @@ public class UsuarioMBean {
 
 	public String empreOUadm;
 	public String senha;
+	
+	public boolean logado = false;
 
 	public UsuarioMBean() {
 		imagem = "off";
@@ -50,6 +52,7 @@ public class UsuarioMBean {
 			mensagem(e.toString());
 		}
 		if (emp != null) {
+			 logado = true;
 			return "/telas-empresa/temfiltro?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário e/ou  Senha invalido(s)"));
@@ -76,6 +79,16 @@ public class UsuarioMBean {
 		} else {
 			return null;
 		}
+	}
+	
+	
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
 	}
 
 	public String getImagem() {

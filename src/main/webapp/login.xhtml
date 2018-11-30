@@ -12,10 +12,10 @@
 	<p:growl>
 		<p:autoUpdate />
 	</p:growl>
-	<div align="center" style="margin-top: 8%;margin-bottom: 7%">
-		<p:panel value="Login" style="width: 600px">
+	<div align="center" style="margin-top: 7%;margin-bottom: 7%">
+		<p:panel value="Login" style="width: 30%">
 			<h:graphicImage library="img" name="logo-senai.png"
-				style="width: 500px" />
+				style="width: 100%" />
 			<p />
 			<p:panel>
 				<div align="center" style="margin-top: 8%">
@@ -44,13 +44,13 @@
 							<p:inputMask label="Usuário"
 								mask="#{usuarioMBean.imagem eq 'off' ? '99.999.999/9999-99' : ''}"
 								id="usuario" value="#{usuarioMBean.empreOUadm}" required="true"
-								style="width:240px" maxlength="14"
+								style="width:100%" maxlength="14"
 								requiredMessage="Campo Usuário invalido" />
 
 							<h:outputText id="senhaLabel" value="Senha: " />
 							<p:password label="Senha" value="#{usuarioMBean.senha}"
 								id="senha" requiredMessage="Campo Senha invalido"
-								required="true" style="width:240px" />
+								required="true" style="width:100%" />
 							<br />
 
 							<h:commandButton value="Entrar" action="#{usuarioMBean.logar}"
@@ -67,12 +67,12 @@
 						<h:commandButton value="Nova Empresa" ajax="false"
 						id="btemp"
 							disabled="#{usuarioMBean.imagem ne 'off'}" action="novaemp"
-							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+							style="height: 4%; font-size: 14px; width:50%; border: 0px; " />
 					</h:form>
 					<h:form>
 						<h:commandButton value="Recuperar Senha" ajax="false"
 							action="esqueciSenha"
-							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+							style="height: 4%; font-size: 14px; width:50%; border: 0px; " />
 					</h:form>
 				</center>
 			</p:panel>
