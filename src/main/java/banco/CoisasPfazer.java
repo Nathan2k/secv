@@ -14,28 +14,20 @@ public class CoisasPfazer {
 	 * 
 	 * LIMPAR A LISTA DE CURRICULOS DEPOIS DE REALIZADO O FILTRO!
 	 * 
-	 * AJUSTAR TAMANHO DO FILTRO!!(NATHAN)
+	 * VER SE PRECISA DA DO selectItens NO IDIOMA NA TELA temfiltro.xhtml
+	 * 
+	 * VER COM DONI OS VALUES DOS NIVEIS DO IDIOMA 0 BASICO 1 INTERMEDIARIO 2 AVANÇADO
+	 * 
+	 * AJUSTAR TAMANHO DO FILTRO! COLOCAR O NIVEL AO LADO DO IDIOMA!!(NATHAN)
+	 * 
+	 * 
+	 * CHECAR SE O BAGULHO DO LONG NO SQL FUNCIONA!
 	 * 
 	 * Fazer com q salve nome junto do id (dos cursos) no BD
 	 * 
 	 * Reload na tela filtro quando desmarcar alguma opção
 	 * 
 	 * Listar os filtros na tela historico
-	 * 
-	 * fazer com que o botao fique selecionado dependendo da tela em q o usuario esta!(YAN)
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * !!!!BUGS!!!!
-	 * 
-	 * 
-	 * BUG PESADO, SE O CURRICULO DO ALUNO ESTA ABERTO EM OUTRA PAGINA, A PAGINA DO SISTEMA NÃO FUNCIONA
-	 * 
-	 * 
-	 * 
 	 * 
 	 * **/
 	

@@ -18,7 +18,7 @@ import service.CurriculumVitae;
 @ManagedBean
 public class FiltroService {
 	// MANDO ESSE CARA
-	//String url  = "http://localhost:8080/sccv-api/ws/";
+
 	// ENVIA O FILTRO PRO DONI
 	public List<Curriculo> enviarFiltro(Filtro f) throws IOException {
 
@@ -59,7 +59,6 @@ public class FiltroService {
 	public List<ClasseGenerica> cArea(Filtro cidade) throws IOException {
 
 		String url = "http://10.87.202.149:8080/sccv-api/ws/areas/por-cidades"; // URL CERTO!
-		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 		
@@ -78,7 +77,6 @@ public class FiltroService {
 	public List<ClasseGenerica> cCurso(Filtro area) throws IOException {
 
 		String url = "http://10.87.202.149:8080/sccv-api/ws/cursos/por-filtro"; // URL CERTO!
-		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
@@ -99,7 +97,6 @@ public class FiltroService {
 	public List<ClasseGenerica> cSemestre(Filtro curso) throws IOException {
 
 		String url = "http://10.87.202.149:8080/sccv-api/ws/semestre/por-filtro"; // URL FICTICIO!
-		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 

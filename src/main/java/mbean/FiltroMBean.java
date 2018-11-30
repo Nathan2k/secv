@@ -67,12 +67,12 @@ public class FiltroMBean {
 	private UsuarioMBean userMb;
 
 	List<Filtro> filtros;
-	
 
 	@PostConstruct
 	public void conts() {
+
 		criarFiltros();
-		
+
 	}
 
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
@@ -83,8 +83,6 @@ public class FiltroMBean {
 			filtroP = true;
 			filtroF = false;
 			criarFiltros();
-			eFiltro.setIdCurso(cursoSel);
-			
 			return fDao.inserirFiltro(eFiltro);
 
 		} else {
@@ -118,7 +116,6 @@ public class FiltroMBean {
 
 	}
 
-	// ESSE CARA SERVE PARA LISTAR OS FILTROS NO ADM OU NO USUARIO EMPRESA!(TELA HISTORICO)
 	public void criarFiltros() {
 		if (userMb.getAdm() == null) {
 
@@ -129,12 +126,6 @@ public class FiltroMBean {
 
 		}
 	}
-	
-	
-	
-	
-	
-	
 
 	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
 	public List<SelectItem> pegandoArea() {
@@ -311,17 +302,6 @@ public class FiltroMBean {
 	public void seteFiltro(Filtro eFiltro) {
 		this.eFiltro = eFiltro;
 	}
-	
-	
-
-	public CurriculoDAO getcDao() {
-		return cDao;
-	}
-
-	public void setcDao(CurriculoDAO cDao) {
-		this.cDao = cDao;
-	}
-
 
 	public List<ClasseGenerica> getEstado() {
 		return estado;

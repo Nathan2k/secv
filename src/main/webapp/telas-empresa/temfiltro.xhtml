@@ -33,13 +33,13 @@
 
 							<h:outputText value="Nome da Vaga: " />
 							<p:inputText value="#{filtroMBean.eFiltro.nomeFiltro}"
-								style="width: 100%;" />
+								style="width: 350px;" />
 							<p />
 							
 
 							<p:outputLabel for="estado" value="Estado:" />
 							<p:selectOneMenu id="estado"
-								value="#{filtroMBean.eFiltro.idEstado}" style="width:75%">
+								value="#{filtroMBean.eFiltro.idEstado}" style="width:160px">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{a}" />
 							</p:selectOneMenu>
@@ -50,8 +50,8 @@
 								actionListener="#{filtroMBean.attArea}" />
 							<p:selectCheckboxMenu id="cidades"
 								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
-								style="width:75%" filter="true" filterMatchMode="startsWith"
-								panelStyle="width:75%" onHide="atualiza()">
+								style="width:160px" filter="true" filterMatchMode="startsWith"
+								panelStyle="width:290px" onHide="atualiza()">
 								<!-- VER SE O VALUE AQUI TA CERTO!  -->
 								<f:selectItems value="#{filtroMBean.cidades}" var="cidade"
 									itemLabel="#{cidade.nome}" itemValue="#{cidade.codigo}" />
@@ -62,7 +62,7 @@
 							<!-- <p:ajax event="blur" process="idCidades" listener="#{filtroMBean.selCidade}" update="area" /> -->
 
 							<h:outputLabel for="area" value="Área:" />
-							<p:selectOneMenu style="width: 75%" panelStyle="width:150px"
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
 								id="area" value="#{filtroMBean.eFiltro.area}">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{filtroMBean.area}" var="area"
@@ -75,7 +75,7 @@
 							<P />
 
 							<h:outputLabel for="curso" value="Curso:" />
-							<p:selectOneMenu style="width: 75%" panelStyle="width:150px"
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
 								id="curso" value="#{filtroMBean.eFiltro.idCurso}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.curso}" var="curso"
@@ -88,7 +88,7 @@
 
 
 							<h:outputLabel for="semestre" value="Semestre:" />
-							<p:selectOneMenu style="width: 75%" panelStyle="width:150px"
+							<p:selectOneMenu style="width: 160px" panelStyle="width:150px"
 								id="semestre" value="#{filtroMBean.eFiltro.semestre}">
 								<f:selectItem itemLabel="Selecione" itemValue="" />
 								<f:selectItems value="#{filtroMBean.semestre}" var="semestre"
@@ -136,7 +136,7 @@
 								<h:outputText id="displayRange"
 									value="Faixa etária: #{filtroMBean.eFiltro.idade_inicio} a #{filtroMBean.eFiltro.idade_fim} anos" />
 								<p:slider for="txt6,txt7" display="displayRange"
-									style="width: 360px" range="true"
+									style="width: 350px" range="true"
 									displayTemplate="De {min} a {max}" />
 							</h:panelGrid>
 							<h:inputHidden id="txt6"
