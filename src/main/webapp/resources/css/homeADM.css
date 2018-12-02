@@ -1,3 +1,6 @@
+html, body {
+	height: calc(99.9%);
+}
 a.home {
 	background-color: #b30000;
 }
