@@ -10,6 +10,10 @@ public class CoisasPfazer {
 	
 	/** 
 	 * 
+	 * TAG NOTE:
+	 * <div class="ui-grid-col-3"><i class="fa fa-fw fa-history"></i>fa-history</div>
+	 * 
+	 * 
 	 * VER PQ TA SALVANDO NULL O ESTADO NO BANCO!
 	 * 
 	 * Reload na tela filtro quando desmarcar alguma opção
