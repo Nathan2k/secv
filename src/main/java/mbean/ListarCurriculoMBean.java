@@ -52,25 +52,10 @@ public class ListarCurriculoMBean {
 		ff = new Formacao();
 		xp = new Experiencia();
 		clDAO = new CurriculoDAO();
-		cl = clDAO.listarCurriculo(idFiltro);
+		//cl = clDAO.listarCurriculo(idFiltro);
 		clDAO = new CurriculoDAO();
 		
 	}
-	
-	
-	public void listarCurriculosFiltro() {
-		
-		idFiltro = filtroSelecionado.getId();		
-		
-		cur = new Curriculo();
-		ff = new Formacao();
-		xp = new Experiencia();
-		clDAO = new CurriculoDAO();
-		cl = clDAO.listarCurriculo(idFiltro);
-		clDAO = new CurriculoDAO();
-		
-	}
-	
 	
 	
 	public String imprimir() {

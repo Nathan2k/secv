@@ -156,7 +156,7 @@ public class CurriculoDAO {
 
 		String sql = "SELECT * FROM filtro WHERE idEmpresa = ?";
 		if(teste) {
-			sql.replace("idEmpresa", "idADM");
+			sql = sql.replace("idEmpresa", "idADM");
 		}
 
 		try {

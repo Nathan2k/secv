@@ -1,0 +1,156 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
+	<ui:define name="title">Curriculo</ui:define>
+
+
+</h:head>
+<h:head>
+	<title>Impressão PDF</title>
+	<h:outputScript library="script" name="javascript.js" target="form" />
+	<script type="text/javascript">
+		function printpage() {
+			window.print()
+		}
+	</script>
+	<style>
+@media print {
+	input {
+		display: none;
+	}
+	#button {
+		display: none;
+	}
+	
+@page {
+	size: auto;
+	margin:0mm;
+}
+}
+</style>
+</h:head>
+<h:body onload="printpage();">
+<div align="center">
+		<p:button id="button" icon="fa fa-print" value="Imprimir"
+			onclick="printpage()" />
+	</div>
+	
+	<p:growl widgetVar="growlWV">
+		<p:autoUpdate />
+	</p:growl>
+
+	<div align="center">
+		<h:graphicImage style="width: 40%;" library="img"
+			name="logo-senai.png" />
+	</div>
+	<p/>
+	<p:panel style="border: 0px;">
+		<center>
+			<h3>Informações Pessoais</h3>
+			<h:outputLabel  value="Nome: " style="font-weight:bold" />
+			<h:outputLabel value="#{flash.curImp.nomeDoAluno}"/>
+			<br />
+			<h:outputLabel value="Email: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.email}"/>
+			<br />
+			<h:outputLabel value="Telefone: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.telefone}"/>
+			<br />
+			<h:outputLabel value="Idade: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.idade}"/>
+			<br /> 
+			<h:outputLabel value="Sexo: " style="font-weight:bold"  />
+			<h:outputLabel value="#{flash.curImp.sexo}"/>
+
+			<br />
+		<!-- 	 <h:outputLabel
+				value="#{impressaoPDFMBean.usuario.pessoa_pcd eq '0' ? '' : 'Deficiencia: Sim'}" />  --> 
+			
+		</center>
+	</p:panel>
+	<p:panel style="border: 0px;">
+		<center>
+			<h3>Linguas Estrangeiras</h3>
+		</center>
+		<h:outputLabel value="Nivel de Inglês:"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{flash.curImp.nivel_ingles}"
+			style="margin-letf: -60%;" />
+		<br />
+		<h:outputLabel value="Nivel de Espanhol:"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{flash.curImp.nivel_espanhol}"
+			style="margin-letf: -60%;" />
+
+	</p:panel>
+	<p:panel style="border: 0px;">
+		<center>
+			<h3>Formações Acadêmicas</h3>
+		</center>
+		<h:outputLabel value="Curso Atual: "
+			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{flash.curImp.curso}"
+			style="margin-letf: -60%;" />
+
+		<br />
+		<h:outputLabel value="Semestre:"
+			style="margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel value=" #{flash.curImp.semestre}°"
+			style="margin-letf: -60%;" />
+		<br />
+		<br />
+		<h:outputLabel value="Cursos concluidos"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:dataTable value="#{flash.curImp.formação}" var="forma">
+			<h:column>
+			<!-- LISTAR DADOS DA FORMAÇÃO -->
+			<h:outputLabel  value="Nome: " style="font-weight:bold" />
+			<h:outputLabel value="#{forma.nome}"/>
+			<h:outputLabel  value="; Escola: " style="font-weight:bold" />
+			<h:outputLabel value="#{forma.escola}"/>
+			<h:outputLabel  value="; Data Inicio: " style="font-weight:bold" />
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(forma.data_inicio)}"/>
+			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(forma.data_fim)}"/>
+			
+
+			</h:column>
+		</h:dataTable>
+	</p:panel>
+	<p:panel style="border: 0px;">
+		<center>
+			<h3>Experiências</h3>
+		</center>
+
+		<h:dataTable value="#{flash.curImp.experiencia}" var="e">
+			<h:column>
+			<!-- LISTAR DADOS DA EXPERIENCIA -->
+
+			<h:outputLabel  value="Empresa: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.empresa}"/>
+			<h:outputLabel  value="; Data inicio: " style="font-weight:bold" />
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(e.data_inicio)}"/>
+			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
+			<h:outputLabel value="#{listarCurriculoMBean.convertData(e.data_inicio)}"/>
+			<h:outputLabel  value="; Cargo: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.cargo}"/>
+			<h:outputLabel  value="; Função: " style="font-weight:bold" />
+			<h:outputLabel value="#{e.funcoes}"/>
+
+			</h:column>
+		</h:dataTable>
+	</p:panel>
+		<!-- 	<p:dataList value="#{flash.curImp.formação}" var="forma">
+			#{forma.escola}
+		</p:dataList> -->
+
+</h:body>
+</html>

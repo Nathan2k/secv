@@ -6,61 +6,57 @@
 
 
 
-<ui:composition
-	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
+<ui:composition template="/WEB-INF/templateADM/templateADM.xhtml">
+
 	<ui:define name="css">
 		<link rel="stylesheet" type="text/css" href="resources/css/cssEmp.css" />
 	</ui:define>
-	<ui:define name="title">Histórico</ui:define>
+	<ui:define name="title">Histórico Adm</ui:define>
 
 
 	<ui:define name="content">
 
-
 		<h:body id="body">
 			<center>
 
+				<h:form id="formHist" rendered="#{historicoMBean.filtroF}">
+					<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
+						<p:outputLabel value="Filtros Realizados" />
+					</p:panel>
+					<p:dataGrid id="dataGrid" value="#{filtroMBean.filtros}"
+						var="filtro" columns="10" layout="grid">
+
+						<p />
+						<p:panel width="20%" header="#{filtro.nomeFiltro}"
+							styleClass="panel2">
+							<h:panelGrid columns="1" />
+
+							<p:commandLink event="onclick" ajax="true">
+								<p:graphicImage name="img/logo.jpg" width="100%" />
+							</p:commandLink>
 
 
-					<h:form id="formHist" rendered="#{historicoMBean.filtroF}">
-						<p:panel style="border: 0px; padding: 0px; margin-top:1%;">
-							<p:outputLabel value="Filtros Realizados" />
+							<p:toolbar
+								style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
+								<f:facet name="right">
+									<p:commandButton style="background:white !important;"
+										title="Visualizar" icon="ui-icon-script"
+										action="#{historicoMBean.listarCur}" update=":telaCur"
+										oncomplete="trocarCur();">
+
+										<f:setPropertyActionListener value="#{filtro}"
+											target="#{historicoMBean.filtroSelecionado}">
+										</f:setPropertyActionListener>
+
+									</p:commandButton>
+
+								</f:facet>
+
+							</p:toolbar>
+
 						</p:panel>
-						<p:dataGrid id="dataGrid" value="#{filtroMBean.filtros}"
-							var="filtro" columns="10" layout="grid">
-
-							<p />
-							<p:panel width="20%" header="#{filtro.nomeFiltro}"
-								styleClass="panel2">
-								<h:panelGrid columns="1" />
-
-								<p:commandLink event="onclick" ajax="true">
-									<p:graphicImage name="img/logo.jpg" width="100%" />
-								</p:commandLink>
-
-
-								<p:toolbar
-									style="border: 0px; padding: 0px; margin-top:5%; background:white !important;">
-									<f:facet name="right">
-										<p:commandButton style="background:white !important;"
-											title="Visualizar" icon="ui-icon-script"
-											action="#{historicoMBean.listarCur}" update=":telaCur"
-											oncomplete="trocarCur();">
-
-											<f:setPropertyActionListener value="#{filtro}"
-												target="#{historicoMBean.filtroSelecionado}">
-											</f:setPropertyActionListener>
-
-										</p:commandButton>
-
-
-									</f:facet>
-
-								</p:toolbar>
-
-							</p:panel>
-						</p:dataGrid>
-					</h:form>
+					</p:dataGrid>
+				</h:form>
 
 				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
 				<h:form id="telaCur">
@@ -104,9 +100,8 @@
 									</p:dataTable>
 
 								</center>
-								<p/>
-								<p:commandButton value="Finalizar"
-									onclick="trocarHist()"
+								<p />
+								<p:commandButton value="Finalizar" onclick="trocarHist()"
 									style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 
 							</p:panel>
@@ -115,18 +110,19 @@
 
 				</h:form>
 
+
 			</center>
 
 		</h:body>
 		<script>
-			$(document).ready(function(){
+			$(document).ready(function() {
 				$('#telaCur').hide();
 			});
-			function trocarCur(){
+			function trocarCur() {
 				$('#formHist').slideUp(500);
 				$('#telaCur').show();
 			}
-			function trocarHist(){
+			function trocarHist() {
 				$('#telaCur').hide();
 				$('#formHist').slideDown(800);
 			}

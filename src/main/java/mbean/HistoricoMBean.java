@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import DAO.CurriculoDAO;
 import entity.Curriculo;
@@ -27,16 +28,15 @@ public class HistoricoMBean {
 
 	boolean filtroP = false; // é o rendered da tela depois de clicar pra vizualizar um filtro
 	boolean filtroF = true;
-	
+
 	Integer idFiltro;
-	
+
 	@ManagedProperty("#{filtroMBean}")
 	private FiltroMBean filtroMB;
-	
+
 	public void setFiltroMB(FiltroMBean filtroMB) {
 		this.filtroMB = filtroMB;
 	}
-	
 
 	// VER SE ISSO TA CERTO
 	// A DIFERENÇA DE UM PRA OUTROÉ Q ESSE SE ENCONTRA EM OUTRA TELA E O XHTML JA
@@ -44,20 +44,47 @@ public class HistoricoMBean {
 	// LISTAR
 	// ISSO PELO SETPROPERTYACTIONLISTENER
 	public void listarCur() {
-		
+
 		System.out.println(filtroMB.idFiltro);
-		
+
 		cl = clDAO.listarCurriculo(filtroSelecionado.getId());
 		filtroP = true;
 		filtroF = false;
 
 	}
-	
-	
-	
-	
-	
-	
+
+	public String imprimir() {
+
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
+
+		// VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
+
+		return "curriculo?faces-redirect=true";
+	}
+
+//	public void listarCurAdm() {
+//		
+//		System.out.println(filtroMB.idFiltro);
+//
+//		cl = clDAO.listarCurriculo(filtroSelecionado.getId());
+//		filtroP = true;
+//		filtroF = false;
+//		
+//	}
+
+	public Integer getIdFiltro() {
+		return idFiltro;
+	}
+
+	public void setIdFiltro(Integer idFiltro) {
+		this.idFiltro = idFiltro;
+	}
+
+	public FiltroMBean getFiltroMB() {
+		return filtroMB;
+	}
 
 	public boolean isFiltroP() {
 		return filtroP;
