@@ -2,10 +2,14 @@ package mbean;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import DAO.CurriculoDAO;
 import entity.Curriculo;
@@ -14,7 +18,7 @@ import service.Experiencia;
 import service.Formacao;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class HistoricoMBean {
 
 	Curriculo cur = new Curriculo();
@@ -37,6 +41,11 @@ public class HistoricoMBean {
 	public void setFiltroMB(FiltroMBean filtroMB) {
 		this.filtroMB = filtroMB;
 	}
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("Intancia nova de historicaMBean");
+	}
 
 	// VER SE ISSO TA CERTO
 	// A DIFERENÇA DE UM PRA OUTROÉ Q ESSE SE ENCONTRA EM OUTRA TELA E O XHTML JA
@@ -45,7 +54,7 @@ public class HistoricoMBean {
 	// ISSO PELO SETPROPERTYACTIONLISTENER
 	public void listarCur() {
 
-		System.out.println(filtroMB.idFiltro);
+		
 
 		cl = clDAO.listarCurriculo(filtroSelecionado.getId());
 		filtroP = true;
@@ -62,6 +71,13 @@ public class HistoricoMBean {
 		// VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
 
 		return "curriculo?faces-redirect=true";
+	}
+	
+	public String finalizar(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.removeAttribute("historicoMBean");
+		
+		return "historico?faces-redirect=true";
 	}
 
 //	public void listarCurAdm() {

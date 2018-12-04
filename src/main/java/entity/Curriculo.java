@@ -1,5 +1,7 @@
 package entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import service.ClasseGenerica;
@@ -27,6 +29,50 @@ public class Curriculo {
 	private Integer idFiltro;
 	
 	
+	
+
+	public String getNvInglesFormatado() {
+		
+		String mensagem = "";
+
+		if (getNivel_ingles() == 0) {
+			
+			return mensagem = "Não fala a lingua";
+		}else if (getNivel_ingles() == 1) {
+			
+			return mensagem = "Basico";
+		}else if (getNivel_ingles() == 2) {
+			
+			return mensagem = "Intermediario";
+		}else if (getNivel_ingles() == 3) {
+			
+			return mensagem = "Avançado";
+		}
+
+		return mensagem = "DEU ERRO NO NV DO INGLES!";
+	}
+
+	public String getNvEspanholFormatado() {
+
+		String mensagem = "";
+		
+		if (getNivel_espanhol() == 0) {
+			
+			return mensagem = "Não fala a lingua";
+		}else if (getNivel_espanhol() == 1) {
+			
+			return mensagem = "Basico";
+		}else if (getNivel_espanhol() == 2) {
+			
+			return mensagem = "Intermediario";
+		}else if (getNivel_espanhol() == 3) {
+			
+			return mensagem = "Avançado";
+		}
+
+		return mensagem = "DEU ERRO NO NV DO ESPANHOL!";
+	}
+
 
 	public Integer getIdFiltro() {
 		return idFiltro;
@@ -155,8 +201,8 @@ public class Curriculo {
 	public void setIdade(String idade) {
 		this.idade = idade;
 	}
-	
-	//OLHA ISSO AQUI LESK
+
+	// OLHA ISSO AQUI LESK
 //	public String getNivelingles() {
 //		String nivelin;
 //

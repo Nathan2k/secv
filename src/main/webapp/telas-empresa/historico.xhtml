@@ -91,11 +91,11 @@
 
 										<p:column id="Impressão" style="width:60px">
 											<p:commandButton icon="ui-icon-print" ajax="false"
-												action="#{listarCurriculoMBean.imprimir}"
+												action="#{historicoMBean.imprimir}"
 												onclick="this.form.target='_blank'">
 
 												<f:setPropertyActionListener value="#{cl}"
-													target="#{listarCurriculoMBean.cur}">
+													target="#{historicoMBean.cur}">
 												</f:setPropertyActionListener>
 
 											</p:commandButton>
@@ -106,7 +106,8 @@
 								</center>
 								<p/>
 								<p:commandButton value="Finalizar"
-									onclick="trocarHist()"
+									action="#{historicoMBean.finalizar}"
+									oncomplete="trocarHist()"
 									style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 
 							</p:panel>
@@ -120,7 +121,9 @@
 		</h:body>
 		<script>
 			$(document).ready(function(){
-				$('#telaCur').hide();
+				if($('#formHist').is(":visible")){
+					$('#telaCur').hide();	
+				}
 			});
 			function trocarCur(){
 				$('#formHist').slideUp(500);

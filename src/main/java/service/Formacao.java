@@ -1,5 +1,6 @@
 package service;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Formacao {
@@ -60,6 +61,21 @@ public class Formacao {
 	public Long getData_inicio() {
 		return data_inicio;
 	}
+	
+	public String getData_inicioFormatada() {
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(data_inicio);
+		return new SimpleDateFormat("dd/MM/yyyy").format(c.getTimeInMillis());
+	}
+	
+	public String getData_fimFormatada() {
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(data_inicio);
+		return new SimpleDateFormat("dd/MM/yyyy").format(c.getTimeInMillis());
+	}
+
+	
+
 
 	public void setData_inicio(Long data_inicio) {
 		this.data_inicio = data_inicio;

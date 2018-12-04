@@ -76,17 +76,17 @@
 	<p:panel style="border: 0px;">
 		<center>
 			<h3>Linguas Estrangeiras</h3>
-		</center>
+			</center>
 		<h:outputLabel value="Nivel de Inglês:"
 			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
 		<h:outputLabel
-			value=" #{flash.curImp.nivel_ingles}"
+			value=" #{flash.curImp.nvInglesFormatado}"
 			style="margin-letf: -60%;" />
 		<br />
 		<h:outputLabel value="Nivel de Espanhol:"
 			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
 		<h:outputLabel
-			value=" #{flash.curImp.nivel_espanhol}"
+			value=" #{flash.curImp.nvEspanholFormatado}"
 			style="margin-letf: -60%;" />
 
 	</p:panel>
@@ -117,9 +117,9 @@
 			<h:outputLabel  value="; Escola: " style="font-weight:bold" />
 			<h:outputLabel value="#{forma.escola}"/>
 			<h:outputLabel  value="; Data Inicio: " style="font-weight:bold" />
-			<h:outputLabel value="#{listarCurriculoMBean.convertData(forma.data_inicio)}"/>
+			<h:outputLabel value="#{forma.data_inicioFormatada}"/>
 			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
-			<h:outputLabel value="#{listarCurriculoMBean.convertData(forma.data_fim)}"/>
+			<h:outputLabel value="#{forma.data_fimFormatada}"/>
 			
 
 			</h:column>
@@ -137,9 +137,9 @@
 			<h:outputLabel  value="Empresa: " style="font-weight:bold" />
 			<h:outputLabel value="#{e.empresa}"/>
 			<h:outputLabel  value="; Data inicio: " style="font-weight:bold" />
-			<h:outputLabel value="#{listarCurriculoMBean.convertData(e.data_inicio)}"/>
+			<h:outputLabel value="#{e.data_inicioFormatada}"/>
 			<h:outputLabel  value="; Data Fim: " style="font-weight:bold" />
-			<h:outputLabel value="#{listarCurriculoMBean.convertData(e.data_inicio)}"/>
+			<h:outputLabel value="#{e.data_fimFormatada}"/>
 			<h:outputLabel  value="; Cargo: " style="font-weight:bold" />
 			<h:outputLabel value="#{e.cargo}"/>
 			<h:outputLabel  value="; Função: " style="font-weight:bold" />
