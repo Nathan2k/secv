@@ -21,6 +21,7 @@ import entity.Usuario;
 import entity.UsuarioADM;
 import entity.UsuarioEmpresa;
 import utils.EnviaUtil;
+import utils.MensFaces;
 
 @ManagedBean
 @SessionScoped
@@ -84,6 +85,8 @@ public class RecuperarSenhaMBean {
 				}
 
 				System.out.println("Email enviado com sucesso!");
+				MensFaces.m("Verifique seu Email!");
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				return "telaCodigo?faces-redirect=true";
 
 			} else {
@@ -101,6 +104,8 @@ public class RecuperarSenhaMBean {
 		protocolo = uDao.verificaCodigo(vCod);
 		if (protocolo != null) {
 			codigoCerto = true;
+			MensFaces.m("Codigo autorizado!");
+			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Codigo esta Incorreto!"));
 			System.out.println("Codigos diferentes!!");
