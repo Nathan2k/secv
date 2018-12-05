@@ -116,6 +116,9 @@ public class RecuperarSenhaMBean {
 
 		if (Password.equals(verificaPassword)) {
 
+			System.out.println(protocolo.getEmailUsuario());
+			
+			
 			Usuario usuarioP = new Usuario(null, null, Password, protocolo.getEmailUsuario(), null, ID_USUARIO_FINAL);
 
 			if (uDao.alterar(usuarioP)) {

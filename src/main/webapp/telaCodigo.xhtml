@@ -28,7 +28,7 @@
 						<h:panelGrid columns="1">
 
 							<h:outputText value=" Insira o Codigo no EMAIL: " />
-							<p:inputText label="Email" id="codigo"
+							<p:inputText type="number" label="Email" id="codigo"
 								value="#{recuperarSenhaMBean.vCod}" style="width:240px"
 								required="true" maxlength="14" />
 
@@ -52,12 +52,12 @@
 						<h:panelGrid columns="1">
 
 							<h:outputText value="Nova Senha:" />
-							<p:inputText label="Email" id="novaSenha"
+							<p:inputText type="password" label="Email" id="novaSenha"
 								value="#{recuperarSenhaMBean.password}" style="width:240px"
 								required="true" maxlength="14" />
 							<br />
 							<h:outputText value="Confirmar Senha: " />
-							<p:inputText label="Email"
+							<p:inputText type="password" label="Email"
 								value="#{recuperarSenhaMBean.verificaPassword}"
 								style="width:240px" required="true" maxlength="14" />
 

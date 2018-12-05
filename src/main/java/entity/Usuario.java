@@ -22,11 +22,11 @@ public class Usuario {
 		this.telefone = telefone;
 		this.nomex = nomex;
 		
-		if (nome.indexOf(" ") > -1) {
-			nomex = nome.substring(0, nome.indexOf(" "));
-		}else {
-			nomex = nome;
-		}
+//		if (nome.indexOf(" ") > -1) {
+//			nomex = nome.substring(0, nome.indexOf(" "));   // COM ESSA PARTE ELE DA NULL POINTER!
+//		}else {
+//			nomex = nome;
+//		}
 	}
 
 	public Integer getId() {

@@ -35,31 +35,42 @@ public class HistoricoMBean {
 
 	Integer idFiltro;
 
-	@ManagedProperty("#{filtroMBean}")
-	private FiltroMBean filtroMB;
+	
+	
+	@ManagedProperty(value = "#{usuarioMBean}")
+	private UsuarioMBean userMb;
 
-	public void setFiltroMB(FiltroMBean filtroMB) {
-		this.filtroMB = filtroMB;
+	List<Filtro> filtros;
+	
+	public void setUserMb(UsuarioMBean userMb) {
+		this.userMb = userMb;
 	}
+
+
+
 	
 	@PostConstruct
 	public void init() {
-		System.out.println("Intancia nova de historicaMBean");
+		criarFiltros();
 	}
 
-	// VER SE ISSO TA CERTO
-	// A DIFERENÇA DE UM PRA OUTROÉ Q ESSE SE ENCONTRA EM OUTRA TELA E O XHTML JA
-	// ESTA ME TRAZENDO O NOME E O ID DO FILTRO ENTÃO É SO EU PEGAR O ID DO FILTRO E
-	// LISTAR
-	// ISSO PELO SETPROPERTYACTIONLISTENER
+	
 	public void listarCur() {
-
-		
-
 		cl = clDAO.listarCurriculo(filtroSelecionado.getId());
 		filtroP = true;
 		filtroF = false;
+	}
+	
+	// ESSE CARA SERVE PARA LISTAR OS FILTROS NO ADM OU NO USUARIO EMPRESA!(TELA HISTORICO)
+	public void criarFiltros() {
+		if (userMb.getAdm() == null) {
 
+			filtros = clDAO.listarFiltro(userMb.getEmp().getId(), false);
+
+		} else {
+			filtros = clDAO.listarFiltro(userMb.getAdm().getId(), true);
+
+		}
 	}
 
 	public String imprimir() {
@@ -67,8 +78,6 @@ public class HistoricoMBean {
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("curImp", cur);
-
-		// VER COMO COLOCAR EXPERIENCIA/FORMAÇÃO NO CURRICULO
 
 		return "curriculo?faces-redirect=true";
 	}
@@ -79,6 +88,16 @@ public class HistoricoMBean {
 		
 		return "historico?faces-redirect=true";
 	}
+	
+	
+	public String finalizarAdm(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.removeAttribute("historicoMBean");
+		
+		return "historicoADM?faces-redirect=true";
+	}
+	
+	
 
 //	public void listarCurAdm() {
 //		
@@ -96,10 +115,6 @@ public class HistoricoMBean {
 
 	public void setIdFiltro(Integer idFiltro) {
 		this.idFiltro = idFiltro;
-	}
-
-	public FiltroMBean getFiltroMB() {
-		return filtroMB;
 	}
 
 	public boolean isFiltroP() {
@@ -164,6 +179,16 @@ public class HistoricoMBean {
 
 	public void setClDAO(CurriculoDAO clDAO) {
 		this.clDAO = clDAO;
+	}
+
+
+	public List<Filtro> getFiltros() {
+		return filtros;
+	}
+
+
+	public void setFiltros(List<Filtro> filtros) {
+		this.filtros = filtros;
 	}
 
 }

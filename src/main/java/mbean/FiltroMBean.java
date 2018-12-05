@@ -50,6 +50,7 @@ public class FiltroMBean {
 	String cursoSel;
 
 	Integer idFiltro;
+	List<Curriculo> cl;
 
 	boolean liberado = true; // RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
 
@@ -65,6 +66,13 @@ public class FiltroMBean {
 
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
+	
+	@ManagedProperty(value = "#{historicoMBean}")
+	private HistoricoMBean histMb;
+
+	public void setHistMb(HistoricoMBean histMb) {
+		this.histMb = histMb;
+	}
 
 	List<Filtro> filtros;
 	
@@ -102,6 +110,8 @@ public class FiltroMBean {
 
 		filtroP = false;
 		filtroF = true;
+		
+		histMb.init();
 
 	}
 
@@ -233,10 +243,16 @@ public class FiltroMBean {
 				c.setIdFiltro(idFiltro);
 				fDao.inserirCurriculo(c); // FICA ANDANDO NA LISTA E INSERE UM POR UM
 			}
+			eFiltro = new Filtro();
+			listarCurriculos(idFiltro);
 		}
 	}
 	
 	
+	private void listarCurriculos(Integer idFiltro2) {
+		cl = cDao.listarCurriculo(idFiltro);
+	}
+
 	public Integer trocandoAno(int anoConvertido) {
 
 		System.out.println(anoAtual.get(Calendar.YEAR));
@@ -413,6 +429,14 @@ public class FiltroMBean {
 
 	public void setLiberado(boolean liberado) {
 		this.liberado = liberado;
+	}
+
+	public List<Curriculo> getCl() {
+		return cl;
+	}
+
+	public void setCl(List<Curriculo> cl) {
+		this.cl = cl;
 	}
 
 }
