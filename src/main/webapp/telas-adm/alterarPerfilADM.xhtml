@@ -11,6 +11,9 @@
 	<ui:define name="content">
 
 		<h:body>
+			<p:growl>
+		<p:autoUpdate />
+	</p:growl>
 
 			<center>
 			<div class="naosei">
@@ -30,13 +33,13 @@
 									<p:inputText disabled="true" value="#{usuarioMBean.adm.NIF}" />
 									<br />
 									<p:outputLabel id="nomeADM" value="Nome: " />
-									<p:inputText value="#{usuarioMBean.adm.nome}" />
+									<p:inputText required="true" requiredMessage="Campo Nome é necessário" value="#{usuarioMBean.adm.nome}" />
 									<br />
 									<p:outputLabel id="email" value="Email: " />
-									<p:inputText value="#{usuarioMBean.adm.email}" />
+									<p:inputText required="true" requiredMessage="Campo Email é necessário" value="#{usuarioMBean.adm.email}" />
 									<br />
 									<p:outputLabel id="Telefone" value="Telefone: " />
-									<p:inputText value="#{usuarioMBean.adm.telefone}" />
+									<p:inputText required="true" requiredMessage="Campo Telefone é necessário" value="#{usuarioMBean.adm.telefone}" />
 									<br />
 
 								</h:panelGrid>

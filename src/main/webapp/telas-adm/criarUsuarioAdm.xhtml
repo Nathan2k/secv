@@ -36,24 +36,24 @@
 					<h:panelGrid>
 
 						<h:outputText value="NIF: " style="font-weight:bold;" />
-						<p:inputText value="#{cadastroAdmMBean.adm.NIF}"  required="true" maxlength="12"  />
+						<p:inputText requiredMessage="Campo NIF é necessário" value="#{cadastroAdmMBean.adm.NIF}"  required="true" maxlength="12"  />
 						<br />
 						<h:outputText value="Nome: " style="font-weight:bold;" />
-						<p:inputText value="#{cadastroAdmMBean.adm.nome}" required="true"  />
+						<p:inputText requiredMessage="Campo Nome é necessário" value="#{cadastroAdmMBean.adm.nome}" required="true"  />
 						<br />
 						<h:outputText value="Email: " style="font-weight:bold;" />
-						<p:inputText value="#{cadastroAdmMBean.adm.email}" required="true" >
+						<p:inputText requiredMessage="Campo Email é necessário" value="#{cadastroAdmMBean.adm.email}" required="true" >
 						<f:validator validatorId="custom.emailValidator" />
 						</p:inputText>
 						<br />
 						<h:outputLabel for="tel" value="Telefone:" />
-						<p:inputMask id="tel" value="#{cadastroAdmMBean.adm.telefone}" mask="(99) 99999-9999" required="true"  />
+						<p:inputMask requiredMessage="Campo Telefone é necessário" id="tel" value="#{cadastroAdmMBean.adm.telefone}" mask="(99) 99999-9999" required="true"  />
 						<br />
 						<h:outputText value="Senha: " style="font-weight:bold;" />
-						<p:password id="senha3" value="#{cadastroAdmMBean.adm.senha}" required="true"  />
+						<p:password requiredMessage="Campo Senha é necessário" id="senha3" value="#{cadastroAdmMBean.adm.senha}" required="true"  />
 						<br />
 						<h:outputText value="Confirmar Senha: " style="font-weight:bold;" />
-						<p:password id="confsenha3" required="true"  />
+						<p:password requiredMessage="Campo Confirmar senha é necessário" id="confsenha3" required="true"  />
 
 						<br />
 

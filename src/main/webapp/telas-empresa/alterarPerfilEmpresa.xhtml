@@ -36,29 +36,29 @@
 										style="font-weight: bold;" />
 									<br />
 									<p:outputLabel id="nomeEmp" value="Nome: " />
-									<p:inputText value="#{usuarioMBean.emp.nome}"
+									<p:inputText requiredMessage="Campo nome é necessário" required="true" value="#{usuarioMBean.emp.nome}"
 										style="font-weight: bold;" />
 									<br />
 									<p:outputLabel id="representante" value="Representante (a): " />
-									<p:inputText value="#{usuarioMBean.emp.representante}"
+									<p:inputText requiredMessage="Campo representante(a) é necessário" required="true" value="#{usuarioMBean.emp.representante}"
 										style="font-weight: bold;" />
 									<br />
 									<p:outputLabel id="bairro" value="Bairro: " />
-									<p:inputText value="#{usuarioMBean.emp.bairro}"
+									<p:inputText required="true" requiredMessage="Campo bairro é necessário" value="#{usuarioMBean.emp.bairro}"
 										style="font-weight: bold;" />
 									<br />
 									<p:outputLabel id="rua" value="Rua: " />
-									<p:inputText value="#{usuarioMBean.emp.rua}"
+									<p:inputText required="true" requiredMessage="Campo rua é necessário" value="#{usuarioMBean.emp.rua}"
 										style="font-weight: bold;" />
 									<br />
 									<p:outputLabel id="email" value="Email: " />
-									<p:inputText value="#{usuarioMBean.emp.email}"
+									<p:inputText required="true" requiredMessage="Campo email é necessário" value="#{usuarioMBean.emp.email}"
 										style="font-weight: bold;">
 										<f:validator validatorId="custom.emailValidator" />
 									</p:inputText>
 									<br />
 									<p:outputLabel id="telefone" value="Telefone: " />
-									<p:inputText value="#{usuarioMBean.emp.telefone}"
+									<p:inputText required="true" requiredMessage="Campo telefone é necessário" value="#{usuarioMBean.emp.telefone}"
 										style="font-weight: bold;" />
 									<br />
 
