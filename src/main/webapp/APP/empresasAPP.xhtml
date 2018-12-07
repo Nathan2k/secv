@@ -8,59 +8,49 @@
 
 
 <h:head>
-	<link rel="shortcut icon" href="/secv/resources/img/favicon (2).ico"  />
-	<link rel="stylesheet" type="text/css" href="/secv/resources/css/templateADM.css" />
-	<link rel="stylesheet" type="text/css" href="/secv/resources/css/graficoAPP.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="shortcut icon" href="/secv/resources/img/favicon (2).ico" />
+	<link rel="stylesheet" type="text/css"
+		href="/secv/resources/css/templateADM.css" />
+	<link rel="stylesheet" type="text/css"
+		href="/secv/resources/css/graficoAPP.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<ui:insert name="css"></ui:insert>
 	<title><ui:insert name="title">Template ADM</ui:insert></title>
-	
+
 </h:head>
 
 
 <h:body>
 
-	<div class="content" style="padding-left: 0px !important" >
-			
-			<center>
-			<div align="center" style="margin-bottom:20px; margin-top:25px">
-				<h:graphicImage style="width: 40%;" library="img"
+	<div class="content" style="padding-left: 0px !important">
+
+		<center>
+			<div align="center" style="margin-bottom: 20px; margin-top: 25px">
+				<h:graphicImage style="width: 60%;" library="img"
 					name="/logo-senai.png" />
 			</div>
 			<br />
-			</center>
-		
-				<h:form id="formADM">
+		</center>
+
+		<h:form id="formADM">
 			<p:dataTable id="table" var="ues" value="#{tabelaMBean.ues}"
 				paginator="true" rows="10" selectionMode="single"
 				selection="#{tabelaMBean.selectemp}" rowKey="#{ues.nome}"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rowsPerPageTemplate="5,10,15" lazy="true">
+				lazy="true">
 
 				<p:ajax event="rowSelect" update=":formADM:empDetail"
 					oncomplete="PF('empDialog').show()" />
 
-				<p:column>
-					<f:facet name="header">Nome da Empresa</f:facet>
+				<center>
+					<p:column>
+						<f:facet name="header">Nome da Empresa</f:facet>
         	#{ues.nome}
         </p:column>
-				<p:column>
-					<f:facet name="header">CNPJ</f:facet>
-        	#{ues.CNPJ}
-        </p:column>
-				<p:column>
-					<f:facet name="header">Representante (a)</f:facet>
-        	#{ues.representante}
-        </p:column>
-				<p:column>
-					<f:facet name="header">Email</f:facet>
-        	#{ues.email}
-        </p:column>
-				<p:column>
-					<f:facet name="header">Telefone</f:facet>
-        	#{ues.telefone}
-        </p:column>
+				</center>
 			</p:dataTable>
 
 			<p:dialog header="Detalhes da Empresa" widgetVar="empDialog"
@@ -83,7 +73,7 @@
 
 						<h:outputText value="Telefone:" />
 						<h:outputText value="#{tabelaMBean.selectemp.telefone}" />
-						
+
 						<h:outputText value="Cidade:" />
 						<h:outputText value="#{tabelaMBean.selectemp.cidadeE.nome}" />
 
@@ -120,14 +110,15 @@
 			</p:dialog>
 
 
-		</h:form>		
-		
+		</h:form>
+
 	</div>
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 		$(window).resize(function() {
-		    location.reload();
+			location.reload();
 		});
 	</script>
 </h:body>

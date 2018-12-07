@@ -50,10 +50,10 @@
 						<p:inputMask requiredMessage="Campo Telefone é necessário" id="tel" value="#{cadastroAdmMBean.adm.telefone}" mask="(99) 99999-9999" required="true"  />
 						<br />
 						<h:outputText value="Senha: " style="font-weight:bold;" />
-						<p:password requiredMessage="Campo Senha é necessário" id="senha3" value="#{cadastroAdmMBean.adm.senha}" required="true"  />
+						<p:password requiredMessage="Campo Senha é necessário" id="senha1" match="senha2" value="#{cadastroAdmMBean.adm.senha}" required="true"  />
 						<br />
 						<h:outputText value="Confirmar Senha: " style="font-weight:bold;" />
-						<p:password requiredMessage="Campo Confirmar senha é necessário" id="confsenha3" required="true"  />
+						<p:password requiredMessage="Campo Confirmar senha é necessário" id="senha2" required="true"  />
 
 						<br />
 
