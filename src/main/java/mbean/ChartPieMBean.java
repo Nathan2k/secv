@@ -30,7 +30,7 @@ public class ChartPieMBean {
         pieModel1 = initPieChartModel();
          
         pieModel1.setTitle("Cursos");
-        pieModel1.setLegendPosition("ne");
+        pieModel1.setLegendPosition("w");
         pieModel1.setLegendPlacement(LegendPlacement.OUTSIDE);
         pieModel1.setShadow(false);
         pieModel1.setShowDataLabels(true);
@@ -44,7 +44,7 @@ public class ChartPieMBean {
     	
     	for(GraficoPizza cs : lista) {
     		model.set(cs.getCurso(), cs.getQtd());
-    		model.setSeriesColors("800000,cc0000,d11a00,d63300,db4c00,e06600,e68000,eb9900,f0b200,f5cc00,fae600");
+    		model.setSeriesColors("800000,cc0000,d11a00,d63300,db4c00,e06600,e68000,eb9900,f0b200,f5cc00,fae600,e06600");
     	}
     	//model.addSeries(boys);
     	
@@ -54,6 +54,9 @@ public class ChartPieMBean {
 
 
 }
+
+
+
 
 
 

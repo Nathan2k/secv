@@ -20,28 +20,30 @@
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
-		<p:panelGrid border="1" style="width:100%;height:100%;border-block-end:0px">
+		<p:panelGrid border="1"
+			style="width:100%;height:100%;border-block-end:0px">
 			<p:row>
 				<p:column style="width:50%;height:50%">
 					<p:chart type="line" model="#{chartsMBean.lineModel}"
-						onmouseup="false" style="height:75%; width:75%;;margin-left:10%;margin-right:10%;color:black" />
+						onmouseup="false"
+						style="height:75%; width:75%;margin-left:15%;margin-right:5%;color:black" />
 				</p:column>
 				<p:column style="width:50%;height:50%;">
 					<p:chart type="pie" model="#{chartPieMBean.pieModel1}"
-						style="height:75%; width:75%;;margin-left:10%;margin-right:10%;color:black" />
-				</p:column> 
+						style="height:75%; width:50%;margin-left:50%;margin-right:5%;color:black" />
+				</p:column>
 			</p:row>
 			<p:row>
 				<p:column style="width:50%;height:50%">
 					<p:chart type="bar" model="#{chartBarMBean.barModel}"
-						style="height:75%; width:75%;;margin-left:10%;margin-right:10%;color:black" />
+						style="height:75%; width:75%;;margin-left:5%;margin-right:15%;color:black" />
 				</p:column>
 				<p:column style="width:50%;height:50%">
 					<p:chart type="bar" model="#{chartLineMBean.horizontalBarModel}"
-						style="height:75%; width:75%;margin-left:10%;margin-right:10%;color:black"/>
+						style="height:75%; width:75%;margin-left:5%;margin-right:15%;color:black" />
 				</p:column>
 			</p:row>
-			</p:panelGrid>
+		</p:panelGrid>
 	</ui:define>
 </ui:composition>
 
