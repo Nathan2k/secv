@@ -38,7 +38,7 @@ public class UsuarioMBean {
 	}
 
 	public void trocaImagem() {
-		imagem = imagem.equals("on") ? "off" : "on";
+		imagem = imagem.equals("on2") ? "off" : "on2";
 		System.out.println("Caiu");
 	}
 
