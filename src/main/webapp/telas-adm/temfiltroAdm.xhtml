@@ -54,7 +54,7 @@
 
 									<p:outputLabel for="estado" value="Estados:" />
 									<p:selectOneMenu id="estado" value="#{a}" style="width:75%">
-										<f:selectItem itemLabel="Estados" itemValue="" />
+										<f:selectItem itemLabel="São Paulo" itemValue="" />
 										<f:selectItems value="#{a}" />
 									</p:selectOneMenu>
 									<p />
@@ -108,9 +108,9 @@
 									<p />
 
 
-									<!-- AQUI ESTA O CAMPO IDIOMA -->
+										<!-- AQUI ESTA O CAMPO IDIOMA -->
+									<h:outputLabel for="idioma" value="Idioma:" />								
 									<h:panelGrid columns="6" style="margin-bottom: 10px">
-
 										<p:selectOneMenu rendered="true" required="false"
 											style="width: 160px" panelStyle="width:150px" id="idioma"
 											value="#{filtroMBean.eFiltro.qualIdioma}">
