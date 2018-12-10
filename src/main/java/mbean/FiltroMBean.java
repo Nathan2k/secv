@@ -66,7 +66,7 @@ public class FiltroMBean {
 
 	@ManagedProperty(value = "#{usuarioMBean}")
 	private UsuarioMBean userMb;
-	
+
 	@ManagedProperty(value = "#{historicoMBean}")
 	private HistoricoMBean histMb;
 
@@ -75,12 +75,10 @@ public class FiltroMBean {
 	}
 
 	List<Filtro> filtros;
-	
 
 	@PostConstruct
 	public void conts() {
 		criarFiltros();
-		
 	}
 
 	// SALVA O FILTRO NO BANCO E MUDA A TELA DO filtro.xhtml
@@ -92,7 +90,7 @@ public class FiltroMBean {
 			filtroF = false;
 			criarFiltros();
 			eFiltro.setIdCurso(cursoSel);
-			
+
 			return fDao.inserirFiltro(eFiltro);
 
 		} else {
@@ -111,8 +109,27 @@ public class FiltroMBean {
 		filtroP = false;
 		filtroF = true;
 		
+		eFiltro.setIdade_inicio(18);
+		eFiltro.setIdade_fim(40);
+		eFiltro.setIdEstado(1);
+
 		histMb.init();
 
+	}
+
+	// VALIDA SE OS CAMPOS ESTÃO PREENCHIDOS
+	public boolean validar() {
+
+		if (eFiltro.getNomeFiltro() == null || eFiltro.getIdCidade() == null || eFiltro.getArea() == null
+				|| eFiltro.getIdCurso() == null || eFiltro.getSemestre() == null) {
+
+			MensFaces.m("Por favor preencha TODOS os campos!!");
+			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+			return false;
+		}
+
+		return true;
 	}
 
 	// RESPONSAVEL POR LIBERAR O CAMPO NV IDIOMA
@@ -128,7 +145,8 @@ public class FiltroMBean {
 
 	}
 
-	// ESSE CARA SERVE PARA LISTAR OS FILTROS NO ADM OU NO USUARIO EMPRESA!(TELA HISTORICO)
+	// ESSE CARA SERVE PARA LISTAR OS FILTROS NO ADM OU NO USUARIO EMPRESA!(TELA
+	// HISTORICO)
 	public void criarFiltros() {
 		if (userMb.getAdm() == null) {
 
@@ -139,12 +157,6 @@ public class FiltroMBean {
 
 		}
 	}
-	
-	
-	
-	
-	
-	
 
 	// RESPONSAVEL POR CONSEGUIR PASSAR A ENTIDADE NO VALUE DO SELECT ONE MENU
 	public List<SelectItem> pegandoArea() {
@@ -165,6 +177,7 @@ public class FiltroMBean {
 		eFiltro.setIdade_inicio(18);
 		eFiltro.setIdade_fim(40);
 		eFiltro.setIdEstado(1);
+		
 		try {
 			cidades = fs.cCidade();
 		} catch (IOException e) {
@@ -174,6 +187,11 @@ public class FiltroMBean {
 
 	// PEGA AS AREAS COM CURRICULO CADASTRADO
 	public void attArea() {
+		
+		eFiltro.setArea(null);
+		eFiltro.setIdCurso(null);
+		eFiltro.setSemestre(null);
+		
 		try {
 			area = fs.cArea(eFiltro);
 		} catch (IOException e) {
@@ -183,6 +201,10 @@ public class FiltroMBean {
 
 	// PEGA OS CURSOS COM CURRICULO CADASTRADO
 	public void attCurso(AjaxBehaviorEvent event) {
+		
+		eFiltro.setIdCurso(null);
+		eFiltro.setSemestre(null);
+		
 		areaSel = eFiltro.getArea();
 		String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
 		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
@@ -196,6 +218,9 @@ public class FiltroMBean {
 
 	// PEGA OS SEMESTRES COM CURRICULO CADASTRADO
 	public void attSemestre() {
+		
+		eFiltro.setSemestre(null);
+		
 		cursoSel = eFiltro.getIdCurso().toString();
 		String codigo = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
 		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
@@ -209,46 +234,54 @@ public class FiltroMBean {
 	}
 
 	public void enviarFiltro() throws IOException {
+
 		System.out.println("Chamou o EnviarFiltro");
 		System.out.println(anoAtual.get(Calendar.YEAR));
 
-		eFiltro.setIdade_fim(trocandoAno(eFiltro.getIdade_fim())); // VER SE TA CERTO!!
-		eFiltro.setIdade_inicio(trocandoAno(eFiltro.getIdade_inicio()));
+		
 
-		areaSel = eFiltro.getArea();
-		String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
-		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
-		eFiltro.setArea(codigo);
+		// COLOCAR VALIDAR AQUI
+		if (validar()) {
+			
+			eFiltro.setIdade_fim(trocandoAno(eFiltro.getIdade_fim())); // VER SE TA CERTO!!
+			eFiltro.setIdade_inicio(trocandoAno(eFiltro.getIdade_inicio()));
 
-		cursoSel = eFiltro.getIdCurso().toString();
-		String codigo2 = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
-		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
-		eFiltro.setIdCurso(codigo2);
+			areaSel = eFiltro.getArea();
+			String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
+			areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
+			eFiltro.setArea(codigo);
 
-		List<Curriculo> curriculos = fs.enviarFiltro(eFiltro); // DA ERRO 404 AQUI
+			cursoSel = eFiltro.getIdCurso().toString();
+			String codigo2 = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
+			cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
+			eFiltro.setIdCurso(codigo2);
 
-		if (curriculos == null) {
+			List<Curriculo> curriculos = fs.enviarFiltro(eFiltro); // DA ERRO 404 AQUI
 
-			MensFaces.m("Ocorreu um erro ao enviar o filtro!");
-			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+			if (curriculos == null) {
 
-		}
-		if (curriculos.isEmpty()) {
+				MensFaces.m("Ocorreu um erro ao enviar o filtro!");
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
-			MensFaces.m("Nenhum Curriculo foi encontrado! Tente mudar algum Filtro!");
-			FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-		} else {
-			idFiltro = salvaFiltro();
-			for (Curriculo c : curriculos) {
-				c.setIdFiltro(idFiltro);
-				fDao.inserirCurriculo(c); // FICA ANDANDO NA LISTA E INSERE UM POR UM
 			}
-			eFiltro = new Filtro();
-			listarCurriculos(idFiltro);
+			if (curriculos.isEmpty()) {
+
+				MensFaces.m("Nenhum Curriculo foi encontrado! Tente mudar algum Filtro!");
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+			} else {
+				idFiltro = salvaFiltro();
+				for (Curriculo c : curriculos) {
+					c.setIdFiltro(idFiltro);
+					fDao.inserirCurriculo(c); // FICA ANDANDO NA LISTA E INSERE UM POR UM
+				}
+				eFiltro = new Filtro();
+				listarCurriculos(idFiltro);
+			}
+
 		}
+
 	}
-	
-	
+
 	private void listarCurriculos(Integer idFiltro2) {
 		cl = cDao.listarCurriculo(idFiltro);
 	}
@@ -327,8 +360,6 @@ public class FiltroMBean {
 	public void seteFiltro(Filtro eFiltro) {
 		this.eFiltro = eFiltro;
 	}
-	
-	
 
 	public CurriculoDAO getcDao() {
 		return cDao;
@@ -337,7 +368,6 @@ public class FiltroMBean {
 	public void setcDao(CurriculoDAO cDao) {
 		this.cDao = cDao;
 	}
-
 
 	public List<ClasseGenerica> getEstado() {
 		return estado;

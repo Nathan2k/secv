@@ -48,7 +48,7 @@
 							<p />
 
 							<h:outputLabel for="cidades" value="Cidades:" />
-							<p:remoteCommand name="atualiza" update="area"
+							<p:remoteCommand name="atualiza" update="area curso semestre"
 								actionListener="#{filtroMBean.attArea}" />
 							<p:selectCheckboxMenu id="cidades"
 								value="#{filtroMBean.eFiltro.idCidade}" label="Cidades"
@@ -71,7 +71,7 @@
 									itemLabel="#{area.nome}"
 									itemValue="#{area.codigo}-#{area.nome}" />
 								<p:ajax event="change" listener="#{filtroMBean.attCurso}"
-									process="area" update="curso">
+									process="area" update="curso semestre">
 								</p:ajax>
 							</p:selectOneMenu>
 							<P />
@@ -228,10 +228,13 @@
 
 								</p:dataTable>
 
-							</center>
+							</center>	
+							
+							<br/>
 
 							<h:commandButton value="Finalizar"
 								action="#{filtroMBean.finalizaBt}"
+								onclick="this.form.target='_self'"
 								style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 
 						</p:panel>
