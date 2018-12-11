@@ -72,7 +72,7 @@ public class UsuarioMBean {
 	}
 
 	public String logar() {
-		if (imagem.equals("on")) {
+		if (imagem.equals("on2")) {
 			return loginADM();
 		} else if (imagem.equals("off")) {
 			return loginEmpresa();
