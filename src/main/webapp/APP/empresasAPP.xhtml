@@ -39,6 +39,7 @@
 			<p:dataTable id="table" var="ues" value="#{tabelaMBean.ues}"
 				paginator="true" rows="10" selectionMode="single"
 				selection="#{tabelaMBean.selectemp}" rowKey="#{ues.nome}"
+				rowsPerPageTemplate="5,10,15"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				lazy="true">
 
@@ -86,26 +87,6 @@
 
 					</p:panelGrid>
 					<p />
-
-					<p:growl id="message" showDetail="true" />
-					<p:commandButton value="Excluir Empresa"
-						actionListener="#{tabelaMBean.excluir}" update=":formADM"
-						onsuccess="PF('empDialog').hide()"
-						style="height: 30px; font-size: 14px; width:150px; border: 0px; ">
-						<p:confirm header="Confirmação"
-							message="Deseja excluir a empresa?" icon="ui-icon-alert" />
-					</p:commandButton>
-
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-
-						<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
-							icon="ui-icon-close"
-							style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
-
-						<p:commandButton value="Sim" type="button"
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-							style="height: 25px; font-size: 14px; width:150px; border: 0px; " />
-					</p:confirmDialog>
 				</p:outputPanel>
 			</p:dialog>
 

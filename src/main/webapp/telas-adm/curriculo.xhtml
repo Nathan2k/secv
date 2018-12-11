@@ -49,22 +49,17 @@
 			name="logo-senai.png" />
 	</div>
 	<p/>
-	<p:panel style="border: 0px;">
+		<p:panel style="border: 0px;">
 		<center>
-			<h3>Informações Pessoais</h3>
-			<h:outputLabel  value="Nome: " style="font-weight:bold" />
-			<h:outputLabel value="#{flash.curImp.nomeDoAluno}"/>
+			<font size = "06"><strong>	<h:outputLabel value="#{flash.curImp.nomeDoAluno}" />	</strong></font>
 			<br />
-			<h:outputLabel value="Email: " style="font-weight:bold"  />
+			<font size = "03"> <br /> <strong>Email: </strong> </font>
 			<h:outputLabel value="#{flash.curImp.email}"/>
-			<br />
-			<h:outputLabel value="Telefone: " style="font-weight:bold"  />
+			<br /> <strong>Telefone: </strong>
 			<h:outputLabel value="#{flash.curImp.telefone}"/>
-			<br />
-			<h:outputLabel value="Idade: " style="font-weight:bold"  />
+			<br /> <strong>Data de nascimento: </strong>
 			<h:outputLabel value="#{flash.curImp.idade}"/>
-			<br /> 
-			<h:outputLabel value="Sexo: " style="font-weight:bold"  />
+			<br /> <strong>Sexo: </strong>
 			<h:outputLabel value="#{flash.curImp.sexo}"/>
 
 			<br />
@@ -73,23 +68,7 @@
 			
 		</center>
 	</p:panel>
-	<p:panel style="border: 0px;">
-		<center>
-			<h3>Linguas Estrangeiras</h3>
-			</center>
-		<h:outputLabel value="Nivel de Inglês:"
-			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
-		<h:outputLabel
-			value=" #{flash.curImp.nvInglesFormatado}"
-			style="margin-letf: -60%;" />
-		<br />
-		<h:outputLabel value="Nivel de Espanhol:"
-			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
-		<h:outputLabel
-			value=" #{flash.curImp.nvEspanholFormatado}"
-			style="margin-letf: -60%;" />
-
-	</p:panel>
+	
 	<p:panel style="border: 0px;">
 		<center>
 			<h3>Formações Acadêmicas</h3>
@@ -124,6 +103,23 @@
 
 			</h:column>
 		</h:dataTable>
+	</p:panel>
+	<p:panel style="border: 0px;">
+		<center>
+			<h3>Linguas Estrangeiras</h3>
+			</center>
+		<h:outputLabel value="Nivel de Inglês:"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{flash.curImp.nvInglesFormatado}"
+			style="margin-letf: -60%;" />
+		<br />
+		<h:outputLabel value="Nivel de Espanhol:"
+			style="font-size: 18px; margin-letf: -60%; font-weight:bold; text-decoration: underline" />
+		<h:outputLabel
+			value=" #{flash.curImp.nvEspanholFormatado}"
+			style="margin-letf: -60%;" />
+
 	</p:panel>
 	<p:panel style="border: 0px;">
 		<center>
