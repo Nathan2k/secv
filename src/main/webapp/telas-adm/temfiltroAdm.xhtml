@@ -215,7 +215,7 @@
 
 						<center>
 
-							<p:dataTable var="cl" value="#{listarCurriculoMBean.cl}">
+							<p:dataTable var="cl" value="#{filtroMBean.cl}">
 
 								<p:column headerText="Nome">
 									<f:facet name="header">Nome do Aluno</f:facet>
@@ -242,9 +242,10 @@
 							</p:dataTable>
 
 						</center>
-
+						<br/>
 						<h:commandButton value="Finalizar"
 							action="#{filtroMBean.finalizaBt}"
+							onclick="this.form.target='_self'"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
 
 					</p:panel>
