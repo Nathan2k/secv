@@ -8,7 +8,7 @@
 </h:head>
 <ui:composition
 	template="/WEB-INF/templateEmpresa/templateEmpresa.xhtml">
-<!-- <h:panelGroup rendered="#{usuarioMBean.logado}">  -->
+	<!-- <h:panelGroup rendered="#{usuarioMBean.logado}">  -->
 	<ui:define name="title">Filtro</ui:define>
 
 	<ui:define name="content">
@@ -23,12 +23,12 @@
 				document.getElementById('my_iframe').src = url;
 			};
 		</script>
-	<center>
-	
-		<div style="width: 100%; margin: auto;">
-			<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
-				<p:panel value="Login" style="width: 30%; margin-top: 1%">
-					
+		<center>
+
+			<div style="width: 100%; margin: auto;">
+				<h:form id="filtroEmp" rendered="#{filtroMBean.filtroF}">
+					<p:panel value="Login" style="width: 30%; margin-top: 1%">
+
 
 						<h:panelGrid columns="1" style="margin-bottom:15px"
 							cellpadding="5">
@@ -37,7 +37,7 @@
 							<p:inputText value="#{filtroMBean.eFiltro.nomeFiltro}"
 								style="width: 100%;" />
 							<p />
-							
+
 
 							<p:outputLabel for="estado" value="Estado:" />
 							<p:selectOneMenu id="estado"
@@ -126,9 +126,9 @@
 									required="false" style="width: 160px; margin-left: 20% "
 									panelStyle="width:150px" id="nivel"
 									value="#{filtroMBean.eFiltro.nvIdioma}">
-									<f:selectItem itemLabel="Basico" itemValue="0" />
-									<f:selectItem itemLabel="Intermediario" itemValue="1" />
-									<f:selectItem itemLabel="Avançado" itemValue="2" />
+									<f:selectItem itemLabel="Basico" itemValue="1" />
+									<f:selectItem itemLabel="Intermediario" itemValue="2" />
+									<f:selectItem itemLabel="Avançado" itemValue="3" />
 								</p:selectOneMenu>
 							</h:panelGrid>
 							<p />
@@ -183,70 +183,70 @@
 						<h:commandButton value="Filtrar"
 							action="#{filtroMBean.enviarFiltro}"
 							style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
-				
-				</p:panel>
-			</h:form>
 
-			<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
-			<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
+					</p:panel>
+				</h:form>
 
-				<center>
-					<p:panel value="Login" style="width: 600px">
+				<!-- AQUI FICA A TELA DE DOWNLOAD DOS CURRICULOS SE O FILTRO FOR PREENCHIDO CORRETAMENTE! -->
+				<h:form id="telaCur" rendered="#{filtroMBean.filtroP}">
 
-						<h:graphicImage library="img" name="/logo-senai.png"
-							style="width:300px; margin: 7px;" />
+					<center>
+						<p:panel value="Login" style="width: 600px">
 
-						<p />
-						<p:panel>
+							<h:graphicImage library="img" name="/logo-senai.png"
+								style="width:300px; margin: 7px;" />
 
-							<center>
+							<p />
+							<p:panel>
 
-								<p:dataTable var="cl" value="#{filtroMBean.cl}">
+								<center>
 
-									<p:column headerText="Nome">
-										<f:facet name="header">Nome do Aluno</f:facet>
+									<p:dataTable var="cl" value="#{filtroMBean.cl}">
+
+										<p:column headerText="Nome">
+											<f:facet name="header">Nome do Aluno</f:facet>
        								 	#{cl.nomeDoAluno}
 										</p:column>
 
-									<p:column id="Download" icon="ui-icon-search"
-										style="width:60px">
-										<h:outputText />
-										<p:commandButton icon="ui-icon-arrowthick-1-s" />
-									</p:column>
+										<p:column id="Download" icon="ui-icon-search"
+											style="width:60px">
+											<h:outputText />
+											<p:commandButton icon="ui-icon-arrowthick-1-s" />
+										</p:column>
 
-									<p:column id="Impressão" style="width:60px">
-										<p:commandButton icon="ui-icon-print" ajax="false"
-											action="#{listarCurriculoMBean.imprimir}"
-											onclick="this.form.target='_blank'">
+										<p:column id="Impressão" style="width:60px">
+											<p:commandButton icon="ui-icon-print" ajax="false"
+												action="#{listarCurriculoMBean.imprimir}"
+												onclick="this.form.target='_blank'">
 
-											<f:setPropertyActionListener value="#{cl}"
-												target="#{listarCurriculoMBean.cur}">
-											</f:setPropertyActionListener>
+												<f:setPropertyActionListener value="#{cl}"
+													target="#{listarCurriculoMBean.cur}">
+												</f:setPropertyActionListener>
 
-										</p:commandButton>
-									</p:column>
+											</p:commandButton>
+										</p:column>
 
-								</p:dataTable>
+									</p:dataTable>
 
-							</center>	
-							
-							<br/>
+								</center>
 
-							<h:commandButton value="Finalizar"
-								action="#{filtroMBean.finalizaBt}"
-								onclick="this.form.target='_self'"
-								style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+								<br />
 
+								<h:commandButton value="Finalizar"
+									action="#{filtroMBean.finalizaBt}"
+									onclick="this.form.target='_self'"
+									style="height: 30px; font-size: 14px; width:150px; border: 0px; " />
+
+							</p:panel>
 						</p:panel>
-					</p:panel>
-				</center>
+					</center>
 
-			</h:form>
+				</h:form>
 
-		</div>
-			</center>
+			</div>
+		</center>
 	</ui:define>
-<!-- 	</h:panelGroup>
+	<!-- 	</h:panelGroup>
 	<h:panelGroup rendered="!#{usuarioMBean.logado}">
 	TESTE VRAU
 	<meta http-equiv="refresh" content="3; url=login.xhtml"/>
