@@ -15,7 +15,7 @@ public class ConnectionDB {
 			try {
 				DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 				con = DriverManager.getConnection(dns,user,pass);
-				System.out.println("DB conectado com sucesso!");
+				System.out.println("DB SECV conectado com sucesso!");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.println("Erro ao conectar no DB");
