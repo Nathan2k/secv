@@ -108,7 +108,7 @@ public class FiltroMBean {
 
 		filtroP = false;
 		filtroF = true;
-		
+
 		eFiltro.setIdade_inicio(18);
 		eFiltro.setIdade_fim(40);
 		eFiltro.setIdEstado(1);
@@ -177,7 +177,7 @@ public class FiltroMBean {
 		eFiltro.setIdade_inicio(18);
 		eFiltro.setIdade_fim(40);
 		eFiltro.setIdEstado(1);
-		
+
 		try {
 			cidades = fs.cCidade();
 		} catch (IOException e) {
@@ -187,11 +187,11 @@ public class FiltroMBean {
 
 	// PEGA AS AREAS COM CURRICULO CADASTRADO
 	public void attArea() {
-		
+
 		eFiltro.setArea(null);
 		eFiltro.setIdCurso(null);
 		eFiltro.setSemestre(null);
-		
+
 		try {
 			area = fs.cArea(eFiltro);
 		} catch (IOException e) {
@@ -201,10 +201,10 @@ public class FiltroMBean {
 
 	// PEGA OS CURSOS COM CURRICULO CADASTRADO
 	public void attCurso(AjaxBehaviorEvent event) {
-		
+
 		eFiltro.setIdCurso(null);
 		eFiltro.setSemestre(null);
-		
+
 		areaSel = eFiltro.getArea();
 		String codigo = areaSel.substring(0, areaSel.lastIndexOf("-"));
 		areaSel = areaSel.substring(areaSel.lastIndexOf("-") + 1);
@@ -218,9 +218,9 @@ public class FiltroMBean {
 
 	// PEGA OS SEMESTRES COM CURRICULO CADASTRADO
 	public void attSemestre() {
-		
+
 		eFiltro.setSemestre(null);
-		
+
 		cursoSel = eFiltro.getIdCurso().toString();
 		String codigo = cursoSel.substring(0, cursoSel.lastIndexOf("-"));
 		cursoSel = cursoSel.substring(cursoSel.lastIndexOf("-") + 1);
@@ -238,11 +238,9 @@ public class FiltroMBean {
 		System.out.println("Chamou o EnviarFiltro");
 		System.out.println(anoAtual.get(Calendar.YEAR));
 
-		
-
 		// COLOCAR VALIDAR AQUI
 		if (validar()) {
-			
+
 			eFiltro.setIdade_fim(trocandoAno(eFiltro.getIdade_fim())); // VER SE TA CERTO!!
 			eFiltro.setIdade_inicio(trocandoAno(eFiltro.getIdade_inicio()));
 
@@ -263,11 +261,28 @@ public class FiltroMBean {
 				MensFaces.m("Ocorreu um erro ao enviar o filtro!");
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
+				eFiltro.setArea(null);
+				eFiltro.setIdCidade(null);
+				eFiltro.setIdCurso(null);
+				eFiltro.setSemestre(null);
+
+				eFiltro.setIdade_inicio(18);
+				eFiltro.setIdade_fim(40);
+
 			}
 			if (curriculos.isEmpty()) {
 
 				MensFaces.m("Nenhum Curriculo foi encontrado! Tente mudar algum Filtro!");
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+				eFiltro.setArea(null);
+				eFiltro.setIdCidade(null);
+				eFiltro.setIdCurso(null);
+				eFiltro.setSemestre(null);
+
+				eFiltro.setIdade_inicio(18);
+				eFiltro.setIdade_fim(40);
+
 			} else {
 				idFiltro = salvaFiltro();
 				for (Curriculo c : curriculos) {

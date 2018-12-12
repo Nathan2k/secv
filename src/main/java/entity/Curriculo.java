@@ -25,7 +25,7 @@ public class Curriculo {
 	private Integer nivel_ingles;
 	private Integer nivel_espanhol;
 	private String telefone;
-	private String idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
+	private Long idade; // COLOCAR EM M CALENDAR PRA PODER PEGAR A IDADE
 	private Integer idFiltro;
 	
 	
@@ -71,6 +71,12 @@ public class Curriculo {
 		}
 
 		return mensagem = "DEU ERRO NO NV DO ESPANHOL!";
+	}
+	
+	public String getDataNasc() {
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(idade);
+		return new SimpleDateFormat("dd/MM/yyyy").format(c.getTimeInMillis());
 	}
 
 
@@ -194,13 +200,7 @@ public class Curriculo {
 		this.deficiencia = deficiencia;
 	}
 
-	public String getIdade() {
-		return idade;
-	}
-
-	public void setIdade(String idade) {
-		this.idade = idade;
-	}
+	
 
 	// OLHA ISSO AQUI LESK
 //	public String getNivelingles() {
@@ -219,6 +219,14 @@ public class Curriculo {
 //		}
 //		return null;
 //	}
+
+	public Long getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Long idade) {
+		this.idade = idade;
+	}
 
 	public String getSexoNome() {
 		String genero;

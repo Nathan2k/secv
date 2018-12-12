@@ -46,7 +46,7 @@ public class CurriculoDAO {
 				cl.setId(rs.getInt("id"));
 				cl.setEmail(rs.getString("email"));
 				cl.setNomeDoAluno(rs.getString("nome_aluno"));
-				cl.setIdade(rs.getString("idade"));
+				cl.setIdade(rs.getLong("idade"));
 				cl.setNivel_ingles(rs.getInt("nivelIngles"));
 				cl.setNivel_espanhol(rs.getInt("nivelEspanhol"));
 				cl.setCidade(rs.getString("cidade"));

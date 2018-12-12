@@ -41,7 +41,7 @@ public class FiltroDAO {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, c.getNomeDoAluno());
-			ps.setString(2, c.getIdade());
+			ps.setLong(2, c.getIdade());
 			ps.setInt(3, c.getNivel_ingles());
 			ps.setInt(4, c.getNivel_espanhol());
 			ps.setString(5, c.getEstado());
