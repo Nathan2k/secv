@@ -1,6 +1,6 @@
-CREATE DATABASE alfa;
+CREATE DATABASE secv;
 
-USE alfa;
+USE secv;
 
 
 CREATE TABLE empresa(
