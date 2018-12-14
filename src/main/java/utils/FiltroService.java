@@ -22,14 +22,14 @@ public class FiltroService {
 	// ENVIA O FILTRO PRO DONI
 	public List<Curriculo> enviarFiltro(Filtro f) throws IOException {
 
-		String url = "http://10.87.210.5:81/sccv-api/ws/curriculos/por-filtro"; // URL FICTICIO!
+		String url = "http://10.87.202.149:8080/sccv-api/ws/curriculos/por-filtro"; // URL FICTICIO!
 
 		HttpHelper http = new HttpHelper();
 
 		Gson gson = new Gson();
 
 		String json = gson.toJson(f, Filtro.class);
-		http.setContentType("application/json");
+		http.setContentType("application/json;charset=UTF-8");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 
@@ -43,7 +43,7 @@ public class FiltroService {
 	// RECEBE AS CIDADES QUE TEM CURRICULO
 	public List<ClasseGenerica> cCidade() throws IOException {
 
-		String url = "http://10.87.210.5:81/sccv-api/ws/cidades/disponiveis"; // URL CERTO!
+		String url = "http://10.87.202.149:8080/sccv-api/ws/cidades/disponiveis"; // URL CERTO!
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 
@@ -58,13 +58,13 @@ public class FiltroService {
 	// RECEBE AS AREAS QUE TEM CURRICULO
 	public List<ClasseGenerica> cArea(Filtro cidade) throws IOException {
 
-		String url = "http://10.87.210.5:81/sccv-api/ws/areas/por-cidades"; // URL CERTO!
+		String url = "http://10.87.202.149:8080/sccv-api/ws/areas/por-cidades"; // URL CERTO!
 		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
 		
 		String json = gson.toJson(cidade, Filtro.class);
-		http.setContentType("application/json");
+		http.setContentType("application/json;charset=UTF-8");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 		
@@ -77,7 +77,7 @@ public class FiltroService {
 	// RECEBE OS CURSOS QUE TEM CURRICULO
 	public List<ClasseGenerica> cCurso(Filtro area) throws IOException {
 
-		String url = "http://10.87.210.5:81/sccv-api/ws/cursos/por-filtro"; // URL CERTO!
+		String url = "http://10.87.202.149:8080/sccv-api/ws/cursos/por-filtro"; // URL CERTO!
 		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
@@ -86,7 +86,7 @@ public class FiltroService {
 		}.getType();
 
 		String json = gson.toJson(area, Filtro.class);
-		http.setContentType("application/json");
+		http.setContentType("application/json;charset=UTF-8");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 
@@ -98,7 +98,7 @@ public class FiltroService {
 	// RECEBE OS SEMESTRES QUE TEM CURRICULO
 	public List<ClasseGenerica> cSemestre(Filtro curso) throws IOException {
 
-		String url = "http://10.87.210.5:81/sccv-api/ws/semestre/por-filtro"; // URL FICTICIO!
+		String url = "http://10.87.202.149:8080/sccv-api/ws/semestre/por-filtro"; // URL FICTICIO!
 		
 		HttpHelper http = new HttpHelper();
 		Gson gson = new Gson();
@@ -107,7 +107,7 @@ public class FiltroService {
 		}.getType();
 
 		String json = gson.toJson(curso, Filtro.class);
-		http.setContentType("application/json");
+		http.setContentType("application/json;charset=UTF-8");
 
 		String response = http.doPost(url, json.getBytes(), "UTF-8");
 

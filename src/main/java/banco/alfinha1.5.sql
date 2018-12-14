@@ -144,11 +144,6 @@ CREATE TABLE recuperarSenha(
 );
 
 
-
-INSERT INTO empresa VALUES (0,'123','mahalo','12345678910111','Jaguariuna','flores','lulu','rua','mahalo@gmail.com','123455432','Rafael Leme');
-
-INSERT INTO empresa VALUES (0,'123','senai','123456789101112','Jaguariuna','flores','lulu','rua','senai@gmail.com','123455432','Para Guasu');
-
 INSERT INTO administrador VALUES (0,'123456','adm@gmail.com','admin','123','123455432');
 
 INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
@@ -179,11 +174,6 @@ INSERT INTO `estado` (`id`, `nomeEstado`) VALUES
 (25, 'Sergipe'),
 (26, 'São Paulo'),
 (27, 'Tocantins');
-
-
-INSERT INTO `filtro` (`id`, `nome`, `experiencia`, `sexo`, `deficiencia`, `idEmpresa`, `idADM`, `data` , `area` , `curso` , `cidade`) VALUES
-(7, 'eletricista', 1, 'masculino', 0, 1, 1, '2018-10-26 02:00:00', 'engenharia', 'eletrica' , 'Jaguariuna');
-
 
 
 
